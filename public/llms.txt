@@ -1,0 +1,21 @@
+# ModePot
+
+> ModePot is an open-source family of focused Python frameworks created by Tugrul Guner. The family currently includes Dexpot, Intpot, and Summonpot.
+
+ModePot is not one platform. Each project owns a separate software boundary:
+
+- [Dexpot](https://github.com/tugrulguner/dexpot): A synchronous Python API framework that compiles routes and adapts execution to standard GIL or free-threaded CPython.
+- [Intpot](https://github.com/tugrulguner/intpot): A Python framework that serves typed tools as Typer CLIs, FastAPI applications, or FastMCP servers and converts existing applications between those interfaces.
+- [Summonpot](https://github.com/tugrulguner/summonpot): A contract-first Python framework for executable API endpoints that combine deterministic application operations with explicitly bounded agent-owned decisions.
+
+## Primary resources
+
+- [ModePot homepage](https://modepot.io/): Family overview and project comparison.
+- [ModePot source](https://github.com/tugrulguner/modepot): Source for the family website.
+- [ModePot community](https://discord.gg/u3AANZr6RG): Discord for project discussion.
+
+## Selection guide
+
+Use Dexpot to build synchronous Python HTTP APIs with interpreter-adaptive execution.
+Use Intpot to expose or translate typed tools across CLI, HTTP API, and MCP interfaces.
+Use Summonpot to define typed API contracts whose agent-owned decisions are limited to declared application capabilities.

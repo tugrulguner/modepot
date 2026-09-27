@@ -10,13 +10,13 @@ const products = [
     name: 'dexpot',
     prefix: 'dex',
     image: '/products/dexpot.webp',
-    alt: 'Dexpot cosmic potion artwork surrounded by Python API code and execution symbols',
-    eyebrow: 'Synchronous Python API framework',
+    alt: 'Dexpot artwork showing a potion vessel with Python API code and execution symbols',
+    category: 'Synchronous Python API framework',
     statement: 'Plain handlers. Adaptive execution.',
+    choice: 'Build a synchronous Python HTTP API that adapts to GIL and free-threaded CPython.',
     description:
       'Dexpot compiles routes once, validates JSON with msgspec, and adapts concurrency to standard GIL or free-threaded Python—without asking application code to become async.',
     href: 'https://github.com/tugrulguner/dexpot',
-    site: 'dexpot.modepot.io',
     accent: 'cyan',
   },
   {
@@ -25,13 +25,13 @@ const products = [
     name: 'intpot',
     prefix: 'int',
     image: '/products/intpot.webp',
-    alt: 'Intpot cosmic potion artwork connecting code, API endpoints, and interfaces',
-    eyebrow: 'One definition, three interfaces',
+    alt: 'Intpot artwork showing a potion vessel connecting code, API endpoints, and interfaces',
+    category: 'One definition, three interfaces',
     statement: 'Define once. Serve in every direction.',
+    choice: 'Serve typed Python tools as a CLI, HTTP API, or MCP server—or convert between them.',
     description:
       'Intpot turns typed Python tools into Typer CLIs, FastAPI apps, or FastMCP servers—and can inspect an existing app and convert it into either of the others.',
     href: 'https://github.com/tugrulguner/intpot',
-    site: 'intpot.modepot.io',
     accent: 'gold',
   },
   {
@@ -40,16 +40,63 @@ const products = [
     name: 'summonpot',
     prefix: 'summon',
     image: '/products/summonpot.webp',
-    alt: 'Summonpot cosmic potion artwork with bounded capabilities and a small coding agent',
-    eyebrow: 'Contract-first agent-owned endpoints',
+    alt: 'Summonpot artwork showing a potion vessel with bounded capabilities and an agent',
+    category: 'Contract-first agent-owned endpoints',
     statement: 'Declare the contract. Bound the authority.',
+    choice: 'Expose typed endpoints that combine exact operations with bounded agent-owned decisions.',
     description:
       'Summonpot combines typed API contracts, deterministic application operations, and explicitly bounded agent-owned decisions behind one executable endpoint declaration.',
     href: 'https://github.com/tugrulguner/summonpot',
-    site: 'summonpot.modepot.io',
     accent: 'violet',
   },
 ];
+
+const pageTitle = 'ModePot | Open-Source Python API, CLI, MCP & AI Tools';
+const pageDescription =
+  'ModePot is the open-source family behind Dexpot, Intpot, and Summonpot: Python frameworks for synchronous APIs, CLI/API/MCP tools, and bounded agent decisions.';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://modepot.io/#website',
+      url: 'https://modepot.io/',
+      name: 'ModePot',
+      description: pageDescription,
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'CollectionPage',
+      '@id': 'https://modepot.io/#webpage',
+      url: 'https://modepot.io/',
+      name: pageTitle,
+      description: pageDescription,
+      isPartOf: { '@id': 'https://modepot.io/#website' },
+      mainEntity: { '@id': 'https://modepot.io/#projects' },
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'ItemList',
+      '@id': 'https://modepot.io/#projects',
+      name: 'ModePot open-source Python projects',
+      numberOfItems: 3,
+      itemListElement: products.map((product, position) => ({
+        '@type': 'ListItem',
+        position: position + 1,
+        item: {
+          '@type': 'SoftwareSourceCode',
+          name: product.name,
+          description: product.description,
+          codeRepository: product.href,
+          programmingLanguage: 'Python',
+          runtimePlatform: 'Python',
+          license: 'https://opensource.org/license/mit',
+        },
+      })),
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -58,28 +105,32 @@ const products = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="theme-color" content="#070a12" />
-    <meta
-      name="description"
-      content="ModePot is a family of focused Python tools: Dexpot, Intpot, and Summonpot."
-    />
-    <meta property="og:title" content="ModePot — tools for the mode you're in" />
-    <meta
-      property="og:description"
-      content="Focused Python frameworks for execution, interfaces, and bounded agent-owned decisions."
-    />
+    <meta name="description" content={pageDescription} />
+    <meta name="author" content="Tugrul Guner" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://modepot.io" />
-    <meta property="og:image" content="https://modepot.io/modepot-og.webp" />
+    <meta property="og:site_name" content="ModePot" />
+    <meta property="og:url" content="https://modepot.io/" />
+    <meta property="og:image" content="https://modepot.io/modepot-og.webp?v=2" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="ModePot — three focused modes held in one vessel" />
+    <meta property="og:image:alt" content="ModePot: three focused Python project modes held in one vessel" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href="https://modepot.io" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content="https://modepot.io/modepot-og.webp?v=2" />
+    <link rel="canonical" href="https://modepot.io/" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="ModePot summary for AI agents" />
+    <link rel="preload" href="/modepot-mark.svg" as="image" type="image/svg+xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>ModePot — tools for the mode you're in</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <title>{pageTitle}</title>
   </head>
   <body>
-    <a class="skip-link" href="#family">Skip to the family</a>
+    <a class="skip-link" href="#projects">Skip to the projects</a>
 
     <header class="site-header">
       <a class="brand" href="#top" aria-label="ModePot home">
@@ -87,8 +138,9 @@ const products = [
         <span>mode<strong>pot</strong></span>
       </a>
       <nav aria-label="Primary navigation">
-        <a href="#family">The family</a>
-        <a href="https://github.com/tugrulguner" rel="me">GitHub</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="https://github.com/tugrulguner/modepot">GitHub</a>
         <a class="nav-signal" href="https://discord.gg/u3AANZr6RG">Discord</a>
       </nav>
     </header>
@@ -97,40 +149,66 @@ const products = [
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="coordinate">MODE / 00 — THE SOURCE</p>
-          <h1 id="hero-title"><span>mode</span><strong>pot</strong></h1>
-          <p class="hero-line">Tools for the mode you’re in.</p>
+          <p class="hero-wordmark" aria-label="ModePot"><span>mode</span><strong>pot</strong></p>
+          <h1 id="hero-title">Open-source Python frameworks for APIs, tools, and bounded agent decisions.</h1>
           <p class="hero-description">
-            A family of focused Python frameworks for execution, interfaces, and
-            bounded agent-owned decisions.
+            Dexpot owns execution. Intpot owns interfaces. Summonpot owns the boundary between
+            deterministic application behavior and agent-owned decisions.
           </p>
-          <a class="text-link" href="#family">
-            Open the cabinet
+          <a class="text-link" href="#projects">
+            Compare the projects
             <span aria-hidden="true">↓</span>
           </a>
+          <div class="hero-index" aria-label="ModePot projects">
+            {
+              products.map((product) => (
+                <a href={`#${product.name}`}>
+                  <span>{product.index}</span>
+                  <b>{product.name}</b>
+                  <small>{product.mode}</small>
+                </a>
+              ))
+            }
+          </div>
         </div>
 
-        <div class="hero-object" aria-label="The ModePot family mark: three distinct modes held in one vessel">
+        <div class="hero-object">
           <span class="orbit orbit-one"></span>
           <span class="orbit orbit-two"></span>
-          <img src="/modepot-mark.svg" alt="" width="420" height="420" />
-          <p class="mode-label label-execution"><i></i> execution</p>
-          <p class="mode-label label-interface"><i></i> interface</p>
-          <p class="mode-label label-decision"><i></i> decision</p>
-          <span class="object-note">THREE MODES<br />ONE FAMILY</span>
+          <img src="/modepot-mark.svg" alt="ModePot mark with three project modes held in one vessel" width="420" height="420" fetchpriority="high" />
+          <a class="mode-label label-execution" href="#dexpot"><i></i> dexpot / execution</a>
+          <a class="mode-label label-interface" href="#intpot"><i></i> intpot / interface</a>
+          <a class="mode-label label-decision" href="#summonpot"><i></i> summonpot / decision</a>
+          <span class="object-note">THREE PROJECTS<br />THREE BOUNDARIES</span>
         </div>
 
-        <p class="hero-aside" aria-hidden="true">PYTHON / OPEN SOURCE / 2026</p>
+        <p class="hero-aside" aria-hidden="true">PYTHON / OPEN SOURCE / MODEPOT</p>
       </section>
 
-      <section class="family-intro" id="family" aria-labelledby="family-title">
+      <section class="family-intro" id="projects" aria-labelledby="family-title">
         <p class="coordinate">MODE / 01—03</p>
         <div>
-          <h2 id="family-title">One family.<br /><em>Different jobs.</em></h2>
+          <h2 id="family-title">Choose the<br /><em>boundary.</em></h2>
           <p>
-            Each project owns one hard problem instead of becoming an everything-framework.
-            Pick the mode that matches the work.
+            ModePot is not one platform. It is three independent Python projects, each built around
+            a narrow responsibility. Start with the problem you need to own.
           </p>
         </div>
+      </section>
+
+      <section class="mode-selector" aria-labelledby="selector-title">
+        <h2 id="selector-title" class="visually-hidden">Which ModePot project should you use?</h2>
+        <p class="selector-label">If you need to…</p>
+        <p class="selector-label">Use</p>
+        {
+          products.map((product) => (
+            <a class={`selector-row selector-${product.accent}`} href={`#${product.name}`}>
+              <span>{product.choice}</span>
+              <strong>{product.name}</strong>
+              <i aria-hidden="true">↓</i>
+            </a>
+          ))
+        }
       </section>
 
       <div class="product-ledger">
@@ -144,19 +222,18 @@ const products = [
 
               <figure class="product-art">
                 <img src={product.image} alt={product.alt} loading="lazy" width="1200" height="900" />
-                <figcaption>{product.site}</figcaption>
+                <figcaption>Mode {product.index} / {product.mode}</figcaption>
               </figure>
 
               <div class="product-copy">
-                <p class="product-eyebrow">{product.eyebrow}</p>
-                <h3><span>{product.prefix}</span><strong>pot</strong></h3>
+                <h2><span>{product.prefix}</span><strong>pot</strong></h2>
+                <p class="product-eyebrow">{product.category}</p>
                 <p class="product-statement">{product.statement}</p>
                 <p class="product-description">{product.description}</p>
                 <div class="product-actions">
                   <a class="product-link" href={product.href}>
-                    View on GitHub <span aria-hidden="true">↗</span>
+                    {product.name} on GitHub <span aria-hidden="true">↗</span>
                   </a>
-                  <span class="future-home">Future home / {product.site}</span>
                 </div>
               </div>
             </article>
@@ -164,29 +241,35 @@ const products = [
         }
       </div>
 
-      <section class="family-rule" aria-labelledby="rule-title">
+      <section class="family-rule" id="about" aria-labelledby="about-title">
         <div class="rule-mark">
           <img src="/modepot-mark.svg" alt="" width="112" height="112" loading="lazy" />
         </div>
-        <p class="coordinate">THE FAMILY RULE</p>
-        <h2 id="rule-title">
-          Not one platform.<br />A set of <em>precise instruments.</em>
+        <p class="coordinate">WHAT IS MODEPOT?</p>
+        <h2 id="about-title">
+          Three independent tools.<br />One <em>design instinct.</em>
         </h2>
-        <p>
-          ModePot projects stay small enough to understand, specific enough to matter,
-          and open enough to shape in public.
-        </p>
+        <div class="about-copy">
+          <p>
+            ModePot is an open-source family of Python frameworks created by Tugrul Guner. Each
+            project owns one difficult boundary instead of growing into an everything-framework.
+          </p>
+          <p>
+            Dexpot focuses on HTTP execution, Intpot on interface translation, and Summonpot on
+            contract-first endpoints with explicitly bounded application authority.
+          </p>
+        </div>
       </section>
     </main>
 
     <footer>
-      <a class="brand footer-brand" href="#top" aria-label="Back to top">
+      <a class="brand footer-brand" href="#top" aria-label="ModePot — back to top">
         <img src="/modepot-mark.svg" alt="" width="32" height="32" loading="lazy" />
         <span>mode<strong>pot</strong></span>
       </a>
-      <p>Focused tools, built in public.</p>
+      <p>Focused Python tools, built in public.</p>
       <div>
-        <a href="https://github.com/tugrulguner">GitHub</a>
+        <a href="https://github.com/tugrulguner/modepot">GitHub</a>
         <a href="https://discord.gg/u3AANZr6RG">Discord</a>
       </div>
     </footer>
