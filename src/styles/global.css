@@ -373,21 +373,33 @@ nav a:hover {
 }
 
 .label-simple {
-  top: 17%;
+  top: 9%;
   left: 1%;
   color: var(--cyan);
 }
 
-.label-fast {
-  right: -1%;
+.label-modern {
+  top: 28%;
+  right: -4%;
+  color: var(--violet);
+}
+
+.label-performance {
   bottom: 31%;
+  left: -3%;
   color: var(--gold);
 }
 
-.label-native {
-  bottom: 9%;
-  left: 12%;
-  color: var(--violet);
+.label-ai {
+  right: 2%;
+  bottom: 14%;
+  color: #77e5bd;
+}
+
+.label-agents {
+  bottom: 2%;
+  left: 28%;
+  color: var(--cyan);
 }
 
 .object-note {

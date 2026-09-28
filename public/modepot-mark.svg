@@ -1,6 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
   <title id="title">ModePot mark</title>
-  <desc id="desc">A geometric M held inside an open software vessel</desc>
-  <path fill="#F2B84B" fill-rule="evenodd" d="M43 9h42v15h-6v18c0 3.8 1.8 7.3 4.9 9.6C97.4 61.6 105 76.1 105 91c0 20-14.6 29-41 29S23 111 23 91c0-14.9 7.6-29.4 21.1-39.4 3.1-2.3 4.9-5.8 4.9-9.6V24h-6V9Zm14 15v19.5c0 6.3-3 12.2-8.2 16C38.2 67.2 31 78.8 31 91c0 8.1 3.1 13.2 10.4 16.4 5.3 2.3 12.8 3.6 22.6 3.6s17.3-1.3 22.6-3.6C93.9 104.2 97 99.1 97 91c0-12.2-7.2-23.8-17.8-31.5-5.2-3.8-8.2-9.7-8.2-16V24H57Z"/>
-  <path d="M42 96V73l22 17 22-17v23" fill="none" stroke="#F2B84B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <desc id="desc">Abstract software ingredients pouring into an open M-shaped flask</desc>
+  <g fill="#F2B84B">
+    <circle cx="39" cy="12" r="4"/>
+    <rect x="58" y="4" width="10" height="10" rx="2" transform="rotate(45 63 9)"/>
+    <path d="M87 7l7 12H80z"/>
+    <circle cx="53" cy="24" r="3"/>
+    <rect x="73" y="21" width="7" height="7" rx="2"/>
+  </g>
+  <path d="M45 32h8v13c0 5-2.3 9.6-6.2 12.4C33.7 66.9 26 80.2 26 94c0 16.3 12.7 24 38 24s38-7.7 38-24c0-13.8-7.7-27.1-20.8-36.6C77.3 54.6 75 50 75 45V32h8" fill="none" stroke="#F2B84B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M42 98V78l22 16 22-16v20" fill="none" stroke="#F2B84B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
