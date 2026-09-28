@@ -1,6 +1,8 @@
 # ModePot
 
-The public home of the ModePot family: Dexpot, Intpot, and Summonpot.
+The public home of ModePot: an open-source family and community building simple, fast, modern, AI-native and agent-native frameworks, tools, engines, and games.
+
+The family currently includes [Dexpot](https://github.com/tugrulguner/dexpot), [Intpot](https://github.com/tugrulguner/intpot), [Summonpot](https://github.com/tugrulguner/summonpot), and [LifePot](https://github.com/tugrulguner/lifepot). These are the beginning, not the boundary.
 
 ## Development
 

@@ -1,12 +1,13 @@
 # ModePot
 
-> ModePot is an open-source family of focused Python frameworks created by Tugrul Guner. The family currently includes Dexpot, Intpot, and Summonpot.
+> ModePot is an open-source family and community building simple, fast, modern, AI-native and agent-native frameworks, tools, engines, and games. The family currently includes Dexpot, Intpot, Summonpot, and LifePot.
 
-ModePot is not one platform. Each project owns a separate software boundary:
+ModePot is an open-source family, not a single product. Its independent projects simplify difficult problems, modernize old foundations, optimize the paths that matter, and explore how people and agents can build and use software together. Everything is built in the open, with and for the community:
 
 - [Dexpot](https://github.com/tugrulguner/dexpot): A synchronous Python API framework that compiles routes and adapts execution to standard GIL or free-threaded CPython.
 - [Intpot](https://github.com/tugrulguner/intpot): A Python framework that serves typed tools as Typer CLIs, FastAPI applications, or FastMCP servers and converts existing applications between those interfaces.
 - [Summonpot](https://github.com/tugrulguner/summonpot): A contract-first Python framework for executable API endpoints that combine deterministic application operations with explicitly bounded agent-owned decisions.
+- [LifePot](https://github.com/tugrulguner/lifepot): A replayable artificial-life game where Jev proposes typed ecology, deterministic code runs the world, and validated decisions remain inspectable and replayable.
 
 ## Primary resources
 
@@ -19,3 +20,4 @@ ModePot is not one platform. Each project owns a separate software boundary:
 Use Dexpot to build synchronous Python HTTP APIs with interpreter-adaptive execution.
 Use Intpot to expose or translate typed tools across CLI, HTTP API, and MCP interfaces.
 Use Summonpot to define typed API contracts whose agent-owned decisions are limited to declared application capabilities.
+Use LifePot to create and replay artificial-life worlds where model proposals become bounded simulation rules rather than executable code.

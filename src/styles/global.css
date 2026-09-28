@@ -372,19 +372,19 @@ nav a:hover {
   box-shadow: 0 0 0.8rem currentColor;
 }
 
-.label-execution {
+.label-simple {
   top: 17%;
   left: 1%;
   color: var(--cyan);
 }
 
-.label-interface {
+.label-fast {
   right: -1%;
   bottom: 31%;
   color: var(--gold);
 }
 
-.label-decision {
+.label-native {
   bottom: 9%;
   left: 12%;
   color: var(--violet);
@@ -524,6 +524,9 @@ nav a:hover {
 .product-cyan { --accent: var(--cyan); }
 .product-gold { --accent: var(--gold); }
 .product-violet { --accent: var(--violet); }
+.product-mint { --accent: #77e5bd; }
+
+.selector-mint { --selector-accent: #77e5bd; }
 
 .product-index {
   display: flex;
