@@ -614,6 +614,18 @@ nav a:hover {
     var(--night-soft);
 }
 
+.product-heading {
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.75rem);
+  align-items: center;
+}
+
+.product-mark {
+  flex: 0 0 auto;
+  width: clamp(3.25rem, 5vw, 5rem);
+  height: clamp(3.25rem, 5vw, 5rem);
+}
+
 .product-eyebrow {
   margin: 1.5rem 0 0;
   color: var(--accent);
@@ -908,6 +920,16 @@ footer a:hover {
 
   .product h2 {
     font-size: clamp(3.5rem, 18vw, 5.5rem);
+  }
+
+  .product-heading {
+    align-items: flex-end;
+  }
+
+  .product-mark {
+    width: 3.25rem;
+    height: 3.25rem;
+    margin-bottom: 0.15rem;
   }
 
   .family-rule {
