@@ -16,7 +16,9 @@ const products = [
     choice: 'Build a synchronous Python HTTP API that adapts to GIL and free-threaded CPython.',
     description:
       'Dexpot compiles routes once, validates JSON with msgspec, and adapts concurrency to standard GIL or free-threaded Python—without asking application code to become async.',
-    href: 'https://github.com/tugrulguner/dexpot',
+    href: 'https://dexpot.modepot.io',
+    action: 'Explore Dexpot',
+    repository: 'https://github.com/tugrulguner/dexpot',
     accent: 'cyan',
   },
   {
@@ -32,6 +34,8 @@ const products = [
     description:
       'Intpot turns typed Python tools into Typer CLIs, FastAPI apps, or FastMCP servers—and can inspect an existing app and convert it into either of the others.',
     href: 'https://github.com/tugrulguner/intpot',
+    action: 'Intpot on GitHub',
+    repository: 'https://github.com/tugrulguner/intpot',
     accent: 'gold',
   },
   {
@@ -47,6 +51,8 @@ const products = [
     description:
       'Summonpot combines typed API contracts, deterministic application operations, and explicitly bounded agent-owned decisions behind one executable endpoint declaration.',
     href: 'https://github.com/tugrulguner/summonpot',
+    action: 'Summonpot on GitHub',
+    repository: 'https://github.com/tugrulguner/summonpot',
     accent: 'violet',
   },
 ];
@@ -88,7 +94,7 @@ const structuredData = {
           '@type': 'SoftwareSourceCode',
           name: product.name,
           description: product.description,
-          codeRepository: product.href,
+          codeRepository: product.repository,
           programmingLanguage: 'Python',
           runtimePlatform: 'Python',
           license: 'https://opensource.org/license/mit',
@@ -113,10 +119,10 @@ const structuredData = {
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ModePot" />
     <meta property="og:url" content="https://modepot.io/" />
-    <meta property="og:image" content="https://modepot.io/modepot-og.webp?v=2" />
+    <meta property="og:image" content="https://modepot.io/modepot-og.webp?v=3" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="ModePot: three focused Python project modes held in one vessel" />
+    <meta property="og:image:alt" content="ModePot: a growing family of focused open-source Python projects" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
@@ -175,11 +181,11 @@ const structuredData = {
         <div class="hero-object">
           <span class="orbit orbit-one"></span>
           <span class="orbit orbit-two"></span>
-          <img src="/modepot-mark.svg" alt="ModePot mark with three project modes held in one vessel" width="420" height="420" fetchpriority="high" />
+          <img src="/modepot-mark.svg" alt="ModePot mark: an open-ended field of modes held in one vessel" width="420" height="420" fetchpriority="high" />
           <a class="mode-label label-execution" href="#dexpot"><i></i> dexpot / execution</a>
           <a class="mode-label label-interface" href="#intpot"><i></i> intpot / interface</a>
           <a class="mode-label label-decision" href="#summonpot"><i></i> summonpot / decision</a>
-          <span class="object-note">THREE PROJECTS<br />THREE BOUNDARIES</span>
+          <span class="object-note">AN OPEN FAMILY<br />DISTINCT BOUNDARIES</span>
         </div>
 
         <p class="hero-aside" aria-hidden="true">PYTHON / OPEN SOURCE / MODEPOT</p>
@@ -190,8 +196,8 @@ const structuredData = {
         <div>
           <h2 id="family-title">Choose the<br /><em>boundary.</em></h2>
           <p>
-            ModePot is not one platform. It is three independent Python projects, each built around
-            a narrow responsibility. Start with the problem you need to own.
+            ModePot is not one platform. It is a growing family of independent Python projects,
+            each built around a narrow responsibility. Start with the problem you need to own.
           </p>
         </div>
       </section>
@@ -232,7 +238,7 @@ const structuredData = {
                 <p class="product-description">{product.description}</p>
                 <div class="product-actions">
                   <a class="product-link" href={product.href}>
-                    {product.name} on GitHub <span aria-hidden="true">↗</span>
+                    {product.action} <span aria-hidden="true">↗</span>
                   </a>
                 </div>
               </div>
@@ -247,7 +253,7 @@ const structuredData = {
         </div>
         <p class="coordinate">WHAT IS MODEPOT?</p>
         <h2 id="about-title">
-          Three independent tools.<br />One <em>design instinct.</em>
+          Independent tools.<br />One <em>design instinct.</em>
         </h2>
         <div class="about-copy">
           <p>

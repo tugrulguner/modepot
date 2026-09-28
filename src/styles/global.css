@@ -202,7 +202,7 @@ nav a:hover {
 
 .hero-index {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
   max-width: 40rem;
   margin-top: 3.2rem;
   border-top: 1px solid var(--line);
