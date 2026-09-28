@@ -9,6 +9,7 @@ const products = [
     mode: 'execution',
     name: 'dexpot',
     prefix: 'dex',
+    mark: '/marks/dexpot-mark.svg',
     image: '/products/dexpot.webp',
     alt: 'Dexpot artwork showing a potion vessel with Python API code and execution symbols',
     category: 'Synchronous Python API framework',
@@ -29,6 +30,7 @@ const products = [
     mode: 'interface',
     name: 'intpot',
     prefix: 'int',
+    mark: '/marks/intpot-mark.svg',
     image: '/products/intpot.webp',
     alt: 'Intpot artwork showing a potion vessel connecting code, API endpoints, and interfaces',
     category: 'One definition, three interfaces',
@@ -49,6 +51,7 @@ const products = [
     mode: 'decision',
     name: 'summonpot',
     prefix: 'summon',
+    mark: '/marks/summonpot-mark.svg',
     image: '/products/summonpot.webp',
     alt: 'Summonpot artwork showing a potion vessel with bounded capabilities and an agent',
     category: 'Contract-first agent-owned endpoints',
@@ -69,6 +72,7 @@ const products = [
     mode: 'life',
     name: 'lifepot',
     prefix: 'life',
+    mark: '/marks/lifepot-mark.svg',
     image: '/products/lifepot.webp',
     alt: 'LifePot artwork showing a replayable artificial-life world inside a potion vessel',
     category: 'Bounded artificial-life game',
@@ -266,7 +270,10 @@ const structuredData = {
               </figure>
 
               <div class="product-copy">
-                <h2><span>{product.prefix}</span><strong>pot</strong></h2>
+                <div class="product-heading">
+                  <img class="product-mark" src={product.mark} alt="" width="80" height="80" loading="lazy" />
+                  <h2><span>{product.prefix}</span><strong>pot</strong></h2>
+                </div>
                 <p class="product-eyebrow">{product.category}</p>
                 <p class="product-statement">{product.statement}</p>
                 <p class="product-description">{product.description}</p>
