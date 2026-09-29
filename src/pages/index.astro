@@ -24,6 +24,7 @@ const products = [
     runtimePlatform: 'CPython',
     license: 'https://opensource.org/license/mit',
     accent: 'cyan',
+    signal: 'request → response',
   },
   {
     index: '02',
@@ -45,6 +46,7 @@ const products = [
     runtimePlatform: 'Python',
     license: 'https://opensource.org/license/mit',
     accent: 'gold',
+    signal: 'define → serve',
   },
   {
     index: '03',
@@ -66,6 +68,7 @@ const products = [
     runtimePlatform: 'Python',
     license: 'https://opensource.org/license/mit',
     accent: 'violet',
+    signal: 'contract → decide',
   },
   {
     index: '04',
@@ -87,6 +90,7 @@ const products = [
     runtimePlatform: 'Web browser',
     license: 'https://opensource.org/license/mit',
     accent: 'mint',
+    signal: 'propose → replay',
   },
 ];
 
@@ -180,7 +184,7 @@ const structuredData = {
       <nav aria-label="Primary navigation">
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
-        <a href="https://tugrul.modepot.io/">Founder</a>
+        <a href="https://tugrul.modepot.io/">About me</a>
         <a href="https://github.com/tugrulguner/modepot">GitHub</a>
         <a class="nav-signal" href="https://discord.gg/u3AANZr6RG">Discord</a>
       </nav>
@@ -215,8 +219,32 @@ const structuredData = {
           </div>
         </div>
 
-        <div class="hero-object">
-          <img src="/modepot-mark.svg?v=6" alt="ModePot geometric vessel and M monogram" width="420" height="420" fetchpriority="high" />
+        <div class="hero-system" aria-label="Four current ModePot systems turning complex inputs into clear outcomes">
+          <div class="system-header" aria-hidden="true">
+            <span>Current systems</span>
+            <span>04 / active</span>
+          </div>
+          <div class="system-flow">
+            {
+              products.map((product) => (
+                <a class={`system-node system-${product.accent}`} href={`#${product.name}`}>
+                  <span class="system-number">{product.index}</span>
+                  <img src={product.mark} alt="" width="58" height="58" />
+                  <span class="system-identity">
+                    <strong>{product.name}</strong>
+                    <small>{product.mode}</small>
+                  </span>
+                  <code>{product.signal}</code>
+                  <i aria-hidden="true"></i>
+                </a>
+              ))
+            }
+          </div>
+          <div class="system-output" aria-hidden="true">
+            <span>complexity in</span>
+            <b></b>
+            <strong>clear systems out</strong>
+          </div>
         </div>
 
         <p class="hero-aside" aria-hidden="true">FRAMEWORKS / ENGINES / GAMES / MODEPOT</p>
@@ -313,7 +341,7 @@ const structuredData = {
       </a>
       <p>Open source. Built with the community.</p>
       <div>
-        <a href="https://tugrul.modepot.io/">Founder</a>
+        <a href="https://tugrul.modepot.io/">About me</a>
         <a href="https://github.com/tugrulguner/modepot">GitHub</a>
         <a href="https://discord.gg/u3AANZr6RG">Discord</a>
       </div>
