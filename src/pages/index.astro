@@ -204,7 +204,8 @@ const structuredData = {
           <div class="hero-index" aria-label="ModePot projects">
             {
               products.map((product) => (
-                <a href={`#${product.name}`}>
+                <a class={`hero-index-${product.accent}`} href={`#${product.name}`}>
+                  <img class="hero-index-mark" src={product.mark} alt="" width="28" height="28" />
                   <span>{product.index}</span>
                   <b>{product.name}</b>
                   <small>{product.mode}</small>
@@ -248,6 +249,7 @@ const structuredData = {
         {
           products.map((product) => (
             <a class={`selector-row selector-${product.accent}`} href={`#${product.name}`}>
+              <img class="selector-mark" src={product.mark} alt="" width="40" height="40" loading="lazy" />
               <span>{product.choice}</span>
               <strong>{product.name}</strong>
               <i aria-hidden="true">↓</i>

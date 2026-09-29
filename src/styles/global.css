@@ -210,7 +210,7 @@ nav a:hover {
 
 .hero-index a {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1.75rem auto 1fr;
   gap: 0.25rem 0.65rem;
   padding: 1rem 1rem 0.9rem 0;
   font-family: var(--mono);
@@ -223,6 +223,19 @@ nav a:hover {
 
 .hero-index a:last-child {
   border-right: 0;
+}
+
+.hero-index-mark {
+  grid-row: 1 / 3;
+  align-self: center;
+  display: block;
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: contain;
+}
+
+.hero-index-mint .hero-index-mark {
+  transform: scale(0.86);
 }
 
 .hero-index span {
@@ -487,12 +500,23 @@ nav a:hover {
   --selector-accent: var(--gold);
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 9rem 1rem;
+  grid-template-columns: 2.5rem minmax(0, 1fr) 9rem 1rem;
   gap: 1.5rem;
   align-items: center;
   min-height: 6.5rem;
   border-bottom: 1px solid var(--line);
   transition: background 180ms ease;
+}
+
+.selector-mark {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+}
+
+.selector-mint .selector-mark {
+  transform: scale(0.86);
 }
 
 .selector-row:hover {
@@ -624,6 +648,11 @@ nav a:hover {
   flex: 0 0 auto;
   width: clamp(3.25rem, 5vw, 5rem);
   height: clamp(3.25rem, 5vw, 5rem);
+  object-fit: contain;
+}
+
+.product-mint .product-mark {
+  transform: scale(0.86);
 }
 
 .product-eyebrow {
@@ -883,13 +912,18 @@ footer a:hover {
   }
 
   .selector-row {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: 2.5rem minmax(0, 1fr) auto;
     gap: 0.7rem 1rem;
     padding: 1.5rem 0;
   }
 
+  .selector-mark {
+    grid-row: 1 / 3;
+    align-self: center;
+  }
+
   .selector-row span {
-    grid-column: 1 / -1;
+    grid-column: 2 / -1;
   }
 
   .selector-row strong,
@@ -955,6 +989,27 @@ footer a:hover {
 
   footer p {
     display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  nav a:nth-child(1),
+  nav a:nth-child(3) {
+    display: none;
+  }
+
+  .product-violet h2 {
+    font-size: 3rem;
+  }
+
+  footer {
+    grid-template-columns: 1fr;
+  }
+
+  footer div {
+    justify-self: start;
+    margin-top: 1rem;
+    flex-wrap: wrap;
   }
 }
 
