@@ -153,18 +153,18 @@ const structuredData = {
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="ModePot" />
     <meta property="og:url" content="https://modepot.io/" />
-    <meta property="og:image" content="https://modepot.io/modepot-og.webp?v=5" />
+    <meta property="og:image" content="https://modepot.io/modepot-og.webp?v=6" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="ModePot: modern open-source frameworks, engines, and games" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
-    <meta name="twitter:image" content="https://modepot.io/modepot-og.webp?v=5" />
+    <meta name="twitter:image" content="https://modepot.io/modepot-og.webp?v=6" />
     <link rel="canonical" href="https://modepot.io/" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="ModePot summary for AI agents" />
-    <link rel="preload" href="/modepot-mark.svg?v=5" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/modepot-mark.svg?v=6" as="image" type="image/svg+xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <title>{pageTitle}</title>
@@ -174,7 +174,7 @@ const structuredData = {
 
     <header class="site-header">
       <a class="brand" href="#top" aria-label="ModePot home">
-        <img src="/modepot-mark.svg?v=5" alt="" width="38" height="38" />
+        <img src="/modepot-mark.svg?v=6" alt="" width="38" height="38" />
         <span>mode<strong>pot</strong></span>
       </a>
       <nav aria-label="Primary navigation">
@@ -204,7 +204,8 @@ const structuredData = {
           <div class="hero-index" aria-label="ModePot projects">
             {
               products.map((product) => (
-                <a href={`#${product.name}`}>
+                <a class={`hero-index-${product.accent}`} href={`#${product.name}`}>
+                  <img class="hero-index-mark" src={product.mark} alt="" width="28" height="28" />
                   <span>{product.index}</span>
                   <b>{product.name}</b>
                   <small>{product.mode}</small>
@@ -215,15 +216,7 @@ const structuredData = {
         </div>
 
         <div class="hero-object">
-          <span class="orbit orbit-one"></span>
-          <span class="orbit orbit-two"></span>
-          <img src="/modepot-mark.svg?v=5" alt="ModePot mark: modern software ingredients pouring into an open M-shaped flask" width="420" height="420" fetchpriority="high" />
-          <span class="mode-label label-simple"><i></i> simplicity</span>
-          <span class="mode-label label-modern"><i></i> modern foundations</span>
-          <span class="mode-label label-performance"><i></i> performance</span>
-          <span class="mode-label label-ai"><i></i> ai-native</span>
-          <span class="mode-label label-agents"><i></i> agent-native</span>
-          <span class="object-note">A GROWING<br />OPEN-SOURCE FAMILY</span>
+          <img src="/modepot-mark.svg?v=6" alt="ModePot geometric vessel and M monogram" width="420" height="420" fetchpriority="high" />
         </div>
 
         <p class="hero-aside" aria-hidden="true">FRAMEWORKS / ENGINES / GAMES / MODEPOT</p>
@@ -248,6 +241,7 @@ const structuredData = {
         {
           products.map((product) => (
             <a class={`selector-row selector-${product.accent}`} href={`#${product.name}`}>
+              <img class="selector-mark" src={product.mark} alt="" width="40" height="40" loading="lazy" />
               <span>{product.choice}</span>
               <strong>{product.name}</strong>
               <i aria-hidden="true">↓</i>
@@ -291,7 +285,7 @@ const structuredData = {
 
       <section class="family-rule" id="about" aria-labelledby="about-title">
         <div class="rule-mark">
-          <img src="/modepot-mark.svg?v=5" alt="" width="112" height="112" loading="lazy" />
+          <img src="/modepot-mark.svg?v=6" alt="" width="112" height="112" loading="lazy" />
         </div>
         <p class="coordinate">WHAT IS MODEPOT?</p>
         <h2 id="about-title">
@@ -314,7 +308,7 @@ const structuredData = {
 
     <footer>
       <a class="brand footer-brand" href="#top" aria-label="ModePot — back to top">
-        <img src="/modepot-mark.svg?v=5" alt="" width="32" height="32" loading="lazy" />
+        <img src="/modepot-mark.svg?v=6" alt="" width="32" height="32" loading="lazy" />
         <span>mode<strong>pot</strong></span>
       </a>
       <p>Open source. Built with the community.</p>
