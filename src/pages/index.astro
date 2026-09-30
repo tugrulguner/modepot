@@ -228,30 +228,60 @@ const structuredData = {
           </div>
         </div>
 
-        <div class="flask-scene" role="img" aria-label="A clear, open-source flask brings together existing frameworks and packages, traditional patterns, accumulated complexity, outdated runtime assumptions, fragmented interfaces, performance bottlenecks, human-only workflows, and difficult technical or creative challenges. Three shared principles—modernize, simplify, optimize—guide useful AI-native and agent-friendly design, alongside invention. The outputs are modern frameworks and packages, focused tools, high-performance systems, agent-friendly systems, innovative engines, and experimental games.">
-          <div class="flask-inputs">
-            <span class="flask-label">INPUTS <i>what exists / what is hard</i></span>
-            <div class="input-groups">
-              <p><b>FOUNDATIONS</b><span>Frameworks & packages</span><span>Traditional patterns</span><span>Outdated runtime assumptions</span></p>
-              <p><b>FRICTION</b><span>Accumulated complexity</span><span>Fragmented interfaces</span><span>Performance bottlenecks</span></p>
-              <p><b>CHALLENGES</b><span>Human-only workflows</span><span>Technical & creative problems</span></p>
+        <div class="modernization-visual" role="img" aria-label="The ModePot flask reformulates existing frameworks, packages, outdated assumptions, accumulated complexity, performance bottlenecks, human-only workflows, and difficult technical or creative challenges. ModePot applies four shared principles—modernize, simplify, optimize, and invent—inside a transparent open-source vessel. The outcomes are modern frameworks and packages, high-performance systems, agent-friendly tools, innovative engines, and experimental games.">
+          <div class="modernization-grid" aria-hidden="true">
+            <div class="ingredient-column">
+              <p class="visual-heading"><span>SOFTWARE IN</span><small>what exists / what is hard</small></p>
+              <div class="visual-chip"><b>EXISTING SOFTWARE</b><span>frameworks · packages</span></div>
+              <div class="visual-chip"><b>ACCUMULATED FRICTION</b><span>complexity · fragmentation · bottlenecks</span></div>
+              <div class="visual-chip"><b>OUTDATED ASSUMPTIONS</b><span>runtimes · patterns · human-only workflows</span></div>
+              <div class="visual-chip"><b>HARD PROBLEMS</b><span>technical · creative</span></div>
+            </div>
+
+            <div class="brand-flask">
+              <div class="flask-halo"></div>
+              <svg class="brand-flask-svg" viewBox="0 0 128 128" aria-hidden="true">
+                <defs>
+                  <linearGradient id="modepot-liquid" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#66d9ff" stop-opacity=".28" />
+                    <stop offset=".55" stop-color="#2cbda3" stop-opacity=".2" />
+                    <stop offset="1" stop-color="#f2b84b" stop-opacity=".3" />
+                  </linearGradient>
+                  <filter id="modepot-glow" x="-40%" y="-40%" width="180%" height="180%">
+                    <feGaussianBlur stdDeviation="1.8" result="blur" />
+                    <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <clipPath id="modepot-chamber">
+                    <path d="M48 54C34 64 27 78 27 93c0 16 12 24 37 24s37-8 37-24c0-15-7-29-21-39-4-3-6-7-6-12H54c0 5-2 9-6 12Z" />
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#modepot-chamber)">
+                  <path class="flask-liquid" d="M18 82c15-8 28 6 44-1 19-8 31 7 50-2v45H18Z" fill="url(#modepot-liquid)" />
+                  <path class="flask-grid-line" d="M18 92h94M18 104h94M40 54v70M64 47v77M88 54v70" />
+                  <circle class="flask-particle particle-one" cx="47" cy="92" r="1.8" />
+                  <circle class="flask-particle particle-two" cx="70" cy="102" r="1.4" />
+                  <circle class="flask-particle particle-three" cx="84" cy="88" r="1.1" />
+                </g>
+                <path class="flask-stream stream-one" d="M54 6c0 10 10 12 10 22" />
+                <path class="flask-stream stream-two" d="M74 3c0 10-10 13-10 25" />
+                <circle class="falling-particle particle-four" cx="54" cy="11" r="1.4" />
+                <circle class="falling-particle particle-five" cx="74" cy="8" r="1.2" />
+                <path class="brand-flask-outline" d="M44 22h10v20c0 5-2.3 9.6-6.2 12.4C34.1 64.3 26 78.2 26 93c0 17 12.7 25 38 25s38-8 38-25c0-14.8-8.1-28.7-21.8-38.6C76.3 51.6 74 47 74 42V22h10" />
+                <path class="brand-flask-monogram" d="M42 100V80l22 16 22-16v20" />
+              </svg>
+              <div class="principle-grid"><span>MODERNIZE</span><span>SIMPLIFY</span><span>OPTIMIZE</span><span>INVENT</span></div>
+              <p class="open-source-seal"><b>OPEN SOURCE</b><span>transparent · inspectable · extensible</span></p>
+            </div>
+
+            <div class="outcome-column">
+              <p class="visual-heading"><span>MODERN SYSTEMS OUT</span><small>built for what comes next</small></p>
+              <div class="visual-chip"><b>MODERN FOUNDATIONS</b><span>frameworks · packages</span></div>
+              <div class="visual-chip"><b>FASTER SYSTEMS</b><span>optimized critical paths</span></div>
+              <div class="visual-chip"><b>AGENT-FRIENDLY TOOLS</b><span>AI-native where valuable</span></div>
+              <div class="visual-chip"><b>NEW FORMS</b><span>engines · games</span></div>
             </div>
           </div>
-          <div class="flask-body" aria-hidden="true">
-            <div class="flask-neck"></div>
-            <div class="flask-rim"></div>
-            <div class="flask-chamber">
-              <div class="method-label">SHARED PRINCIPLES</div>
-              <div class="method-set"><b>MODERNIZE</b><b>SIMPLIFY</b><b>OPTIMIZE</b></div>
-              <div class="method-note">AI-native + agent-friendly<br />where they add value</div>
-              <div class="invent-label">INVENT</div>
-            </div>
-            <span class="open-label">OPEN SOURCE <i>transparent / inspectable / extensible</i></span>
-          </div>
-          <div class="flask-output">
-            <span class="flask-label">OUTPUTS <i>built for what’s next</i></span>
-            <div class="output-list"><b>Modern frameworks & packages</b><b>Focused tools</b><b>High-performance systems</b><b>Agent-friendly systems</b><b>Innovative engines</b><b>Experimental games</b></div>
-          </div>
+          <p class="visual-footnote" aria-hidden="true">REFORMULATE THE DEFAULTS</p>
         </div>
 
       </section>
