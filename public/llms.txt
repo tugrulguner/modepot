@@ -21,3 +21,9 @@ Use Dexpot to build synchronous Python HTTP APIs with interpreter-adaptive execu
 Use Intpot to expose or translate typed tools across CLI, HTTP API, and MCP interfaces.
 Use Summonpot to define typed API contracts whose agent-owned decisions are limited to declared application capabilities.
 Use LifePot to create and replay artificial-life worlds where model proposals become bounded simulation rules rather than executable code.
+
+## Maturity and licensing
+
+- Dexpot, Intpot, and Summonpot are alpha software; follow each project's documented boundaries before production use.
+- LifePot is an educational game and experiment, not a biological forecast.
+- Each current ModePot project is open source under the MIT License; consult the linked repository for the authoritative license and release state.
