@@ -212,57 +212,48 @@ const structuredData = {
           <p class="hero-wordmark" aria-label="ModePot"><span>mode</span><strong>pot</strong></p>
           <h1 id="hero-title">We simplify, modernize, and performance-optimize the software people build on.</h1>
           <p class="hero-description">
-            ModePot is an open-source family and community creating fast, simple, AI-native and
-            agent-native frameworks, tools, engines, and games. Dexpot, Intpot, Summonpot, and
-            LifePot are the start. More frameworks, games, and engines will follow.
+            ModePot is an open-source workshop for modernizing software foundations—and inventing
+            what comes next. AI-native and agent-friendly where they add real value.
           </p>
           <a class="text-link" href="#projects">
-            Compare the projects
-            <span aria-hidden="true">↓</span>
+            Explore the work <span aria-hidden="true">↓</span>
           </a>
-          <div class="hero-index" aria-label="ModePot projects">
-            {
-              products.map((product) => (
-                <a class={`hero-index-${product.accent}`} href={`#${product.name}`}>
-                  <img class="hero-index-mark" src={product.mark} alt="" width="28" height="28" />
-                  <span>{product.index}</span>
-                  <b>{product.name}</b>
-                  <small>{product.mode}</small>
-                </a>
-              ))
-            }
+          <div class="creator-signature" aria-label="Created by Tugrul Guner">
+            <span>Created by <strong>Tugrul Guner</strong></span>
+            <div class="creator-links" aria-label="Tugrul Guner on social media">
+              <a class="ph-no-autocapture" href="https://github.com/tugrulguner" data-posthog-event="modepot_creator_social_clicked" data-posthog-platform="github" data-posthog-surface="modepot_hero">GitHub <span aria-hidden="true">↗</span></a>
+              <a class="ph-no-autocapture" href="https://www.linkedin.com/in/tugrulguner/" data-posthog-event="modepot_creator_social_clicked" data-posthog-platform="linkedin" data-posthog-surface="modepot_hero">LinkedIn <span aria-hidden="true">↗</span></a>
+              <a class="ph-no-autocapture" href="https://x.com/Tugrul_Guner" data-posthog-event="modepot_creator_social_clicked" data-posthog-platform="x" data-posthog-surface="modepot_hero">X <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </div>
 
-        <div class="hero-system" aria-label="Four current ModePot systems turning complex inputs into clear outcomes">
-          <div class="system-header" aria-hidden="true">
-            <span>Current systems</span>
-            <span>04 / active</span>
+        <div class="flask-scene" role="img" aria-label="A clear, open-source flask brings together existing frameworks and packages, traditional patterns, accumulated complexity, outdated runtime assumptions, fragmented interfaces, performance bottlenecks, human-only workflows, and difficult technical or creative challenges. Three shared principles—modernize, simplify, optimize—guide useful AI-native and agent-friendly design, alongside invention. The outputs are modern frameworks and packages, focused tools, high-performance systems, agent-friendly systems, innovative engines, and experimental games.">
+          <div class="flask-inputs">
+            <span class="flask-label">INPUTS <i>what exists / what is hard</i></span>
+            <div class="input-groups">
+              <p><b>FOUNDATIONS</b><span>Frameworks & packages</span><span>Traditional patterns</span><span>Outdated runtime assumptions</span></p>
+              <p><b>FRICTION</b><span>Accumulated complexity</span><span>Fragmented interfaces</span><span>Performance bottlenecks</span></p>
+              <p><b>CHALLENGES</b><span>Human-only workflows</span><span>Technical & creative problems</span></p>
+            </div>
           </div>
-          <div class="system-flow">
-            {
-              products.map((product) => (
-                <a class={`system-node system-${product.accent}`} href={`#${product.name}`}>
-                  <span class="system-number">{product.index}</span>
-                  <img src={product.mark} alt="" width="58" height="58" />
-                  <span class="system-identity">
-                    <strong>{product.name}</strong>
-                    <small>{product.mode}</small>
-                  </span>
-                  <code>{product.signal}</code>
-                  <i aria-hidden="true"></i>
-                </a>
-              ))
-            }
+          <div class="flask-body" aria-hidden="true">
+            <div class="flask-neck"></div>
+            <div class="flask-rim"></div>
+            <div class="flask-chamber">
+              <div class="method-label">SHARED PRINCIPLES</div>
+              <div class="method-set"><b>MODERNIZE</b><b>SIMPLIFY</b><b>OPTIMIZE</b></div>
+              <div class="method-note">AI-native + agent-friendly<br />where they add value</div>
+              <div class="invent-label">INVENT</div>
+            </div>
+            <span class="open-label">OPEN SOURCE <i>transparent / inspectable / extensible</i></span>
           </div>
-          <div class="system-output" aria-hidden="true">
-            <span>complexity in</span>
-            <b></b>
-            <strong>clear systems out</strong>
+          <div class="flask-output">
+            <span class="flask-label">OUTPUTS <i>built for what’s next</i></span>
+            <div class="output-list"><b>Modern frameworks & packages</b><b>Focused tools</b><b>High-performance systems</b><b>Agent-friendly systems</b><b>Innovative engines</b><b>Experimental games</b></div>
           </div>
         </div>
 
-        <p class="hero-aside" aria-hidden="true">FRAMEWORKS / ENGINES / GAMES / MODEPOT</p>
       </section>
 
       <section class="family-intro" id="projects" aria-labelledby="family-title">
@@ -372,11 +363,13 @@ const structuredData = {
         if (!(event.target instanceof Element)) return;
         const link = event.target.closest('[data-posthog-event]');
         if (!link || !window.posthog) return;
-        window.posthog.capture(link.dataset.posthogEvent, {
-          project: link.dataset.posthogProject,
+        const properties = {
           surface: link.dataset.posthogSurface,
           destination: link.href,
-        }, { transport: 'sendBeacon', send_instantly: true });
+        };
+        if (link.dataset.posthogProject) properties.project = link.dataset.posthogProject;
+        if (link.dataset.posthogPlatform) properties.platform = link.dataset.posthogPlatform;
+        window.posthog.capture(link.dataset.posthogEvent, properties, { transport: 'sendBeacon', send_instantly: true });
       });
     </script>
   </body>
