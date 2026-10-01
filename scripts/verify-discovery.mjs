@@ -9,9 +9,16 @@ const requiredHtml = [
   '<link rel="alternate" type="text/plain" href="/llms.txt"',
   'property="og:image"',
   'name="twitter:image"',
+  '/products/dexpot-lockup.webp',
+  '/products/intpot-lockup.webp',
+  '/products/summonpot-lockup.webp',
+  '/products/lifepot-lockup.webp',
 ];
 for (const token of requiredHtml) {
   if (!html.includes(token)) failures.push(`index.html: missing ${token}`);
+}
+for (const stale of ['/products/dexpot.webp', '/products/intpot.webp', '/products/summonpot.webp', '/products/lifepot.webp']) {
+  if (html.includes(stale)) failures.push(`index.html: stale product artwork URL ${stale}`);
 }
 
 const description = html.match(/<meta name="description" content="([^"]+)">/)?.[1];
