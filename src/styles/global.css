@@ -1081,6 +1081,9 @@ footer a:hover {
 .creator-links a span { color: var(--gold); }
 @keyframes flask-pulse { from { opacity:.42; transform:scale(.76); } to { opacity:1; transform:scale(1.18); } }
 @keyframes liquid-breathe { from { transform:translateY(1.5px) scaleY(.98); } to { transform:translateY(-1.5px) scaleY(1.03); } }
+@media (min-width:1181px) {
+  .hero { grid-template-columns:minmax(20rem,44rem) minmax(27rem,44rem); justify-content:center; }
+}
 @media (max-width:1180px) {
   .hero { grid-template-columns:minmax(18rem,.82fr) minmax(25rem,1.18fr); gap:1.25rem; padding-inline:clamp(1.25rem,4vw,3rem); }
   .modernization-visual { padding-inline:1rem; }
