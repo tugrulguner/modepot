@@ -3,6 +3,19 @@ import { readFile } from 'node:fs/promises';
 const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
 const llms = await readFile(new URL('../dist/llms.txt', import.meta.url), 'utf8');
 const failures = [];
+const readme = await readFile(new URL('../README.md', import.meta.url), 'utf8');
+for (const product of ['dexpot', 'intpot', 'summonpot', 'lifepot']) {
+  if (!readme.includes(`https://${product}.modepot.io/`) || !readme.includes(`https://github.com/tugrulguner/${product}`)) {
+    failures.push(`README.md: missing site/source chooser destinations for ${product}`);
+  }
+}
+const qualification = 'AI-native and agent-friendly where they add real value';
+if (!readme.includes(qualification) || !llms.includes(qualification)) {
+  failures.push('README.md/llms.txt: missing qualified family AI/agent positioning');
+}
+if (!html.includes('AI and agent support where it adds value')) {
+  failures.push('index.html: missing qualified family positioning beyond the hero');
+}
 
 const requiredHtml = [
   '<link rel="canonical" href="https://modepot.io/">',

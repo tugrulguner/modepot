@@ -1098,6 +1098,10 @@ footer a:hover {
   .modernization-visual { width:min(100%,44rem); justify-self:center; }
 }
 @media (max-width:700px) {
+  .site-header { gap: .75rem; padding-inline: 1rem; }
+  .brand { gap: .4rem; flex: 0 0 auto; }
+  .site-header nav { flex-wrap: nowrap; gap: clamp(.55rem, 2.2vw, 1rem); white-space: nowrap; }
+  .site-header nav a { white-space: nowrap; }
   .hero { padding:7.25rem 1.2rem 3.5rem; }
   .hero-wordmark { font-size:clamp(4.2rem,18vw,5.4rem); }
   .hero h1 { margin-top:1.8rem; }
