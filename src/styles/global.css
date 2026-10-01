@@ -696,6 +696,23 @@ nav a:hover {
   color: var(--accent);
 }
 
+.product-resource {
+  min-height: 2.75rem;
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  color: #c1c5ce;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.product-resource:hover,
+.product-resource span {
+  color: var(--accent);
+}
+
 .family-rule {
   position: relative;
   display: grid;
@@ -1000,7 +1017,6 @@ footer a:hover {
 }
 
 @media (max-width: 360px) {
-  nav a:nth-child(1),
   nav a:nth-child(3) {
     display: none;
   }

@@ -26,9 +26,22 @@ const requiredHtml = [
   '/products/intpot-lockup.webp',
   '/products/summonpot-lockup.webp',
   '/products/lifepot-lockup.webp',
+  'Docs',
+  'Latest development',
+  'Latest release notes',
 ];
 for (const token of requiredHtml) {
   if (!html.includes(token)) failures.push(`index.html: missing ${token}`);
+}
+for (const product of ['dexpot', 'intpot', 'summonpot', 'lifepot']) {
+  for (const destination of [
+    `https://${product}.modepot.io/docs/`,
+    `https://github.com/tugrulguner/${product}`,
+  ]) {
+    if (!html.includes(`href="${destination}"`)) {
+      failures.push(`index.html: missing project Docs/GitHub destination ${destination}`);
+    }
+  }
 }
 for (const stale of ['/products/dexpot.webp', '/products/intpot.webp', '/products/summonpot.webp', '/products/lifepot.webp']) {
   if (html.includes(stale)) failures.push(`index.html: stale product artwork URL ${stale}`);

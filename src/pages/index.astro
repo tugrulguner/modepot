@@ -20,6 +20,9 @@ const products = [
     href: 'https://dexpot.modepot.io/',
     action: 'Explore Dexpot',
     repository: 'https://github.com/tugrulguner/dexpot',
+    docs: 'https://dexpot.modepot.io/docs/',
+    development: 'https://github.com/tugrulguner/dexpot/commits/main/',
+    developmentLabel: 'Latest development',
     programmingLanguage: 'Python',
     runtimePlatform: 'CPython',
     license: 'https://opensource.org/license/mit',
@@ -42,6 +45,9 @@ const products = [
     href: 'https://intpot.modepot.io/',
     action: 'Explore Intpot',
     repository: 'https://github.com/tugrulguner/intpot',
+    docs: 'https://intpot.modepot.io/docs/',
+    development: 'https://github.com/tugrulguner/intpot/releases',
+    developmentLabel: 'Latest release notes',
     programmingLanguage: 'Python',
     runtimePlatform: 'Python',
     license: 'https://opensource.org/license/mit',
@@ -64,6 +70,9 @@ const products = [
     href: 'https://summonpot.modepot.io/',
     action: 'Explore Summonpot',
     repository: 'https://github.com/tugrulguner/summonpot',
+    docs: 'https://summonpot.modepot.io/docs/',
+    development: 'https://github.com/tugrulguner/summonpot/commits/main/',
+    developmentLabel: 'Latest development',
     programmingLanguage: 'Python',
     runtimePlatform: 'Python',
     license: 'https://opensource.org/license/mit',
@@ -86,6 +95,9 @@ const products = [
     href: 'https://lifepot.modepot.io/',
     action: 'Explore LifePot',
     repository: 'https://github.com/tugrulguner/lifepot',
+    docs: 'https://lifepot.modepot.io/docs/',
+    development: 'https://github.com/tugrulguner/lifepot/releases',
+    developmentLabel: 'Latest release notes',
     programmingLanguage: 'TypeScript',
     runtimePlatform: 'Web browser',
     license: 'https://opensource.org/license/mit',
@@ -351,6 +363,15 @@ const structuredData = {
                   >
                     {product.action} <span aria-hidden="true">↗</span>
                   </a>
+                  <a class="product-resource" href={product.docs}>Docs <span aria-hidden="true">↗</span></a>
+                  <a class="product-resource" href={product.development}>{product.developmentLabel} <span aria-hidden="true">↗</span></a>
+                  <a
+                    class="product-resource ph-no-autocapture"
+                    href={product.repository}
+                    data-posthog-event="modepot_project_clicked"
+                    data-posthog-project={product.name}
+                    data-posthog-surface="modepot_homepage"
+                  >GitHub <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
             </article>
