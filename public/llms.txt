@@ -1,8 +1,8 @@
 # ModePot
 
-> ModePot is an open-source family and community simplifying, modernizing, and performance-optimizing frameworks while building fast, simple, AI-native and agent-native tools, engines, and games. The family currently includes Dexpot, Intpot, Summonpot, and LifePot.
+> ModePot is an open-source family and community simplifying, modernizing, and performance-optimizing frameworks while building fast, simple tools, engines, and games. AI-native and agent-friendly where they add real value, without defining every project. The family currently includes Dexpot, Intpot, Summonpot, and LifePot.
 
-ModePot takes frameworks and software foundations that have become heavy, fragmented, or dated and rebuilds them around simple interfaces, modern runtimes, real performance, and first-class support for AI and agents. Everything is built in the open, with and for the community:
+ModePot takes frameworks and software foundations that have become heavy, fragmented, or dated and rebuilds them around simple interfaces, modern runtimes, real performance, and AI and agent support where it adds value. Everything is built in the open, with and for the community:
 
 - [Dexpot](https://github.com/tugrulguner/dexpot): A synchronous Python API framework that compiles routes and adapts execution to standard GIL or free-threaded CPython.
 - [Intpot](https://github.com/tugrulguner/intpot): A Python framework that serves typed tools as Typer CLIs, FastAPI applications, or FastMCP servers and converts existing applications between those interfaces.

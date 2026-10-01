@@ -1,6 +1,6 @@
 # ModePot
 
-The public home of ModePot: an open-source family and community simplifying, modernizing, and performance-optimizing frameworks while building fast, simple tools, engines, and games. AI-native and agent-native approaches fit where they add real value, without defining every project.
+The public home of ModePot: an open-source family and community simplifying, modernizing, and performance-optimizing frameworks while building fast, simple tools, engines, and games. AI-native and agent-friendly where they add real value, without defining every project.
 
 ## Projects
 
