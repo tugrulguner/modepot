@@ -21,8 +21,8 @@ const products = [
     action: 'Explore Dexpot',
     repository: 'https://github.com/tugrulguner/dexpot',
     docs: 'https://dexpot.modepot.io/quick-start/',
-    development: 'https://github.com/tugrulguner/dexpot/commits/main/',
-    developmentLabel: 'Latest development',
+    development: 'https://github.com/tugrulguner/dexpot/commit/c2adef4c8cfc4635e56cbb562e861b235311d6c0',
+    developmentLabel: 'Oct 1 · Mobile table overflow fix · c2adef4',
     programmingLanguage: 'Python',
     runtimePlatform: 'CPython',
     license: 'https://opensource.org/license/mit',
@@ -46,8 +46,8 @@ const products = [
     action: 'Explore Intpot',
     repository: 'https://github.com/tugrulguner/intpot',
     docs: 'https://intpot.modepot.io/quickstart/',
-    development: 'https://github.com/tugrulguner/intpot/releases',
-    developmentLabel: 'Latest release notes',
+    development: 'https://github.com/tugrulguner/intpot/commit/f102e51d8dbed0922a9d54bd93c13edfa7e4927b',
+    developmentLabel: 'Sep 30 · README family attribution · f102e51',
     programmingLanguage: 'Python',
     runtimePlatform: 'Python',
     license: 'https://opensource.org/license/mit',
@@ -71,8 +71,8 @@ const products = [
     action: 'Explore Summonpot',
     repository: 'https://github.com/tugrulguner/summonpot',
     docs: 'https://summonpot.modepot.io/quick-start/',
-    development: 'https://github.com/tugrulguner/summonpot/commits/main/',
-    developmentLabel: 'Latest development',
+    development: 'https://github.com/tugrulguner/summonpot/commit/804b6c9109924f41f47aeefc125ed5266539ef46',
+    developmentLabel: 'Oct 1 · Complete bounded endpoint demo · 804b6c9',
     programmingLanguage: 'Python',
     runtimePlatform: 'Python',
     license: 'https://opensource.org/license/mit',
@@ -96,8 +96,8 @@ const products = [
     action: 'Explore LifePot',
     repository: 'https://github.com/tugrulguner/lifepot',
     docs: 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md',
-    development: 'https://github.com/tugrulguner/lifepot/releases',
-    developmentLabel: 'Latest release notes',
+    development: 'https://github.com/tugrulguner/lifepot/commit/4593420343a6416476c4297988c4e532bb3edee7',
+    developmentLabel: 'Oct 1 · Explain bounded setup · 4593420',
     programmingLanguage: 'TypeScript',
     runtimePlatform: 'Web browser',
     license: 'https://opensource.org/license/mit',
@@ -209,11 +209,11 @@ const structuredData = {
         <span>mode<strong>pot</strong></span>
       </a>
       <nav aria-label="Primary navigation">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="https://tugrul.modepot.io/">About me</a>
-        <a href="https://github.com/tugrulguner/modepot">GitHub</a>
-        <a class="nav-signal" href="https://discord.gg/u3AANZr6RG">Discord</a>
+      <a class="ph-no-autocapture" href="#projects">Projects</a>
+        <a class="ph-no-autocapture" href="#about">About</a>
+        <a class="ph-no-autocapture" href="https://tugrul.modepot.io/">About me</a>
+        <a class="ph-no-autocapture" href="https://github.com/tugrulguner/modepot">GitHub</a>
+        <a class="nav-signal ph-no-autocapture" href="https://discord.gg/u3AANZr6RG">Discord</a>
       </nav>
     </header>
 
@@ -303,25 +303,13 @@ const structuredData = {
 
       </section>
 
-      <section class="family-intro" id="projects" aria-labelledby="family-title">
-        <p class="coordinate">THE FAMILY / CURRENT PROJECTS</p>
-        <div>
-          <h2 id="family-title">Building the<br /><em>new defaults.</em></h2>
-          <p>
-            We take frameworks and software foundations that have become heavy, fragmented, or
-            dated and rebuild them around simple interfaces, modern runtimes, real performance,
-            and AI and agent support where it adds value. Everything is open source and built in the open for community contributions.
-          </p>
-        </div>
-      </section>
-
       <section class="mode-selector" aria-labelledby="selector-title">
         <h2 id="selector-title" class="visually-hidden">Which ModePot project should you use?</h2>
         <p class="selector-label">If you need to…</p>
         <p class="selector-label">Use</p>
         {
           products.map((product) => (
-            <a class={`selector-row selector-${product.accent}`} href={`#${product.name}`}>
+            <a class={`selector-row selector-${product.accent} ph-no-autocapture`} href={`#${product.name}`}>
               <img class="selector-mark" src={product.mark} alt="" width="40" height="40" loading="lazy" />
               <span>{product.choice}</span>
               <strong>{product.name}</strong>
@@ -331,7 +319,7 @@ const structuredData = {
         }
       </section>
 
-      <div class="product-ledger">
+      <div class="product-ledger" id="projects">
         {
           products.map((product) => (
             <article class={`product product-${product.accent}`} id={product.name}>
@@ -363,21 +351,32 @@ const structuredData = {
                   >
                     {product.action} <span aria-hidden="true">↗</span>
                   </a>
-                  <a class="product-resource" href={product.docs}>Docs <span aria-hidden="true">↗</span></a>
-                  <a class="product-resource" href={product.development}>{product.developmentLabel} <span aria-hidden="true">↗</span></a>
-                  <a
-                    class="product-resource ph-no-autocapture"
-                    href={product.repository}
-                    data-posthog-event="modepot_project_clicked"
-                    data-posthog-project={product.name}
-                    data-posthog-surface="modepot_homepage"
-                  >GitHub <span aria-hidden="true">↗</span></a>
+                  <a class="product-resource ph-no-autocapture" href={product.docs}>Docs <span aria-hidden="true">↗</span></a>
+                  <a class="product-resource ph-no-autocapture" href={product.development}>{product.developmentLabel} <span aria-hidden="true">↗</span></a>
+          <a class="product-resource ph-no-autocapture" href={product.repository}>GitHub <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
             </article>
           ))
         }
       </div>
+
+      <section class="participation" aria-labelledby="participation-title">
+        <p class="coordinate">OPEN SOURCE / PARTICIPATE</p>
+        <h2 id="participation-title">Build with us.</h2>
+        <p>Start with the project’s contribution guide; discuss a change before taking on substantial work, then use its issue tracker to propose or report it.</p>
+        <div class="participation-links">
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/dexpot/blob/main/CONTRIBUTING.md">Dexpot contribution guide ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/intpot/blob/main/CONTRIBUTING.md">Intpot contribution guide ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/summonpot/blob/main/CONTRIBUTING.md">Summonpot contribution guide ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/lifepot/blob/main/CONTRIBUTING.md">LifePot contribution guide ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/dexpot/issues/new?template=feature.yml">Propose Dexpot work ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/intpot/issues/new?template=feature.yml">Propose Intpot work ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/summonpot/issues/new?template=feature.yml">Propose Summonpot work ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/lifepot/issues/new">Propose LifePot work ↗</a>
+          <a class="ph-no-autocapture" href="https://discord.gg/u3AANZr6RG">Discord · project questions and community discussion ↗</a>
+        </div>
+      </section>
 
       <section class="family-rule" id="about" aria-labelledby="about-title">
         <div class="rule-mark">
@@ -409,9 +408,9 @@ const structuredData = {
       </a>
       <p>Open source. Built with the community.</p>
       <div>
-        <a href="https://tugrul.modepot.io/">About me</a>
-        <a href="https://github.com/tugrulguner/modepot">GitHub</a>
-        <a href="https://discord.gg/u3AANZr6RG">Discord</a>
+        <a class="ph-no-autocapture" href="https://tugrul.modepot.io/">About me</a>
+        <a class="ph-no-autocapture" href="https://github.com/tugrulguner/modepot">GitHub</a>
+        <a class="ph-no-autocapture" href="https://discord.gg/u3AANZr6RG">Discord</a>
       </div>
     </footer>
     <script is:inline>
