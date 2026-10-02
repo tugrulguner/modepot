@@ -18,7 +18,7 @@ const sources = {
   dexpot: {
     bytes: dexBytes,
     hash: '12e3b9f08b83075e4f514714c0b7459e0ecdb4c2940b997dd2715f1f13cf9c2b',
-    href: 'https://github.com/tugrulguner/dexpot/blob/c2adef4c8cfc4635e56cbb562e861b235311d6c0/website/src/content/docs/data/typed-crud-capture.json',
+    href: 'https://github.com/tugrulguner/dexpot/blob/be6cf426ecb0f1c8cdfe2d8695bf04371d2c047e/website/src/content/docs/data/typed-crud-capture.json',
   },
   intpot: {
     bytes: intBytes,
