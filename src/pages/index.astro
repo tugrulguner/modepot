@@ -28,6 +28,13 @@ const products = [
     license: 'https://opensource.org/license/mit',
     accent: 'cyan',
     signal: 'request → response',
+    previewLabel: 'Recorded HTTP example',
+    previewMode: 'RECORDED · NOT LIVE',
+    previewText: 'Fixed request · GET /items/7',
+    previewOutput: '{"id":7,"name":"item-7","price":7.0}',
+    demoHref: 'https://dexpot.modepot.io/examples/',
+    demoAction: 'Open runnable examples',
+    previewSource: 'https://github.com/tugrulguner/dexpot/blob/main/examples/README.md',
   },
   {
     index: '02',
@@ -53,6 +60,13 @@ const products = [
     license: 'https://opensource.org/license/mit',
     accent: 'gold',
     signal: 'define → serve',
+    previewLabel: 'Recorded CLI · HTTP · MCP',
+    previewMode: 'ONE FUNCTION · THREE SURFACES',
+    previewText: 'greet(name="Ada")',
+    previewOutput: 'CLI  → Hello, Ada!\nHTTP → {"message":"Hello, Ada!"}\nMCP  → Hello, Ada!',
+    demoHref: 'https://intpot.modepot.io/#agent-demo-title',
+    demoAction: 'Open interface demo',
+    previewSource: 'https://github.com/tugrulguner/intpot/tree/main/examples',
   },
   {
     index: '03',
@@ -78,6 +92,13 @@ const products = [
     license: 'https://opensource.org/license/mit',
     accent: 'violet',
     signal: 'contract → decide',
+    previewLabel: 'Recorded keyless contract trace',
+    previewMode: 'SCRIPTED TEST MODEL · NO LIVE AI',
+    previewText: 'Validated request → bounded format choice → typed response',
+    previewOutput: 'request: {"customer_id":"customer-7"}\nchoice:  format="detailed"\nreturn:  Ada · customer-7 · detailed',
+    demoHref: 'https://summonpot.modepot.io/#agent-demo-title',
+    demoAction: 'Open bounded endpoint demo',
+    previewSource: 'https://github.com/tugrulguner/summonpot/commit/804b6c9109924f41f47aeefc125ed5266539ef46',
   },
   {
     index: '04',
@@ -103,6 +124,13 @@ const products = [
     license: 'https://opensource.org/license/mit',
     accent: 'mint',
     signal: 'propose → replay',
+    previewLabel: 'Browser-local preset preview',
+    previewMode: 'DETERMINISTIC · NO LIVE JEV',
+    previewText: 'Preset: Balanced ecosystem · 50 × 50 world · replayable run',
+    previewOutput: 'Grazers  → moving\nHunters  → tracking\nResources → regenerating\nSimulation runs locally in your browser.',
+    demoHref: 'https://lifepot.modepot.io/',
+    demoAction: 'Open LifePot and choose a preset',
+    previewSource: 'https://github.com/tugrulguner/lifepot/blob/main/README.md#try-it-locally',
   },
 ];
 
@@ -341,6 +369,16 @@ const structuredData = {
                 <p class="product-eyebrow">{product.category}</p>
                 <p class="product-statement">{product.statement}</p>
                 <p class="product-description">{product.description}</p>
+                <section class={`demo-preview demo-${product.accent}`} aria-label={`${product.name} small demonstration`}>
+                  <div class="demo-preview-heading">
+                    <span>{product.previewLabel}</span>
+                    <span>{product.previewMode}</span>
+                  </div>
+                  <p>{product.previewText}</p>
+                  <pre><code>{product.previewOutput}</code></pre>
+                  <a class="demo-route" href={product.demoHref}>{product.demoAction} <span aria-hidden="true">↗</span></a>
+                  <a class="demo-source" href={product.previewSource}>Recorded source and provenance ↗</a>
+                </section>
                 <div class="product-actions">
                   <a
                     class="product-link ph-no-autocapture"

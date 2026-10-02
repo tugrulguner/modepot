@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "check": "astro check",
-    "build": "astro build && node scripts/verify-discovery.mjs",
+    "build": "astro build && node scripts/verify-discovery.mjs && node scripts/verify-previews.mjs",
     "preview": "astro preview",
     "deploy": "npm run build && wrangler deploy",
     "astro": "astro"
