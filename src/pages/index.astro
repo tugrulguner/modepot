@@ -2,11 +2,31 @@
 import '@fontsource-variable/manrope';
 import '@fontsource/ibm-plex-mono/400.css';
 import '../styles/global.css';
-import dexCapture from '../../fixtures/dexpot-typed-crud-capture.json';
-import intCapture from '../../fixtures/intpot-demo-preview.json';
 
-const dexRecordedStep = dexCapture.steps[0];
-const intRecordedExample = intCapture.examples.find(({ id }) => id === 'greet')!;
+const lifeSeed = [
+  '00000000',
+  '00100000',
+  '00010000',
+  '01110000',
+  '00000000',
+  '00000000',
+  '00000000',
+  '00000000',
+];
+const lifeGenerations = [lifeSeed];
+for (let generation = 1; generation < 4; generation += 1) {
+  const previous = lifeGenerations[generation - 1];
+  lifeGenerations.push(previous.map((row, y) =>
+    [...row].map((cell, x) => {
+      let neighbors = 0;
+      for (let dy = -1; dy <= 1; dy += 1) for (let dx = -1; dx <= 1; dx += 1) {
+        if (!dx && !dy) continue;
+        neighbors += previous[(y + dy + 8) % 8][(x + dx + 8) % 8] === '1' ? 1 : 0;
+      }
+      return neighbors === 3 || (cell === '1' && neighbors === 2) ? '1' : '0';
+    }).join(''),
+  ));
+}
 const products = [
   {
     index: '01',
@@ -32,13 +52,8 @@ const products = [
     license: 'https://opensource.org/license/mit',
     accent: 'cyan',
     signal: 'request → response',
-    previewLabel: 'Recorded HTTP example',
-    previewMode: 'RECORDED · NOT LIVE',
-    previewText: `Recorded request · ${dexRecordedStep.method} ${dexRecordedStep.path}`,
-    previewOutput: JSON.stringify(dexRecordedStep.response),
-    demoHref: 'https://dexpot.modepot.io/examples/',
-    demoAction: 'Open runnable examples',
-    previewSource: 'https://github.com/tugrulguner/dexpot/blob/be6cf426ecb0f1c8cdfe2d8695bf04371d2c047e/website/src/content/docs/data/typed-crud-capture.json',
+    playground: 'https://dexpot.modepot.io/playground/',
+    demoDescription: 'Request, typed validation, and response.',
   },
   {
     index: '02',
@@ -64,13 +79,8 @@ const products = [
     license: 'https://opensource.org/license/mit',
     accent: 'gold',
     signal: 'define → serve',
-    previewLabel: 'Recorded CLI · HTTP · MCP',
-    previewMode: 'ONE FUNCTION · THREE SURFACES',
-    previewText: `greet(${Object.entries(intRecordedExample.input).map(([key, value]) => `${key}=${JSON.stringify(value)}`).join(', ')})`,
-    previewOutput: `CLI  → ${intRecordedExample.interfaces.cli.trim()}\nHTTP → ${intRecordedExample.interfaces.api}\nMCP  → ${intRecordedExample.interfaces.mcp}`,
-    demoHref: 'https://intpot.modepot.io/#demo-preview-title',
-    demoAction: 'Open interface demo',
-    previewSource: 'https://github.com/tugrulguner/intpot/blob/b32a9025c6e4f9a536fea8c285816561adba9b0e/website/src/data/demo-preview.json',
+    playground: 'https://intpot.modepot.io/playground/',
+    demoDescription: 'One typed function branches into CLI, HTTP, and MCP interfaces.',
   },
   {
     index: '03',
@@ -96,13 +106,8 @@ const products = [
     license: 'https://opensource.org/license/mit',
     accent: 'violet',
     signal: 'contract → decide',
-    previewLabel: 'Recorded keyless contract trace',
-    previewMode: 'SCRIPTED TEST MODEL · NO LIVE AI',
-    previewText: 'Validated request → bounded format choice → typed response',
-    previewOutput: 'request: {"customer_id":"customer-7"}\nchoice:  format="detailed"\nreturn:  Ada · customer-7 · detailed',
-    demoHref: 'https://summonpot.modepot.io/#agent-demo-title',
-    demoAction: 'Open bounded endpoint demo',
-    previewSource: 'https://github.com/tugrulguner/summonpot/blob/62d231f02776b0d14f62670ce95c0edb80b81642/website/src/data/agent-demo.json',
+    playground: 'https://summonpot.modepot.io/playground/',
+    demoDescription: 'Fixed request-owned values, bounded agent choice, application result.',
   },
   {
     index: '04',
@@ -128,13 +133,8 @@ const products = [
     license: 'https://opensource.org/license/mit',
     accent: 'mint',
     signal: 'propose → replay',
-    previewLabel: 'Browser-local preset preview',
-    previewMode: 'DETERMINISTIC · NO LIVE JEV',
-    previewText: 'Explore deterministic preset → review → seed ecosystem',
-    previewOutput: 'Setup source → Deterministic fallback\nReview → World conditions\nSeed ecosystem → browser-local simulation',
-    demoHref: 'https://lifepot.modepot.io/',
-    demoAction: 'Open LifePot and choose a preset',
-    previewSource: 'https://github.com/tugrulguner/lifepot/blob/main/README.md#try-it-locally',
+    playground: 'https://lifepot.modepot.io/',
+    demoDescription: 'Cells evolve across generations in an illustrative animation.',
   },
 ];
 
@@ -373,15 +373,40 @@ const structuredData = {
                 <p class="product-eyebrow">{product.category}</p>
                 <p class="product-statement">{product.statement}</p>
                 <p class="product-description">{product.description}</p>
-                <section class={`demo-preview demo-${product.accent}`} aria-label={`${product.name} small demonstration`}>
-                  <div class="demo-preview-heading">
-                    <span>{product.previewLabel}</span>
-                    <span>{product.previewMode}</span>
-                  </div>
-                  <p>{product.previewText}</p>
-                  <pre><code>{product.previewOutput}</code></pre>
-                  <a class="demo-route" href={product.demoHref}>{product.demoAction} <span aria-hidden="true">↗</span></a>
-                  <a class="demo-source" href={product.previewSource}>Recorded source and provenance ↗</a>
+                <section class={`demo-preview demo-${product.accent}`} aria-label={`${product.name} mechanism preview`}>
+                  <p class="demo-caption">Illustrative animation · not a live run</p>
+                  {product.name === 'dexpot' && (
+                    <div class="mechanism dex-mechanism" aria-hidden="true">
+                      <span class="mechanism-node">Request</span><span class="mechanism-arrow">→</span>
+                      <span class="mechanism-node">Typed<br />validation</span><span class="mechanism-arrow">→</span>
+                      <span class="mechanism-node">Response</span>
+                    </div>
+                  )}
+                  {product.name === 'intpot' && (
+                    <div class="mechanism int-mechanism" aria-hidden="true">
+                      <span class="mechanism-node">One typed function</span>
+                      <div class="mechanism-branches"><span>CLI</span><span>HTTP</span><span>MCP</span></div>
+                    </div>
+                  )}
+                  {product.name === 'summonpot' && (
+                    <div class="mechanism summon-mechanism" aria-hidden="true">
+                      <span class="mechanism-node">Fixed request<br />values</span><span class="mechanism-arrow">→</span>
+                      <span class="mechanism-node">Bounded agent<br />choice</span><span class="mechanism-arrow">→</span>
+                      <span class="mechanism-node">Application<br />result</span>
+                    </div>
+                  )}
+                  {product.name === 'lifepot' && (
+                    <div class="mechanism life-mechanism" aria-hidden="true">
+                      {lifeGenerations.map((cells, generation) => (
+                        <div class="life-generation" data-generation={generation} aria-label={`Generation ${generation + 1}`}>
+                          {[...cells.join('')].map((cell) => <i class={cell === '1' ? 'alive' : ''} />)}
+                        </div>
+                      ))}
+                      <span class="life-caption">Birth · death · movement</span>
+                    </div>
+                  )}
+                  <p class="visually-hidden">{product.name === 'lifepot' ? 'Illustrative Conway’s Game of Life: each frame follows the same neighbor-count birth and survival rules; live cells appear, disappear, and move.' : product.demoDescription}</p>
+                  <a class="demo-route" href={product.playground}>{product.name === 'lifepot' ? 'Explore LifePot and choose a preset' : 'Open project playground'} <span aria-hidden="true">↗</span></a>
                 </section>
                 <div class="product-actions">
                   <a
