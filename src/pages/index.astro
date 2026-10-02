@@ -2,7 +2,11 @@
 import '@fontsource-variable/manrope';
 import '@fontsource/ibm-plex-mono/400.css';
 import '../styles/global.css';
+import dexCapture from '../../fixtures/dexpot-typed-crud-capture.json';
+import intCapture from '../../fixtures/intpot-demo-preview.json';
 
+const dexRecordedStep = dexCapture.steps[0];
+const intRecordedExample = intCapture.examples.find(({ id }) => id === 'greet')!;
 const products = [
   {
     index: '01',
@@ -20,11 +24,21 @@ const products = [
     href: 'https://dexpot.modepot.io/',
     action: 'Explore Dexpot',
     repository: 'https://github.com/tugrulguner/dexpot',
+    docs: 'https://dexpot.modepot.io/quick-start/',
+    development: 'https://github.com/tugrulguner/dexpot/commit/c2adef4c8cfc4635e56cbb562e861b235311d6c0',
+    developmentLabel: 'Oct 1 · Mobile table overflow fix · c2adef4',
     programmingLanguage: 'Python',
     runtimePlatform: 'CPython',
     license: 'https://opensource.org/license/mit',
     accent: 'cyan',
     signal: 'request → response',
+    previewLabel: 'Recorded HTTP example',
+    previewMode: 'RECORDED · NOT LIVE',
+    previewText: `Recorded request · ${dexRecordedStep.method} ${dexRecordedStep.path}`,
+    previewOutput: JSON.stringify(dexRecordedStep.response),
+    demoHref: 'https://dexpot.modepot.io/examples/',
+    demoAction: 'Open runnable examples',
+    previewSource: 'https://github.com/tugrulguner/dexpot/blob/be6cf426ecb0f1c8cdfe2d8695bf04371d2c047e/website/src/content/docs/data/typed-crud-capture.json',
   },
   {
     index: '02',
@@ -42,11 +56,21 @@ const products = [
     href: 'https://intpot.modepot.io/',
     action: 'Explore Intpot',
     repository: 'https://github.com/tugrulguner/intpot',
+    docs: 'https://intpot.modepot.io/quickstart/',
+    development: 'https://github.com/tugrulguner/intpot/commit/f102e51d8dbed0922a9d54bd93c13edfa7e4927b',
+    developmentLabel: 'Sep 30 · README family attribution · f102e51',
     programmingLanguage: 'Python',
     runtimePlatform: 'Python',
     license: 'https://opensource.org/license/mit',
     accent: 'gold',
     signal: 'define → serve',
+    previewLabel: 'Recorded CLI · HTTP · MCP',
+    previewMode: 'ONE FUNCTION · THREE SURFACES',
+    previewText: `greet(${Object.entries(intRecordedExample.input).map(([key, value]) => `${key}=${JSON.stringify(value)}`).join(', ')})`,
+    previewOutput: `CLI  → ${intRecordedExample.interfaces.cli.trim()}\nHTTP → ${intRecordedExample.interfaces.api}\nMCP  → ${intRecordedExample.interfaces.mcp}`,
+    demoHref: 'https://intpot.modepot.io/#demo-preview-title',
+    demoAction: 'Open interface demo',
+    previewSource: 'https://github.com/tugrulguner/intpot/blob/b32a9025c6e4f9a536fea8c285816561adba9b0e/website/src/data/demo-preview.json',
   },
   {
     index: '03',
@@ -64,11 +88,21 @@ const products = [
     href: 'https://summonpot.modepot.io/',
     action: 'Explore Summonpot',
     repository: 'https://github.com/tugrulguner/summonpot',
+    docs: 'https://summonpot.modepot.io/quick-start/',
+    development: 'https://github.com/tugrulguner/summonpot/commit/804b6c9109924f41f47aeefc125ed5266539ef46',
+    developmentLabel: 'Oct 1 · Complete bounded endpoint demo · 804b6c9',
     programmingLanguage: 'Python',
     runtimePlatform: 'Python',
     license: 'https://opensource.org/license/mit',
     accent: 'violet',
     signal: 'contract → decide',
+    previewLabel: 'Recorded keyless contract trace',
+    previewMode: 'SCRIPTED TEST MODEL · NO LIVE AI',
+    previewText: 'Validated request → bounded format choice → typed response',
+    previewOutput: 'request: {"customer_id":"customer-7"}\nchoice:  format="detailed"\nreturn:  Ada · customer-7 · detailed',
+    demoHref: 'https://summonpot.modepot.io/#agent-demo-title',
+    demoAction: 'Open bounded endpoint demo',
+    previewSource: 'https://github.com/tugrulguner/summonpot/blob/62d231f02776b0d14f62670ce95c0edb80b81642/website/src/data/agent-demo.json',
   },
   {
     index: '04',
@@ -86,11 +120,21 @@ const products = [
     href: 'https://lifepot.modepot.io/',
     action: 'Explore LifePot',
     repository: 'https://github.com/tugrulguner/lifepot',
+    docs: 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md',
+    development: 'https://github.com/tugrulguner/lifepot/commit/4593420343a6416476c4297988c4e532bb3edee7',
+    developmentLabel: 'Oct 1 · Explain bounded setup · 4593420',
     programmingLanguage: 'TypeScript',
     runtimePlatform: 'Web browser',
     license: 'https://opensource.org/license/mit',
     accent: 'mint',
     signal: 'propose → replay',
+    previewLabel: 'Browser-local preset preview',
+    previewMode: 'DETERMINISTIC · NO LIVE JEV',
+    previewText: 'Explore deterministic preset → review → seed ecosystem',
+    previewOutput: 'Setup source → Deterministic fallback\nReview → World conditions\nSeed ecosystem → browser-local simulation',
+    demoHref: 'https://lifepot.modepot.io/',
+    demoAction: 'Open LifePot and choose a preset',
+    previewSource: 'https://github.com/tugrulguner/lifepot/blob/main/README.md#try-it-locally',
   },
 ];
 
@@ -197,11 +241,11 @@ const structuredData = {
         <span>mode<strong>pot</strong></span>
       </a>
       <nav aria-label="Primary navigation">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="https://tugrul.modepot.io/">About me</a>
-        <a href="https://github.com/tugrulguner/modepot">GitHub</a>
-        <a class="nav-signal" href="https://discord.gg/u3AANZr6RG">Discord</a>
+      <a class="ph-no-autocapture" href="#projects">Projects</a>
+        <a class="ph-no-autocapture" href="#about">About</a>
+        <a class="ph-no-autocapture" href="https://tugrul.modepot.io/">About me</a>
+        <a class="ph-no-autocapture" href="https://github.com/tugrulguner/modepot">GitHub</a>
+        <a class="nav-signal ph-no-autocapture" href="https://discord.gg/u3AANZr6RG">Discord</a>
       </nav>
     </header>
 
@@ -291,25 +335,13 @@ const structuredData = {
 
       </section>
 
-      <section class="family-intro" id="projects" aria-labelledby="family-title">
-        <p class="coordinate">THE FAMILY / CURRENT PROJECTS</p>
-        <div>
-          <h2 id="family-title">Building the<br /><em>new defaults.</em></h2>
-          <p>
-            We take frameworks and software foundations that have become heavy, fragmented, or
-            dated and rebuild them around simple interfaces, modern runtimes, real performance,
-            and AI and agent support where it adds value. Everything is open source and built in the open for community contributions.
-          </p>
-        </div>
-      </section>
-
       <section class="mode-selector" aria-labelledby="selector-title">
         <h2 id="selector-title" class="visually-hidden">Which ModePot project should you use?</h2>
         <p class="selector-label">If you need to…</p>
         <p class="selector-label">Use</p>
         {
           products.map((product) => (
-            <a class={`selector-row selector-${product.accent}`} href={`#${product.name}`}>
+            <a class={`selector-row selector-${product.accent} ph-no-autocapture`} href={`#${product.name}`}>
               <img class="selector-mark" src={product.mark} alt="" width="40" height="40" loading="lazy" />
               <span>{product.choice}</span>
               <strong>{product.name}</strong>
@@ -319,7 +351,7 @@ const structuredData = {
         }
       </section>
 
-      <div class="product-ledger">
+      <div class="product-ledger" id="projects">
         {
           products.map((product) => (
             <article class={`product product-${product.accent}`} id={product.name}>
@@ -341,6 +373,16 @@ const structuredData = {
                 <p class="product-eyebrow">{product.category}</p>
                 <p class="product-statement">{product.statement}</p>
                 <p class="product-description">{product.description}</p>
+                <section class={`demo-preview demo-${product.accent}`} aria-label={`${product.name} small demonstration`}>
+                  <div class="demo-preview-heading">
+                    <span>{product.previewLabel}</span>
+                    <span>{product.previewMode}</span>
+                  </div>
+                  <p>{product.previewText}</p>
+                  <pre><code>{product.previewOutput}</code></pre>
+                  <a class="demo-route" href={product.demoHref}>{product.demoAction} <span aria-hidden="true">↗</span></a>
+                  <a class="demo-source" href={product.previewSource}>Recorded source and provenance ↗</a>
+                </section>
                 <div class="product-actions">
                   <a
                     class="product-link ph-no-autocapture"
@@ -351,12 +393,32 @@ const structuredData = {
                   >
                     {product.action} <span aria-hidden="true">↗</span>
                   </a>
+                  <a class="product-resource ph-no-autocapture" href={product.docs}>Docs <span aria-hidden="true">↗</span></a>
+                  <a class="product-resource ph-no-autocapture" href={product.development}>{product.developmentLabel} <span aria-hidden="true">↗</span></a>
+          <a class="product-resource ph-no-autocapture" href={product.repository}>GitHub <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
             </article>
           ))
         }
       </div>
+
+      <section class="participation" aria-labelledby="participation-title">
+        <p class="coordinate">OPEN SOURCE / PARTICIPATE</p>
+        <h2 id="participation-title">Build with us.</h2>
+        <p>Start with the project’s contribution guide; discuss a change before taking on substantial work, then use its issue tracker to propose or report it.</p>
+        <div class="participation-links">
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/dexpot/blob/main/CONTRIBUTING.md">Dexpot contribution guide ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/intpot/blob/main/CONTRIBUTING.md">Intpot contribution guide ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/summonpot/blob/main/CONTRIBUTING.md">Summonpot contribution guide ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/lifepot/blob/main/CONTRIBUTING.md">LifePot contribution guide ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/dexpot/issues/new?template=feature.yml">Propose Dexpot work ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/intpot/issues/new?template=feature.yml">Propose Intpot work ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/summonpot/issues/new?template=feature.yml">Propose Summonpot work ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/lifepot/issues/new">Propose LifePot work ↗</a>
+          <a class="ph-no-autocapture" href="https://discord.gg/u3AANZr6RG">Discord · project questions and community discussion ↗</a>
+        </div>
+      </section>
 
       <section class="family-rule" id="about" aria-labelledby="about-title">
         <div class="rule-mark">
@@ -388,9 +450,9 @@ const structuredData = {
       </a>
       <p>Open source. Built with the community.</p>
       <div>
-        <a href="https://tugrul.modepot.io/">About me</a>
-        <a href="https://github.com/tugrulguner/modepot">GitHub</a>
-        <a href="https://discord.gg/u3AANZr6RG">Discord</a>
+        <a class="ph-no-autocapture" href="https://tugrul.modepot.io/">About me</a>
+        <a class="ph-no-autocapture" href="https://github.com/tugrulguner/modepot">GitHub</a>
+        <a class="ph-no-autocapture" href="https://discord.gg/u3AANZr6RG">Discord</a>
       </div>
     </footer>
     <script is:inline>

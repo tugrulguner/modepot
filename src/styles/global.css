@@ -658,7 +658,7 @@ nav a:hover {
 
 .product h2 {
   margin: 0;
-  font-size: clamp(3.8rem, 7vw, 7.6rem);
+  font-size: clamp(2.8rem, 5vw, 5.5rem);
   font-weight: 690;
   line-height: 0.85;
   letter-spacing: -0.075em;
@@ -680,6 +680,23 @@ nav a:hover {
   line-height: 1.72;
 }
 
+.demo-preview {
+  max-width: 34rem;
+  min-width: 0;
+  margin-top: 1.65rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 27%, #292d39);
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 7%, #0c101a), #0a0d15 70%);
+}
+.demo-preview-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; color: var(--accent); font: 600 .62rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.demo-preview-heading span:last-child { color: #9299a8; text-align: right; }
+.demo-preview p { margin: .8rem 0 .55rem; color: #c8ccd4; font-size: .82rem; line-height: 1.5; }
+.demo-preview pre { max-width: 100%; margin: 0; overflow-wrap: anywhere; white-space: pre-wrap; color: #e7eaf0; font: .72rem/1.6 var(--mono); }
+.demo-route, .demo-source { display: inline-block; margin: .8rem 1rem 0 0; font: 600 .65rem/1.5 var(--mono); }
+.demo-route { color: var(--accent); }
+.demo-source { color: #9ea4b1; }
+
 .product-actions {
   display: flex;
   flex-wrap: wrap;
@@ -693,6 +710,23 @@ nav a:hover {
 }
 
 .product-link span {
+  color: var(--accent);
+}
+
+.product-resource {
+  min-height: 2.75rem;
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  color: #c1c5ce;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.product-resource:hover,
+.product-resource span {
   color: var(--accent);
 }
 
@@ -960,12 +994,17 @@ footer a:hover {
   }
 
   .product h2 {
-    font-size: clamp(3.5rem, 18vw, 5.5rem);
+    min-width: 0;
+    font-size: clamp(2.4rem, 13vw, 5.5rem);
+    overflow-wrap: anywhere;
   }
 
   .product-heading {
+    min-width: 0;
     align-items: flex-end;
   }
+
+  .product-heading h2 { flex: 1 1 auto; }
 
   .product-mark {
     width: 3.25rem;
@@ -1000,7 +1039,6 @@ footer a:hover {
 }
 
 @media (max-width: 360px) {
-  nav a:nth-child(1),
   nav a:nth-child(3) {
     display: none;
   }
@@ -1119,6 +1157,16 @@ footer a:hover {
   .open-source-seal b { font-size:.7rem; }
   .open-source-seal span { font-size:.65rem; }
 }
+/* Participation routes stay distinct from project exploration and documentation. */
+.participation { padding: clamp(5rem, 9vw, 8rem) clamp(1.25rem, 7vw, 8rem); border-top: 1px solid var(--line); background: var(--night-soft); }
+.participation h2 { margin: 1rem 0; font-size: clamp(2.5rem, 5vw, 5rem); letter-spacing: -.055em; }
+.participation > p:not(.coordinate) { max-width: 42rem; color: #a6aab5; line-height: 1.7; }
+.participation-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin-top: 2rem; }
+.participation-links a { display: flex; align-items: center; min-height: 3.75rem; padding: .85rem 1rem; color: #d4d7dc; border: 1px solid var(--line); font-family: var(--mono); font-size: .72rem; line-height: 1.5; }
+.participation-links a:hover { color: var(--gold); border-color: rgba(242,184,75,.5); }
+@media (max-width: 760px) { .participation-links { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .participation-links { grid-template-columns: 1fr; } }
+
 @media (prefers-reduced-motion:reduce) {
   .flask-particle,.falling-particle,.flask-liquid { animation:none; }
 }

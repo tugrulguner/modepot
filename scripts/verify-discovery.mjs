@@ -13,7 +13,7 @@ const qualification = 'AI-native and agent-friendly where they add real value';
 if (!readme.includes(qualification) || !llms.includes(qualification)) {
   failures.push('README.md/llms.txt: missing qualified family AI/agent positioning');
 }
-if (!html.includes('AI and agent support where it adds value')) {
+if (!html.includes('AI-native and agent-friendly approaches where they add value')) {
   failures.push('index.html: missing qualified family positioning beyond the hero');
 }
 
@@ -26,9 +26,27 @@ const requiredHtml = [
   '/products/intpot-lockup.webp',
   '/products/summonpot-lockup.webp',
   '/products/lifepot-lockup.webp',
+  'Docs',
+  'Build with us.',
+  'participation-links',
 ];
 for (const token of requiredHtml) {
   if (!html.includes(token)) failures.push(`index.html: missing ${token}`);
+}
+for (const [product, docsUrl] of Object.entries({
+  dexpot: 'https://dexpot.modepot.io/quick-start/',
+  intpot: 'https://intpot.modepot.io/quickstart/',
+  summonpot: 'https://summonpot.modepot.io/quick-start/',
+  lifepot: 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md',
+})) {
+  for (const destination of [
+    docsUrl,
+    `https://github.com/tugrulguner/${product}`,
+  ]) {
+    if (!html.includes(`href="${destination}"`)) {
+      failures.push(`index.html: missing project Docs/GitHub destination ${destination}`);
+    }
+  }
 }
 for (const stale of ['/products/dexpot.webp', '/products/intpot.webp', '/products/summonpot.webp', '/products/lifepot.webp']) {
   if (html.includes(stale)) failures.push(`index.html: stale product artwork URL ${stale}`);
@@ -64,7 +82,31 @@ for (const type of ['CollectionPage', 'ItemList', 'SoftwareSourceCode', 'WebSite
   if (!schemaTypes.has(type)) failures.push(`index.html: missing ${type} structured data`);
 }
 
-for (const token of ['## Selection guide', '## Maturity and licensing', 'https://github.com/tugrulguner/dexpot', 'https://github.com/tugrulguner/intpot', 'https://github.com/tugrulguner/summonpot', 'https://github.com/tugrulguner/lifepot']) {
+for (const product of ['dexpot', 'intpot', 'summonpot', 'lifepot']) {
+  if ((html.match(new RegExp(`class="product product-[^"]+" id="${product}"`, 'g')) ?? []).length !== 1) {
+    failures.push(`index.html: expected exactly one project card for ${product}`);
+  }
+  if (!html.includes(`https://github.com/tugrulguner/${product}/commit/`)) {
+    failures.push(`index.html: missing source-backed development link for ${product}`);
+  }
+  if (!html.includes(`data-posthog-project="${product}"`) || !html.includes('data-posthog-surface="modepot_homepage"')) {
+    failures.push(`index.html: missing project intent event markers for ${product}`);
+  }
+  const activityLabel = product === 'lifepot' ? 'Oct 1 · Explain bounded setup · 4593420' : product === 'dexpot' ? 'Oct 1 · Mobile table overflow fix · c2adef4' : product === 'intpot' ? 'Sep 30 · README family attribution · f102e51' : 'Oct 1 · Complete bounded endpoint demo · 804b6c9';
+  if (!html.includes(activityLabel)) {
+    failures.push(`index.html: development activity for ${product} must show a source-backed date, description, and abbreviated SHA`);
+  }
+}
+for (const destination of ['https://github.com/tugrulguner/dexpot', 'https://github.com/tugrulguner/intpot', 'https://github.com/tugrulguner/summonpot', 'https://github.com/tugrulguner/lifepot']) {
+  const repoLinks = [...html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/g)].filter(([, href]) => href === destination);
+  if (repoLinks.some(([tag]) => !tag.includes('ph-no-autocapture') || tag.includes('data-posthog-event'))) {
+    failures.push(`index.html: repository link ${destination} must be excluded from autocapture and custom project-visit events`);
+  }
+}
+if ((html.match(/data-posthog-event="modepot_project_clicked"/g) ?? []).length !== 4) {
+  failures.push('index.html: project-visit intent must be limited to the four Explore links');
+}
+for (const token of ['## Quick starts and documentation', 'https://dexpot.modepot.io/quick-start/', 'https://intpot.modepot.io/quickstart/', 'https://summonpot.modepot.io/quick-start/', '## Contribute to ModePot', 'CONTRIBUTING.md', 'Propose a Dexpot feature', 'Discord', '## Selection guide', '## Maturity and licensing', 'https://github.com/tugrulguner/dexpot', 'https://github.com/tugrulguner/intpot', 'https://github.com/tugrulguner/summonpot', 'https://github.com/tugrulguner/lifepot']) {
   if (!llms.includes(token)) failures.push(`llms.txt: missing ${token}`);
 }
 

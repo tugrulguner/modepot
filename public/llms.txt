@@ -15,6 +15,23 @@ ModePot takes frameworks and software foundations that have become heavy, fragme
 - [ModePot source](https://github.com/tugrulguner/modepot): Source for the family website.
 - [ModePot community](https://discord.gg/u3AANZr6RG): Discord for project discussion.
 
+## Quick starts and documentation
+
+- [Dexpot quick start](https://dexpot.modepot.io/quick-start/)
+- [Intpot quickstart](https://intpot.modepot.io/quickstart/)
+- [Summonpot quick start](https://summonpot.modepot.io/quick-start/)
+- [LifePot simulation contract](https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md)
+
+## Contribute to ModePot
+
+Read the project-owned guide before contributing: [Dexpot CONTRIBUTING.md](https://github.com/tugrulguner/dexpot/blob/main/CONTRIBUTING.md), [Intpot CONTRIBUTING.md](https://github.com/tugrulguner/intpot/blob/main/CONTRIBUTING.md), [Summonpot CONTRIBUTING.md](https://github.com/tugrulguner/summonpot/blob/main/CONTRIBUTING.md), or [LifePot CONTRIBUTING.md](https://github.com/tugrulguner/lifepot/blob/main/CONTRIBUTING.md). Each repository defines its setup, tests, and contribution workflow.
+
+- [Propose a Dexpot feature](https://github.com/tugrulguner/dexpot/issues/new?template=feature.yml)
+- [Open an Intpot feature request](https://github.com/tugrulguner/intpot/issues/new?template=feature.yml)
+- [Open a Summonpot feature request](https://github.com/tugrulguner/summonpot/issues/new?template=feature.yml)
+- [Open a LifePot issue](https://github.com/tugrulguner/lifepot/issues/new)
+- [ModePot Discord](https://discord.gg/u3AANZr6RG): community discussion and project questions.
+
 ## Selection guide
 
 Use Dexpot to build synchronous Python HTTP APIs with interpreter-adaptive execution.
