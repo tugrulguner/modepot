@@ -2,6 +2,31 @@
 import '@fontsource-variable/manrope';
 import '@fontsource/ibm-plex-mono/400.css';
 import '../styles/global.css';
+
+const lifeSeed = [
+  '00000000',
+  '00100000',
+  '00010000',
+  '01110000',
+  '00000000',
+  '00000000',
+  '00000000',
+  '00000000',
+];
+const lifeGenerations = [lifeSeed];
+for (let generation = 1; generation < 4; generation += 1) {
+  const previous = lifeGenerations[generation - 1];
+  lifeGenerations.push(previous.map((row, y) =>
+    [...row].map((cell, x) => {
+      let neighbors = 0;
+      for (let dy = -1; dy <= 1; dy += 1) for (let dx = -1; dx <= 1; dx += 1) {
+        if (!dx && !dy) continue;
+        neighbors += previous[(y + dy + 8) % 8][(x + dx + 8) % 8] === '1' ? 1 : 0;
+      }
+      return neighbors === 3 || (cell === '1' && neighbors === 2) ? '1' : '0';
+    }).join(''),
+  ));
+}
 const products = [
   {
     index: '01',
@@ -372,15 +397,15 @@ const structuredData = {
                   )}
                   {product.name === 'lifepot' && (
                     <div class="mechanism life-mechanism" aria-hidden="true">
-                      {[0, 1, 2, 3].map((generation) => (
-                        <div class="life-generation" data-generation={generation}>
-                          {Array.from({ length: 16 }, (_, cell) => <i class={((cell * 7 + generation * 5) % 11 < 5) ? 'alive' : ''} />)}
+                      {lifeGenerations.map((cells, generation) => (
+                        <div class="life-generation" data-generation={generation} aria-label={`Generation ${generation + 1}`}>
+                          {[...cells.join('')].map((cell) => <i class={cell === '1' ? 'alive' : ''} />)}
                         </div>
                       ))}
-                      <span class="life-caption">Cells evolve</span>
+                      <span class="life-caption">Birth · death · movement</span>
                     </div>
                   )}
-                  <p class="visually-hidden">{product.demoDescription}</p>
+                  <p class="visually-hidden">{product.name === 'lifepot' ? 'Illustrative Conway’s Game of Life: each frame follows the same neighbor-count birth and survival rules; live cells appear, disappear, and move.' : product.demoDescription}</p>
                   <a class="demo-route" href={product.playground}>{product.name === 'lifepot' ? 'Explore LifePot and choose a preset' : 'Open project playground'} <span aria-hidden="true">↗</span></a>
                 </section>
                 <div class="product-actions">
