@@ -689,9 +689,15 @@ nav a:hover {
   border-radius: .75rem;
   background: #0b0e16;
 }
-.demo-caption { margin: 0 0 .85rem; color: #a6aab5; font: 600 .62rem/1.4 var(--mono); }
-.mechanism { min-height: 5rem; display: flex; align-items: center; justify-content: space-between; gap: .45rem; color: var(--accent); font: 600 .67rem/1.35 var(--mono); text-align: center; }
-.mechanism-node { display: grid; place-items: center; min-width: 0; min-height: 2.7rem; padding: .4rem .6rem; border: 1px solid color-mix(in srgb, var(--accent) 38%, #343744); border-radius: .45rem; background: #121621; color: #edf0f5; }
+.demo-preview { container-type: inline-size; }
+.demo-caption { margin: 0 0 .85rem; color: #bdc1cb; font: 500 .75rem/1.5 var(--mono); }
+.mechanism { min-height: 5rem; display: flex; align-items: center; justify-content: space-between; gap: .45rem; color: var(--accent); font: 500 .75rem/1.45 var(--mono); text-align: center; }
+.mechanism-node { display: grid; place-items: center; min-width: 0; min-height: 2.7rem; padding: .45rem .6rem; border: 1px solid color-mix(in srgb, var(--accent) 38%, #343744); border-radius: .35rem; background: #121621; color: #edf0f5; }
+@container (max-width: 23rem) {
+  .dex-mechanism, .summon-mechanism { flex-direction: column; gap: .3rem; }
+  .dex-mechanism .mechanism-node, .summon-mechanism .mechanism-node { width: 100%; box-sizing: border-box; flex: none; }
+  .dex-mechanism .mechanism-arrow, .summon-mechanism .mechanism-arrow { transform: rotate(90deg); line-height: 1; }
+}
 .mechanism-arrow { color: var(--accent); }
 .int-mechanism { flex-direction: column; justify-content: center; gap: .55rem; }
 .int-mechanism > .mechanism-node { width: min(100%, 13rem); }
@@ -703,10 +709,12 @@ nav a:hover {
 .life-generation { display: grid; grid-template-columns: repeat(8, minmax(0, .42rem)); gap: .09rem; min-width: 0; }
 .life-generation i { width: .42rem; aspect-ratio: 1; border-radius: .12rem; background: #252b38; }
 .life-generation i.alive { background: var(--accent); }
-.life-caption { position: absolute; bottom: 0; right: 0; color: #e5e8ee; font: 600 .63rem/1.4 var(--mono); }
-.demo-route { display: inline-flex; align-items: center; min-height: 2.75rem; margin-top: .65rem; color: var(--accent); font: 600 .67rem/1.5 var(--mono); }
-@keyframes mechanism-arrive { 0%, 18% { opacity: .35; transform: translateY(.22rem); } 55%, 100% { opacity: 1; transform: translateY(0); } }
-.mechanism-node, .mechanism-arrow, .mechanism-branches span { animation: mechanism-arrive 3.2s ease-in-out infinite; }
+.life-caption { position: absolute; bottom: 0; right: 0; color: #e5e8ee; font: 500 .75rem/1.4 var(--mono); }
+.demo-route { display: inline-flex; align-items: center; min-height: 2.75rem; margin-top: .65rem; color: var(--accent); font: 500 .75rem/1.5 var(--mono); }
+@keyframes mechanism-arrive { 0%, 18% { opacity: .45; } 55%, 100% { opacity: 1; } }
+@keyframes mechanism-emphasis { 0%, 18% { border-color: #343744; } 55%, 100% { border-color: color-mix(in srgb, var(--accent) 70%, #343744); } }
+.mechanism-node, .mechanism-branches span { animation: mechanism-emphasis 3.2s ease-in-out infinite; }
+.mechanism-arrow { animation: mechanism-arrive 3.2s ease-in-out infinite; }
 .dex-mechanism > :nth-child(1), .summon-mechanism > :nth-child(1) { animation-delay: 0s; }
 .dex-mechanism > :nth-child(2), .summon-mechanism > :nth-child(2) { animation-delay: .35s; }
 .dex-mechanism > :nth-child(3), .summon-mechanism > :nth-child(3) { animation-delay: .7s; }

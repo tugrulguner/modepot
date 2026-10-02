@@ -1,5 +1,8 @@
 # build output
 dist/
+# browser verification artifacts
+test-results/
+playwright-report/
 # generated types
 .astro/
 
