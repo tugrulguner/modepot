@@ -33,9 +33,14 @@ const requiredHtml = [
 for (const token of requiredHtml) {
   if (!html.includes(token)) failures.push(`index.html: missing ${token}`);
 }
-for (const product of ['dexpot', 'intpot', 'summonpot', 'lifepot']) {
+for (const [product, docsUrl] of Object.entries({
+  dexpot: 'https://dexpot.modepot.io/quick-start/',
+  intpot: 'https://intpot.modepot.io/quickstart/',
+  summonpot: 'https://summonpot.modepot.io/quick-start/',
+  lifepot: 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md',
+})) {
   for (const destination of [
-    `https://${product}.modepot.io/docs/`,
+    docsUrl,
     `https://github.com/tugrulguner/${product}`,
   ]) {
     if (!html.includes(`href="${destination}"`)) {
