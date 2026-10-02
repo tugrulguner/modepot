@@ -10,6 +10,7 @@
     "check": "astro check",
     "build": "astro build && node scripts/verify-discovery.mjs && node scripts/verify-mechanisms.mjs",
     "preview": "astro preview",
+    "test:layout": "playwright test",
     "deploy": "npm run build && wrangler deploy",
     "astro": "astro"
   },
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@playwright/test": "^1.63.0",
     "typescript": "^6.0.3",
     "wrangler": "^4.142.0"
   }
