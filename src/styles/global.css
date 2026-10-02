@@ -658,7 +658,7 @@ nav a:hover {
 
 .product h2 {
   margin: 0;
-  font-size: clamp(3.8rem, 7vw, 7.6rem);
+  font-size: clamp(2.8rem, 5vw, 5.5rem);
   font-weight: 690;
   line-height: 0.85;
   letter-spacing: -0.075em;
