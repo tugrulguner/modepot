@@ -2,7 +2,11 @@
 import '@fontsource-variable/manrope';
 import '@fontsource/ibm-plex-mono/400.css';
 import '../styles/global.css';
+import dexCapture from '../../fixtures/dexpot-typed-crud-capture.json';
+import intCapture from '../../fixtures/intpot-demo-preview.json';
 
+const dexRecordedStep = dexCapture.steps[0];
+const intRecordedExample = intCapture.examples.find(({ id }) => id === 'greet')!;
 const products = [
   {
     index: '01',
@@ -30,11 +34,11 @@ const products = [
     signal: 'request → response',
     previewLabel: 'Recorded HTTP example',
     previewMode: 'RECORDED · NOT LIVE',
-    previewText: 'Fixed request · GET /items/7',
-    previewOutput: '{"id":7,"name":"item-7","price":7.0}',
+    previewText: `Recorded request · ${dexRecordedStep.method} ${dexRecordedStep.path}`,
+    previewOutput: JSON.stringify(dexRecordedStep.response),
     demoHref: 'https://dexpot.modepot.io/examples/',
     demoAction: 'Open runnable examples',
-    previewSource: 'https://github.com/tugrulguner/dexpot/blob/main/examples/README.md',
+    previewSource: 'https://github.com/tugrulguner/dexpot/blob/c2adef4c8cfc4635e56cbb562e861b235311d6c0/website/src/content/docs/data/typed-crud-capture.json',
   },
   {
     index: '02',
@@ -62,11 +66,11 @@ const products = [
     signal: 'define → serve',
     previewLabel: 'Recorded CLI · HTTP · MCP',
     previewMode: 'ONE FUNCTION · THREE SURFACES',
-    previewText: 'greet(name="Ada")',
-    previewOutput: 'CLI  → Hello, Ada!\nHTTP → {"message":"Hello, Ada!"}\nMCP  → Hello, Ada!',
-    demoHref: 'https://intpot.modepot.io/#agent-demo-title',
+    previewText: `greet(${Object.entries(intRecordedExample.input).map(([key, value]) => `${key}=${JSON.stringify(value)}`).join(', ')})`,
+    previewOutput: `CLI  → ${intRecordedExample.interfaces.cli.trim()}\nHTTP → ${intRecordedExample.interfaces.api}\nMCP  → ${intRecordedExample.interfaces.mcp}`,
+    demoHref: 'https://intpot.modepot.io/#demo-preview-title',
     demoAction: 'Open interface demo',
-    previewSource: 'https://github.com/tugrulguner/intpot/tree/main/examples',
+    previewSource: 'https://github.com/tugrulguner/intpot/blob/b32a9025c6e4f9a536fea8c285816561adba9b0e/website/src/data/demo-preview.json',
   },
   {
     index: '03',
