@@ -4,6 +4,28 @@ const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf
 const llms = await readFile(new URL('../dist/llms.txt', import.meta.url), 'utf8');
 const failures = [];
 const readme = await readFile(new URL('../README.md', import.meta.url), 'utf8');
+const readmeHero = readme.slice(0, readme.indexOf('## Projects'));
+for (const token of [
+  '<img src="public/modepot-mark.svg"', 'alt="ModePot family mark"',
+  'We simplify, modernize, and performance-optimize',
+  'frameworks, tools, engines, and games',
+  'https://tugrul.modepot.io/',
+  'Created by Tugrul Guner',
+  'https://modepot.io/',
+  'https://github.com/tugrulguner/modepot',
+  'https://discord.gg/u3AANZr6RG',
+]) {
+  if (!readmeHero.includes(token)) failures.push(`README.md: opening is missing prominent family identity/resource ${token}`);
+}
+if (!readmeHero.includes('<p align="center">') || !['ModePot', 'GitHub', 'Community', 'Created by Tugrul Guner'].every((label) => readmeHero.includes(label))) {
+  failures.push('README.md: centered ModePot/GitHub/community/creator resource row must be directly below the hero');
+}
+if (!readmeHero.includes('https://tugrul.modepot.io/')) {
+  failures.push('README.md: creator personal site must be linked in the opening resource row');
+}
+if (!readme.includes('https://dexpot.modepot.io/quick-start/') || !readme.includes('https://intpot.modepot.io/quickstart/') || !readme.includes('https://summonpot.modepot.io/quick-start/') || !readme.includes('docs/simulation-contract.md')) {
+  failures.push('README.md: project index must retain verified learning routes for all projects');
+}
 for (const product of ['dexpot', 'intpot', 'summonpot', 'lifepot']) {
   if (!readme.includes(`https://${product}.modepot.io/`) || !readme.includes(`https://github.com/tugrulguner/${product}`)) {
     failures.push(`README.md: missing site/source chooser destinations for ${product}`);
