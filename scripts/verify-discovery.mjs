@@ -114,9 +114,15 @@ for (const product of ['dexpot', 'intpot', 'summonpot', 'lifepot']) {
   if (!html.includes(`data-posthog-project="${product}"`) || !html.includes('data-posthog-surface="modepot_homepage"')) {
     failures.push(`index.html: missing project intent event markers for ${product}`);
   }
-  const activityLabel = product === 'lifepot' ? 'Oct 1 · Explain bounded setup · 4593420' : product === 'dexpot' ? 'Oct 1 · Mobile table overflow fix · c2adef4' : product === 'intpot' ? 'Sep 30 · README family attribution · f102e51' : 'Oct 1 · Complete bounded endpoint demo · 804b6c9';
-  if (!html.includes(activityLabel)) {
-    failures.push(`index.html: development activity for ${product} must show a source-backed date, description, and abbreviated SHA`);
+  const metadata = JSON.parse(await readFile(new URL('../src/data/projects.json', import.meta.url), 'utf8')).find((entry) => entry.name === product);
+  for (const token of [metadata.commit.slice(0, 7), metadata.readme.sha256.slice(0, 12), metadata.roadmap.status === 'available' ? metadata.roadmap.sha256.slice(0, 12) : 'not published']) {
+    if (!html.includes(token)) failures.push(`index.html: project metadata provenance missing ${token} for ${product}`);
+  }
+  if (metadata.latestRelease && (!html.includes(metadata.latestRelease.tag) || !html.includes(metadata.latestRelease.url))) {
+    failures.push(`index.html: published release metadata missing for ${product}`);
+  }
+  if (!metadata.latestRelease && !html.includes('No published release yet')) {
+    failures.push(`index.html: explicit no-release state missing for ${product}`);
   }
 }
 for (const destination of ['https://github.com/tugrulguner/dexpot', 'https://github.com/tugrulguner/intpot', 'https://github.com/tugrulguner/summonpot', 'https://github.com/tugrulguner/lifepot']) {
