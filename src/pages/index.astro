@@ -2,6 +2,8 @@
 import '@fontsource-variable/manrope';
 import '@fontsource/ibm-plex-mono/400.css';
 import '../styles/global.css';
+import projectSources from '../data/projects.json';
+const sourceByName = new Map(projectSources.map((project) => [project.name, project]));
 
 const lifeSeed = [
   '00000000',
@@ -27,7 +29,7 @@ for (let generation = 1; generation < 4; generation += 1) {
     }).join(''),
   ));
 }
-const products = [
+const productDefinitions = [
   {
     index: '01',
     mode: 'execution',
@@ -45,8 +47,8 @@ const products = [
     action: 'Explore Dexpot',
     repository: 'https://github.com/tugrulguner/dexpot',
     docs: 'https://dexpot.modepot.io/quick-start/',
-    development: 'https://github.com/tugrulguner/dexpot/commit/c2adef4c8cfc4635e56cbb562e861b235311d6c0',
-    developmentLabel: 'Oct 1 · Mobile table overflow fix · c2adef4',
+    development: '',
+    developmentLabel: '',
     programmingLanguage: 'Python',
     runtimePlatform: 'CPython',
     license: 'https://opensource.org/license/mit',
@@ -72,8 +74,8 @@ const products = [
     action: 'Explore Intpot',
     repository: 'https://github.com/tugrulguner/intpot',
     docs: 'https://intpot.modepot.io/quickstart/',
-    development: 'https://github.com/tugrulguner/intpot/commit/f102e51d8dbed0922a9d54bd93c13edfa7e4927b',
-    developmentLabel: 'Sep 30 · README family attribution · f102e51',
+    development: '',
+    developmentLabel: '',
     programmingLanguage: 'Python',
     runtimePlatform: 'Python',
     license: 'https://opensource.org/license/mit',
@@ -99,8 +101,8 @@ const products = [
     action: 'Explore Summonpot',
     repository: 'https://github.com/tugrulguner/summonpot',
     docs: 'https://summonpot.modepot.io/quick-start/',
-    development: 'https://github.com/tugrulguner/summonpot/commit/804b6c9109924f41f47aeefc125ed5266539ef46',
-    developmentLabel: 'Oct 1 · Complete bounded endpoint demo · 804b6c9',
+    development: '',
+    developmentLabel: '',
     programmingLanguage: 'Python',
     runtimePlatform: 'Python',
     license: 'https://opensource.org/license/mit',
@@ -126,8 +128,8 @@ const products = [
     action: 'Explore LifePot',
     repository: 'https://github.com/tugrulguner/lifepot',
     docs: 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md',
-    development: 'https://github.com/tugrulguner/lifepot/commit/4593420343a6416476c4297988c4e532bb3edee7',
-    developmentLabel: 'Oct 1 · Explain bounded setup · 4593420',
+    development: '',
+    developmentLabel: '',
     programmingLanguage: 'TypeScript',
     runtimePlatform: 'Web browser',
     license: 'https://opensource.org/license/mit',
@@ -137,6 +139,7 @@ const products = [
     demoDescription: 'Cells evolve across generations in an illustrative animation.',
   },
 ];
+const products = productDefinitions.map((product) => ({ ...product, source: sourceByName.get(product.name)! }));
 
 const pageTitle = 'ModePot | Modern Open-Source Frameworks, Engines & Games';
 const pageDescription =
@@ -419,8 +422,12 @@ const structuredData = {
                     {product.action} <span aria-hidden="true">↗</span>
                   </a>
                   <a class="product-resource ph-no-autocapture" href={product.docs}>Docs <span aria-hidden="true">↗</span></a>
-                  <a class="product-resource ph-no-autocapture" href={product.development}>{product.developmentLabel} <span aria-hidden="true">↗</span></a>
-          <a class="product-resource ph-no-autocapture" href={product.repository}>GitHub <span aria-hidden="true">↗</span></a>
+                  <a class="product-resource ph-no-autocapture" href={product.source.commitUrl}>Latest source commit · {product.source.commit.slice(0, 7)} <span aria-hidden="true">↗</span></a>
+                  <a class="product-resource ph-no-autocapture" href={product.source.readme.url}>README · {product.source.readme.sha256.slice(0, 12)} <span aria-hidden="true">↗</span></a>
+                  <a class="product-resource ph-no-autocapture" href={product.source.roadmap.url}>Roadmap · {product.source.roadmap.status === 'available' ? product.source.roadmap.sha256.slice(0, 12) : 'not published'} <span aria-hidden="true">↗</span></a>
+                  {product.source.latestRelease && <a class="product-resource ph-no-autocapture" href={product.source.latestRelease.url}>Latest release · {product.source.latestRelease.tag} <span aria-hidden="true">↗</span></a>}
+                  {!product.source.latestRelease && <span class="product-resource">No published release yet</span>}
+                  <a class="product-resource ph-no-autocapture" href={product.repository}>GitHub <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
             </article>

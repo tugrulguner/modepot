@@ -1,0 +1,50 @@
+name: Sync project source metadata
+
+on:
+  schedule:
+    - cron: '23 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: node scripts/sync-projects.mjs
+      - run: node scripts/project-sync.test.mjs
+      - run: npm run check
+      - run: npm run build
+      - name: Open or update source-sync pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git fetch origin refs/heads/automation/project-source-sync:refs/remotes/origin/automation/project-source-sync || true
+          git checkout -B automation/project-source-sync
+          git add src/data/projects.json
+          if git diff --cached --quiet; then
+            echo 'No source metadata changes.'
+            exit 0
+          fi
+          git commit -m 'chore: sync project GitHub metadata'
+          git push --force-with-lease origin automation/project-source-sync
+          if gh pr view automation/project-source-sync >/dev/null 2>&1; then
+            echo 'Updated existing project source-sync PR.'
+          else
+            gh pr create --base main --head automation/project-source-sync \
+              --title 'chore: sync project GitHub metadata' \
+              --body 'Refreshes source-pinned README/ROADMAP provenance and latest non-prerelease release metadata from the four canonical public repositories. This PR is generated on a read-only metadata basis; no source repositories are modified.'
+          fi
