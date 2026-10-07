@@ -131,8 +131,16 @@ for (const destination of ['https://github.com/tugrulguner/dexpot', 'https://git
     failures.push(`index.html: repository link ${destination} must be excluded from autocapture and custom project-visit events`);
   }
 }
-if ((html.match(/data-posthog-event="modepot_project_clicked"/g) ?? []).length !== 4) {
-  failures.push('index.html: project-visit intent must be limited to the four Explore links');
+const projectEventLinks = [...html.matchAll(/<a\b[^>]*data-posthog-event="modepot_project_clicked"[^>]*>/g)];
+if (projectEventLinks.length !== 11) failures.push(`index.html: expected 11 explicit project links (4 Explore, 4 playground, 3 site Docs), found ${projectEventLinks.length}`);
+for (const [index, [tag]] of projectEventLinks.entries()) {
+  if (!tag.includes('ph-no-autocapture')) failures.push(`index.html: project event link ${index + 1} must exclude autocapture`);
+  for (const attribute of ['data-posthog-project=', 'data-posthog-surface="modepot_homepage"']) {
+    if (!tag.includes(attribute)) failures.push(`index.html: project event link ${index + 1} missing ${attribute}`);
+  }
+}
+if (!html.includes("document.addEventListener('auxclick', captureOutboundEvent)") || !html.includes("event.type === 'auxclick' && event.button !== 1")) {
+  failures.push('index.html: middle-button activation must be tracked and non-middle auxclick excluded');
 }
 for (const token of ['## Quick starts and documentation', 'https://dexpot.modepot.io/quick-start/', 'https://intpot.modepot.io/quickstart/', 'https://summonpot.modepot.io/quick-start/', '## Contribute to ModePot', 'CONTRIBUTING.md', 'Propose a Dexpot feature', 'Discord', '## Selection guide', '## Maturity and licensing', 'https://github.com/tugrulguner/dexpot', 'https://github.com/tugrulguner/intpot', 'https://github.com/tugrulguner/summonpot', 'https://github.com/tugrulguner/lifepot']) {
   if (!llms.includes(token)) failures.push(`llms.txt: missing ${token}`);
