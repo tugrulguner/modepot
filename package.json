@@ -11,6 +11,7 @@
     "build": "astro build && node scripts/verify-discovery.mjs && node scripts/verify-mechanisms.mjs",
     "test:project-sync": "node scripts/project-sync.test.mjs",
     "preview": "astro preview",
+    "test:analytics": "playwright test tests/analytics.spec.mjs --config=playwright.analytics.config.mjs",
     "test:layout": "playwright test",
     "deploy": "npm run build && wrangler deploy",
     "astro": "astro"

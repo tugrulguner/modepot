@@ -409,7 +409,13 @@ const structuredData = {
                     </div>
                   )}
                   <p class="visually-hidden">{product.name === 'lifepot' ? 'Illustrative Conway’s Game of Life: each frame follows the same neighbor-count birth and survival rules; live cells appear, disappear, and move.' : product.demoDescription}</p>
-                  <a class="demo-route" href={product.playground}>{product.name === 'lifepot' ? 'Explore LifePot and choose a preset' : 'Open project playground'} <span aria-hidden="true">↗</span></a>
+                  <a
+                    class="demo-route ph-no-autocapture"
+                    href={product.playground}
+                    data-posthog-event="modepot_project_clicked"
+                    data-posthog-project={product.name}
+                    data-posthog-surface="modepot_homepage"
+                  >{product.name === 'lifepot' ? 'Explore LifePot and choose a preset' : 'Open project playground'} <span aria-hidden="true">↗</span></a>
                 </section>
                 <div class="product-actions">
                   <a
@@ -421,7 +427,13 @@ const structuredData = {
                   >
                     {product.action} <span aria-hidden="true">↗</span>
                   </a>
-                  <a class="product-resource ph-no-autocapture" href={product.docs}>Docs <span aria-hidden="true">↗</span></a>
+                  <a
+                    class="product-resource ph-no-autocapture"
+                    href={product.docs}
+                    data-posthog-event="modepot_project_clicked"
+                    data-posthog-project={product.name}
+                    data-posthog-surface="modepot_homepage"
+                  >Docs <span aria-hidden="true">↗</span></a>
                   <a class="product-resource ph-no-autocapture" href={product.source.commitUrl}>Latest source commit · {product.source.commit.slice(0, 7)} <span aria-hidden="true">↗</span></a>
                   <a class="product-resource ph-no-autocapture" href={product.source.readme.url}>README · {product.source.readme.sha256.slice(0, 12)} <span aria-hidden="true">↗</span></a>
                   <a class="product-resource ph-no-autocapture" href={product.source.roadmap.url}>Roadmap · {product.source.roadmap.status === 'available' ? product.source.roadmap.sha256.slice(0, 12) : 'not published'} <span aria-hidden="true">↗</span></a>
@@ -488,7 +500,9 @@ const structuredData = {
       </div>
     </footer>
     <script is:inline>
-      document.addEventListener('click', (event) => {
+      const captureOutboundEvent = (event) => {
+        if (event.type === 'auxclick' && event.button !== 1) return;
+        if (event.type === 'click' && event.button !== 0) return;
         if (!(event.target instanceof Element)) return;
         const link = event.target.closest('[data-posthog-event]');
         if (!link || !window.posthog) return;
@@ -499,7 +513,9 @@ const structuredData = {
         if (link.dataset.posthogProject) properties.project = link.dataset.posthogProject;
         if (link.dataset.posthogPlatform) properties.platform = link.dataset.posthogPlatform;
         window.posthog.capture(link.dataset.posthogEvent, properties, { transport: 'sendBeacon', send_instantly: true });
-      });
+      };
+      document.addEventListener('click', captureOutboundEvent);
+      document.addEventListener('auxclick', captureOutboundEvent);
     </script>
   </body>
 </html>
