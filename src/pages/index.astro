@@ -430,9 +430,9 @@ const structuredData = {
                   <a
                     class="product-resource ph-no-autocapture"
                     href={product.docs}
-                    data-posthog-event="modepot_project_clicked"
-                    data-posthog-project={product.name}
-                    data-posthog-surface="modepot_homepage"
+                    data-posthog-event={product.name === 'lifepot' ? undefined : 'modepot_project_clicked'}
+                    data-posthog-project={product.name === 'lifepot' ? undefined : product.name}
+                    data-posthog-surface={product.name === 'lifepot' ? undefined : 'modepot_homepage'}
                   >Docs <span aria-hidden="true">↗</span></a>
                   <a class="product-resource ph-no-autocapture" href={product.source.commitUrl}>Latest source commit · {product.source.commit.slice(0, 7)} <span aria-hidden="true">↗</span></a>
                   <a class="product-resource ph-no-autocapture" href={product.source.readme.url}>README · {product.source.readme.sha256.slice(0, 12)} <span aria-hidden="true">↗</span></a>

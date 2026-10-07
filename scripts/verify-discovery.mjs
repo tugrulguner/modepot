@@ -132,7 +132,7 @@ for (const destination of ['https://github.com/tugrulguner/dexpot', 'https://git
   }
 }
 const projectEventLinks = [...html.matchAll(/<a\b[^>]*data-posthog-event="modepot_project_clicked"[^>]*>/g)];
-if (projectEventLinks.length !== 12) failures.push(`index.html: expected 12 explicit project links (4 Explore, 4 playground, 4 Docs), found ${projectEventLinks.length}`);
+if (projectEventLinks.length !== 11) failures.push(`index.html: expected 11 explicit project links (4 Explore, 4 playground, 3 site Docs), found ${projectEventLinks.length}`);
 for (const [index, [tag]] of projectEventLinks.entries()) {
   if (!tag.includes('ph-no-autocapture')) failures.push(`index.html: project event link ${index + 1} must exclude autocapture`);
   for (const attribute of ['data-posthog-project=', 'data-posthog-surface="modepot_homepage"']) {
