@@ -143,8 +143,8 @@ const productDefinitions = [
     mode: 'engine',
     name: 'refpot',
     prefix: 'ref',
-    mark: '/marks/refpot-mark.svg',
-    image: '/products/refpot-lockup.png',
+    mark: '/marks/refpot-mark.svg?v=2',
+    image: '/products/refpot-lockup-v2.svg',
     alt: 'RefPot canonical lockup: a custom relational engine and simple Python ORM, research and design stage',
     category: 'Embedded relational engine · research & design',
     statement: 'Own the engine. Keep the usage simple.',
@@ -156,8 +156,7 @@ const productDefinitions = [
     docs: 'https://refpot.modepot.io/design/',
     development: '',
     developmentLabel: '',
-    accent: 'mint',
-    signal: 'SQL + ORM → one engine',
+    accent: 'refpot',
     playground: '',
     demoDescription: 'Planned architecture illustration; not an executable preview.',
   },
@@ -400,8 +399,16 @@ const structuredData = {
                 <p class="product-statement">{product.statement}</p>
                 <p class="product-description">{product.description}</p>
                 <section class={`demo-preview demo-${product.accent}`} aria-label={`${product.name} mechanism preview`}>
-                  <p class="demo-caption">{product.name === 'refpot' ? 'Planned architecture · not a live run' : 'Illustrative animation · not a live run'}</p>
-                  {product.name === 'refpot' && <p class="mechanism">Direct SQL&nbsp; + &nbsp;Python ORM operations<br />↓<br />One proposed execution core</p>}
+                  <p class="demo-caption">{product.name === 'refpot' ? 'Illustrative animation · proposed architecture, not a live run' : 'Illustrative animation · not a live run'}</p>
+                  {product.name === 'refpot' && (
+                    <div class="mechanism ref-mechanism" aria-hidden="true">
+                      <div class="ref-entry ref-sql"><span class="ref-kind">DIRECT SQL</span><span class="ref-detail">SQL statements</span></div>
+                      <span class="ref-flow ref-flow-sql">→</span>
+                      <div class="ref-entry ref-orm"><span class="ref-kind">STRUCTURED ORM</span><span class="ref-detail">Python operations</span></div>
+                      <span class="ref-flow ref-flow-orm">→</span>
+                      <div class="ref-core"><span class="ref-kind">PROPOSED EXECUTION CORE</span><span class="ref-detail">Shared relational engine</span></div>
+                    </div>
+                  )}
                   {product.name === 'dexpot' && (
                     <div class="mechanism dex-mechanism" aria-hidden="true">
                       <span class="mechanism-node">Request</span><span class="mechanism-arrow">→</span>
@@ -432,7 +439,7 @@ const structuredData = {
                       <span class="life-caption">Birth · death · movement</span>
                     </div>
                   )}
-                  <p class="visually-hidden">{product.name === 'lifepot' ? 'Illustrative Conway’s Game of Life: each frame follows the same neighbor-count birth and survival rules; live cells appear, disappear, and move.' : product.demoDescription}</p>
+                  <p class="visually-hidden">{product.name === 'refpot' ? 'Illustration of two proposed entry paths: direct SQL statements and structured Python ORM operations converge on one shared relational execution core. This is a proposed architecture, not a live run.' : product.name === 'lifepot' ? 'Illustrative Conway’s Game of Life: each frame follows the same neighbor-count birth and survival rules; live cells appear, disappear, and move.' : product.demoDescription}</p>
                   {product.playground && <a
                     class="demo-route ph-no-autocapture"
                     href={product.playground}
