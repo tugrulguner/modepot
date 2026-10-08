@@ -18,6 +18,9 @@ for (const width of [320, 360, 768, 1280]) {
       await refpotArt.scrollIntoViewIfNeeded();
       await refpotArt.evaluate(async image => { await image.decode(); });
       await expect(refpotArt).toHaveCSS('object-fit', 'contain');
+      await expect(page.locator('#refpot .product-heading h2 strong')).toHaveCSS('color', 'rgb(73, 81, 94)');
+      await expect(page.locator('#refpot .product-copy')).toHaveCSS('background-image', /244, 242, 234/);
+      await expect(page.locator('#refpot .product-mark')).toHaveAttribute('src', '/marks/refpot-mark.svg?v=2');
       await refpotArt.hover();
       await expect(refpotArt).toHaveCSS('transform', 'none');
       const cards = page.locator('.demo-preview');
@@ -26,7 +29,7 @@ for (const width of [320, 360, 768, 1280]) {
         await card.scrollIntoViewIfNeeded();
         const failures = await card.evaluate((section) => {
           const problems = [];
-          for (const el of section.querySelectorAll('.mechanism-node, .mechanism-branches span, .demo-caption, .demo-route, .life-caption')) {
+          for (const el of section.querySelectorAll('.mechanism-node, .mechanism-branches span, .ref-kind, .ref-detail, .demo-caption, .demo-route, .life-caption')) {
             const box = el.getBoundingClientRect();
             const style = getComputedStyle(el);
             if (parseFloat(style.fontSize) < 12) problems.push(`${el.textContent}: text below 12px`);
@@ -64,3 +67,52 @@ for (const width of [320, 360, 768, 1280]) {
     });
   }
 }
+
+test('RefPot architecture animation changes flow over time without reducing label readability', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  const path = page.locator('#refpot .ref-mechanism');
+  await path.scrollIntoViewIfNeeded();
+  const state = await path.evaluate(async (mechanism) => {
+    const entry = mechanism.querySelector('.ref-sql');
+    const core = mechanism.querySelector('.ref-core');
+    const flow = mechanism.querySelector('.ref-flow-sql');
+    const read = () => ({
+      entry: getComputedStyle(entry).borderTopColor,
+      core: getComputedStyle(core).borderTopColor,
+      flow: getComputedStyle(flow).color,
+      labels: [...mechanism.querySelectorAll('.ref-kind, .ref-detail')].map((label) => getComputedStyle(label).opacity),
+    });
+    const first = read();
+    await new Promise((resolve) => setTimeout(resolve, 900));
+    const second = read();
+    return { first, second, animations: mechanism.getAnimations({ subtree: true }).length };
+  });
+  expect(state.animations).toBeGreaterThan(0);
+  expect(state.second).not.toEqual(state.first);
+  expect(state.first.labels.every((opacity) => opacity === '1')).toBe(true);
+  expect(state.second.labels.every((opacity) => opacity === '1')).toBe(true);
+});
+
+test('RefPot reduced-motion state is static, complete, and readable', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 390 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  const path = page.locator('#refpot .ref-mechanism');
+  await path.scrollIntoViewIfNeeded();
+  await expect(path.locator('.ref-sql')).toBeVisible();
+  await expect(path.locator('.ref-orm')).toBeVisible();
+  await expect(path.locator('.ref-core')).toBeVisible();
+  await expect(path.locator('.ref-entry')).toHaveCount(2);
+  await expect(path.locator('.ref-flow')).toHaveCount(2);
+  const state = await path.evaluate(async (mechanism) => {
+    const initial = [...mechanism.querySelectorAll('.ref-entry, .ref-core, .ref-flow')].map((element) => getComputedStyle(element).borderTopColor + getComputedStyle(element).color + getComputedStyle(element).opacity);
+    await new Promise((resolve) => setTimeout(resolve, 350));
+    const later = [...mechanism.querySelectorAll('.ref-entry, .ref-core, .ref-flow')].map((element) => getComputedStyle(element).borderTopColor + getComputedStyle(element).color + getComputedStyle(element).opacity);
+    return { initial, later, animations: mechanism.getAnimations({ subtree: true }).length, labels: [...mechanism.querySelectorAll('.ref-kind, .ref-detail')].map((label) => getComputedStyle(label).opacity) };
+  });
+  expect(state.animations).toBe(0);
+  expect(state.later).toEqual(state.initial);
+  expect(state.labels.every((opacity) => opacity === '1')).toBe(true);
+});

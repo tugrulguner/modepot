@@ -50,7 +50,7 @@ const requiredHtml = [
   '/products/intpot-lockup.webp',
   '/products/summonpot-lockup.webp',
   '/products/lifepot-lockup.webp',
-  '/products/refpot-lockup.png',
+  '/products/refpot-lockup-v2.svg',
   'Docs',
   'Build with us.',
   'participation-links',
