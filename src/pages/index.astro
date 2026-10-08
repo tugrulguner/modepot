@@ -402,11 +402,11 @@ const structuredData = {
                   <p class="demo-caption">{product.name === 'refpot' ? 'Illustrative animation · proposed architecture, not a live run' : 'Illustrative animation · not a live run'}</p>
                   {product.name === 'refpot' && (
                     <div class="mechanism ref-mechanism" aria-hidden="true">
-                      <div class="ref-entry ref-sql"><span class="ref-kind">DIRECT SQL</span><span class="ref-detail">SQL statements</span></div>
-                      <span class="ref-flow ref-flow-sql">→</span>
-                      <div class="ref-entry ref-orm"><span class="ref-kind">STRUCTURED ORM</span><span class="ref-detail">Python operations</span></div>
-                      <span class="ref-flow ref-flow-orm">→</span>
-                      <div class="ref-core"><span class="ref-kind">PROPOSED EXECUTION CORE</span><span class="ref-detail">Shared relational engine</span></div>
+                      <div class="mechanism-node ref-entry ref-sql"><span class="ref-kind">DIRECT SQL</span><span class="ref-detail">SQL statements</span></div>
+                      <span class="ref-flow ref-flow-sql"><i class="ref-packet"></i></span>
+                      <div class="mechanism-node ref-entry ref-orm"><span class="ref-kind">STRUCTURED ORM</span><span class="ref-detail">Python operations</span></div>
+                      <span class="ref-flow ref-flow-orm"><i class="ref-packet"></i></span>
+                      <div class="mechanism-node ref-core"><span class="ref-kind">PROPOSED EXECUTION CORE</span><span class="ref-detail">Shared relational engine</span></div>
                     </div>
                   )}
                   {product.name === 'dexpot' && (

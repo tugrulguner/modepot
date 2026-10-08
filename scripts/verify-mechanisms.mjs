@@ -60,7 +60,7 @@ for (const [project, concepts] of Object.entries(expected)) {
 if (html.includes('Recorded HTTP example') || html.includes('Recorded CLI') || html.includes('keyless contract trace')) failures.push('recording-panel content remains in built homepage');
 if (mark.includes('#58DFB4') || !mark.includes('#F4F2EA')) failures.push('refpot: compact mark must use the neutral RefPot accent');
 if (lockup.includes('#58DFB4') || !lockup.includes('#F4F2EA')) failures.push('refpot: versioned lockup must use the neutral RefPot accent');
-if (!stylesheet.includes('.product-refpot { --accent: #F4F2EA;') || !stylesheet.includes('background: linear-gradient(145deg, #fffefa, #F4F2EA') || !stylesheet.includes('color: #49515e;')) failures.push('refpot: card must use off-white surfaces and readable graphite ink');
+if (!stylesheet.includes('.product-refpot { --accent: #F4F2EA;') || stylesheet.includes('#refpot .product-copy') || stylesheet.includes('#refpot .demo-preview')) failures.push('refpot: off-white accent must use the shared card and preview surfaces');
 if (html.includes('/products/refpot-lockup.png')) failures.push('refpot: stale lockup URL remains in built homepage');
 if (failures.length) {
   console.error(failures.join('\n'));
