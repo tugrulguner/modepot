@@ -77,5 +77,21 @@
       "sha256": "38ad1a1984ba0b40b43b87fae7f048a290b65537f18f1ae86e514a090b0e2bc0"
     },
     "latestRelease": null
+  },
+  {
+    "name": "refpot",
+    "repository": "https://github.com/tugrulguner/refpot",
+    "commit": "4ddf506c3afce87fe39d6d1b5f883a401b63b065",
+    "commitUrl": "https://github.com/tugrulguner/refpot/commit/4ddf506c3afce87fe39d6d1b5f883a401b63b065",
+    "readme": {
+      "url": "https://github.com/tugrulguner/refpot/blob/4ddf506c3afce87fe39d6d1b5f883a401b63b065/README.md",
+      "sha256": "74908338e45034d4308548129f5038819923e6b08411a2bf630d014263208577"
+    },
+    "roadmap": {
+      "status": "available",
+      "url": "https://github.com/tugrulguner/refpot/blob/4ddf506c3afce87fe39d6d1b5f883a401b63b065/ROADMAP.md",
+      "sha256": "8f57168cf046390be1a15ccb93d638c2ed393423ef6d53543a47b7b6cce0ee37"
+    },
+    "latestRelease": null
   }
 ]

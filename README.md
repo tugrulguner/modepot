@@ -25,8 +25,9 @@ Each project owns its site, source, and learning path. Start with the route for 
 | **Intpot** | Turn typed Python tools into a CLI, HTTP API, or MCP server, and convert between existing interfaces. | [Quickstart](https://intpot.modepot.io/quickstart/) | [intpot.modepot.io](https://intpot.modepot.io/) | [GitHub](https://github.com/tugrulguner/intpot) |
 | **Summonpot** | Declare typed endpoints combining deterministic operations with explicitly bounded agent-owned decisions. | [Quick start](https://summonpot.modepot.io/quick-start/) | [summonpot.modepot.io](https://summonpot.modepot.io/) | [GitHub](https://github.com/tugrulguner/summonpot) |
 | **LifePot** | Create and replay artificial-life worlds where agent proposals become validated simulation rules. | [Simulation contract](https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md) | [lifepot.modepot.io](https://lifepot.modepot.io/) | [GitHub](https://github.com/tugrulguner/lifepot) |
+| **RefPot** | Research an original embedded relational engine with direct SQL and a simple Python ORM on one proposed execution core. No engine or package is released. | [Design](https://refpot.modepot.io/design/) | [refpot.modepot.io](https://refpot.modepot.io/) | [GitHub](https://github.com/tugrulguner/refpot) |
 
-These projects are the beginning, not the boundary. ModePot is an open-source family and community; [join the community on Discord](https://discord.gg/u3AANZr6RG) to discuss the work and get involved.
+These projects are the beginning, not the boundary. RefPot is currently research and design—not an installable engine or ORM—and its 2×-over-SQLite performance figure is an acceptance target, not an achieved result. ModePot is an open-source family and community; [join the community on Discord](https://discord.gg/u3AANZr6RG) to discuss the work and get involved.
 
 ## Development
 

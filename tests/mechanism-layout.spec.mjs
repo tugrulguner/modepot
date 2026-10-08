@@ -14,8 +14,14 @@ for (const width of [320, 360, 768, 1280]) {
       }
       await page.goto('/');
       await page.evaluate(() => document.fonts.ready);
+      const refpotArt = page.locator('#refpot .product-art img');
+      await refpotArt.scrollIntoViewIfNeeded();
+      await refpotArt.evaluate(async image => { await image.decode(); });
+      await expect(refpotArt).toHaveCSS('object-fit', 'contain');
+      await refpotArt.hover();
+      await expect(refpotArt).toHaveCSS('transform', 'none');
       const cards = page.locator('.demo-preview');
-      await expect(cards).toHaveCount(4);
+      await expect(cards).toHaveCount(5);
       for (const card of await cards.all()) {
         await card.scrollIntoViewIfNeeded();
         const failures = await card.evaluate((section) => {

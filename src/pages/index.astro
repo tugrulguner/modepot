@@ -138,6 +138,29 @@ const productDefinitions = [
     playground: 'https://lifepot.modepot.io/',
     demoDescription: 'Cells evolve across generations in an illustrative animation.',
   },
+  {
+    index: '05',
+    mode: 'engine',
+    name: 'refpot',
+    prefix: 'ref',
+    mark: '/marks/refpot-mark.svg',
+    image: '/products/refpot-lockup.png',
+    alt: 'RefPot canonical lockup: a custom relational engine and simple Python ORM, research and design stage',
+    category: 'Embedded relational engine · research & design',
+    statement: 'Own the engine. Keep the usage simple.',
+    choice: 'Design an embedded relational engine that works directly, with a simple Python ORM on top.',
+    description: 'RefPot is in engine-first research and design. It is not a SQLite wrapper; no installable package, stable API, released engine, ORM, or qualified performance result is available yet.',
+    href: 'https://refpot.modepot.io/',
+    action: 'Explore RefPot',
+    repository: 'https://github.com/tugrulguner/refpot',
+    docs: 'https://refpot.modepot.io/design/',
+    development: '',
+    developmentLabel: '',
+    accent: 'mint',
+    signal: 'SQL + ORM → one engine',
+    playground: '',
+    demoDescription: 'Planned architecture illustration; not an executable preview.',
+  },
 ];
 const products = productDefinitions.map((product) => ({ ...product, source: sourceByName.get(product.name)! }));
 
@@ -180,9 +203,9 @@ const structuredData = {
           description: product.description,
           url: product.href,
           codeRepository: product.repository,
-          programmingLanguage: product.programmingLanguage,
-          runtimePlatform: product.runtimePlatform,
-          license: product.license,
+          ...(product.programmingLanguage ? { programmingLanguage: product.programmingLanguage } : {}),
+          ...(product.runtimePlatform ? { runtimePlatform: product.runtimePlatform } : {}),
+          ...(product.license ? { license: product.license } : {}),
         },
       })),
     },
@@ -377,7 +400,8 @@ const structuredData = {
                 <p class="product-statement">{product.statement}</p>
                 <p class="product-description">{product.description}</p>
                 <section class={`demo-preview demo-${product.accent}`} aria-label={`${product.name} mechanism preview`}>
-                  <p class="demo-caption">Illustrative animation · not a live run</p>
+                  <p class="demo-caption">{product.name === 'refpot' ? 'Planned architecture · not a live run' : 'Illustrative animation · not a live run'}</p>
+                  {product.name === 'refpot' && <p class="mechanism">Direct SQL&nbsp; + &nbsp;Python ORM operations<br />↓<br />One proposed execution core</p>}
                   {product.name === 'dexpot' && (
                     <div class="mechanism dex-mechanism" aria-hidden="true">
                       <span class="mechanism-node">Request</span><span class="mechanism-arrow">→</span>
@@ -409,13 +433,13 @@ const structuredData = {
                     </div>
                   )}
                   <p class="visually-hidden">{product.name === 'lifepot' ? 'Illustrative Conway’s Game of Life: each frame follows the same neighbor-count birth and survival rules; live cells appear, disappear, and move.' : product.demoDescription}</p>
-                  <a
+                  {product.playground && <a
                     class="demo-route ph-no-autocapture"
                     href={product.playground}
                     data-posthog-event="modepot_project_clicked"
                     data-posthog-project={product.name}
                     data-posthog-surface="modepot_homepage"
-                  >{product.name === 'lifepot' ? 'Explore LifePot and choose a preset' : 'Open project playground'} <span aria-hidden="true">↗</span></a>
+                  >{product.name === 'lifepot' ? 'Explore LifePot and choose a preset' : 'Open project playground'} <span aria-hidden="true">↗</span></a>}
                 </section>
                 <div class="product-actions">
                   <a
@@ -480,7 +504,7 @@ const structuredData = {
           </p>
           <p>
             We are building an open-source family of fast, approachable frameworks, tools, engines, and
-            games, with AI-native and agent-friendly approaches where they add value. Dexpot, Intpot, Summonpot, and LifePot are only
+            games, with AI-native and agent-friendly approaches where they add value. Dexpot, Intpot, Summonpot, LifePot, and RefPot are only
             the beginning. ModePot was created by <a href="https://tugrul.modepot.io/">Tugrul Guner</a>.
           </p>
         </div>

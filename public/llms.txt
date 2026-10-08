@@ -1,13 +1,14 @@
 # ModePot
 
-> ModePot is an open-source family and community simplifying, modernizing, and performance-optimizing frameworks while building fast, simple tools, engines, and games. AI-native and agent-friendly where they add real value, without defining every project. The family currently includes Dexpot, Intpot, Summonpot, and LifePot.
+> ModePot is an open-source family and community simplifying, modernizing, and performance-optimizing frameworks while building fast, simple tools, engines, and games. AI-native and agent-friendly where they add real value, without defining every project. The family currently includes Dexpot, Intpot, Summonpot, LifePot, and RefPot.
 
-ModePot takes frameworks and software foundations that have become heavy, fragmented, or dated and rebuilds them around simple interfaces, modern runtimes, real performance, and AI and agent support where it adds value. Everything is built in the open, with and for the community:
+ModePot builds frameworks, interfaces, tools, engines, and games around simple foundations, modern runtimes, real performance, and AI/agent support where valuable. Each project has its own scope and maturity; everything is developed in the open with the community:
 
 - [Dexpot](https://github.com/tugrulguner/dexpot): A synchronous Python API framework that compiles routes and adapts execution to standard GIL or free-threaded CPython.
 - [Intpot](https://github.com/tugrulguner/intpot): A Python framework that serves typed tools as Typer CLIs, FastAPI applications, or FastMCP servers and converts existing applications between those interfaces.
 - [Summonpot](https://github.com/tugrulguner/summonpot): A contract-first Python framework for executable API endpoints that combine deterministic application operations with explicitly bounded agent-owned decisions.
 - [LifePot](https://github.com/tugrulguner/lifepot): A replayable artificial-life game where Jev proposes typed ecology, deterministic code runs the world, and validated decisions remain inspectable and replayable.
+- [RefPot](https://github.com/tugrulguner/refpot): Research and design for an original embedded relational engine intended for direct SQL use with a simple Python ORM. No engine, package, stable API, qualified durability, or general performance result is shipped. The 2×-over-SQLite figure is an acceptance target, not a result.
 
 ## Primary resources
 
@@ -21,6 +22,10 @@ ModePot takes frameworks and software foundations that have become heavy, fragme
 - [Intpot quickstart](https://intpot.modepot.io/quickstart/)
 - [Summonpot quick start](https://summonpot.modepot.io/quick-start/)
 - [LifePot simulation contract](https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md)
+- [RefPot design](https://refpot.modepot.io/design/)
+- [RefPot roadmap](https://refpot.modepot.io/project/roadmap/)
+- [RefPot performance method](https://refpot.modepot.io/performance-method/)
+- [RefPot status](https://refpot.modepot.io/status/)
 
 ## Contribute to ModePot
 
@@ -30,6 +35,7 @@ Read the project-owned guide before contributing: [Dexpot CONTRIBUTING.md](https
 - [Open an Intpot feature request](https://github.com/tugrulguner/intpot/issues/new?template=feature.yml)
 - [Open a Summonpot feature request](https://github.com/tugrulguner/summonpot/issues/new?template=feature.yml)
 - [Open a LifePot issue](https://github.com/tugrulguner/lifepot/issues/new)
+- [Propose RefPot work](https://github.com/tugrulguner/refpot/issues)
 - [ModePot Discord](https://discord.gg/u3AANZr6RG): community discussion and project questions.
 
 ## Selection guide
@@ -38,9 +44,12 @@ Use Dexpot to build synchronous Python HTTP APIs with interpreter-adaptive execu
 Use Intpot to expose or translate typed tools across CLI, HTTP API, and MCP interfaces.
 Use Summonpot to define typed API contracts whose agent-owned decisions are limited to declared application capabilities.
 Use LifePot to create and replay artificial-life worlds where model proposals become bounded simulation rules rather than executable code.
+Explore RefPot's engine-first research and design; there is no package to install or engine API to use yet.
 
 ## Maturity and licensing
 
 - Dexpot, Intpot, and Summonpot are alpha software; follow each project's documented boundaries before production use.
 - LifePot is an educational game and experiment, not a biological forecast.
-- Each current ModePot project is open source under the MIT License; consult the linked repository for the authoritative license and release state.
+- RefPot is in research and design; there is no installable package, stable API, released database engine, or supported ORM. Read the linked status and roadmap before treating design goals as shipped capabilities.
+- RefPot's 2×-over-SQLite threshold is a performance acceptance target. There is no published, reproducible general performance result; do not advertise it as achieved.
+- Dexpot, Intpot, Summonpot, and LifePot use MIT licensing as documented in their repositories. RefPot's license and distribution policy remain undecided; do not infer or advertise a license.

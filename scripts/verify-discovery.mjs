@@ -4,6 +4,8 @@ const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf
 const llms = await readFile(new URL('../dist/llms.txt', import.meta.url), 'utf8');
 const failures = [];
 const readme = await readFile(new URL('../README.md', import.meta.url), 'utf8');
+const projects = JSON.parse(await readFile(new URL('../src/data/projects.json', import.meta.url), 'utf8'));
+const projectNames = projects.map(({ name }) => name);
 const readmeHero = readme.slice(0, readme.indexOf('## Projects'));
 for (const token of [
   '<img src="public/modepot-mark.svg"', 'alt="ModePot family mark"',
@@ -23,10 +25,10 @@ if (!readmeHero.includes('<p align="center">') || !['ModePot', 'GitHub', 'Commun
 if (!readmeHero.includes('https://tugrul.modepot.io/')) {
   failures.push('README.md: creator personal site must be linked in the opening resource row');
 }
-if (!readme.includes('https://dexpot.modepot.io/quick-start/') || !readme.includes('https://intpot.modepot.io/quickstart/') || !readme.includes('https://summonpot.modepot.io/quick-start/') || !readme.includes('docs/simulation-contract.md')) {
+if (!readme.includes('https://dexpot.modepot.io/quick-start/') || !readme.includes('https://intpot.modepot.io/quickstart/') || !readme.includes('https://summonpot.modepot.io/quick-start/') || !readme.includes('docs/simulation-contract.md') || !readme.includes('https://refpot.modepot.io/design/')) {
   failures.push('README.md: project index must retain verified learning routes for all projects');
 }
-for (const product of ['dexpot', 'intpot', 'summonpot', 'lifepot']) {
+for (const product of projectNames) {
   if (!readme.includes(`https://${product}.modepot.io/`) || !readme.includes(`https://github.com/tugrulguner/${product}`)) {
     failures.push(`README.md: missing site/source chooser destinations for ${product}`);
   }
@@ -48,6 +50,7 @@ const requiredHtml = [
   '/products/intpot-lockup.webp',
   '/products/summonpot-lockup.webp',
   '/products/lifepot-lockup.webp',
+  '/products/refpot-lockup.png',
   'Docs',
   'Build with us.',
   'participation-links',
@@ -60,6 +63,7 @@ for (const [product, docsUrl] of Object.entries({
   intpot: 'https://intpot.modepot.io/quickstart/',
   summonpot: 'https://summonpot.modepot.io/quick-start/',
   lifepot: 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md',
+  refpot: 'https://refpot.modepot.io/design/',
 })) {
   for (const destination of [
     docsUrl,
@@ -103,8 +107,16 @@ for (const [, source] of jsonLdBlocks) {
 for (const type of ['CollectionPage', 'ItemList', 'SoftwareSourceCode', 'WebSite']) {
   if (!schemaTypes.has(type)) failures.push(`index.html: missing ${type} structured data`);
 }
+const itemList = jsonLdBlocks.map(([, source]) => JSON.parse(source)).flatMap((value) => value['@graph'] ?? []).find((item) => item['@type'] === 'ItemList');
+if (itemList?.numberOfItems !== projectNames.length || itemList?.itemListElement?.length !== projectNames.length) {
+  failures.push(`index.html: structured project count does not match source inventory (${projectNames.length})`);
+}
+const refpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'refpot')?.item;
+if (!refpotSchema || refpotSchema.programmingLanguage || refpotSchema.runtimePlatform || refpotSchema.license) {
+  failures.push('index.html: RefPot structured data must not invent language, runtime, or license metadata');
+}
 
-for (const product of ['dexpot', 'intpot', 'summonpot', 'lifepot']) {
+for (const product of projectNames) {
   if ((html.match(new RegExp(`class="product product-[^"]+" id="${product}"`, 'g')) ?? []).length !== 1) {
     failures.push(`index.html: expected exactly one project card for ${product}`);
   }
@@ -125,14 +137,15 @@ for (const product of ['dexpot', 'intpot', 'summonpot', 'lifepot']) {
     failures.push(`index.html: explicit no-release state missing for ${product}`);
   }
 }
-for (const destination of ['https://github.com/tugrulguner/dexpot', 'https://github.com/tugrulguner/intpot', 'https://github.com/tugrulguner/summonpot', 'https://github.com/tugrulguner/lifepot']) {
+for (const destination of projectNames.map((product) => `https://github.com/tugrulguner/${product}`)) {
   const repoLinks = [...html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/g)].filter(([, href]) => href === destination);
   if (repoLinks.some(([tag]) => !tag.includes('ph-no-autocapture') || tag.includes('data-posthog-event'))) {
     failures.push(`index.html: repository link ${destination} must be excluded from autocapture and custom project-visit events`);
   }
 }
 const projectEventLinks = [...html.matchAll(/<a\b[^>]*data-posthog-event="modepot_project_clicked"[^>]*>/g)];
-if (projectEventLinks.length !== 11) failures.push(`index.html: expected 11 explicit project links (4 Explore, 4 playground, 3 site Docs), found ${projectEventLinks.length}`);
+const expectedProjectEventLinks = projectNames.length * 2 + 3;
+if (projectEventLinks.length !== expectedProjectEventLinks) failures.push(`index.html: expected ${expectedProjectEventLinks} explicit project links, found ${projectEventLinks.length}`);
 for (const [index, [tag]] of projectEventLinks.entries()) {
   if (!tag.includes('ph-no-autocapture')) failures.push(`index.html: project event link ${index + 1} must exclude autocapture`);
   for (const attribute of ['data-posthog-project=', 'data-posthog-surface="modepot_homepage"']) {
@@ -142,7 +155,7 @@ for (const [index, [tag]] of projectEventLinks.entries()) {
 if (!html.includes("document.addEventListener('auxclick', captureOutboundEvent)") || !html.includes("event.type === 'auxclick' && event.button !== 1")) {
   failures.push('index.html: middle-button activation must be tracked and non-middle auxclick excluded');
 }
-for (const token of ['## Quick starts and documentation', 'https://dexpot.modepot.io/quick-start/', 'https://intpot.modepot.io/quickstart/', 'https://summonpot.modepot.io/quick-start/', '## Contribute to ModePot', 'CONTRIBUTING.md', 'Propose a Dexpot feature', 'Discord', '## Selection guide', '## Maturity and licensing', 'https://github.com/tugrulguner/dexpot', 'https://github.com/tugrulguner/intpot', 'https://github.com/tugrulguner/summonpot', 'https://github.com/tugrulguner/lifepot']) {
+for (const token of ['## Quick starts and documentation', 'https://dexpot.modepot.io/quick-start/', 'https://intpot.modepot.io/quickstart/', 'https://summonpot.modepot.io/quick-start/', '## Contribute to ModePot', 'CONTRIBUTING.md', 'Propose a Dexpot feature', 'Discord', '## Selection guide', '## Maturity and licensing', 'https://github.com/tugrulguner/dexpot', 'https://github.com/tugrulguner/intpot', 'https://github.com/tugrulguner/summonpot', 'https://github.com/tugrulguner/lifepot', 'https://github.com/tugrulguner/refpot', 'license and distribution policy remain undecided']) {
   if (!llms.includes(token)) failures.push(`llms.txt: missing ${token}`);
 }
 
