@@ -12,17 +12,21 @@ const projects = {
   intpot: ['https://intpot.modepot.io/playground/', 'https://intpot.modepot.io/quickstart/'],
   summonpot: ['https://summonpot.modepot.io/playground/', 'https://summonpot.modepot.io/quick-start/'],
   lifepot: ['https://lifepot.modepot.io/', 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md'],
+  refpot: ['https://refpot.modepot.io/', 'https://refpot.modepot.io/design/'],
 };
 
-test('seven new project-entry links are tracked; GitHub documentation remains excluded', async ({ page }) => {
+test('project-entry links are tracked; GitHub documentation remains excluded', async ({ page }) => {
   await page.setContent(isolatedHtml);
-  await expect(page.locator('a[data-posthog-event="modepot_project_clicked"]')).toHaveCount(11);
+  const expectedCount = Object.keys(projects).length * 2 + 3;
+  await expect(page.locator('a[data-posthog-event="modepot_project_clicked"]')).toHaveCount(expectedCount);
   for (const [project, [playground, docs]] of Object.entries(projects)) {
-    const play = page.locator(`.demo-route[href="${playground}"]`);
-    await expect(play).toHaveClass(/ph-no-autocapture/);
-    await expect(play).toHaveAttribute('data-posthog-event', 'modepot_project_clicked');
-    await expect(play).toHaveAttribute('data-posthog-project', project);
-    await expect(play).toHaveAttribute('data-posthog-surface', 'modepot_homepage');
+    if (project !== 'refpot') {
+      const play = page.locator(`.demo-route[href="${playground}"]`);
+      await expect(play).toHaveClass(/ph-no-autocapture/);
+      await expect(play).toHaveAttribute('data-posthog-event', 'modepot_project_clicked');
+      await expect(play).toHaveAttribute('data-posthog-project', project);
+      await expect(play).toHaveAttribute('data-posthog-surface', 'modepot_homepage');
+    }
     const doc = page.locator(`.product-actions > .product-resource[href="${docs}"]`);
     await expect(doc).toHaveClass(/ph-no-autocapture/);
     if (project === 'lifepot') {
@@ -37,6 +41,7 @@ test('seven new project-entry links are tracked; GitHub documentation remains ex
 
 test('built handler captures every project link once per activation and preserves navigation', async ({ page }) => {
   await page.setContent(isolatedHtml);
+  const expectedCount = Object.keys(projects).length * 2 + 3;
   await page.evaluate(() => {
     window.__captures = [];
     window.posthog = { capture: (...args) => window.__captures.push(args) };
@@ -64,7 +69,7 @@ test('built handler captures every project link once per activation and preserve
       return { expected, captures: [...window.__captures], primary: !window.__preventedByProduction[0], middle: !window.__preventedByProduction[1], unchanged: href === link.href };
     });
   });
-  expect(checks).toHaveLength(11);
+  expect(checks).toHaveLength(expectedCount);
   for (const result of checks) {
     expect(result.primary && result.middle && result.unchanged).toBe(true);
     expect(result.captures).toEqual(Array(2).fill(['modepot_project_clicked', result.expected, { transport: 'sendBeacon', send_instantly: true }]));

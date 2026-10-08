@@ -25,7 +25,7 @@ try {
   const output = pathToFileURL(join(temp, 'generated', 'projects.json'));
   const records = await sync({ fixtureDir: temp, outputFile: output });
   const replay = JSON.parse(await readFile(output, 'utf8'));
-  assert.equal(records.length, 4);
+  assert.equal(records.length, projects.length);
   assert.deepEqual(replay, records);
   assert.equal(replay[1].roadmap.status, 'missing');
   assert.equal(replay[0].latestRelease.tag, 'v1.0.0');
@@ -33,4 +33,4 @@ try {
 } finally {
   await rm(temp, { recursive: true, force: true });
 }
-console.log('project sync normalization and offline four-project replay passed');
+console.log(`project sync normalization and offline ${projects.length}-project replay passed`);

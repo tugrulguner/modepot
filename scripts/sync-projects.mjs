@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 
-export const projects = ['dexpot', 'intpot', 'summonpot', 'lifepot'];
+export const projects = ['dexpot', 'intpot', 'summonpot', 'lifepot', 'refpot'];
 const owner = 'tugrulguner';
 const api = `https://api.github.com/repos/${owner}`;
 const sha256 = (text) => createHash('sha256').update(text).digest('hex');

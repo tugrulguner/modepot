@@ -15,7 +15,7 @@ for (const width of [320, 360, 768, 1280]) {
       await page.goto('/');
       await page.evaluate(() => document.fonts.ready);
       const cards = page.locator('.demo-preview');
-      await expect(cards).toHaveCount(4);
+      await expect(cards).toHaveCount(5);
       for (const card of await cards.all()) {
         await card.scrollIntoViewIfNeeded();
         const failures = await card.evaluate((section) => {
