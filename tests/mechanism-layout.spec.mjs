@@ -18,8 +18,13 @@ for (const width of [320, 360, 768, 1280]) {
       await refpotArt.scrollIntoViewIfNeeded();
       await refpotArt.evaluate(async image => { await image.decode(); });
       await expect(refpotArt).toHaveCSS('object-fit', 'contain');
-      await expect(page.locator('#refpot .product-heading h2 strong')).toHaveCSS('color', 'rgb(73, 81, 94)');
-      await expect(page.locator('#refpot .product-copy')).toHaveCSS('background-image', /244, 242, 234/);
+      await expect(page.locator('#refpot .product-heading h2 strong')).toHaveCSS('color', 'rgb(244, 242, 234)');
+      const surfaces = await page.evaluate(() => ['refpot', 'intpot', 'dexpot', 'summonpot', 'lifepot'].map(id => {
+        const card = document.getElementById(id);
+        return ['.product-copy', '.demo-preview'].map(selector => getComputedStyle(card.querySelector(selector)).backgroundColor);
+      }));
+      for (const surface of surfaces) expect(surface).toEqual(surfaces[0]);
+      await expect(page.locator('#refpot .product-mark')).toHaveCSS('filter', 'none');
       await expect(page.locator('#refpot .product-mark')).toHaveAttribute('src', '/marks/refpot-mark.svg?v=2');
       await refpotArt.hover();
       await expect(refpotArt).toHaveCSS('transform', 'none');
@@ -81,7 +86,7 @@ test('RefPot architecture animation changes flow over time without reducing labe
     const read = () => ({
       entry: getComputedStyle(entry).borderTopColor,
       core: getComputedStyle(core).borderTopColor,
-      flow: getComputedStyle(flow).color,
+      flow: getComputedStyle(flow.querySelector('.ref-packet')).transform,
       labels: [...mechanism.querySelectorAll('.ref-kind, .ref-detail')].map((label) => getComputedStyle(label).opacity),
     });
     const first = read();
@@ -93,6 +98,39 @@ test('RefPot architecture animation changes flow over time without reducing labe
   expect(state.second).not.toEqual(state.first);
   expect(state.first.labels.every((opacity) => opacity === '1')).toBe(true);
   expect(state.second.labels.every((opacity) => opacity === '1')).toBe(true);
+});
+
+test('RefPot packets visibly travel and alternate paths into the shared core', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  const card = page.locator('#refpot');
+  await card.scrollIntoViewIfNeeded();
+  const sample = async (time) => page.locator('.ref-mechanism').evaluate((mechanism, time) => {
+    for (const animation of mechanism.getAnimations({ subtree: true })) {
+      animation.pause();
+      animation.currentTime = time;
+    }
+    return [...mechanism.querySelectorAll('.ref-packet')].map(packet => ({
+      y: packet.getBoundingClientRect().top,
+      opacity: Number(getComputedStyle(packet).opacity),
+    }));
+  }, time);
+  const early = await sample(520);
+  const late = await sample(1200);
+  expect(early[0].opacity).toBe(1);
+  expect(late[0].opacity).toBe(1);
+  expect(late[0].y - early[0].y).toBeGreaterThan(18);
+  expect(late[1].opacity).toBe(0);
+  await card.screenshot({ path: testInfo.outputPath('refpot-desktop-transfer.png') });
+  const orm = await sample(2800);
+  expect(orm[1].opacity).toBe(1);
+  expect(orm[0].opacity).toBe(0);
+  await card.screenshot({ path: testInfo.outputPath('refpot-desktop-orm.png') });
+  await page.setViewportSize({ width: 320, height: 800 });
+  await card.scrollIntoViewIfNeeded();
+  await sample(1200);
+  await card.screenshot({ path: testInfo.outputPath('refpot-mobile-transfer.png') });
 });
 
 test('RefPot reduced-motion state is static, complete, and readable', async ({ page }) => {

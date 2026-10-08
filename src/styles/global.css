@@ -557,7 +557,8 @@ nav a:hover {
 .product-gold { --accent: var(--gold); }
 .product-violet { --accent: var(--violet); }
 .product-mint { --accent: #77e5bd; }
-.product-refpot { --accent: #F4F2EA; --refpot-ink: #49515e; }
+.product-refpot { --accent: #F4F2EA; }
+.product-refpot h2 strong { color: var(--accent); }
 
 .selector-mint { --selector-accent: #77e5bd; }
 .selector-refpot { --selector-accent: #F4F2EA; }
@@ -643,22 +644,6 @@ nav a:hover {
     var(--night-soft);
 }
 
-/* RefPot is the family's warm-neutral exception, not another mint card. */
-#refpot .product-copy {
-  color: #49515e;
-  background: linear-gradient(145deg, #fffefa, #F4F2EA 68%, #ebe9e1);
-}
-#refpot.product h2 strong,
-#refpot .product-eyebrow,
-#refpot .product-index span:first-child { color: #49515e; }
-#refpot .product-mark { filter: grayscale(1) brightness(.31); }
-#refpot .product-description,
-#refpot .product-resource { color: #49515e; }
-#refpot .product-link { color: #303741; border-bottom-color: #49515e; }
-#refpot .product-link span,
-#refpot .product-resource:hover { color: #49515e; }
-#refpot .demo-preview { border-color: #c7c5bc; background: #fffefa; }
-#refpot .demo-caption { color: #49515e; }
 
 .product-heading {
   display: flex;
@@ -727,48 +712,43 @@ nav a:hover {
 .mechanism-arrow { color: var(--accent); }
 .ref-mechanism {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 1.1rem minmax(0, 1fr);
-  grid-template-rows: auto 1.1rem auto;
-  align-items: center;
-  gap: .35rem .45rem;
-  min-height: 8.2rem;
-  color: #49515e;
-  font: 500 .75rem/1.4 var(--mono);
-  text-align: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto 2rem auto;
+  gap: .35rem .55rem;
 }
-.ref-entry, .ref-core {
-  display: grid;
-  gap: .22rem;
-  min-width: 0;
-  min-height: 3.05rem;
-  align-content: center;
-  padding: .42rem .35rem;
-  border: 1px solid #c7c5bc;
-  border-radius: .35rem;
-  background: #fffefa;
-}
+.ref-entry, .ref-core { gap: .22rem; width: 100%; }
 .ref-kind { font-size: .75rem; font-weight: 650; line-height: 1.35; }
-.ref-detail { color: #49515e; font-size: .75rem; line-height: 1.35; }
-.ref-flow-sql { grid-column: 1; grid-row: 2; transform: rotate(90deg); }
-.ref-orm { grid-column: 3; grid-row: 1; animation-delay: .55s !important; }
-.ref-flow-orm { grid-column: 3; grid-row: 2; transform: rotate(90deg); animation-delay: 1.15s; }
+.ref-detail { color: #bdc1cb; font-size: .75rem; line-height: 1.35; }
 .ref-sql { grid-column: 1; grid-row: 1; }
-.ref-core { grid-column: 1 / -1; grid-row: 3; min-height: 2.85rem; border-color: #858983; animation-delay: 1.15s; }
-.ref-flow { color: #49515e; animation: refpot-flow 2.8s ease-in-out infinite; }
-.ref-entry, .ref-core { animation: refpot-emphasis 2.8s ease-in-out infinite; }
-.ref-sql { animation-delay: 0s; }
-.ref-orm { animation-delay: .55s; }
-.ref-core, .ref-flow-orm { animation-delay: 1.15s; }
-@keyframes refpot-flow {
-  0%, 12%, 100% { color: #49515e; }
-  40%, 68% { color: #111820; }
+.ref-orm { grid-column: 2; grid-row: 1; }
+.ref-core { grid-column: 1 / -1; grid-row: 3; }
+.ref-flow { position: relative; height: 2rem; color: var(--accent); }
+.ref-flow-sql { grid-column: 1; grid-row: 2; }
+.ref-flow-orm { grid-column: 2; grid-row: 2; }
+.ref-flow::before { content: '↓'; position: absolute; inset: 0; line-height: 2rem; opacity: .45; }
+.ref-packet { position: absolute; left: calc(50% - .25rem); top: 0; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); animation: refpot-transfer 3.2s linear infinite both; }
+.ref-flow-orm .ref-packet { animation-delay: 1.6s; }
+.ref-mechanism .ref-sql { animation: refpot-entry 3.2s linear infinite; }
+.ref-mechanism .ref-orm { animation: refpot-entry 3.2s linear 1.6s infinite; }
+.ref-mechanism .ref-core { animation: refpot-receive 1.6s linear infinite; }
+@keyframes refpot-transfer {
+  0%, 12% { transform: translateY(0); opacity: 0; }
+  16% { transform: translateY(0); opacity: 1; }
+  40% { transform: translateY(1.5rem); opacity: 1; }
+  44%, 100% { transform: translateY(1.5rem); opacity: 0; }
 }
-@keyframes refpot-emphasis {
-  0%, 15%, 100% { border-color: #c7c5bc; box-shadow: none; }
-  42%, 72% { border-color: #49515e; box-shadow: inset 0 0 0 1px rgba(73,81,94,.13); }
+@keyframes refpot-entry {
+  0%, 28% { border-color: var(--accent); background: #30343e; }
+  40%, 100% { border-color: #343744; background: #121621; }
+}
+@keyframes refpot-receive {
+  0%, 68%, 100% { border-color: #343744; background: #121621; }
+  80%, 90% { border-color: var(--accent); background: #30343e; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ref-entry, .ref-core, .ref-flow { animation: none; }
+  .ref-mechanism .ref-entry, .ref-mechanism .ref-core, .ref-packet { animation: none; }
+  .ref-packet { display: none; }
+  .ref-flow::before { opacity: 1; }
 }
 .int-mechanism { flex-direction: column; justify-content: center; gap: .55rem; }
 .int-mechanism > .mechanism-node { width: min(100%, 13rem); }
