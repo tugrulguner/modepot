@@ -42,7 +42,7 @@ const productDefinitions = [
     statement: 'Plain handlers. Adaptive execution.',
     choice: 'Build a synchronous Python HTTP API that adapts to GIL and free-threaded CPython.',
     description:
-      'Dexpot compiles routes once, validates JSON with msgspec, and adapts concurrency to standard GIL or free-threaded Python—without asking application code to become async.',
+      'Dexpot keeps handlers synchronous across standard-GIL and free-threaded CPython. response=T validates and projects public output; invalid output becomes a sanitized 500 before success bytes, response=None uses generic output, and RawResponse is unchecked. Any is not a privacy filter.',
     href: 'https://dexpot.modepot.io/',
     action: 'Explore Dexpot',
     repository: 'https://github.com/tugrulguner/dexpot',
@@ -55,7 +55,8 @@ const productDefinitions = [
     accent: 'cyan',
     signal: 'request → response',
     playground: 'https://dexpot.modepot.io/playground/',
-    demoDescription: 'Request, typed validation, and response.',
+    demoDescription: 'Typed input is bound before a synchronous handler builds a checked public response.',
+    contractVersion: 'response=T contract · v0.7.0 published on PyPI',
   },
   {
     index: '02',
@@ -398,6 +399,7 @@ const structuredData = {
                 <p class="product-eyebrow">{product.category}</p>
                 <p class="product-statement">{product.statement}</p>
                 <p class="product-description">{product.description}</p>
+                {product.contractVersion && <p class="product-contract-version">{product.contractVersion}</p>}
                 <section class={`demo-preview demo-${product.accent}`} aria-label={`${product.name} mechanism preview`}>
                   <p class="demo-caption">{product.name === 'refpot' ? 'Illustrative animation · proposed architecture, not a live run' : 'Illustrative animation · not a live run'}</p>
                   {product.name === 'refpot' && (
@@ -411,9 +413,9 @@ const structuredData = {
                   )}
                   {product.name === 'dexpot' && (
                     <div class="mechanism dex-mechanism" aria-hidden="true">
-                      <span class="mechanism-node">Request</span><span class="mechanism-arrow">→</span>
-                      <span class="mechanism-node">Typed<br />validation</span><span class="mechanism-arrow">→</span>
-                      <span class="mechanism-node">Response</span>
+                      <span class="mechanism-node">Bind typed input</span><span class="mechanism-arrow">→</span>
+                      <span class="mechanism-node">Synchronous handler</span><span class="mechanism-arrow">→</span>
+                      <span class="mechanism-node">Checked public response</span>
                     </div>
                   )}
                   {product.name === 'intpot' && (

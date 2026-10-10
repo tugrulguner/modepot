@@ -684,6 +684,12 @@ nav a:hover {
   letter-spacing: -0.035em;
 }
 
+.product-contract-version {
+  margin: .55rem 0 0;
+  color: #bdc1cb;
+  font: 500 .7rem/1.5 var(--mono);
+}
+
 .product-description {
   max-width: 34rem;
   margin: 0;

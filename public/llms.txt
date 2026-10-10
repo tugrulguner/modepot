@@ -4,7 +4,7 @@
 
 ModePot builds frameworks, interfaces, tools, engines, and games around simple foundations, modern runtimes, real performance, and AI/agent support where valuable. Each project has its own scope and maturity; everything is developed in the open with the community:
 
-- [Dexpot](https://github.com/tugrulguner/dexpot): A synchronous Python API framework that compiles routes and adapts execution to standard GIL or free-threaded CPython.
+- [Dexpot](https://github.com/tugrulguner/dexpot): A synchronous Python API framework that adapts to standard-GIL and free-threaded CPython. `response=T` validates/projects public output; invalid output is sanitized as a 500 before success bytes. `response=None` selects generic output, `RawResponse` is unchecked, and `Any` is not a privacy filter. This response contract is published in v0.7.0.
 - [Intpot](https://github.com/tugrulguner/intpot): A Python framework that serves typed tools as Typer CLIs, FastAPI applications, or FastMCP servers and converts existing applications between those interfaces.
 - [Summonpot](https://github.com/tugrulguner/summonpot): A contract-first Python framework for executable API endpoints that combine deterministic application operations with explicitly bounded agent-owned decisions.
 - [LifePot](https://github.com/tugrulguner/lifepot): A replayable artificial-life game where Jev proposes typed ecology, deterministic code runs the world, and validated decisions remain inspectable and replayable.
