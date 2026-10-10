@@ -125,7 +125,7 @@ const productDefinitions = [
     choice: 'Create and replay a world where agent proposals become bounded simulation rules.',
     description:
       'LifePot is an open-source artificial-life game where Jev proposes typed ecology, deterministic code runs the world, and a validated ledger makes every accepted change inspectable and replayable.',
-    href: 'https://lifepot.modepot.io/',
+    href: 'https://lifepot.modepot.io/learn',
     action: 'Explore LifePot',
     repository: 'https://github.com/tugrulguner/lifepot',
     docs: 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md',
@@ -136,7 +136,7 @@ const productDefinitions = [
     license: 'https://opensource.org/license/mit',
     accent: 'mint',
     signal: 'propose → replay',
-    playground: 'https://lifepot.modepot.io/',
+    playground: 'https://lifepot.modepot.io/play',
     demoDescription: 'Cells evolve across generations in an illustrative animation.',
   },
   {
@@ -448,7 +448,7 @@ const structuredData = {
                     data-posthog-event="modepot_project_clicked"
                     data-posthog-project={product.name}
                     data-posthog-surface="modepot_homepage"
-                  >{product.name === 'lifepot' ? 'Explore LifePot and choose a preset' : 'Open project playground'} <span aria-hidden="true">↗</span></a>}
+                  >{product.name === 'lifepot' ? 'Play the game' : 'Open project playground'} <span aria-hidden="true">↗</span></a>}
                 </section>
                 <div class="product-actions">
                   <a

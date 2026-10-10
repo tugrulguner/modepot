@@ -11,7 +11,7 @@ const projects = {
   dexpot: ['https://dexpot.modepot.io/playground/', 'https://dexpot.modepot.io/quick-start/'],
   intpot: ['https://intpot.modepot.io/playground/', 'https://intpot.modepot.io/quickstart/'],
   summonpot: ['https://summonpot.modepot.io/playground/', 'https://summonpot.modepot.io/quick-start/'],
-  lifepot: ['https://lifepot.modepot.io/', 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md'],
+  lifepot: ['https://lifepot.modepot.io/learn', 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md'],
   refpot: ['https://refpot.modepot.io/', 'https://refpot.modepot.io/design/'],
 };
 
@@ -21,7 +21,7 @@ test('project-entry links are tracked; GitHub documentation remains excluded', a
   await expect(page.locator('a[data-posthog-event="modepot_project_clicked"]')).toHaveCount(expectedCount);
   for (const [project, [playground, docs]] of Object.entries(projects)) {
     if (project !== 'refpot') {
-      const play = page.locator(`.demo-route[href="${playground}"]`);
+      const play = page.locator(`.demo-route[href="${project === 'lifepot' ? 'https://lifepot.modepot.io/play' : playground}"]`);
       await expect(play).toHaveClass(/ph-no-autocapture/);
       await expect(play).toHaveAttribute('data-posthog-event', 'modepot_project_clicked');
       await expect(play).toHaveAttribute('data-posthog-project', project);
@@ -81,4 +81,31 @@ test('built handler captures every project link once per activation and preserve
   await page.locator('.demo-route').first().focus();
   await page.keyboard.press('Enter');
   expect(await page.evaluate(() => window.__captures.length)).toBe(1);
+});
+
+test('LifePot directory learning CTAs and direct game callout route independently', async ({ page }) => {
+  await page.setContent(isolatedHtml);
+  const card = page.locator('#lifepot');
+  const learningLinks = card.locator('.product-link').filter({ hasText: 'Explore LifePot' });
+  await expect(learningLinks).toHaveCount(1);
+  for (const link of await learningLinks.all()) {
+    await expect(link).toHaveAttribute('href', 'https://lifepot.modepot.io/learn');
+    await expect(link).toBeVisible();
+    const observed = await link.evaluate(el => {
+      el.addEventListener('click', event => event.preventDefault(), { once: true });
+      el.click();
+      return el.href;
+    });
+    expect(observed).toBe('https://lifepot.modepot.io/learn');
+  }
+  const gameLink = card.locator('a.demo-route');
+  await expect(gameLink).toHaveCount(1);
+  await expect(gameLink).toHaveText('Play the game ↗');
+  await expect(gameLink).toHaveAttribute('href', 'https://lifepot.modepot.io/play');
+  await expect(gameLink).toBeVisible();
+  expect(await gameLink.evaluate(el => {
+    el.addEventListener('click', event => event.preventDefault(), { once: true });
+    el.click();
+    return el.href;
+  })).toBe('https://lifepot.modepot.io/play');
 });
