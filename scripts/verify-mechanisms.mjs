@@ -34,7 +34,7 @@ for (const [project, concepts] of Object.entries(expected)) {
   const route = project === 'lifepot' ? 'https://lifepot.modepot.io/' : `https://${project}.modepot.io/playground/`;
   if (project !== 'refpot' && !card.includes(`href="${route}"`)) failures.push(`${project}: missing project-owned playground route`);
   if (project === 'dexpot') {
-    for (const contract of ['Response[T] validates and projects public output', 'invalid output becomes a sanitized 500 before success bytes', 'None uses generic output', 'RawResponse is unchecked', 'Any is not a privacy filter', 'Response[T] contract · v0.7.0 published on PyPI']) {
+    for (const contract of ['response=T validates and projects public output', 'invalid output becomes a sanitized 500 before success bytes', 'response=None uses generic output', 'RawResponse is unchecked', 'Any is not a privacy filter', 'response=T contract · v0.7.0 published on PyPI']) {
       if (!card.includes(contract)) failures.push(`dexpot: missing response-contract boundary “${contract}”`);
     }
     if (!card.includes('Typed input is bound before a synchronous handler builds a checked public response')) failures.push('dexpot: accessible mechanism equivalent is incomplete');

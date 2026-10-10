@@ -112,7 +112,10 @@ if (itemList?.numberOfItems !== projectNames.length || itemList?.itemListElement
   failures.push(`index.html: structured project count does not match source inventory (${projectNames.length})`);
 }
 const dexpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'dexpot')?.item;
-if (!dexpotSchema?.description?.includes('Response[T] validates and projects public output') || !dexpotSchema.description.includes('Any is not a privacy filter')) {
+if (html.includes('Response[T]') || llms.includes('Response[T]')) {
+  failures.push('Dexpot declares output with response=T; Response[T] is not a public API');
+}
+if (!dexpotSchema?.description?.includes('response=T validates and projects public output') || !dexpotSchema.description.includes('Any is not a privacy filter')) {
   failures.push('index.html: Dexpot structured data must carry the current response contract');
 }
 const refpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'refpot')?.item;
@@ -159,7 +162,7 @@ for (const [index, [tag]] of projectEventLinks.entries()) {
 if (!html.includes("document.addEventListener('auxclick', captureOutboundEvent)") || !html.includes("event.type === 'auxclick' && event.button !== 1")) {
   failures.push('index.html: middle-button activation must be tracked and non-middle auxclick excluded');
 }
-for (const token of ['## Quick starts and documentation', 'https://dexpot.modepot.io/quick-start/', 'Response[T]` validates/projects public output', 'invalid output is sanitized as a 500 before success bytes', '`Any` is not a privacy filter', 'This response contract is published in v0.7.0', 'https://intpot.modepot.io/quickstart/', 'https://summonpot.modepot.io/quick-start/', '## Contribute to ModePot', 'CONTRIBUTING.md', 'Propose a Dexpot feature', 'Discord', '## Selection guide', '## Maturity and licensing', 'https://github.com/tugrulguner/dexpot', 'https://github.com/tugrulguner/intpot', 'https://github.com/tugrulguner/summonpot', 'https://github.com/tugrulguner/lifepot', 'https://github.com/tugrulguner/refpot', 'license and distribution policy remain undecided']) {
+for (const token of ['## Quick starts and documentation', 'https://dexpot.modepot.io/quick-start/', 'response=T` validates/projects public output', 'invalid output is sanitized as a 500 before success bytes', '`Any` is not a privacy filter', 'This response contract is published in v0.7.0', 'https://intpot.modepot.io/quickstart/', 'https://summonpot.modepot.io/quick-start/', '## Contribute to ModePot', 'CONTRIBUTING.md', 'Propose a Dexpot feature', 'Discord', '## Selection guide', '## Maturity and licensing', 'https://github.com/tugrulguner/dexpot', 'https://github.com/tugrulguner/intpot', 'https://github.com/tugrulguner/summonpot', 'https://github.com/tugrulguner/lifepot', 'https://github.com/tugrulguner/refpot', 'license and distribution policy remain undecided']) {
   if (!llms.includes(token)) failures.push(`llms.txt: missing ${token}`);
 }
 
