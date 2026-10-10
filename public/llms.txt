@@ -16,6 +16,13 @@ ModePot builds frameworks, interfaces, tools, engines, and games around simple f
 - [ModePot source](https://github.com/tugrulguner/modepot): Source for the family website.
 - [ModePot community](https://discord.gg/u3AANZr6RG): Discord for project discussion.
 
+## Intpot v0.10.0 conversion safeguards
+
+Published on PyPI: CLI-to-API/MCP conversion refuses parameter callbacks that would lose validation or transformation. Public conversion refuses unrecoverable function bodies before writing output; `app.assess()` reports body-recovery diagnostics. `allow_scaffold=True` / `--allow-scaffold` explicitly generates implementations that raise `NotImplementedError`. Assessment does not guarantee full fidelity or recover unresolved references. Live App serving and ejection are unchanged.
+
+- [Release and upgrade notes](https://github.com/tugrulguner/intpot/discussions/192)
+- [Conversion boundaries](https://intpot.modepot.io/conversion-boundaries/)
+
 ## Quick starts and documentation
 
 - [Dexpot quick start](https://dexpot.modepot.io/quick-start/)

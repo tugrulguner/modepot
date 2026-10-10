@@ -166,6 +166,16 @@ for (const token of ['## Quick starts and documentation', 'https://dexpot.modepo
   if (!llms.includes(token)) failures.push(`llms.txt: missing ${token}`);
 }
 
+// Keep the historical safeguard notice while allowing the project sync workflow
+// to advance latestRelease to future published versions.
+for (const [surface, content, tokens] of [
+  ['index.html', html, ['v0.10.0 published: callback refusal']],
+  ['README.md', readme, ['## Intpot v0.10.0', 'https://github.com/tugrulguner/intpot/discussions/192']],
+  ['llms.txt', llms, ['## Intpot v0.10.0 conversion safeguards', 'allow_scaffold=True', 'does not guarantee full fidelity']],
+]) {
+  for (const token of tokens) if (!content.includes(token)) failures.push(`${surface}: missing Intpot release contract ${token}`);
+}
+
 if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;

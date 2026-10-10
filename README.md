@@ -29,6 +29,12 @@ Each project owns its site, source, and learning path. Start with the route for 
 
 These projects are the beginning, not the boundary. RefPot is currently research and design—not an installable engine or ORM—and its 2×-over-SQLite performance figure is an acceptance target, not an achieved result. ModePot is an open-source family and community; [join the community on Discord](https://discord.gg/u3AANZr6RG) to discuss the work and get involved.
 
+## Intpot v0.10.0
+
+Intpot v0.10.0 adds explicit conversion safeguards: CLI-to-API/MCP conversion refuses parameter callbacks that would lose validation or transformation, and public conversion refuses unrecoverable function bodies before writing output. Body-recovery diagnostics are inspectable; intentionally incomplete exports require explicit scaffold opt-in and fail with `NotImplementedError`. This is a bounded assessment, not a full conversion-fidelity guarantee.
+
+[Release and upgrade notes](https://github.com/tugrulguner/intpot/discussions/192) · [Conversion boundaries](https://intpot.modepot.io/conversion-boundaries/)
+
 ## Development
 
 ```bash
