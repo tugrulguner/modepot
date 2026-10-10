@@ -20,7 +20,7 @@ const expected = {
   dexpot: ['Bind typed input', 'Synchronous handler', 'Checked public response'],
   intpot: ['One typed function', 'CLI', 'HTTP', 'MCP'],
   summonpot: ['Fixed request-owned values', 'Bounded agent choice', 'Application result'],
-  lifepot: ['Birth · death · movement', 'Explore LifePot and choose a preset'],
+  lifepot: ['Birth · death · movement', 'Play the game'],
   refpot: ['DIRECT SQL', 'SQL statements', 'STRUCTURED ORM', 'Python operations', 'PROPOSED EXECUTION CORE', 'Shared relational engine'],
 };
 for (const [project, concepts] of Object.entries(expected)) {
@@ -31,7 +31,7 @@ for (const [project, concepts] of Object.entries(expected)) {
   }
   const normalized = card.replaceAll('<br>', ' ');
   for (const concept of concepts) if (!normalized.includes(concept)) failures.push(`${project}: missing mechanism concept “${concept}”`);
-  const route = project === 'lifepot' ? 'https://lifepot.modepot.io/' : `https://${project}.modepot.io/playground/`;
+  const route = project === 'lifepot' ? 'https://lifepot.modepot.io/play' : `https://${project}.modepot.io/playground/`;
   if (project !== 'refpot' && !card.includes(`href="${route}"`)) failures.push(`${project}: missing project-owned playground route`);
   if (project === 'dexpot') {
     for (const contract of ['response=T validates and projects public output', 'invalid output becomes a sanitized 500 before success bytes', 'response=None uses generic output', 'RawResponse is unchecked', 'Any is not a privacy filter', 'response=T contract · v0.7.0 published on PyPI']) {
