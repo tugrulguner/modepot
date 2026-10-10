@@ -17,7 +17,7 @@ const lifeStep = (grid) => grid.map((row, y) => [...row].map((cell, x) => {
 const lifeExpected = [lifeSeed];
 for (let i = 1; i < 4; i += 1) lifeExpected.push(lifeStep(lifeExpected[i - 1]));
 const expected = {
-  dexpot: ['Request', 'Typed validation', 'Response'],
+  dexpot: ['Bind typed input', 'Synchronous handler', 'Checked public response'],
   intpot: ['One typed function', 'CLI', 'HTTP', 'MCP'],
   summonpot: ['Fixed request-owned values', 'Bounded agent choice', 'Application result'],
   lifepot: ['Birth · death · movement', 'Explore LifePot and choose a preset'],
@@ -33,6 +33,13 @@ for (const [project, concepts] of Object.entries(expected)) {
   for (const concept of concepts) if (!normalized.includes(concept)) failures.push(`${project}: missing mechanism concept “${concept}”`);
   const route = project === 'lifepot' ? 'https://lifepot.modepot.io/' : `https://${project}.modepot.io/playground/`;
   if (project !== 'refpot' && !card.includes(`href="${route}"`)) failures.push(`${project}: missing project-owned playground route`);
+  if (project === 'dexpot') {
+    for (const contract of ['Response[T] validates and projects public output', 'invalid output becomes a sanitized 500 before success bytes', 'None uses generic output', 'RawResponse is unchecked', 'Any is not a privacy filter', 'Response[T] contract · v0.7.0 published on PyPI']) {
+      if (!card.includes(contract)) failures.push(`dexpot: missing response-contract boundary “${contract}”`);
+    }
+    if (!card.includes('Typed input is bound before a synchronous handler builds a checked public response')) failures.push('dexpot: accessible mechanism equivalent is incomplete');
+    if (card.includes('request → typed validation → response')) failures.push('dexpot: stale illustrative mechanism remains');
+  }
   if (project === 'refpot') {
     if (!card.includes('Illustrative animation · proposed architecture, not a live run')) failures.push('refpot: proposed architecture animation is not honestly labeled');
     if (!card.includes('two proposed entry paths') || !card.includes('converge on one shared relational execution core')) failures.push('refpot: accessible equivalent must describe both paths converging on the core');
