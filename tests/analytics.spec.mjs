@@ -60,7 +60,9 @@ test('built handler captures every project link once per activation and preserve
     return links.map(link => {
       window.__captures.length = 0;
       window.__preventedByProduction.length = 0;
+      /** @type {Record<string, string>} */
       const expected = { surface: link.dataset.posthogSurface, destination: link.href, project: link.dataset.posthogProject };
+      if (link.dataset.posthogDestinationType) expected.destination_type = link.dataset.posthogDestinationType;
       const href = link.href;
       // Cancelable synthetic events allow checking the production handler does not prevent navigation.
       link.dispatchEvent(new MouseEvent('click', { button: 0, bubbles: true, cancelable: true }));
@@ -81,6 +83,42 @@ test('built handler captures every project link once per activation and preserve
   await page.locator('.demo-route').first().focus();
   await page.keyboard.press('Enter');
   expect(await page.evaluate(() => window.__captures.length)).toBe(1);
+});
+
+test('creator social links emit the bounded social event contract', async ({ page }) => {
+  await page.setContent(isolatedHtml);
+  await page.evaluate(() => {
+    window.__captures = [];
+    window.posthog = { capture: (...args) => window.__captures.push(args) };
+  });
+  await page.addScriptTag({ content: tracker });
+  const captures = await page.evaluate(() => {
+    const links = [...document.querySelectorAll('[data-posthog-event="modepot_creator_social_clicked"]')];
+    for (const link of links) link.dispatchEvent(new MouseEvent('click', { button: 0, bubbles: true }));
+    return { links: links.map(link => ({ platform: link.dataset.posthogPlatform, surface: link.dataset.posthogSurface, destination: link.href })), events: window.__captures };
+  });
+  expect(captures.links.map(link => link.platform)).toEqual(['github', 'linkedin', 'x']);
+  expect(captures.events).toEqual(captures.links.map(link => [
+    'modepot_creator_social_clicked', link, { transport: 'sendBeacon', send_instantly: true },
+  ]));
+});
+
+test('project events distinguish site, documentation, and playground destinations', async ({ page }) => {
+  await page.setContent(isolatedHtml);
+  await page.evaluate(() => {
+    window.__captures = [];
+    window.posthog = { capture: (...args) => window.__captures.push(args) };
+  });
+  await page.addScriptTag({ content: tracker });
+  const events = await page.evaluate(() => {
+    const links = [...document.querySelectorAll('[data-posthog-event="modepot_project_clicked"]')];
+    for (const link of links) link.dispatchEvent(new MouseEvent('click', { button: 0, bubbles: true }));
+    return window.__captures.map(([name, properties]) => ({ name, properties }));
+  });
+  expect(events.filter(event => event.properties.destination_type === 'site')).toHaveLength(5);
+  expect(events.filter(event => event.properties.destination_type === 'docs')).toHaveLength(4);
+  expect(events.filter(event => event.properties.destination_type === 'playground')).toHaveLength(4);
+  expect(events.every(event => event.name === 'modepot_project_clicked')).toBe(true);
 });
 
 test('LifePot directory learning CTAs and direct game callout route independently', async ({ page }) => {
