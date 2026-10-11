@@ -449,6 +449,7 @@ const structuredData = {
                     data-posthog-event="modepot_project_clicked"
                     data-posthog-project={product.name}
                     data-posthog-surface="modepot_homepage"
+                    data-posthog-destination-type="playground"
                   >{product.name === 'lifepot' ? 'Play the game' : 'Open project playground'} <span aria-hidden="true">↗</span></a>}
                 </section>
                 <div class="product-actions">
@@ -458,6 +459,7 @@ const structuredData = {
                     data-posthog-event="modepot_project_clicked"
                     data-posthog-project={product.name}
                     data-posthog-surface="modepot_homepage"
+                    data-posthog-destination-type="site"
                   >
                     {product.action} <span aria-hidden="true">↗</span>
                   </a>
@@ -467,6 +469,7 @@ const structuredData = {
                     data-posthog-event={product.name === 'lifepot' ? undefined : 'modepot_project_clicked'}
                     data-posthog-project={product.name === 'lifepot' ? undefined : product.name}
                     data-posthog-surface={product.name === 'lifepot' ? undefined : 'modepot_homepage'}
+                    data-posthog-destination-type={product.name === 'lifepot' ? undefined : 'docs'}
                   >Docs <span aria-hidden="true">↗</span></a>
                   <a class="product-resource ph-no-autocapture" href={product.source.commitUrl}>Latest source commit · {product.source.commit.slice(0, 7)} <span aria-hidden="true">↗</span></a>
                   <a class="product-resource ph-no-autocapture" href={product.source.readme.url}>README · {product.source.readme.sha256.slice(0, 12)} <span aria-hidden="true">↗</span></a>
@@ -540,12 +543,14 @@ const structuredData = {
         if (!(event.target instanceof Element)) return;
         const link = event.target.closest('[data-posthog-event]');
         if (!link || !window.posthog) return;
+        /** @type {Record<string, string>} */
         const properties = {
           surface: link.dataset.posthogSurface,
           destination: link.href,
         };
         if (link.dataset.posthogProject) properties.project = link.dataset.posthogProject;
         if (link.dataset.posthogPlatform) properties.platform = link.dataset.posthogPlatform;
+        if (link.dataset.posthogDestinationType) properties.destination_type = link.dataset.posthogDestinationType;
         window.posthog.capture(link.dataset.posthogEvent, properties, { transport: 'sendBeacon', send_instantly: true });
       };
       document.addEventListener('click', captureOutboundEvent);
