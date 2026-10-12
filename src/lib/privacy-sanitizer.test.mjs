@@ -15,6 +15,25 @@ test('recursive sanitation preserves required metadata without private acquisiti
   assert.deepEqual(result.properties.mystery, ['https://site.test/a', 'https://site.test/b']);
   assert.doesNotMatch(JSON.stringify(result), new RegExp(secret));
 });
+test('recursive sanitation removes credential keys and bounded acquisition fields without stripping ordinary network fields', () => {
+  const secret = 'MODEPOT_REVIEW_SECRET_731';
+  const result = sanitizePosthogEvent({
+    properties: {
+      client_secret: secret, password: secret, access_token: secret,
+      network_name: 'public-network-name',
+      $initial_adgroup: secret,
+      $set: { $session_entry_adgroup: secret, $session_exit_campaign: secret, $initial_password: secret },
+      unrelated: { password: secret, keep: 'ordinary value' },
+      token: 'not-a-public-project-token',
+    },
+  });
+  const serialized = JSON.stringify(result);
+  for (const key of ['client_secret', 'password', 'access_token', '$initial_adgroup', '$session_entry_adgroup', '$session_exit_campaign', '$initial_password']) assert.ok(!serialized.includes(key), `${key} remains in ${serialized}`);
+  assert.ok(!serialized.includes(secret));
+  assert.equal(result.properties.network_name, 'public-network-name');
+  assert.equal(result.properties.unrelated.keep, 'ordinary value');
+  assert.equal(result.properties.token, undefined);
+});
 test('built page initializes SDK once with a standalone sanitizer and disabled flag transport', () => {
   const html = readFileSync(new URL('../../dist/index.html', import.meta.url), 'utf8');
   assert.equal((html.match(/posthog\.init\(/g) || []).length, 1);
