@@ -2,15 +2,15 @@
   {
     "name": "dexpot",
     "repository": "https://github.com/tugrulguner/dexpot",
-    "commit": "127306a7d0cd3b6e197f29eb331a20d9e8d08117",
-    "commitUrl": "https://github.com/tugrulguner/dexpot/commit/127306a7d0cd3b6e197f29eb331a20d9e8d08117",
+    "commit": "38d7d7eccd512d71a22caaba42f626138e3bc844",
+    "commitUrl": "https://github.com/tugrulguner/dexpot/commit/38d7d7eccd512d71a22caaba42f626138e3bc844",
     "readme": {
-      "url": "https://github.com/tugrulguner/dexpot/blob/127306a7d0cd3b6e197f29eb331a20d9e8d08117/README.md",
-      "sha256": "789f94972b5d17e5ba9d6f7ee96de2cd9637ab137a59f97044fc0f03047c1b79"
+      "url": "https://github.com/tugrulguner/dexpot/blob/38d7d7eccd512d71a22caaba42f626138e3bc844/README.md",
+      "sha256": "af5af2249403316a4571296bae873fdeccae581b74fe8c1ce37b09dd3101f9e5"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/dexpot/blob/127306a7d0cd3b6e197f29eb331a20d9e8d08117/ROADMAP.md",
+      "url": "https://github.com/tugrulguner/dexpot/blob/38d7d7eccd512d71a22caaba42f626138e3bc844/ROADMAP.md",
       "sha256": "e56b5384c2aab55c8dd6206989efa9359966396a9e83679556a3037511c5de0f"
     },
     "latestRelease": {
@@ -23,15 +23,15 @@
   {
     "name": "intpot",
     "repository": "https://github.com/tugrulguner/intpot",
-    "commit": "e6a5d138c2b2c1c1fdc1d3e38bb051808212ac0f",
-    "commitUrl": "https://github.com/tugrulguner/intpot/commit/e6a5d138c2b2c1c1fdc1d3e38bb051808212ac0f",
+    "commit": "95b3e5989d52063372fc386fa9ad70347b9b0aa4",
+    "commitUrl": "https://github.com/tugrulguner/intpot/commit/95b3e5989d52063372fc386fa9ad70347b9b0aa4",
     "readme": {
-      "url": "https://github.com/tugrulguner/intpot/blob/e6a5d138c2b2c1c1fdc1d3e38bb051808212ac0f/README.md",
-      "sha256": "e40a032f38d7a46717a652be9bbc1a406da9e996c99bf3c2aebccb8cf1179625"
+      "url": "https://github.com/tugrulguner/intpot/blob/95b3e5989d52063372fc386fa9ad70347b9b0aa4/README.md",
+      "sha256": "20c1c73fd76f39c122b0cd1a6bb233ac17f8053543112e11dfaab15873458008"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/intpot/blob/e6a5d138c2b2c1c1fdc1d3e38bb051808212ac0f/ROADMAP.md",
+      "url": "https://github.com/tugrulguner/intpot/blob/95b3e5989d52063372fc386fa9ad70347b9b0aa4/ROADMAP.md",
       "sha256": "a3e57b14776ec0e73ae2243cc80924189b9290d154372f14959d5d09359e224f"
     },
     "latestRelease": {
@@ -44,15 +44,15 @@
   {
     "name": "summonpot",
     "repository": "https://github.com/tugrulguner/summonpot",
-    "commit": "a77f8c1ae13609a2fb366b970bf8143128420378",
-    "commitUrl": "https://github.com/tugrulguner/summonpot/commit/a77f8c1ae13609a2fb366b970bf8143128420378",
+    "commit": "d4520b5a3b6ec3c3f5e9c070740d09d525caa36b",
+    "commitUrl": "https://github.com/tugrulguner/summonpot/commit/d4520b5a3b6ec3c3f5e9c070740d09d525caa36b",
     "readme": {
-      "url": "https://github.com/tugrulguner/summonpot/blob/a77f8c1ae13609a2fb366b970bf8143128420378/README.md",
+      "url": "https://github.com/tugrulguner/summonpot/blob/d4520b5a3b6ec3c3f5e9c070740d09d525caa36b/README.md",
       "sha256": "19edbf6fdbf70c97f2b213dbbbb17ffb65f5a41d78f07f2a8bf8594736a2b740"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/summonpot/blob/a77f8c1ae13609a2fb366b970bf8143128420378/ROADMAP.md",
+      "url": "https://github.com/tugrulguner/summonpot/blob/d4520b5a3b6ec3c3f5e9c070740d09d525caa36b/ROADMAP.md",
       "sha256": "3d26a836d49d337f50ed61fd9d4cee32fedb62cd77b576e032417a329c9a1b7a"
     },
     "latestRelease": {
@@ -65,32 +65,37 @@
   {
     "name": "lifepot",
     "repository": "https://github.com/tugrulguner/lifepot",
-    "commit": "7c268f56fbf43e0d9f84d87e086e0e7a519f2ddb",
-    "commitUrl": "https://github.com/tugrulguner/lifepot/commit/7c268f56fbf43e0d9f84d87e086e0e7a519f2ddb",
+    "commit": "4746887048a851d5c7dd92dc85b35eaee3f0c3b3",
+    "commitUrl": "https://github.com/tugrulguner/lifepot/commit/4746887048a851d5c7dd92dc85b35eaee3f0c3b3",
     "readme": {
-      "url": "https://github.com/tugrulguner/lifepot/blob/7c268f56fbf43e0d9f84d87e086e0e7a519f2ddb/README.md",
-      "sha256": "54fa829156003fc3560b2a8ddd72da496a6b85169a133561934a152214080951"
+      "url": "https://github.com/tugrulguner/lifepot/blob/4746887048a851d5c7dd92dc85b35eaee3f0c3b3/README.md",
+      "sha256": "9cfd3424178c1374d0a0b71881271a8164be7d438b6379e4129b23a569341d4c"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/lifepot/blob/7c268f56fbf43e0d9f84d87e086e0e7a519f2ddb/ROADMAP.md",
+      "url": "https://github.com/tugrulguner/lifepot/blob/4746887048a851d5c7dd92dc85b35eaee3f0c3b3/ROADMAP.md",
       "sha256": "38ad1a1984ba0b40b43b87fae7f048a290b65537f18f1ae86e514a090b0e2bc0"
     },
-    "latestRelease": null
+    "latestRelease": {
+      "tag": "v0.5.0",
+      "name": "LifePot v0.5.0 — My Worlds",
+      "url": "https://github.com/tugrulguner/lifepot/releases/tag/v0.5.0",
+      "publishedAt": "2026-10-12T17:25:38Z"
+    }
   },
   {
     "name": "refpot",
     "repository": "https://github.com/tugrulguner/refpot",
-    "commit": "4ddf506c3afce87fe39d6d1b5f883a401b63b065",
-    "commitUrl": "https://github.com/tugrulguner/refpot/commit/4ddf506c3afce87fe39d6d1b5f883a401b63b065",
+    "commit": "e3581aa02989484b24a3cc1f33ed6080c9649a5f",
+    "commitUrl": "https://github.com/tugrulguner/refpot/commit/e3581aa02989484b24a3cc1f33ed6080c9649a5f",
     "readme": {
-      "url": "https://github.com/tugrulguner/refpot/blob/4ddf506c3afce87fe39d6d1b5f883a401b63b065/README.md",
-      "sha256": "74908338e45034d4308548129f5038819923e6b08411a2bf630d014263208577"
+      "url": "https://github.com/tugrulguner/refpot/blob/e3581aa02989484b24a3cc1f33ed6080c9649a5f/README.md",
+      "sha256": "40372055df718dcfbfebae21d28eb3716435dbdea891b7748a4148cd6244464a"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/refpot/blob/4ddf506c3afce87fe39d6d1b5f883a401b63b065/ROADMAP.md",
-      "sha256": "8f57168cf046390be1a15ccb93d638c2ed393423ef6d53543a47b7b6cce0ee37"
+      "url": "https://github.com/tugrulguner/refpot/blob/e3581aa02989484b24a3cc1f33ed6080c9649a5f/ROADMAP.md",
+      "sha256": "f1d37bc4ddb1def20f48d3b0f38c7dfa88e4348611b8c986310a017f75138d7b"
     },
     "latestRelease": null
   }
