@@ -25,7 +25,7 @@ if (!readmeHero.includes('<p align="center">') || !['ModePot', 'GitHub', 'Commun
 if (!readmeHero.includes('https://tugrul.modepot.io/')) {
   failures.push('README.md: creator personal site must be linked in the opening resource row');
 }
-if (!readme.includes('https://dexpot.modepot.io/quick-start/') || !readme.includes('https://intpot.modepot.io/quickstart/') || !readme.includes('https://summonpot.modepot.io/quick-start/') || !readme.includes('docs/simulation-contract.md') || !readme.includes('https://refpot.modepot.io/design/')) {
+if (!readme.includes('https://dexpot.modepot.io/quick-start/') || !readme.includes('https://intpot.modepot.io/quickstart/') || !readme.includes('https://summonpot.modepot.io/quick-start/') || !readme.includes('docs/simulation-contract.md') || !readme.includes('https://refpot.modepot.io/package/')) {
   failures.push('README.md: project index must retain verified learning routes for all projects');
 }
 for (const product of projectNames) {
@@ -121,6 +121,36 @@ if (!dexpotSchema?.description?.includes('response=T validates and projects publ
 const refpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'refpot')?.item;
 if (!refpotSchema || refpotSchema.programmingLanguage || refpotSchema.runtimePlatform || refpotSchema.license) {
   failures.push('index.html: RefPot structured data must not invent language, runtime, or license metadata');
+}
+const refpotMetadata = projects.find(({ name }) => name === 'refpot');
+const refpotRelease = {
+  tag: 'v0.1.1',
+  url: 'https://github.com/tugrulguner/refpot/releases/tag/v0.1.1',
+  publishedAt: '2026-10-12T17:32:11Z',
+};
+if (refpotMetadata?.latestRelease?.tag !== refpotRelease.tag || refpotMetadata.latestRelease.url !== refpotRelease.url || refpotMetadata.latestRelease.publishedAt !== refpotRelease.publishedAt) {
+  failures.push('RefPot source metadata must identify the publicly published experimental alpha v0.1.1, not claim no release');
+}
+const refpotCommit = refpotMetadata?.commit ?? '';
+if (!/^[a-f0-9]{40}$/.test(refpotCommit) || refpotMetadata.commitUrl !== `https://github.com/tugrulguner/refpot/commit/${refpotCommit}` || refpotMetadata.readme.url !== `https://github.com/tugrulguner/refpot/blob/${refpotCommit}/README.md` || refpotMetadata.roadmap.url !== `https://github.com/tugrulguner/refpot/blob/${refpotCommit}/ROADMAP.md`) {
+  failures.push('RefPot source provenance must use consistent, valid current-commit anchors');
+}
+const refpotFacts = [
+  'publicly released experimental alpha', 'v0.1.1', 'native C++',
+  'fixed-schema CRUD', 'explicit transactions', 'SQL and ORM remain planned',
+  'no broad performance', 'production-durability claim',
+];
+for (const [surface, content] of [['README.md', readme], ['llms.txt', llms], ['index.html', html]]) {
+  for (const fact of refpotFacts) if (!content.includes(fact)) failures.push(`${surface}: RefPot must preserve verified alpha fact “${fact}”`);
+}
+const refpotStart = html.indexOf('id="refpot"');
+const refpotEnd = html.indexOf('</article>', refpotStart);
+const refpotCard = refpotStart >= 0 && refpotEnd >= 0 ? html.slice(refpotStart, refpotEnd) : '';
+if (readme.includes('No engine or package is released') || readme.includes('not an installable engine') || llms.includes('there is no installable package') || refpotCard.includes('No published release yet')) {
+  failures.push('RefPot summary must not retain obsolete unreleased/no-package claims');
+}
+if (!readme.includes('https://refpot.modepot.io/package/') || !readme.includes(refpotRelease.url) || !llms.includes(refpotRelease.url)) {
+  failures.push('RefPot quick start and v0.1.1 release evidence must be linked in human- and agent-readable summaries');
 }
 
 for (const product of projectNames) {

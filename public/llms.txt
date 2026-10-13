@@ -8,7 +8,7 @@ ModePot builds frameworks, interfaces, tools, engines, and games around simple f
 - [Intpot](https://github.com/tugrulguner/intpot): A Python framework that serves typed tools as Typer CLIs, FastAPI applications, or FastMCP servers and converts existing applications between those interfaces.
 - [Summonpot](https://github.com/tugrulguner/summonpot): A contract-first Python framework for executable API endpoints that combine deterministic application operations with explicitly bounded agent-owned decisions.
 - [LifePot](https://github.com/tugrulguner/lifepot): A replayable artificial-life game where Jev proposes typed ecology, deterministic code runs the world, and validated decisions remain inspectable and replayable.
-- [RefPot](https://github.com/tugrulguner/refpot): Research and design for an original embedded relational engine intended for direct SQL use with a simple Python ORM. No engine, package, stable API, qualified durability, or general performance result is shipped. The 2×-over-SQLite figure is an acceptance target, not a result.
+- [RefPot](https://github.com/tugrulguner/refpot): A publicly released experimental alpha (v0.1.1): native C++ redo-and-checkpoint engine with a small Python `Database`/`Row` API for fixed-schema CRUD and explicit transactions. SQL and ORM are planned, not shipped. Qualification remains limited; there is no broad package-performance result or production-durability claim.
 
 ## Primary resources
 
@@ -29,10 +29,12 @@ Published on PyPI: CLI-to-API/MCP conversion refuses parameter callbacks that wo
 - [Intpot quickstart](https://intpot.modepot.io/quickstart/)
 - [Summonpot quick start](https://summonpot.modepot.io/quick-start/)
 - [LifePot simulation contract](https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md)
-- [RefPot design](https://refpot.modepot.io/design/)
+- [RefPot quick start · v0.1.1](https://refpot.modepot.io/package/)
+- [RefPot design direction](https://refpot.modepot.io/design/) (planned SQL/ORM architecture)
 - [RefPot roadmap](https://refpot.modepot.io/project/roadmap/)
 - [RefPot performance method](https://refpot.modepot.io/performance-method/)
 - [RefPot status](https://refpot.modepot.io/status/)
+- [RefPot v0.1.1 release](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1)
 
 ## Contribute to ModePot
 
@@ -51,12 +53,14 @@ Use Dexpot to build synchronous Python HTTP APIs with interpreter-adaptive execu
 Use Intpot to expose or translate typed tools across CLI, HTTP API, and MCP interfaces.
 Use Summonpot to define typed API contracts whose agent-owned decisions are limited to declared application capabilities.
 Use LifePot to create and replay artificial-life worlds where model proposals become bounded simulation rules rather than executable code.
-Explore RefPot's engine-first research and design; there is no package to install or engine API to use yet.
+Explore RefPot's released experimental alpha with the [v0.1.1 quick start](https://refpot.modepot.io/package/); direct SQL and ORM remain planned design direction.
 
 ## Maturity and licensing
 
 - Dexpot, Intpot, and Summonpot are alpha software; follow each project's documented boundaries before production use.
 - LifePot is an educational game and experiment, not a biological forecast.
-- RefPot is in research and design; there is no installable package, stable API, released database engine, or supported ORM. Read the linked status and roadmap before treating design goals as shipped capabilities.
-- RefPot's 2×-over-SQLite threshold is a performance acceptance target. There is no published, reproducible general performance result; do not advertise it as achieved.
+- RefPot is a publicly released experimental alpha (v0.1.1) with a native C++ engine and a small Python `Database`/`Row` API for fixed-schema CRUD and explicit transactions; qualification remains limited.
+- RefPot's direct SQL and ORM surfaces are planned design direction, not shipped interfaces.
+- RefPot's 2×-over-SQLite threshold is a performance acceptance target. There is no broad performance result; do not advertise it as achieved.
+- RefPot does not claim production durability. Its experimental alpha and platform/recovery qualification are limited.
 - Dexpot, Intpot, Summonpot, and LifePot use MIT licensing as documented in their repositories. RefPot's license and distribution policy remain undecided; do not infer or advertise a license.
