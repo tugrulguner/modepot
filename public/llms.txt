@@ -63,4 +63,4 @@ Explore RefPot's released experimental alpha with the [v0.1.1 quick start](https
 - RefPot's direct SQL and ORM surfaces are planned design direction, not shipped interfaces.
 - RefPot's 2×-over-SQLite threshold is a performance acceptance target. There is no broad performance result; do not advertise it as achieved.
 - RefPot does not claim production durability. Its experimental alpha and platform/recovery qualification are limited.
-- Dexpot, Intpot, Summonpot, and LifePot use MIT licensing as documented in their repositories. RefPot's license and distribution policy remain undecided; do not infer or advertise a license.
+- Dexpot, Intpot, Summonpot, LifePot, and RefPot use MIT licensing as documented in their repositories. RefPot's license is https://github.com/tugrulguner/refpot/blob/main/LICENSE.

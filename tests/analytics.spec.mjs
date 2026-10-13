@@ -12,7 +12,7 @@ const projects = {
   intpot: ['https://intpot.modepot.io/playground/', 'https://intpot.modepot.io/quickstart/'],
   summonpot: ['https://summonpot.modepot.io/playground/', 'https://summonpot.modepot.io/quick-start/'],
   lifepot: ['https://lifepot.modepot.io/learn', 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md'],
-  refpot: ['https://refpot.modepot.io/', 'https://refpot.modepot.io/design/'],
+  refpot: ['https://refpot.modepot.io/', 'https://refpot.modepot.io/package/'],
 };
 
 test('project-entry links are tracked; GitHub documentation remains excluded', async ({ page }) => {
