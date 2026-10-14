@@ -81,17 +81,22 @@
   {
     "name": "refpot",
     "repository": "https://github.com/tugrulguner/refpot",
-    "commit": "4ddf506c3afce87fe39d6d1b5f883a401b63b065",
-    "commitUrl": "https://github.com/tugrulguner/refpot/commit/4ddf506c3afce87fe39d6d1b5f883a401b63b065",
+    "commit": "30b66e5e65cc6667e79e812e81a80388b2777c3f",
+    "commitUrl": "https://github.com/tugrulguner/refpot/commit/30b66e5e65cc6667e79e812e81a80388b2777c3f",
     "readme": {
-      "url": "https://github.com/tugrulguner/refpot/blob/4ddf506c3afce87fe39d6d1b5f883a401b63b065/README.md",
-      "sha256": "74908338e45034d4308548129f5038819923e6b08411a2bf630d014263208577"
+      "url": "https://github.com/tugrulguner/refpot/blob/30b66e5e65cc6667e79e812e81a80388b2777c3f/README.md",
+      "sha256": "db43c16c77d0952c00e67fe4f046c07b024534ea54e51fd1f8139071b8ea2c38"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/refpot/blob/4ddf506c3afce87fe39d6d1b5f883a401b63b065/ROADMAP.md",
-      "sha256": "8f57168cf046390be1a15ccb93d638c2ed393423ef6d53543a47b7b6cce0ee37"
+      "url": "https://github.com/tugrulguner/refpot/blob/30b66e5e65cc6667e79e812e81a80388b2777c3f/ROADMAP.md",
+      "sha256": "2ade817eebfe561d499a973f5bf78fccb1c4e00c782d12dedd6a2f13d94895a8"
     },
-    "latestRelease": null
+    "latestRelease": {
+      "tag": "v0.1.1",
+      "name": "v0.1.1",
+      "url": "https://github.com/tugrulguner/refpot/releases/tag/v0.1.1",
+      "publishedAt": "2026-10-12T17:32:11Z"
+    }
   }
 ]

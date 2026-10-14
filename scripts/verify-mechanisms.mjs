@@ -44,7 +44,7 @@ for (const [project, concepts] of Object.entries(expected)) {
     if (!card.includes('Illustrative animation · proposed architecture, not a live run')) failures.push('refpot: proposed architecture animation is not honestly labeled');
     if (!card.includes('two proposed entry paths') || !card.includes('converge on one shared relational execution core')) failures.push('refpot: accessible equivalent must describe both paths converging on the core');
     if (card.includes('Open project playground') || card.includes('class="demo-route')) failures.push('refpot: unshipped playground destination is present');
-    if (!card.includes('https://refpot.modepot.io/design/')) failures.push('refpot: missing design documentation destination');
+    if (!card.includes('https://refpot.modepot.io/package/')) failures.push('refpot: missing shipped package documentation destination');
     if (!card.includes('/products/refpot-lockup-v2.svg')) failures.push('refpot: lockup URL is not cache-versioned');
     for (const className of ['ref-sql', 'ref-orm', 'ref-core', 'ref-flow-sql', 'ref-flow-orm']) {
       if (!card.includes(className)) failures.push(`refpot: missing proposed path/core step ${className}`);
