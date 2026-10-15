@@ -166,6 +166,31 @@ const productDefinitions = [
     playground: '',
     demoDescription: 'Planned architecture illustration; not an executable preview.',
   },
+  {
+    index: '06',
+    mode: 'utility',
+    name: 'utilitypot',
+    programmingLanguage: 'JavaScript',
+    runtimePlatform: 'Web browser and Cloudflare Workers',
+    license: 'https://opensource.org/license/mit',
+    prefix: 'utility',
+    mark: '/marks/utilitypot-mark-v1.svg',
+    image: '/products/utilitypot-lockup-v1.png',
+    alt: 'UtilityPot lockup with its amber ModePot family mark',
+    category: 'Seven tools · reviewed deterministic execution',
+    statement: 'Describe the task. Review the plan. Run the tool.',
+    choice: 'Use seven everyday tools with bounded Jev interpretation, user review, and deterministic execution.',
+    description: 'UtilityPot offers seven tools. Jev provides bounded interpretation; users review the proposed inputs before deterministic code executes. Tool-specific consent and privacy boundaries remain part of each workflow.',
+    href: 'https://utilitypot.modepot.io/',
+    action: 'Explore UtilityPot',
+    repository: 'https://github.com/tugrulguner/utilitypot',
+    docs: 'https://github.com/tugrulguner/utilitypot/blob/main/README.md',
+    development: '',
+    developmentLabel: '',
+    accent: 'gold',
+    playground: '',
+    demoDescription: 'Bounded Jev interpretation produces proposed inputs for user review before deterministic execution. This illustrates the execution boundary, not a live run or a timing measurement.',
+  },
 ];
 const products = productDefinitions.map((product) => ({ ...product, source: sourceByName.get(product.name)! }));
 
@@ -412,7 +437,7 @@ const structuredData = {
                 <p class="product-description">{product.description}</p>
                 {product.contractVersion && <p class="product-contract-version">{product.contractVersion}</p>}
                 <section class={`demo-preview demo-${product.accent}`} aria-label={`${product.name} mechanism preview`}>
-                  <p class="demo-caption">{product.name === 'refpot' ? 'Illustrative animation · proposed architecture, not a live run' : 'Illustrative animation · not a live run'}</p>
+                  <p class="demo-caption">{product.name === 'refpot' ? 'Illustrative animation · proposed architecture, not a live run' : product.name === 'utilitypot' ? 'Illustrative mechanism · not a live run' : 'Illustrative animation · not a live run'}</p>
                   {product.name === 'refpot' && (
                     <div class="mechanism ref-mechanism" aria-hidden="true">
                       <div class="mechanism-node ref-entry ref-sql"><span class="ref-kind">DIRECT SQL</span><span class="ref-detail">SQL statements</span></div>
@@ -440,6 +465,13 @@ const structuredData = {
                       <span class="mechanism-node">Fixed request<br />values</span><span class="mechanism-arrow">→</span>
                       <span class="mechanism-node">Bounded agent<br />choice</span><span class="mechanism-arrow">→</span>
                       <span class="mechanism-node">Application<br />result</span>
+                    </div>
+                  )}
+                  {product.name === 'utilitypot' && (
+                    <div class="mechanism utility-mechanism" aria-hidden="true">
+                      <span class="mechanism-node">Bounded Jev interpretation</span><span class="mechanism-arrow">→</span>
+                      <span class="mechanism-node">User review</span><span class="mechanism-arrow">→</span>
+                      <span class="mechanism-node">Deterministic execution</span>
                     </div>
                   )}
                   {product.name === 'lifepot' && (
@@ -476,14 +508,14 @@ const structuredData = {
                   <a
                     class="product-resource ph-no-autocapture"
                     href={product.docs}
-                    data-posthog-event={product.name === 'lifepot' ? undefined : 'modepot_project_clicked'}
-                    data-posthog-project={product.name === 'lifepot' ? undefined : product.name}
-                    data-posthog-surface={product.name === 'lifepot' ? undefined : 'modepot_homepage'}
-                    data-posthog-destination-type={product.name === 'lifepot' ? undefined : 'docs'}
+                    data-posthog-event={['lifepot', 'utilitypot'].includes(product.name) ? undefined : 'modepot_project_clicked'}
+                    data-posthog-project={['lifepot', 'utilitypot'].includes(product.name) ? undefined : product.name}
+                    data-posthog-surface={['lifepot', 'utilitypot'].includes(product.name) ? undefined : 'modepot_homepage'}
+                    data-posthog-destination-type={['lifepot', 'utilitypot'].includes(product.name) ? undefined : 'docs'}
                   >Docs <span aria-hidden="true">↗</span></a>
                   <a class="product-resource ph-no-autocapture" href={product.source.commitUrl}>Latest source commit · {product.source.commit.slice(0, 7)} <span aria-hidden="true">↗</span></a>
                   <a class="product-resource ph-no-autocapture" href={product.source.readme.url}>README · {product.source.readme.sha256.slice(0, 12)} <span aria-hidden="true">↗</span></a>
-                  <a class="product-resource ph-no-autocapture" href={product.source.roadmap.url}>Roadmap · {product.source.roadmap.status === 'available' ? product.source.roadmap.sha256.slice(0, 12) : 'not published'} <span aria-hidden="true">↗</span></a>
+                  {product.source.roadmap.status === 'available' ? <a class="product-resource ph-no-autocapture" href={product.source.roadmap.url}>Roadmap · {product.source.roadmap.sha256!.slice(0, 12)} <span aria-hidden="true">↗</span></a> : <span class="product-resource">Roadmap · not published</span>}
                   {product.source.latestRelease && <a class="product-resource ph-no-autocapture" href={product.source.latestRelease.url}>Latest release · {product.source.latestRelease.tag} <span aria-hidden="true">↗</span></a>}
                   {!product.source.latestRelease && <span class="product-resource">No published release yet</span>}
                   <a class="product-resource ph-no-autocapture" href={product.repository}>GitHub <span aria-hidden="true">↗</span></a>
@@ -527,7 +559,7 @@ const structuredData = {
           </p>
           <p>
             We are building an open-source family of fast, approachable frameworks, tools, engines, and
-            games, with AI-native and agent-friendly approaches where they add value. Dexpot, Intpot, Summonpot, LifePot, and RefPot are only
+            games, with AI-native and agent-friendly approaches where they add value. Dexpot, Intpot, Summonpot, LifePot, RefPot, and UtilityPot are only
             the beginning. ModePot was created by <a href="https://tugrul.modepot.io/">Tugrul Guner</a>.
           </p>
         </div>

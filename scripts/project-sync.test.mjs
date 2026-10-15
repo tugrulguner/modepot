@@ -1,8 +1,26 @@
+import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { normalizeProject, projects, sync } from './sync-projects.mjs';
+
+// Validate live schema without freezing moving source/release records.
+const readmeText = await readFile(new URL('../README.md', import.meta.url), 'utf8');
+const projectTable = readmeText.match(/^\| Project \|[^\n]*\n(?:\|[^\n]*\n)+/m)?.[0] || '';
+assert.match(projectTable, /\*\*UtilityPot\*\*/, 'UtilityPot must remain inside the contiguous Markdown project table');
+const stored = JSON.parse(await readFile(new URL('../src/data/projects.json', import.meta.url), 'utf8'));
+for (const name of ['dexpot', 'intpot', 'summonpot', 'lifepot', 'refpot', 'utilitypot']) assert.ok(stored.some(p => p.name === name));
+assert.ok(projects.includes('utilitypot'), 'UtilityPot must be supported by source sync');
+const utility = stored.find(p => p.name === 'utilitypot');
+assert.match(utility.commit, /^[a-f0-9]{40}$/);
+assert.match(utility.readme.sha256, /^[a-f0-9]{64}$/);
+assert.equal(utility.readme.url, `${utility.repository}/blob/${utility.commit}/README.md`);
+assert.ok(['missing', 'available'].includes(utility.roadmap.status));
+if (utility.latestRelease) assert.ok(utility.latestRelease.url.startsWith(`${utility.repository}/releases/tag/`));
+
+assert.equal(createHash('sha256').update(await readFile(new URL('../public/marks/utilitypot-mark-v1.svg', import.meta.url))).digest('hex'), '74e035fed2ed483257e7c35965a4a49a8a377abe45f458bc6e06a6e89892adf3', 'UtilityPot artwork must retain exact family bytes');
+assert.equal(createHash('sha256').update(await readFile(new URL('../public/products/utilitypot-lockup-v1.svg', import.meta.url))).digest('hex'), 'd2cd68c7acefe5e5d1331be183a48d079985f2f7fad1bd6191b3c52ec64e4b38', 'UtilityPot artwork must retain exact family bytes');
 
 const p = normalizeProject('dexpot', {
   sha: 'a'.repeat(40), readme: '# Project\n', roadmap: null,

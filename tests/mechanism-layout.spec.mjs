@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 
+const projectCount = JSON.parse(readFileSync(new URL('../src/data/projects.json', import.meta.url), 'utf8')).length;
+
 for (const width of [320, 360, 768, 1280]) {
   for (const reducedMotion of ['reduce', 'no-preference']) {
     test(`all card labels fit at ${width}px, motion=${reducedMotion}`, async ({ page }) => {
@@ -19,7 +21,7 @@ for (const width of [320, 360, 768, 1280]) {
       await refpotArt.evaluate(async image => { await image.decode(); });
       await expect(refpotArt).toHaveCSS('object-fit', 'contain');
       await expect(page.locator('#refpot .product-heading h2 strong')).toHaveCSS('color', 'rgb(244, 242, 234)');
-      const surfaces = await page.evaluate(() => ['refpot', 'intpot', 'dexpot', 'summonpot', 'lifepot'].map(id => {
+      const surfaces = await page.evaluate(() => ['refpot', 'intpot', 'dexpot', 'summonpot', 'lifepot', 'utilitypot'].map(id => {
         const card = document.getElementById(id);
         return ['.product-copy', '.demo-preview'].map(selector => getComputedStyle(card.querySelector(selector)).backgroundColor);
       }));
@@ -29,7 +31,7 @@ for (const width of [320, 360, 768, 1280]) {
       await refpotArt.hover();
       await expect(refpotArt).toHaveCSS('transform', 'none');
       const cards = page.locator('.demo-preview');
-      await expect(cards).toHaveCount(5);
+      await expect(cards).toHaveCount(projectCount);
       for (const card of await cards.all()) {
         await card.scrollIntoViewIfNeeded();
         const failures = await card.evaluate((section) => {

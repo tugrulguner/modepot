@@ -12,15 +12,16 @@ const projects = {
   intpot: ['https://intpot.modepot.io/playground/', 'https://intpot.modepot.io/quickstart/'],
   summonpot: ['https://summonpot.modepot.io/playground/', 'https://summonpot.modepot.io/quick-start/'],
   lifepot: ['https://lifepot.modepot.io/learn', 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md'],
+  utilitypot: ['https://utilitypot.modepot.io/', 'https://github.com/tugrulguner/utilitypot/blob/main/README.md'],
   refpot: ['https://refpot.modepot.io/', 'https://refpot.modepot.io/package/'],
 };
 
 test('project-entry links are tracked; GitHub documentation remains excluded', async ({ page }) => {
   await page.setContent(isolatedHtml);
-  const expectedCount = Object.keys(projects).length * 2 + 3;
+  const expectedCount = Object.keys(projects).length * 2 + 2;
   await expect(page.locator('a[data-posthog-event="modepot_project_clicked"]')).toHaveCount(expectedCount);
   for (const [project, [playground, docs]] of Object.entries(projects)) {
-    if (project !== 'refpot') {
+    if (!['refpot', 'utilitypot'].includes(project)) {
       const play = page.locator(`.demo-route[href="${project === 'lifepot' ? 'https://lifepot.modepot.io/play' : playground}"]`);
       await expect(play).toHaveClass(/ph-no-autocapture/);
       await expect(play).toHaveAttribute('data-posthog-event', 'modepot_project_clicked');
@@ -29,7 +30,7 @@ test('project-entry links are tracked; GitHub documentation remains excluded', a
     }
     const doc = page.locator(`.product-actions > .product-resource[href="${docs}"]`);
     await expect(doc).toHaveClass(/ph-no-autocapture/);
-    if (project === 'lifepot') {
+    if (['lifepot', 'utilitypot'].includes(project)) {
       expect(await doc.getAttribute('data-posthog-event')).toBeNull();
     } else {
       await expect(doc).toHaveAttribute('data-posthog-event', 'modepot_project_clicked');
@@ -41,7 +42,7 @@ test('project-entry links are tracked; GitHub documentation remains excluded', a
 
 test('built handler captures every project link once per activation and preserves navigation', async ({ page }) => {
   await page.setContent(isolatedHtml);
-  const expectedCount = Object.keys(projects).length * 2 + 3;
+  const expectedCount = Object.keys(projects).length * 2 + 2;
   await page.evaluate(() => {
     window.__captures = [];
     window.posthog = { capture: (...args) => window.__captures.push(args) };
@@ -115,7 +116,7 @@ test('project events distinguish site, documentation, and playground destination
     for (const link of links) link.dispatchEvent(new MouseEvent('click', { button: 0, bubbles: true }));
     return window.__captures.map(([name, properties]) => ({ name, properties }));
   });
-  expect(events.filter(event => event.properties.destination_type === 'site')).toHaveLength(5);
+  expect(events.filter(event => event.properties.destination_type === 'site')).toHaveLength(Object.keys(projects).length);
   expect(events.filter(event => event.properties.destination_type === 'docs')).toHaveLength(4);
   expect(events.filter(event => event.properties.destination_type === 'playground')).toHaveLength(4);
   expect(events.every(event => event.name === 'modepot_project_clicked')).toBe(true);

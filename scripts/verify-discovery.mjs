@@ -111,6 +111,16 @@ const itemList = jsonLdBlocks.map(([, source]) => JSON.parse(source)).flatMap((v
 if (itemList?.numberOfItems !== projectNames.length || itemList?.itemListElement?.length !== projectNames.length) {
   failures.push(`index.html: structured project count does not match source inventory (${projectNames.length})`);
 }
+const utilitySchema = itemList?.itemListElement?.find(({ item }) => item.name === 'utilitypot')?.item;
+if (utilitySchema?.programmingLanguage !== 'JavaScript' || utilitySchema?.runtimePlatform !== 'Web browser and Cloudflare Workers' || utilitySchema?.license !== 'https://opensource.org/license/mit' || utilitySchema?.url !== 'https://utilitypot.modepot.io/' || utilitySchema?.codeRepository !== 'https://github.com/tugrulguner/utilitypot' || !utilitySchema?.description.includes('users review') || !utilitySchema?.description.includes('deterministic code')) {
+  failures.push('UtilityPot schema must preserve its live destination and execution boundary');
+}
+for (const [surface, content] of [['README', readme], ['llms', llms]]) {
+  for (const token of ['https://utilitypot.modepot.io/', 'https://github.com/tugrulguner/utilitypot', 'Seven tools', 'bounded Jev interpretation', 'user review', 'deterministic execution']) {
+    if (!content.includes(token)) failures.push(`${surface}: missing UtilityPot contract ${token}`);
+  }
+}
+if (!html.includes('href="#utilitypot"')) failures.push('UtilityPot must appear in the shared chooser');
 const dexpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'dexpot')?.item;
 if (html.includes('Response[T]') || llms.includes('Response[T]')) {
   failures.push('Dexpot declares output with response=T; Response[T] is not a public API');
@@ -184,7 +194,7 @@ for (const destination of projectNames.map((product) => `https://github.com/tugr
   }
 }
 const projectEventLinks = [...html.matchAll(/<a\b[^>]*data-posthog-event="modepot_project_clicked"[^>]*>/g)];
-const expectedProjectEventLinks = projectNames.length * 2 + 3;
+const expectedProjectEventLinks = projectNames.length * 2 + 2;
 if (projectEventLinks.length !== expectedProjectEventLinks) failures.push(`index.html: expected ${expectedProjectEventLinks} explicit project links, found ${projectEventLinks.length}`);
 for (const [index, [tag]] of projectEventLinks.entries()) {
   if (!tag.includes('ph-no-autocapture')) failures.push(`index.html: project event link ${index + 1} must exclude autocapture`);
