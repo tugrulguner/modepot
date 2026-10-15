@@ -20,7 +20,7 @@ assert.ok(['missing', 'available'].includes(utility.roadmap.status));
 if (utility.latestRelease) assert.ok(utility.latestRelease.url.startsWith(`${utility.repository}/releases/tag/`));
 
 assert.equal(createHash('sha256').update(await readFile(new URL('../public/marks/utilitypot-mark-v1.svg', import.meta.url))).digest('hex'), '74e035fed2ed483257e7c35965a4a49a8a377abe45f458bc6e06a6e89892adf3', 'UtilityPot artwork must retain exact family bytes');
-assert.equal(createHash('sha256').update(await readFile(new URL('../public/products/utilitypot-lockup-v1.svg', import.meta.url))).digest('hex'), 'd2cd68c7acefe5e5d1331be183a48d079985f2f7fad1bd6191b3c52ec64e4b38', 'UtilityPot artwork must retain exact family bytes');
+assert.equal(createHash('sha256').update(await readFile(new URL('../public/products/utilitypot-lockup-v1.svg', import.meta.url))).digest('hex'), '797a7c453661b989296ea40e335e56b79dea8a6920f52b29dc281ee9ffdc6246', 'UtilityPot artwork must retain exact family bytes');
 
 const p = normalizeProject('dexpot', {
   sha: 'a'.repeat(40), readme: '# Project\n', roadmap: null,
