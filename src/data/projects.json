@@ -102,15 +102,15 @@
   {
     "name": "utilitypot",
     "repository": "https://github.com/tugrulguner/utilitypot",
-    "commit": "0fa3319a867b6a7ec960ff99ab1b7e378dec4f43",
-    "commitUrl": "https://github.com/tugrulguner/utilitypot/commit/0fa3319a867b6a7ec960ff99ab1b7e378dec4f43",
+    "commit": "413043db85c3da438cf02c63cd4df0c890d9673e",
+    "commitUrl": "https://github.com/tugrulguner/utilitypot/commit/413043db85c3da438cf02c63cd4df0c890d9673e",
     "readme": {
-      "url": "https://github.com/tugrulguner/utilitypot/blob/0fa3319a867b6a7ec960ff99ab1b7e378dec4f43/README.md",
-      "sha256": "efcca8c24a65419189308845d14a4680588393bd6a75a9a336e775ac757cd719"
+      "url": "https://github.com/tugrulguner/utilitypot/blob/413043db85c3da438cf02c63cd4df0c890d9673e/README.md",
+      "sha256": "60742f5fdc0083b81ebb041148fa38898bbe532832085e14d8ea2f932045a941"
     },
     "roadmap": {
       "status": "missing",
-      "url": "https://github.com/tugrulguner/utilitypot/blob/0fa3319a867b6a7ec960ff99ab1b7e378dec4f43/ROADMAP.md",
+      "url": "https://github.com/tugrulguner/utilitypot/blob/413043db85c3da438cf02c63cd4df0c890d9673e/ROADMAP.md",
       "sha256": null
     },
     "latestRelease": null
