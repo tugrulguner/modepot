@@ -199,6 +199,15 @@ for (const token of ['## Quick starts and documentation', 'https://dexpot.modepo
   if (!llms.includes(token)) failures.push(`llms.txt: missing ${token}`);
 }
 
+// Historical release notices are independent of the moving latestRelease record.
+for (const [surface, content, tokens] of [
+  ['index.html', html, ['v0.11.0 published: bounded helper recovery', 'before-write missing-binding refusal']],
+  ['README.md', readme, ['## Intpot v0.11.0', 'https://github.com/tugrulguner/intpot/discussions/205', 'annotation/default dependencies']],
+  ['llms.txt', llms, ['## Intpot v0.11.0 bounded helper recovery', 'https://github.com/tugrulguner/intpot/discussions/205', 'does not guarantee full fidelity']],
+]) {
+  for (const token of tokens) if (!content.includes(token)) failures.push(`${surface}: missing Intpot helper-recovery release contract ${token}`);
+}
+
 // Keep the historical safeguard notice while allowing the project sync workflow
 // to advance latestRelease to future published versions.
 for (const [surface, content, tokens] of [

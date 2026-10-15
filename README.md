@@ -29,6 +29,12 @@ Each project owns its site, source, and learning path. Start with the route for 
 
 These projects are the beginning, not the boundary. RefPot is a publicly released experimental alpha (v0.1.1): its native C++ engine and small Python CRUD/explicit-transaction API are real; SQL and ORM remain planned. Qualification is limited, with no broad 2×-over-SQLite performance result or production-durability claim. ModePot is an open-source family and community; [join the community on Discord](https://discord.gg/u3AANZr6RG) to discuss the work and get involved.
 
+## Intpot v0.11.0
+
+Intpot v0.11.0 recovers bounded plain same-module helpers and immutable scalar/tuple constants into standalone CLI, API, and MCP output. Public conversion diagnoses missing retained-body bindings per target and refuses before writes. Dynamic state, closures, decorated helpers, ambiguous bindings, and generated-name collisions remain refused; broader annotation/default dependencies are not a full-fidelity guarantee.
+
+[Release and upgrade notes](https://github.com/tugrulguner/intpot/discussions/205) · [Conversion boundaries](https://intpot.modepot.io/conversion-boundaries/)
+
 ## Intpot v0.10.0
 
 Intpot v0.10.0 adds explicit conversion safeguards: CLI-to-API/MCP conversion refuses parameter callbacks that would lose validation or transformation, and public conversion refuses unrecoverable function bodies before writing output. Body-recovery diagnostics are inspectable; intentionally incomplete exports require explicit scaffold opt-in and fail with `NotImplementedError`. This is a bounded assessment, not a full conversion-fidelity guarantee.

@@ -16,6 +16,13 @@ ModePot builds frameworks, interfaces, tools, engines, and games around simple f
 - [ModePot source](https://github.com/tugrulguner/modepot): Source for the family website.
 - [ModePot community](https://discord.gg/u3AANZr6RG): Discord for project discussion.
 
+## Intpot v0.11.0 bounded helper recovery
+
+Published on PyPI: converters recover required plain same-module helpers and immutable scalar/tuple literal constants, including transitive helpers and ordinary imports, into standalone CLI, API, and MCP output. Missing retained-body bindings are diagnosed per target and public conversion refuses before writes; scaffold opt-in does not bypass this guard. Dynamic state, closures, decorated helpers, ambiguous/rebound values and generated-name collisions remain refused. Broader annotation/default dependency assessment remains planned. This does not guarantee full fidelity; live App serving and ejection remain unchanged.
+
+- [Release and upgrade notes](https://github.com/tugrulguner/intpot/discussions/205)
+- [Conversion boundaries](https://intpot.modepot.io/conversion-boundaries/)
+
 ## Intpot v0.10.0 conversion safeguards
 
 Published on PyPI: CLI-to-API/MCP conversion refuses parameter callbacks that would lose validation or transformation. Public conversion refuses unrecoverable function bodies before writing output; `app.assess()` reports body-recovery diagnostics. `allow_scaffold=True` / `--allow-scaffold` explicitly generates implementations that raise `NotImplementedError`. Assessment does not guarantee full fidelity or recover unresolved references. Live App serving and ejection are unchanged.
