@@ -177,10 +177,10 @@ const productDefinitions = [
     mark: '/marks/utilitypot-mark-v1.svg',
     image: '/products/utilitypot-lockup-v1.png?v=wordmark-2',
     alt: 'UtilityPot lockup with its amber ModePot family mark',
-    category: 'Seven tools · reviewed deterministic execution',
-    statement: 'Describe the task. Review the plan. Run the tool.',
-    choice: 'Use seven everyday tools with bounded Jev interpretation, user review, and deterministic execution.',
-    description: 'UtilityPot offers seven tools. Jev provides bounded interpretation; users review the proposed inputs before deterministic code executes. Tool-specific consent and privacy boundaries remain part of each workflow.',
+    category: 'Seven tools · four local, three AI-assisted',
+    statement: 'One task. One action. Inspect the result.',
+    choice: 'Four local converters and calculators, three AI-assisted text tools. One fixed workflow per tool.',
+    description: 'Four browser-local utilities handle CSV/JSON conversion, dates and meeting calculations. Three AI-assisted tools use Jev for entities, flowcharts and webpage evidence after disclosed submission. Inspect results, then copy or download.',
     href: 'https://utilitypot.modepot.io/',
     action: 'Explore UtilityPot',
     repository: 'https://github.com/tugrulguner/utilitypot',
@@ -189,7 +189,7 @@ const productDefinitions = [
     developmentLabel: '',
     accent: 'gold',
     playground: '',
-    demoDescription: 'Bounded Jev interpretation produces proposed inputs for user review before deterministic execution. This illustrates the execution boundary, not a live run or a timing measurement.',
+    demoDescription: 'Four fixed browser-local workflows perform conversions and calculations without API calls. Three fixed AI-assisted workflows use disclosed Jev interpretation. All seven provide inspectable results and exports. Illustration only, not a live run.',
   },
 ];
 const products = productDefinitions.map((product) => ({ ...product, source: sourceByName.get(product.name)! }));
@@ -469,9 +469,15 @@ const structuredData = {
                   )}
                   {product.name === 'utilitypot' && (
                     <div class="mechanism utility-mechanism" aria-hidden="true">
-                      <span class="mechanism-node">Bounded Jev interpretation</span><span class="mechanism-arrow">→</span>
-                      <span class="mechanism-node">User review</span><span class="mechanism-arrow">→</span>
-                      <span class="mechanism-node">Deterministic execution</span>
+                      <div class="utility-path" data-utility-path="local">
+                        <span class="mechanism-node">Four browser-local utilities</span><span class="mechanism-arrow">→</span>
+                        <span class="mechanism-node">Browser-only computation</span>
+                      </div>
+                      <div class="utility-path" data-utility-path="ai">
+                        <span class="mechanism-node">Three AI-assisted tools</span><span class="mechanism-arrow">→</span>
+                        <span class="mechanism-node">Disclosed Jev interpretation</span>
+                      </div>
+                      <span class="mechanism-node utility-outcome">Inspect results · copy or download</span>
                     </div>
                   )}
                   {product.name === 'lifepot' && (
