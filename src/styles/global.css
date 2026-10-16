@@ -558,7 +558,6 @@ nav a:hover {
 .product-violet { --accent: var(--violet); }
 .product-mint { --accent: #77e5bd; }
 .product-refpot { --accent: #F4F2EA; }
-.product-refpot h2 strong { color: var(--accent); }
 
 .selector-mint { --selector-accent: #77e5bd; }
 .selector-refpot { --selector-accent: #F4F2EA; }
