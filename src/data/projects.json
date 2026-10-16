@@ -23,22 +23,22 @@
   {
     "name": "intpot",
     "repository": "https://github.com/tugrulguner/intpot",
-    "commit": "e6a5d138c2b2c1c1fdc1d3e38bb051808212ac0f",
-    "commitUrl": "https://github.com/tugrulguner/intpot/commit/e6a5d138c2b2c1c1fdc1d3e38bb051808212ac0f",
+    "commit": "f0017745e18bcb3f687e92a7b563d6b9f7b0e5f9",
+    "commitUrl": "https://github.com/tugrulguner/intpot/commit/f0017745e18bcb3f687e92a7b563d6b9f7b0e5f9",
     "readme": {
-      "url": "https://github.com/tugrulguner/intpot/blob/e6a5d138c2b2c1c1fdc1d3e38bb051808212ac0f/README.md",
-      "sha256": "e40a032f38d7a46717a652be9bbc1a406da9e996c99bf3c2aebccb8cf1179625"
+      "url": "https://github.com/tugrulguner/intpot/blob/f0017745e18bcb3f687e92a7b563d6b9f7b0e5f9/README.md",
+      "sha256": "4c49b25fc014628a02b3dea159e8df75d25e2b156232a014be575a32277181b7"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/intpot/blob/e6a5d138c2b2c1c1fdc1d3e38bb051808212ac0f/ROADMAP.md",
-      "sha256": "a3e57b14776ec0e73ae2243cc80924189b9290d154372f14959d5d09359e224f"
+      "url": "https://github.com/tugrulguner/intpot/blob/f0017745e18bcb3f687e92a7b563d6b9f7b0e5f9/ROADMAP.md",
+      "sha256": "79c360513e937b8c19d4a5df8652488b901bbf0250c34dacd012ea5940607214"
     },
     "latestRelease": {
-      "tag": "v0.10.0",
-      "name": "v0.10.0",
-      "url": "https://github.com/tugrulguner/intpot/releases/tag/v0.10.0",
-      "publishedAt": "2026-10-09T21:57:19Z"
+      "tag": "v0.11.0",
+      "name": "v0.11.0",
+      "url": "https://github.com/tugrulguner/intpot/releases/tag/v0.11.0",
+      "publishedAt": "2026-10-15T03:02:03Z"
     }
   },
   {
