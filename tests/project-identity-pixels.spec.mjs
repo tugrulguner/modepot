@@ -14,7 +14,9 @@ for (const name of projects)
     await page.goto("/");
     const image = page.locator(`#${name} .product-art img`);
     await image.scrollIntoViewIfNeeded();
+    await expect(image).toHaveCSS("object-fit", "contain");
     await expect(image).toHaveCSS("filter", "none");
+    await expect(image).toHaveCSS("transform", "none");
 
     const counts = await image.evaluate(async (im) => {
       if (!(im instanceof HTMLImageElement)) throw Error("Expected HTML image");
@@ -51,7 +53,9 @@ for (const name of projects)
       return { width: canvas.width, height: canvas.height, white, gold };
     });
     await image.hover();
+    await expect(image).toHaveCSS("object-fit", "contain");
     await expect(image).toHaveCSS("filter", "none");
+    await expect(image).toHaveCSS("transform", "none");
     await image.screenshot({ path: test.info().outputPath(`${name}-artwork.png`) });
     expect(counts.width).toBe(1200);
     expect(counts.height).toBe(900);
