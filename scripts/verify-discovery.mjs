@@ -112,11 +112,11 @@ if (itemList?.numberOfItems !== projectNames.length || itemList?.itemListElement
   failures.push(`index.html: structured project count does not match source inventory (${projectNames.length})`);
 }
 const utilitySchema = itemList?.itemListElement?.find(({ item }) => item.name === 'utilitypot')?.item;
-if (utilitySchema?.programmingLanguage !== 'JavaScript' || utilitySchema?.runtimePlatform !== 'Web browser and Cloudflare Workers' || utilitySchema?.license !== 'https://opensource.org/license/mit' || utilitySchema?.url !== 'https://utilitypot.modepot.io/' || utilitySchema?.codeRepository !== 'https://github.com/tugrulguner/utilitypot' || !utilitySchema?.description.includes('users review') || !utilitySchema?.description.includes('deterministic code')) {
+if (utilitySchema?.programmingLanguage !== 'JavaScript' || utilitySchema?.runtimePlatform !== 'Web browser and Cloudflare Workers' || utilitySchema?.license !== 'https://opensource.org/license/mit' || utilitySchema?.url !== 'https://utilitypot.modepot.io/' || utilitySchema?.codeRepository !== 'https://github.com/tugrulguner/utilitypot' || !utilitySchema?.description.includes('Four browser-local utilities') || !utilitySchema?.description.includes('Three AI-assisted tools') || !utilitySchema?.description.includes('after disclosed submission')) {
   failures.push('UtilityPot schema must preserve its live destination and execution boundary');
 }
 for (const [surface, content] of [['README', readme], ['llms', llms]]) {
-  for (const token of ['https://utilitypot.modepot.io/', 'https://github.com/tugrulguner/utilitypot', 'Seven tools', 'bounded Jev interpretation', 'user review', 'deterministic execution']) {
+  for (const token of ['https://utilitypot.modepot.io/', 'https://github.com/tugrulguner/utilitypot', 'Seven tools', 'four browser-local', 'three AI-assisted', 'One fixed workflow per tool', 'disclosed AI processing', 'inspectable results']) {
     if (!content.includes(token)) failures.push(`${surface}: missing UtilityPot contract ${token}`);
   }
 }

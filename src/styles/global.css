@@ -1275,3 +1275,15 @@ footer a:hover {
 @media (prefers-reduced-motion:reduce) {
   .flask-particle,.falling-particle,.flask-liquid { animation:none; }
 }
+
+/* Fixed utility processing paths; illustration, not visitor-selectable modes. */
+.utility-mechanism { display: grid; gap: .65rem; }
+.utility-path { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: .45rem; min-width: 0; }
+.utility-path .mechanism-node { min-height: 4rem; }
+.utility-mechanism .mechanism-arrow { transform: none; }
+.utility-mechanism .utility-outcome { width: 100%; }
+@media (max-width: 480px) {
+  .utility-path { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
+  .utility-path .mechanism-arrow { transform: rotate(90deg); }
+  .utility-path .mechanism-node { min-height: 2.7rem; }
+}
