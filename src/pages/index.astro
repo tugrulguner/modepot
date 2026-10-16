@@ -2,6 +2,7 @@
 import '@fontsource-variable/manrope';
 import '@fontsource/ibm-plex-mono/400.css';
 import '../styles/global.css';
+import PartnerFeature from '../components/PartnerFeature.astro';
 import projectSources from '../data/projects.json';
 import { sanitizePosthogEvent } from '../lib/privacy-sanitizer.js';
 const sourceByName = new Map(projectSources.map((project) => [project.name, project]));
@@ -564,6 +565,7 @@ const structuredData = {
           </p>
         </div>
       </section>
+      <PartnerFeature />
     </main>
 
     <footer>
