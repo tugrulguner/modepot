@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "artifacts": [
+    {
+      "project": "dexpot",
+      "repository": "https://github.com/tugrulguner/dexpot",
+      "revision": "482e6446e4f179f210f7eb2ee048bb4d2348a6dc",
+      "source": "website/src/assets/dexpot.webp",
+      "sourceSha256": "85b9b636fdb2cfcc704836db481380bad19aafa9803a72cd8aea3a977d8aab6c",
+      "destination": "public/products/dexpot-lockup.webp",
+      "destinationSha256": "85b9b636fdb2cfcc704836db481380bad19aafa9803a72cd8aea3a977d8aab6c",
+      "transform": "copy"
+    },
+    {
+      "project": "intpot",
+      "repository": "https://github.com/tugrulguner/intpot",
+      "revision": "9c3b85872bd6593402f61d7a843d967d43f86281",
+      "source": "website/src/assets/intpot_image.webp",
+      "sourceSha256": "342299b9a261e34e1bb530cd4fcd23cc7bf6c1b9306ba8e16c6750ef3ce285e5",
+      "destination": "public/products/intpot-lockup.webp",
+      "destinationSha256": "342299b9a261e34e1bb530cd4fcd23cc7bf6c1b9306ba8e16c6750ef3ce285e5",
+      "transform": "copy"
+    },
+    {
+      "project": "summonpot",
+      "repository": "https://github.com/tugrulguner/summonpot",
+      "revision": "f271158a5b4f69149e37016a7ae159b6046673e7",
+      "source": "website/public/summonpot-lockup.png",
+      "sourceSha256": "3156b5698e9f5d01e94c8178346b5cace9721bcc8b5724558ed0c4ebcb699dc4",
+      "destination": "public/products/summonpot-lockup.webp",
+      "destinationSha256": "730edc07214f90663db4c48c691769c68923b2a2e16652f7f9260aa0207028a9",
+      "transform": "webp-quality-92"
+    },
+    {
+      "project": "lifepot",
+      "repository": "https://github.com/tugrulguner/lifepot",
+      "revision": "f42d7d6a361c25a8c4d5730719ff934c2d9543a5",
+      "source": "public/lifepot-lockup.webp",
+      "sourceSha256": "350424deba92464a53058a73acbf0b82fbaa7761867e82c4aa505edb360211cc",
+      "destination": "public/products/lifepot-lockup.webp",
+      "destinationSha256": "350424deba92464a53058a73acbf0b82fbaa7761867e82c4aa505edb360211cc",
+      "transform": "copy"
+    },
+    {
+      "project": "utilitypot",
+      "repository": "https://github.com/tugrulguner/utilitypot",
+      "revision": "70f072325ece76a6cefe872a6fd68e6117726fde",
+      "source": "public/utilitypot-lockup-v1.png",
+      "sourceSha256": "9fffe4688ddc7751ddb14b221043a3ece0015c0ae191d0c54250e8f250a649ff",
+      "destination": "public/products/utilitypot-lockup-v1.png",
+      "destinationSha256": "9fffe4688ddc7751ddb14b221043a3ece0015c0ae191d0c54250e8f250a649ff",
+      "transform": "copy"
+    },
+    {
+      "project": "utilitypot",
+      "repository": "https://github.com/tugrulguner/utilitypot",
+      "revision": "70f072325ece76a6cefe872a6fd68e6117726fde",
+      "source": "public/utilitypot-mark-v1.svg",
+      "sourceSha256": "d0611af2ce31a9cea77ff05f143f51db8b599c7f3b0ff60bb6f49f03862f5dbf",
+      "destination": "public/marks/utilitypot-mark-v1.svg",
+      "destinationSha256": "d0611af2ce31a9cea77ff05f143f51db8b599c7f3b0ff60bb6f49f03862f5dbf",
+      "transform": "copy"
+    },
+    {
+      "project": "utilitypot",
+      "repository": "https://github.com/tugrulguner/utilitypot",
+      "revision": "70f072325ece76a6cefe872a6fd68e6117726fde",
+      "source": "docs/assets/utilitypot-lockup-v1.svg",
+      "sourceSha256": "41bd5052c5629b8f3ff9ebad1bb81fe989756544d323555dd49cfa50607c9978",
+      "destination": "public/products/utilitypot-lockup-v1.svg",
+      "destinationSha256": "41bd5052c5629b8f3ff9ebad1bb81fe989756544d323555dd49cfa50607c9978",
+      "transform": "copy"
+    }
+  ]
+}
