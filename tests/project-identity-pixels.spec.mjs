@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+const palette = {dexpot:[102,217,255],intpot:[242,184,75],summonpot:[169,135,255],lifepot:[119,229,189],refpot:[244,242,234],utilitypot:[242,140,190]};
 const projects = [
   "dexpot",
   "intpot",
@@ -8,7 +9,7 @@ const projects = [
   "utilitypot",
 ];
 for (const name of projects)
-  test(`${name} artwork retains an off-white prefix and amber pot`, async ({
+  test(`${name} artwork retains an off-white prefix and flask-matched pot`, async ({
     page,
   }) => {
     await page.goto("/");
@@ -18,7 +19,7 @@ for (const name of projects)
     await expect(image).toHaveCSS("filter", "none");
     await expect(image).toHaveCSS("transform", "none");
 
-    const counts = await image.evaluate(async (im) => {
+    const counts = await image.evaluate(async (im, target) => {
       if (!(im instanceof HTMLImageElement)) throw Error("Expected HTML image");
       await im.decode();
       const canvas = document.createElement("canvas");
@@ -28,7 +29,7 @@ for (const name of projects)
       ctx.drawImage(im, 0, 0);
       const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
       let white = 0,
-        gold = 0;
+        accent = 0;
       for (let y = 330; y < 470; y++)
         for (let x = 510; x < 1100; x++) {
           const k = (y * canvas.width + x) * 4,
@@ -44,14 +45,14 @@ for (const name of projects)
             white++;
           if (
             x > 710 &&
-            Math.abs(r - 242) < 14 &&
-            Math.abs(g - 184) < 14 &&
-            Math.abs(b - 75) < 14
+            Math.abs(r - target[0]) < 14 &&
+            Math.abs(g - target[1]) < 14 &&
+            Math.abs(b - target[2]) < 14
           )
-            gold++;
+            accent++;
         }
-      return { width: canvas.width, height: canvas.height, white, gold };
-    });
+      return { width: canvas.width, height: canvas.height, white, accent };
+    }, palette[name]);
     await image.hover();
     await expect(image).toHaveCSS("object-fit", "contain");
     await expect(image).toHaveCSS("filter", "none");
@@ -61,11 +62,11 @@ for (const name of projects)
     expect(counts.height).toBe(900);
     expect(
       counts.white,
-      "name prefix must not become entirely amber",
+      "name prefix must remain off-white",
     ).toBeGreaterThan(100);
     expect(
-      counts.gold,
-      "pot suffix must be amber inside the wordmark, not elsewhere in the poster",
+      counts.accent,
+      "pot suffix must match its flask inside lettering, not elsewhere in the poster",
     ).toBeGreaterThan(100);
   });
 test("UtilityPot flask has its own rose accent, distinct from Intpot orange", async ({

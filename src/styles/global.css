@@ -509,6 +509,7 @@ nav a:hover {
 
 .selector-row {
   --selector-accent: var(--gold);
+  --wordmark-accent: var(--selector-accent);
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 2.5rem minmax(0, 1fr) 9rem 1rem;
@@ -534,16 +535,24 @@ nav a:hover {
 .selector-gold { --selector-accent: var(--gold); }
 .selector-violet { --selector-accent: var(--violet); }
 
-.selector-row span {
+.selector-row > span {
   max-width: 56rem;
   font-size: clamp(1rem, 1.6vw, 1.35rem);
   line-height: 1.45;
 }
 
 .selector-row strong {
-  color: var(--selector-accent);
+  color: var(--ink);
   font-size: 1rem;
   font-weight: 620;
+}
+.selector-pot,
+.product h2 strong {
+  color: var(--wordmark-accent);
+}
+#utilitypot,
+.selector-row[href="#utilitypot"] {
+  --wordmark-accent: #f28cbe;
 }
 
 .selector-row i {
@@ -558,6 +567,7 @@ nav a:hover {
 
 .product {
   --accent: var(--gold);
+  --wordmark-accent: var(--accent);
   display: grid;
   grid-template-columns: 7rem minmax(20rem, 1.12fr) minmax(22rem, 0.88fr);
   min-height: 45rem;
@@ -1079,7 +1089,7 @@ footer a:hover {
     align-self: center;
   }
 
-  .selector-row span {
+  .selector-row > span {
     grid-column: 2 / -1;
   }
 

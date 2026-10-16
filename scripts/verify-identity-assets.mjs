@@ -5,8 +5,8 @@ const root = new URL("../", import.meta.url);
 const { artifacts } = JSON.parse(
   await readFile(new URL("src/data/identity-sources.json", root), "utf8"),
 );
-assert.equal(artifacts.length, 7);
-assert.equal(new Set(artifacts.map((a) => a.project)).size, 5);
+assert.equal(artifacts.length, 8);
+assert.equal(new Set(artifacts.map((a) => a.project)).size, 6);
 for (const item of artifacts) {
   assert.match(item.revision, /^[a-f0-9]{40}$/);
   assert.match(item.sourceSha256, /^[a-f0-9]{64}$/);
@@ -30,5 +30,5 @@ for (const item of artifacts) {
   else assert.equal(item.transform, "webp-quality-92");
 }
 console.log(
-  "Verified seven identity artifacts from five immutable product-source revisions.",
+  "Verified eight identity artifacts from six immutable product-source revisions.",
 );
