@@ -1,0 +1,38 @@
+<section class="partner-feature" data-partner-feature aria-labelledby="partner-title">
+  <div class="partner-identity">
+    <p class="partner-context">Partner</p>
+    <div class="partner-wordmark">
+      <img src="/partners/circles-and-cookies-wordmark.png" alt="Circles &amp; Cookies" width="251" height="49" loading="lazy" />
+    </div>
+  </div>
+  <div class="partner-copy">
+    <h2 id="partner-title">Making math fun and thinking a habit.</h2>
+    <p>Story games and puzzles that build analytical thinking and math skills for kids ages 5–10.</p>
+    <a class="partner-visit ph-no-autocapture" href="https://circlesandcookies.com/" target="_blank" rel="sponsored noopener">Explore Circles &amp; Cookies <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
+
+<style>
+  .partner-feature {
+    display: grid;
+    grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    padding-block: 2.5rem;
+    padding-inline: clamp(1.25rem, 4vw, 4.5rem);
+    border-top: 1px solid var(--line);
+  }
+  .partner-context { margin: 0 0 .75rem; color: var(--muted); font-size: .8rem; }
+  .partner-wordmark { display: inline-block; max-width: 100%; padding: .75rem 1rem; background: #fffaf7; border-radius: 5px; }
+  .partner-wordmark img { display: block; width: 251px; max-width: 100%; height: auto; }
+  .partner-copy { min-width: 0; }
+  .partner-feature h2 { margin: 0 0 .65rem; max-width: 26ch; font-size: clamp(1.35rem, 2.1vw, 1.8rem); line-height: 1.3; letter-spacing: -.03em; }
+  .partner-copy > p { margin: 0; max-width: 55ch; color: var(--muted); font-size: .95rem; line-height: 1.7; }
+  .partner-visit { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; margin-top: .65rem; color: var(--ink); font-size: .9rem; font-weight: 650; text-underline-offset: .3em; }
+  .partner-visit:hover { color: var(--gold); }
+  .partner-visit:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+  @media (max-width: 660px) {
+    .partner-feature { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; padding-block: 2rem; }
+    .partner-feature h2 { max-width: 25ch; }
+  }
+</style>
