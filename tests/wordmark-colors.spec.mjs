@@ -6,7 +6,7 @@ for (const width of [1280, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/');
     await page.evaluate(() => document.fonts.ready);
-    await expect(page.locator('.hero-wordmark strong')).toHaveCSS('color','rgb(244, 242, 234)');
+    await expect(page.locator('.hero-wordmark strong')).toHaveCSS('background-image', /linear-gradient/);
     const headings = page.locator('.product-heading h2');
     const names = await headings.allTextContents();
     expect(names).toContain('refpot');

@@ -1,8 +1,8 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="public/modepot-mark.svg?v=neutral-1">
-    <source media="(prefers-color-scheme: light)" srcset="public/modepot-mark-light.svg?v=neutral-1">
-    <img src="public/modepot-mark-light.svg?v=neutral-1" alt="ModePot family mark" width="96" height="96">
+    <source media="(prefers-color-scheme: dark)" srcset="public/modepot-mark.svg?v=multicolour-1">
+    <source media="(prefers-color-scheme: light)" srcset="public/modepot-mark-light.svg?v=multicolour-1">
+    <img src="public/modepot-mark-light.svg?v=multicolour-1" alt="ModePot family mark" width="96" height="96">
   </picture>
 </p>
 
