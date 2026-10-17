@@ -28,6 +28,7 @@ for (const width of [1280, 390]) {
         await expect(card.getByRole('link', { name: /^Latest recorded release/ })).toHaveCount(0);
       }
       expect(await card.evaluate(el => el.scrollWidth <= el.clientWidth + 1)).toBe(true);
+      expect(await card.locator('.product-resource').first().evaluate(el => parseFloat(getComputedStyle(el).fontSize))).toBeGreaterThanOrEqual(12);
       await card.locator('.product-actions').screenshot({ path: test.info().outputPath(`${record.name}-sources-${width}.png`) });
     }
     await page.screenshot({ path: test.info().outputPath(`snapshots-${width}.png`), fullPage: true });

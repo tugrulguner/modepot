@@ -526,7 +526,7 @@ const structuredData = {
                   {product.source.roadmap.status === 'available' ? <a class="product-resource ph-no-autocapture" href={product.source.roadmap.url}>Roadmap · {product.source.roadmap.sha256!.slice(0, 12)} <span aria-hidden="true">↗</span></a> : <span class="product-resource">Roadmap · not published</span>}
                   {product.source.latestRelease && <a class="product-resource ph-no-autocapture" href={product.source.latestRelease.url}>Latest recorded release · {product.source.latestRelease.tag} <span aria-hidden="true">↗</span></a>}
                   {!product.source.latestRelease && <span class="product-resource">No release recorded</span>}
-                  <span class="product-resource">GitHub metadata checked <time datetime={product.source.checkedAt}>{product.source.checkedAt.slice(0, 10)} UTC</time></span>
+                  <span class="product-resource">GitHub checked <time datetime={product.source.checkedAt}>{product.source.checkedAt.slice(0, 10)} UTC</time></span>
                   <a class="product-resource ph-no-autocapture" href={product.repository}>GitHub <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
