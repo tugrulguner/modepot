@@ -13,13 +13,16 @@ const digest = (s) => createHash('sha256').update(s).digest('hex');
 test('snapshot fetches documents at the resolved commit and synchronizes README from the same records', async () => {
   const temp = await mkdtemp(join(process.env.TMPDIR ?? process.cwd(), 'source-snapshot-'));
   const originalFetch = globalThis.fetch;
+  const originalToken = process.env.GH_TOKEN;
+  process.env.GH_TOKEN = 'synthetic-metadata-token';
   const requests = [];
   const readmeFile = pathToFileURL(join(temp, 'README.md'));
   const agentMapFile = pathToFileURL(join(temp, 'llms.txt'));
   const publicFile = pathToFileURL(join(temp, 'public-projects.json'));
   await writeFile(readmeFile, '# Family\n\n<!-- project-snapshots:start -->\nold snapshot\n<!-- project-snapshots:end -->\n\nPreserve surrounding prose.\n');
   await writeFile(agentMapFile, '# Agents\n\n<!-- project-snapshots:start -->\nold snapshot\n<!-- project-snapshots:end -->\n');
-  globalThis.fetch = async (url) => {
+  globalThis.fetch = async (url, options) => {
+    assert.equal(options.headers.authorization, 'Bearer synthetic-metadata-token');
     const parsed = new URL(url);
     requests.push(parsed);
     if (parsed.pathname.endsWith('/commits/main')) return Response.json({ sha });
@@ -52,8 +55,11 @@ test('snapshot fetches documents at the resolved commit and synchronizes README 
     const agentMap = await readFile(agentMapFile, 'utf8');
     for (const record of records) assert.ok(agentMap.includes(record.commitUrl));
     assert.ok(!agentMap.includes('old snapshot'));
+    for (const value of [JSON.stringify(records), readme, agentMap]) assert.ok(!value.includes('synthetic-metadata-token'));
   } finally {
     globalThis.fetch = originalFetch;
+    if (originalToken === undefined) delete process.env.GH_TOKEN;
+    else process.env.GH_TOKEN = originalToken;
     await rm(temp, { recursive: true, force: true });
   }
 });

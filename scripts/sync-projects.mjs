@@ -5,6 +5,11 @@ export const projects = ['dexpot', 'intpot', 'summonpot', 'lifepot', 'refpot', '
 const owner = 'tugrulguner';
 const api = `https://api.github.com/repos/${owner}`;
 const sha256 = (text) => createHash('sha256').update(text).digest('hex');
+const githubHeaders = (accept) => ({
+  accept,
+  'user-agent': 'ModePot-project-sync',
+  ...(process.env.GH_TOKEN ? { authorization: `Bearer ${process.env.GH_TOKEN}` } : {}),
+});
 
 export function normalizeProject(name, input) {
   const repository = `https://github.com/${owner}/${name}`;
@@ -22,19 +27,19 @@ export function normalizeProject(name, input) {
 }
 
 async function fetchJson(url) {
-  const response = await fetch(url, { headers: { accept: 'application/vnd.github+json', 'user-agent': 'ModePot-project-sync' } });
+  const response = await fetch(url, { headers: githubHeaders('application/vnd.github+json') });
   if (!response.ok) throw new Error(`GitHub ${response.status} fetching ${url}`);
   return response.json();
 }
 async function fetchLatestRelease(url) {
-  const response = await fetch(url, { headers: { accept: 'application/vnd.github+json', 'user-agent': 'ModePot-project-sync' } });
+  const response = await fetch(url, { headers: githubHeaders('application/vnd.github+json') });
   if (response.status === 404) return null;
   if (!response.ok) throw new Error(`GitHub ${response.status} fetching ${url}`);
   return response.json();
 }
 
 async function fetchText(url) {
-  const response = await fetch(url, { headers: { accept: 'application/vnd.github.raw+json', 'user-agent': 'ModePot-project-sync' } });
+  const response = await fetch(url, { headers: githubHeaders('application/vnd.github.raw+json') });
   if (response.status === 404) return null;
   if (!response.ok) throw new Error(`GitHub ${response.status} fetching ${url}`);
   return response.text();

@@ -69,8 +69,12 @@ npm run dev
 
 ```bash
 npm run check
+npm run test:project-sync
 npm run build
+npm run test:layout
 ```
+
+The existing weekly source-sync job opens a reviewable snapshot refresh. Bot-created pull requests may not trigger separate pull-request workflows; reviewers can run **Website layout** manually on the proposed branch before merging. Source sync itself runs its snapshot, type and build gates before publishing its proposal. Neither path automatically merges or publishes a package release.
 
 ## Deployment
 
