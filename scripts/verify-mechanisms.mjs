@@ -37,7 +37,7 @@ for (const [project, concepts] of Object.entries(expected)) {
   const route = project === 'lifepot' ? 'https://lifepot.modepot.io/play' : `https://${project}.modepot.io/playground/`;
   if (!['refpot', 'utilitypot'].includes(project) && !card.includes(`href="${route}"`)) failures.push(`${project}: missing project-owned playground route`);
   if (project === 'utilitypot') {
-    for (const token of ['/marks/utilitypot-mark-v1.svg?v=wordmark-accent-1', '/products/utilitypot-lockup-v1.png?v=wordmark-accent-1', 'https://utilitypot.modepot.io/', 'Illustrative mechanism · not a live run']) {
+    for (const token of ['/marks/utilitypot-mark-v1.svg?v=wordmark-accent-1', '/products/utilitypot-lockup-v1.png?v=public-info-1', 'https://utilitypot.modepot.io/', 'Illustrative mechanism · not a live run']) {
       if (!card.includes(token)) failures.push(`utilitypot: missing ${token}`);
     }
     if ((!utilitySource.latestRelease && card.includes('/releases/')) || (utilitySource.roadmap.status !== 'available' && /href="[^"]*ROADMAP.md/.test(card)) || card.includes('/playground/') || /\b\d+\s*ms\b/.test(card)) failures.push('utilitypot: invented roadmap, release, playground, or timing');
@@ -55,7 +55,7 @@ for (const [project, concepts] of Object.entries(expected)) {
     if (!card.includes('two proposed entry paths') || !card.includes('converge on one shared relational execution core')) failures.push('refpot: accessible equivalent must describe both paths converging on the core');
     if (card.includes('Open project playground') || card.includes('class="demo-route')) failures.push('refpot: unshipped playground destination is present');
     if (!card.includes('https://refpot.modepot.io/package/')) failures.push('refpot: missing shipped package documentation destination');
-    if (!card.includes('/products/refpot-lockup-v2.svg?v=wordmark-accent-1')) failures.push('refpot: lockup URL is not cache-versioned');
+    if (!card.includes('/products/refpot-lockup-v2.svg?v=public-info-1')) failures.push('refpot: lockup URL is not cache-versioned');
     for (const className of ['ref-sql', 'ref-orm', 'ref-core', 'ref-flow-sql', 'ref-flow-orm']) {
       if (!card.includes(className)) failures.push(`refpot: missing proposed path/core step ${className}`);
     }

@@ -44,18 +44,18 @@
     {
       "project": "utilitypot",
       "repository": "https://github.com/tugrulguner/utilitypot",
-      "revision": "f0529e21a51f364b8cc4eea85739b446c99bbfd1",
-      "source": "public/utilitypot-lockup-v1.png",
-      "sourceSha256": "d825a5666be9eed9307260ab251e56b9220ed10d8f1687f76e052e487047b46e",
+      "revision": "bd2dd6a0b570c927d90b5fced9120a33d1aa2e7c",
+      "source": "public/utilitypot-lockup-v2.png",
+      "sourceSha256": "09a4882043db5bf9cfc692cf06c650c3f6e1ecff5521e221e3276df108a1f9e8",
       "destination": "public/products/utilitypot-lockup-v1.png",
-      "destinationSha256": "d825a5666be9eed9307260ab251e56b9220ed10d8f1687f76e052e487047b46e",
+      "destinationSha256": "09a4882043db5bf9cfc692cf06c650c3f6e1ecff5521e221e3276df108a1f9e8",
       "transform": "copy"
     },
     {
       "project": "utilitypot",
       "repository": "https://github.com/tugrulguner/utilitypot",
-      "revision": "f0529e21a51f364b8cc4eea85739b446c99bbfd1",
-      "source": "public/utilitypot-mark-v1.svg",
+      "revision": "bd2dd6a0b570c927d90b5fced9120a33d1aa2e7c",
+      "source": "public/utilitypot-mark-v2.svg",
       "sourceSha256": "d0611af2ce31a9cea77ff05f143f51db8b599c7f3b0ff60bb6f49f03862f5dbf",
       "destination": "public/marks/utilitypot-mark-v1.svg",
       "destinationSha256": "d0611af2ce31a9cea77ff05f143f51db8b599c7f3b0ff60bb6f49f03862f5dbf",
@@ -64,11 +64,11 @@
     {
       "project": "utilitypot",
       "repository": "https://github.com/tugrulguner/utilitypot",
-      "revision": "f0529e21a51f364b8cc4eea85739b446c99bbfd1",
-      "source": "docs/assets/utilitypot-lockup-v1.svg",
-      "sourceSha256": "3ea764bf1d47f33fc08acc371416a8ecbe3520f954380706f32f9cb19519c176",
+      "revision": "bd2dd6a0b570c927d90b5fced9120a33d1aa2e7c",
+      "source": "docs/assets/utilitypot-lockup-v2.svg",
+      "sourceSha256": "2d8ca02830c143f276cd21c3defc0b22176fcb183bbfd4a5392a8df62e31be28",
       "destination": "public/products/utilitypot-lockup-v1.svg",
-      "destinationSha256": "3ea764bf1d47f33fc08acc371416a8ecbe3520f954380706f32f9cb19519c176",
+      "destinationSha256": "2d8ca02830c143f276cd21c3defc0b22176fcb183bbfd4a5392a8df62e31be28",
       "transform": "copy"
     },
     {
@@ -77,9 +77,9 @@
       "source": "docs/assets/refpot-lockup.svg",
       "destination": "public/products/refpot-lockup-v2.svg",
       "transform": "copy",
-      "revision": "97760d03029e08b43a4ca0b5564df4d2a4534c65",
-      "sourceSha256": "bdb0774537ecd4cd719801f74e6b58f5edb8e44a0d12b56cee79cb148fd35a01",
-      "destinationSha256": "bdb0774537ecd4cd719801f74e6b58f5edb8e44a0d12b56cee79cb148fd35a01"
+      "revision": "c48f9dbf513651ac43713544b2c150a56f1fab83",
+      "sourceSha256": "ca595325471bd19593fbe00156308e2fec3d902650b50a2bd615cde30810e929",
+      "destinationSha256": "ca595325471bd19593fbe00156308e2fec3d902650b50a2bd615cde30810e929"
     }
   ]
 }
