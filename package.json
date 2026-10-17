@@ -6,6 +6,7 @@
     "node": ">=22.19.0"
   },
   "scripts": {
+    "render:identity": "node scripts/render-identity.mjs",
     "dev": "astro dev",
     "check": "astro check",
     "build": "astro build && node scripts/verify-discovery.mjs && node scripts/verify-mechanisms.mjs && node scripts/verify-identity-assets.mjs",

@@ -18,7 +18,7 @@ for (const record of projects) {
 }
 const readmeHero = readme.slice(0, readme.indexOf('## Projects'));
 for (const token of [
-  '<img src="public/modepot-mark.svg"', 'alt="ModePot family mark"',
+  '<picture>', 'srcset="public/modepot-mark.svg?v=neutral-1"', '<img src="public/modepot-mark-light.svg?v=neutral-1"', 'alt="ModePot family mark"',
   'We simplify, modernize, and performance-optimize',
   'frameworks, tools, engines, and games',
   'https://tugrul.modepot.io/',
