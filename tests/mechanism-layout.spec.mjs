@@ -20,7 +20,7 @@ for (const width of [320, 360, 768, 1280]) {
       await refpotArt.scrollIntoViewIfNeeded();
       await refpotArt.evaluate(async image => { await image.decode(); });
       await expect(refpotArt).toHaveCSS('object-fit', 'contain');
-      await expect(page.locator('#refpot .product-heading h2 strong')).toHaveCSS('color', 'rgb(242, 184, 75)');
+      await expect(page.locator('#refpot .product-heading h2 strong')).toHaveCSS('color', 'rgb(244, 242, 234)');
       const surfaces = await page.evaluate(() => ['refpot', 'intpot', 'dexpot', 'summonpot', 'lifepot', 'utilitypot'].map(id => {
         const card = document.getElementById(id);
         return ['.product-copy', '.demo-preview'].map(selector => getComputedStyle(card.querySelector(selector)).backgroundColor);
