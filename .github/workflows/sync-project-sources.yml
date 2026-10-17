@@ -6,11 +6,18 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+
+concurrency:
+  group: project-source-sync
+  cancel-in-progress: false
 
 jobs:
   refresh:
+    name: Refresh project snapshots
+    permissions:
+      contents: write # Push the dedicated source-snapshot branch.
+      pull-requests: write # Open or update its reviewable pull request.
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

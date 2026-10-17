@@ -151,8 +151,8 @@ const refpotRelease = {
   url: 'https://github.com/tugrulguner/refpot/releases/tag/v0.1.1',
   publishedAt: '2026-10-12T17:32:11Z',
 };
-if (refpotMetadata?.latestRelease?.tag !== refpotRelease.tag || refpotMetadata.latestRelease.url !== refpotRelease.url || refpotMetadata.latestRelease.publishedAt !== refpotRelease.publishedAt) {
-  failures.push('RefPot source metadata must identify the publicly published experimental alpha v0.1.1, not claim no release');
+if (!refpotMetadata?.latestRelease || refpotMetadata.latestRelease.url !== `https://github.com/tugrulguner/refpot/releases/tag/${refpotMetadata.latestRelease.tag}` || !Number.isFinite(Date.parse(refpotMetadata.latestRelease.publishedAt))) {
+  failures.push('RefPot source metadata must identify a valid published release, without freezing future refreshes to the historical v0.1.1 evidence');
 }
 const refpotCommit = refpotMetadata?.commit ?? '';
 if (!/^[a-f0-9]{40}$/.test(refpotCommit) || refpotMetadata.commitUrl !== `https://github.com/tugrulguner/refpot/commit/${refpotCommit}` || refpotMetadata.readme.url !== `https://github.com/tugrulguner/refpot/blob/${refpotCommit}/README.md` || refpotMetadata.roadmap.url !== `https://github.com/tugrulguner/refpot/blob/${refpotCommit}/ROADMAP.md`) {
