@@ -21,6 +21,15 @@ for (const item of artifacts) {
     item.destinationSha256,
     item.destination,
   );
+  if (item.project === "refpot" && item.destination.endsWith(".svg")) {
+    assert.doesNotMatch(bytes.toString(), /A simple Python ORM|Planned, not released/);
+    assert.match(bytes.toString(), /Native C\+\+ database · alpha/);
+    assert.match(bytes.toString(), /Python CRUD\. Explicit transactions/);
+  }
+  if (item.project === "utilitypot" && item.destination.includes("lockup") && item.destination.endsWith(".svg")) {
+    assert.match(bytes.toString(), /4 browser-local tools · 3 disclosed AI tools/);
+    assert.doesNotMatch(bytes.toString(), /Jev interprets\. You review\. Code executes/);
+  }
   if (item.transform === "copy")
     assert.equal(
       item.destinationSha256,

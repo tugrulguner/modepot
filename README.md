@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="public/modepot-mark.svg" alt="ModePot family mark" width="96" height="96">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="public/modepot-mark.svg?v=neutral-1">
+    <source media="(prefers-color-scheme: light)" srcset="public/modepot-mark-light.svg?v=neutral-1">
+    <img src="public/modepot-mark-light.svg?v=neutral-1" alt="ModePot family mark" width="96" height="96">
+  </picture>
 </p>
 
 <h1 align="center">ModePot</h1>
@@ -30,6 +34,22 @@ Each project owns its site, source, and learning path. Start with the route for 
 
 These projects are the beginning, not the boundary. RefPot is a publicly released experimental alpha (v0.1.1): its native C++ engine and small Python CRUD/explicit-transaction API are real; SQL and ORM remain planned. Qualification is limited, with no broad 2×-over-SQLite performance result or production-durability claim. ModePot is an open-source family and community; [join the community on Discord](https://discord.gg/u3AANZr6RG) to discuss the work and get involved.
 
+<!-- project-snapshots:start -->
+## Project source snapshots
+
+GitHub metadata checked at 2026-10-17T16:11:18.993Z. These are reviewed snapshots, not a continuously live feed.
+The existing scheduled source-sync workflow proposes refreshes for review; changes are not automatically merged.
+
+| Project | Source snapshot | Latest recorded release |
+| --- | --- | --- |
+| dexpot | [aaacb62](https://github.com/tugrulguner/dexpot/commit/aaacb6207beff8302e07cf66fd958d4820688819) | [v0.7.0](https://github.com/tugrulguner/dexpot/releases/tag/v0.7.0) |
+| intpot | [01faf02](https://github.com/tugrulguner/intpot/commit/01faf02c671212cad3aea6d611d9dd9ba8e8c3fc) | [v0.11.0](https://github.com/tugrulguner/intpot/releases/tag/v0.11.0) |
+| summonpot | [af2b522](https://github.com/tugrulguner/summonpot/commit/af2b522066ae11036370eafd405904555605d761) | [v0.10.0](https://github.com/tugrulguner/summonpot/releases/tag/v0.10.0) |
+| lifepot | [82e6578](https://github.com/tugrulguner/lifepot/commit/82e657824af459ee3f1a9db02edebbbab1195d75) | [v0.8.0](https://github.com/tugrulguner/lifepot/releases/tag/v0.8.0) |
+| refpot | [4741eb4](https://github.com/tugrulguner/refpot/commit/4741eb4aa5e02b39d34657f855e432a85d0e71e5) | [v0.1.1](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1) |
+| utilitypot | [9077d4c](https://github.com/tugrulguner/utilitypot/commit/9077d4c6e601b8fed45c121c75be9f879fc418f3) | No release recorded |
+<!-- project-snapshots:end -->
+
 ## Intpot v0.11.0
 
 Intpot v0.11.0 recovers bounded plain same-module helpers and immutable scalar/tuple constants into standalone CLI, API, and MCP output. Public conversion diagnoses missing retained-body bindings per target and refuses before writes. Dynamic state, closures, decorated helpers, ambiguous bindings, and generated-name collisions remain refused; broader annotation/default dependencies are not a full-fidelity guarantee.
@@ -53,8 +73,12 @@ npm run dev
 
 ```bash
 npm run check
+npm run test:project-sync
 npm run build
+npm run test:layout
 ```
+
+The existing weekly source-sync job opens a reviewable snapshot refresh. Bot-created pull requests may not trigger separate pull-request workflows; reviewers can run **Website layout** manually on the proposed branch before merging. Source sync itself runs its snapshot, type and build gates before publishing its proposal. Neither path automatically merges or publishes a package release.
 
 ## Deployment
 

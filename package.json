@@ -6,12 +6,13 @@
     "node": ">=22.19.0"
   },
   "scripts": {
+    "render:identity": "node scripts/render-identity.mjs",
     "dev": "astro dev",
     "check": "astro check",
     "build": "astro build && node scripts/verify-discovery.mjs && node scripts/verify-mechanisms.mjs && node scripts/verify-identity-assets.mjs",
     "test:privacy": "node --test src/lib/privacy-sanitizer.test.mjs",
     "test:privacy-sdk": "playwright test tests/privacy-sdk.spec.mjs --config=playwright.analytics.config.mjs",
-    "test:project-sync": "node scripts/project-sync.test.mjs",
+    "test:project-sync": "node scripts/project-sync.test.mjs && node --test scripts/source-snapshot*.test.mjs",
     "preview": "astro preview",
     "test:analytics": "playwright test tests/analytics.spec.mjs --config=playwright.analytics.config.mjs",
     "test:layout": "playwright test",
