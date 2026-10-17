@@ -1,3 +1,4 @@
+import { renderProjectSnapshots } from './sync-projects.mjs';
 import { readFile } from 'node:fs/promises';
 
 const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
@@ -6,6 +7,15 @@ const failures = [];
 const readme = await readFile(new URL('../README.md', import.meta.url), 'utf8');
 const projects = JSON.parse(await readFile(new URL('../src/data/projects.json', import.meta.url), 'utf8'));
 const projectNames = projects.map(({ name }) => name);
+const publicSnapshots = JSON.parse(await readFile(new URL('../dist/project-sources.json', import.meta.url), 'utf8'));
+if (JSON.stringify(publicSnapshots) !== JSON.stringify(projects)) failures.push('Agent-readable JSON must match the website source snapshots');
+const snapshotBlock = renderProjectSnapshots(projects);
+for (const [surface, text] of [['README', readme], ['agent map', await readFile(new URL('../dist/llms.txt', import.meta.url), 'utf8')]]) {
+  if (!text.includes(snapshotBlock)) failures.push(`${surface}: source and release snapshots must be generated from the same records`);
+}
+for (const record of projects) {
+  if (!record.checkedAt || !Number.isFinite(Date.parse(record.checkedAt))) failures.push(`${record.name}: source snapshot needs a valid checked timestamp`);
+}
 const readmeHero = readme.slice(0, readme.indexOf('## Projects'));
 for (const token of [
   '<img src="public/modepot-mark.svg"', 'alt="ModePot family mark"',
@@ -176,16 +186,19 @@ for (const product of projectNames) {
   if (!html.includes(`data-posthog-project="${product}"`) || !html.includes('data-posthog-surface="modepot_homepage"')) {
     failures.push(`index.html: missing project intent event markers for ${product}`);
   }
-  const metadata = JSON.parse(await readFile(new URL('../src/data/projects.json', import.meta.url), 'utf8')).find((entry) => entry.name === product);
+  const metadata = projects.find((entry) => entry.name === product);
+  const start = html.indexOf(`id="${product}"`);
+  const card = html.slice(start, html.indexOf('</article>', start));
   for (const token of [metadata.commit.slice(0, 7), metadata.readme.sha256.slice(0, 12), metadata.roadmap.status === 'available' ? metadata.roadmap.sha256.slice(0, 12) : 'not published']) {
-    if (!html.includes(token)) failures.push(`index.html: project metadata provenance missing ${token} for ${product}`);
+    if (!card.includes(token)) failures.push(`index.html: project metadata provenance missing ${token} for ${product}`);
   }
-  if (metadata.latestRelease && (!html.includes(metadata.latestRelease.tag) || !html.includes(metadata.latestRelease.url))) {
+  if (metadata.latestRelease && (!card.includes(metadata.latestRelease.tag) || !card.includes(metadata.latestRelease.url))) {
     failures.push(`index.html: published release metadata missing for ${product}`);
   }
-  if (!metadata.latestRelease && !html.includes('No published release yet')) {
+  if (!metadata.latestRelease && !card.includes('No release recorded')) {
     failures.push(`index.html: explicit no-release state missing for ${product}`);
   }
+  if (!metadata.checkedAt || !card.includes(metadata.checkedAt) || !card.includes('Source snapshot')) failures.push(`index.html: timestamped source snapshot missing for ${product}`);
 }
 for (const destination of projectNames.map((product) => `https://github.com/tugrulguner/${product}`)) {
   const repoLinks = [...html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/g)].filter(([, href]) => href === destination);

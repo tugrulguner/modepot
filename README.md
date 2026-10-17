@@ -30,6 +30,22 @@ Each project owns its site, source, and learning path. Start with the route for 
 
 These projects are the beginning, not the boundary. RefPot is a publicly released experimental alpha (v0.1.1): its native C++ engine and small Python CRUD/explicit-transaction API are real; SQL and ORM remain planned. Qualification is limited, with no broad 2×-over-SQLite performance result or production-durability claim. ModePot is an open-source family and community; [join the community on Discord](https://discord.gg/u3AANZr6RG) to discuss the work and get involved.
 
+<!-- project-snapshots:start -->
+## Project source snapshots
+
+GitHub metadata checked at 2026-10-17T12:09:02.997Z. These are reviewed snapshots, not a continuously live feed.
+The existing scheduled source-sync workflow proposes refreshes for review; changes are not automatically merged.
+
+| Project | Source snapshot | Latest recorded release |
+| --- | --- | --- |
+| dexpot | [fa99012](https://github.com/tugrulguner/dexpot/commit/fa9901251464ef95d856c2b44cf89e0c7e9339e7) | [v0.7.0](https://github.com/tugrulguner/dexpot/releases/tag/v0.7.0) |
+| intpot | [01faf02](https://github.com/tugrulguner/intpot/commit/01faf02c671212cad3aea6d611d9dd9ba8e8c3fc) | [v0.11.0](https://github.com/tugrulguner/intpot/releases/tag/v0.11.0) |
+| summonpot | [af2b522](https://github.com/tugrulguner/summonpot/commit/af2b522066ae11036370eafd405904555605d761) | [v0.10.0](https://github.com/tugrulguner/summonpot/releases/tag/v0.10.0) |
+| lifepot | [82e6578](https://github.com/tugrulguner/lifepot/commit/82e657824af459ee3f1a9db02edebbbab1195d75) | [v0.8.0](https://github.com/tugrulguner/lifepot/releases/tag/v0.8.0) |
+| refpot | [05b4680](https://github.com/tugrulguner/refpot/commit/05b4680ca5c0ca9b2164aec67bc69a3d771baaf8) | [v0.1.1](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1) |
+| utilitypot | [f0a4082](https://github.com/tugrulguner/utilitypot/commit/f0a4082aa59162b8a4b68af58ccc277d777ceb78) | No release recorded |
+<!-- project-snapshots:end -->
+
 ## Intpot v0.11.0
 
 Intpot v0.11.0 recovers bounded plain same-module helpers and immutable scalar/tuple constants into standalone CLI, API, and MCP output. Public conversion diagnoses missing retained-body bindings per target and refuses before writes. Dynamic state, closures, decorated helpers, ambiguous bindings, and generated-name collisions remain refused; broader annotation/default dependencies are not a full-fidelity guarantee.

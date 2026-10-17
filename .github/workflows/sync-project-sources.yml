@@ -23,7 +23,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: node scripts/sync-projects.mjs
-      - run: node scripts/project-sync.test.mjs
+      - run: npm run test:project-sync
       - run: npm run check
       - run: npm run build
       - name: Open or update source-sync pull request
@@ -34,7 +34,7 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git fetch origin refs/heads/automation/project-source-sync:refs/remotes/origin/automation/project-source-sync || true
           git checkout -B automation/project-source-sync
-          git add src/data/projects.json
+          git add src/data/projects.json README.md public/llms.txt public/project-sources.json
           if git diff --cached --quiet; then
             echo 'No source metadata changes.'
             exit 0
@@ -46,5 +46,5 @@ jobs:
           else
             gh pr create --base main --head automation/project-source-sync \
               --title 'chore: sync project GitHub metadata' \
-              --body 'Refreshes source-pinned README/ROADMAP provenance and latest non-prerelease release metadata from the four canonical public repositories. This PR is generated on a read-only metadata basis; no source repositories are modified.'
+              --body 'Refreshes timestamped source-pinned README/ROADMAP provenance and latest non-prerelease release metadata from all six canonical project repositories. The website and umbrella README share these records. Source repositories are read only; this is a reviewed snapshot refresh, not automatic merging or a continuously live feed.'
           fi
