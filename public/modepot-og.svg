@@ -4,17 +4,17 @@
   <rect width="1200" height="630" fill="#070a12"/>
   <path d="M702 0v630" stroke="#f4f0e7" stroke-opacity=".09"/>
   <text x="82" y="90" fill="#f4f2ea" font-family="IBM Plex Mono, monospace" font-size="16" letter-spacing="4">OPEN SOURCE / BUILT WITH THE COMMUNITY</text>
-  <text x="76" y="275" fill="#f4f0e7" font-family="Manrope, Arial, sans-serif" font-size="142" font-weight="750" letter-spacing="-10">mode<tspan fill="#f4f2ea">pot</tspan></text>
+  <text x="76" y="275" fill="#f4f0e7" font-family="Manrope, Arial, sans-serif" font-size="142" font-weight="750" letter-spacing="-10">mode<tspan fill="#77e5bd">pot</tspan></text>
   <text x="84" y="350" fill="#f4f0e7" font-family="Manrope, Arial, sans-serif" font-size="30" font-weight="620" letter-spacing="-.75">Simplifying and modernizing software foundations.</text>
   <text x="85" y="405" fill="#aeb2bd" font-family="Manrope, Arial, sans-serif" font-size="24">Performance-optimized. AI-native. Agent-native.</text>
   <g transform="translate(795 145) scale(2.55)">
-    <path d="M44 22h10v20c0 5-2.3 9.6-6.2 12.4C34.1 64.3 26 78.2 26 93c0 17 12.7 25 38 25s38-8 38-25c0-14.8-8.1-28.7-21.8-38.6C76.3 51.6 74 47 74 42V22h10" fill="none" stroke="#F4F2EA" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M42 100V80l22 16 22-16v20" fill="none" stroke="#F4F2EA" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M44 22h10v20c0 5-2.3 9.6-6.2 12.4C34.1 64.3 26 78.2 26 93c0 17 12.7 25 38 25s38-8 38-25c0-14.8-8.1-28.7-21.8-38.6C76.3 51.6 74 47 74 42V22h10" fill="none" stroke="#66D9FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M42 100V80l22 16 22-16v20" fill="none" stroke="#A987FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <g font-family="IBM Plex Mono, monospace" font-size="15" letter-spacing="2">
     <text x="84" y="557" fill="#66d9ff">FRAMEWORKS</text>
     <text x="250" y="557" fill="#a987ff">TOOLS</text>
     <text x="348" y="557" fill="#77e5bd">ENGINES</text>
-    <text x="476" y="557" fill="#f4f2ea">GAMES</text>
+    <text x="476" y="557" fill="#77e5bd">GAMES</text>
   </g>
 </svg>

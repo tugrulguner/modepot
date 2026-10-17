@@ -1,12 +1,12 @@
 # ModePot identity system
 
-ModePot uses one shared vessel geometry and a distinct interior symbol for each project. The shared silhouette makes the family recognizable; the interior symbol communicates the boundary each project owns.
+ModePot uses one shared vessel geometry and a distinct interior symbol for each project. The umbrella identity owns coordinated cyan, violet, and mint; sibling project accents remain independent. The shared silhouette makes the family recognizable; the interior symbol communicates the boundary each project owns.
 
 ## Marks
 
 | Project | Mark | Meaning | Accent |
 | --- | --- | --- | --- |
-| ModePot | [`public/modepot-mark.svg`](public/modepot-mark.svg) | A geometric vessel carrying the ModePot M monogram | `#F2B84B` |
+| ModePot | [`public/modepot-mark.svg`](public/modepot-mark.svg) | A geometric vessel carrying the ModePot M monogram | Coordinated cyan–violet–mint spectrum |
 | Dexpot | [`public/marks/dexpot-mark.svg`](public/marks/dexpot-mark.svg) | Parallel execution lanes | `#66D9FF` |
 | Intpot | [`public/marks/intpot-mark.svg`](public/marks/intpot-mark.svg) | One typed source branching into three interfaces | `#F2B84B` |
 | Summonpot | [`public/marks/summonpot-mark.svg`](public/marks/summonpot-mark.svg) | An agent-owned decision inside an explicit boundary | `#A987FF` |

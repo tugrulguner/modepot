@@ -11,5 +11,5 @@ try {
   const session = await page.context().newCDPSession(page);
   const { data } = await session.send('Page.captureScreenshot', { format: 'webp', quality: 92, clip: { x: 0, y: 0, width: 1200, height: 630, scale: 1 } });
   await writeFile(new URL('public/modepot-og.webp', root), Buffer.from(data, 'base64'));
-  console.log('Rendered canonical 1200x630 neutral ModePot social card with declared local fonts.');
+  console.log('Rendered canonical 1200x630 multicolour ModePot social card with declared local fonts.');
 } finally { await browser.close(); }

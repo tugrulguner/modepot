@@ -1,0 +1,20 @@
+/* ModePot umbrella identity: coordinated cyan–violet–mint spectrum. */
+:root {
+  --umbrella: #66d9ff;
+  --umbrella-violet: #a987ff;
+  --umbrella-mint: #77e5bd;
+}
+.hero-wordmark strong,
+.site-header .brand strong,
+.footer-brand strong,
+.open-source-seal b {
+  color: transparent;
+  background: linear-gradient(105deg, #66d9ff 0%, #a987ff 52%, #77e5bd 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.brand-flask-outline { stroke: #66d9ff; }
+.brand-flask-monogram { stroke: #a987ff; opacity: .95; }
+a:focus-visible { outline-color: #77e5bd; }
+.creator-links a:hover, .creator-links a span { color: #77e5bd; }
