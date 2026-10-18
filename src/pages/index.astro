@@ -514,6 +514,7 @@ const structuredData = {
                   >
                     {product.action} <span aria-hidden="true">↗</span>
                   </a>
+                  <a class="feedback-entry ph-no-autocapture" href={`${product.repository}/issues/new?${new URLSearchParams({title: `${product.name} feedback`, body: `Project: ${product.name}\nPage: ${product.href}\n\nPlease avoid including private data.`}).toString()}`} target="_blank" rel="noopener noreferrer">Feedback / issue <span aria-hidden="true">↗</span></a>
                   <a
                     class="product-resource ph-no-autocapture"
                     href={product.docs}
