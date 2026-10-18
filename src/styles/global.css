@@ -1311,24 +1311,8 @@ footer a:hover {
   .utility-path .mechanism-node { min-height: 2.7rem; }
 }
 
-/* Larger, legible social destinations with a full 44px control target. */
-.creator-links a,
-.site-header nav a[href*="github.com"] {
-  min-width: 44px;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 0.65rem;
-  font-size: 0.88rem;
-  letter-spacing: 0.02em;
-  text-transform: none;
-}
-footer a[href*="github.com"] {
-  min-width: 44px;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.88rem;
-}
+/* Creator links retain their original location and a modest text scale. */
+.creator-row { display:flex; flex-wrap:wrap; align-items:center; column-gap:12px; row-gap:0; margin-top:12px; font-family:inherit; font-size:15px; line-height:1.5; letter-spacing:normal; }
+.creator-social-links { display:inline-flex; flex-wrap:wrap; align-items:center; gap:12px; margin:0; font:inherit; }
+.creator-social-links a { display:inline-flex; align-items:center; min-height:44px; min-width:0; padding:0; color:var(--ink); font:inherit; font-weight:400; letter-spacing:normal; text-transform:none; background:none; border:0; }
 .participation-links a { min-height:44px; display:inline-flex; align-items:center; }
