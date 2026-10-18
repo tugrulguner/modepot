@@ -39,5 +39,5 @@ for (const item of artifacts) {
   else assert.equal(item.transform, "webp-quality-92");
 }
 console.log(
-  "Verified eight identity artifacts from six immutable product-source revisions.",
+  `Verified ${artifacts.length} identity artifacts across ${new Set(artifacts.map(a=>a.project)).size} products with immutable source revisions.`,
 );

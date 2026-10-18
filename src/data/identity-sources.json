@@ -44,11 +44,11 @@
     {
       "project": "utilitypot",
       "repository": "https://github.com/tugrulguner/utilitypot",
-      "revision": "9077d4c6e601b8fed45c121c75be9f879fc418f3",
+      "revision": "371b41808af3e2d77661c69a9c23be3c14c281ae",
       "source": "public/utilitypot-lockup-v2.png",
-      "sourceSha256": "09a4882043db5bf9cfc692cf06c650c3f6e1ecff5521e221e3276df108a1f9e8",
+      "sourceSha256": "a14ef0f219a7bb3eedc95eb2975ce3d5ff5a453b0e98665bc0df9ff683a11f62",
       "destination": "public/products/utilitypot-lockup-v1.png",
-      "destinationSha256": "09a4882043db5bf9cfc692cf06c650c3f6e1ecff5521e221e3276df108a1f9e8",
+      "destinationSha256": "a14ef0f219a7bb3eedc95eb2975ce3d5ff5a453b0e98665bc0df9ff683a11f62",
       "transform": "copy"
     },
     {
@@ -64,11 +64,11 @@
     {
       "project": "utilitypot",
       "repository": "https://github.com/tugrulguner/utilitypot",
-      "revision": "9077d4c6e601b8fed45c121c75be9f879fc418f3",
+      "revision": "371b41808af3e2d77661c69a9c23be3c14c281ae",
       "source": "docs/assets/utilitypot-lockup-v2.svg",
-      "sourceSha256": "2d8ca02830c143f276cd21c3defc0b22176fcb183bbfd4a5392a8df62e31be28",
+      "sourceSha256": "ebcc2816e31862b1262a6d66f71477f89d30132e7e2749de3d559209d1440e1e",
       "destination": "public/products/utilitypot-lockup-v1.svg",
-      "destinationSha256": "2d8ca02830c143f276cd21c3defc0b22176fcb183bbfd4a5392a8df62e31be28",
+      "destinationSha256": "ebcc2816e31862b1262a6d66f71477f89d30132e7e2749de3d559209d1440e1e",
       "transform": "copy"
     },
     {

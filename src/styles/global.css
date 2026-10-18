@@ -1265,8 +1265,9 @@ footer a:hover {
 @media (max-width:700px) {
   .site-header { gap: .75rem; padding-inline: 1rem; }
   .brand { gap: .4rem; flex: 0 0 auto; }
-  .site-header nav { flex-wrap: nowrap; gap: clamp(.55rem, 2.2vw, 1rem); white-space: nowrap; }
+  .site-header nav { flex-wrap: wrap; justify-content: flex-end; gap: .1rem .25rem; white-space: normal; }
   .site-header nav a { white-space: nowrap; }
+  .site-header nav a[href*="github.com"] { padding-inline: .35rem; }
   .hero { padding:7.25rem 1.2rem 3.5rem; }
   .hero-wordmark { font-size:clamp(4.2rem,18vw,5.4rem); }
   .hero h1 { margin-top:1.8rem; }
@@ -1309,3 +1310,25 @@ footer a:hover {
   .utility-path .mechanism-arrow { transform: rotate(90deg); }
   .utility-path .mechanism-node { min-height: 2.7rem; }
 }
+
+/* Larger, legible social destinations with a full 44px control target. */
+.creator-links a,
+.site-header nav a[href*="github.com"] {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.65rem;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+footer a[href*="github.com"] {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.88rem;
+}
+.participation-links a { min-height:44px; display:inline-flex; align-items:center; }
