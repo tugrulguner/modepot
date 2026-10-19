@@ -148,6 +148,16 @@ test('every GitHub, community and partner destination has explicit nonduplicated
   }
 });
 
+test('feedback links preserve their original new-tab and referrer protections', async ({ page }) => {
+  await page.setContent(isolatedHtml);
+  const links = page.locator('a[data-posthog-event="feedback_clicked"]');
+  expect(await links.count()).toBeGreaterThan(0);
+  for (const link of await links.all()) {
+    await expect(link).toHaveAttribute('target', '_blank');
+    await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  }
+});
+
 test('new intent links emit canonical origin/path and bounded category properties', async ({ page }) => {
   await page.setContent(isolatedHtml);
   await page.evaluate(() => { window.__captures = []; window.posthog = { capture: (...args) => window.__captures.push(args) }; });
