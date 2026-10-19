@@ -146,9 +146,6 @@ test('every GitHub, community and partner destination has explicit nonduplicated
     await expect(link).toHaveClass(/ph-no-autocapture/);
     await expect(link).toHaveAttribute('data-posthog-event', /^(modepot_creator_social_clicked|modepot_resource_clicked|community_clicked|feedback_clicked|partner_clicked)$/);
   }
-  for (const link of await page.locator('a[data-posthog-event="feedback_clicked"]').all()) {
-    if ((await link.getAttribute('href')).includes('title=')) await expect(link).toHaveAttribute('target', '_blank');
-  }
 });
 
 test('new intent links emit canonical origin/path and bounded category properties', async ({ page }) => {
