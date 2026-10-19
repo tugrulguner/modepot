@@ -309,8 +309,8 @@ const structuredData = {
       <a class="ph-no-autocapture" href="#projects">Projects</a>
         <a class="ph-no-autocapture" href="#about">About</a>
         <a class="ph-no-autocapture" href="https://tugrul.modepot.io/">About me</a>
-        <a class="ph-no-autocapture" href="https://github.com/tugrulguner/modepot">GitHub</a>
-        <a class="nav-signal ph-no-autocapture" href="https://discord.gg/u3AANZr6RG">Discord</a>
+        <a class="ph-no-autocapture" href="https://github.com/tugrulguner/modepot" data-posthog-event="modepot_resource_clicked" data-posthog-resource-type="repository" data-posthog-surface="modepot_header">GitHub</a>
+        <a class="nav-signal ph-no-autocapture" href="https://discord.gg/u3AANZr6RG" data-posthog-event="community_clicked" data-posthog-platform="discord" data-posthog-surface="modepot_header">Discord</a>
       </nav>
     </header>
 
@@ -514,22 +514,23 @@ const structuredData = {
                   >
                     {product.action} <span aria-hidden="true">↗</span>
                   </a>
-                  <a class="feedback-entry ph-no-autocapture" href={`${product.repository}/issues/new?${new URLSearchParams({title: `${product.name} feedback`, body: `Project: ${product.name}\nPage: ${product.href}\n\nPlease avoid including private data.`}).toString()}`} target="_blank" rel="noopener noreferrer">Feedback / issue <span aria-hidden="true">↗</span></a>
+                  <a class="feedback-entry ph-no-autocapture" href={`${product.repository}/issues/new?${new URLSearchParams({title: `${product.name} feedback`, body: `Project: ${product.name}\nPage: ${product.href}\n\nPlease avoid including private data.`}).toString()}`} target="_blank" rel="noopener noreferrer" data-posthog-event="feedback_clicked" data-posthog-project={product.name} data-posthog-surface="modepot_project_card">Feedback / issue <span aria-hidden="true">↗</span></a>
                   <a
                     class="product-resource ph-no-autocapture"
                     href={product.docs}
-                    data-posthog-event={['lifepot', 'utilitypot'].includes(product.name) ? undefined : 'modepot_project_clicked'}
-                    data-posthog-project={['lifepot', 'utilitypot'].includes(product.name) ? undefined : product.name}
-                    data-posthog-surface={['lifepot', 'utilitypot'].includes(product.name) ? undefined : 'modepot_homepage'}
+                    data-posthog-event={['lifepot', 'utilitypot'].includes(product.name) ? 'modepot_resource_clicked' : 'modepot_project_clicked'}
+                    data-posthog-project={product.name}
+                    data-posthog-resource-type={['lifepot', 'utilitypot'].includes(product.name) ? 'documentation' : undefined}
+                    data-posthog-surface={['lifepot', 'utilitypot'].includes(product.name) ? 'modepot_project_card' : 'modepot_homepage'}
                     data-posthog-destination-type={['lifepot', 'utilitypot'].includes(product.name) ? undefined : 'docs'}
                   >Docs <span aria-hidden="true">↗</span></a>
-                  <a class="product-resource ph-no-autocapture" href={product.source.commitUrl}>Source snapshot · {product.source.commit.slice(0, 7)} <span aria-hidden="true">↗</span></a>
-                  <a class="product-resource ph-no-autocapture" href={product.source.readme.url}>README · {product.source.readme.sha256.slice(0, 12)} <span aria-hidden="true">↗</span></a>
-                  {product.source.roadmap.status === 'available' ? <a class="product-resource ph-no-autocapture" href={product.source.roadmap.url}>Roadmap · {product.source.roadmap.sha256!.slice(0, 12)} <span aria-hidden="true">↗</span></a> : <span class="product-resource">Roadmap · not published</span>}
-                  {product.source.latestRelease && <a class="product-resource ph-no-autocapture" href={product.source.latestRelease.url}>Latest recorded release · {product.source.latestRelease.tag} <span aria-hidden="true">↗</span></a>}
+                  <a class="product-resource ph-no-autocapture" href={product.source.commitUrl} data-posthog-event="modepot_resource_clicked" data-posthog-project={product.name} data-posthog-resource-type="source_snapshot" data-posthog-surface="modepot_project_card">Source snapshot · {product.source.commit.slice(0, 7)} <span aria-hidden="true">↗</span></a>
+                  <a class="product-resource ph-no-autocapture" href={product.source.readme.url} data-posthog-event="modepot_resource_clicked" data-posthog-project={product.name} data-posthog-resource-type="readme" data-posthog-surface="modepot_project_card">README · {product.source.readme.sha256.slice(0, 12)} <span aria-hidden="true">↗</span></a>
+                  {product.source.roadmap.status === 'available' ? <a class="product-resource ph-no-autocapture" href={product.source.roadmap.url} data-posthog-event="modepot_resource_clicked" data-posthog-project={product.name} data-posthog-resource-type="roadmap" data-posthog-surface="modepot_project_card">Roadmap · {product.source.roadmap.sha256!.slice(0, 12)} <span aria-hidden="true">↗</span></a> : <span class="product-resource">Roadmap · not published</span>}
+                  {product.source.latestRelease && <a class="product-resource ph-no-autocapture" href={product.source.latestRelease.url} data-posthog-event="modepot_resource_clicked" data-posthog-project={product.name} data-posthog-resource-type="release" data-posthog-surface="modepot_project_card">Latest recorded release · {product.source.latestRelease.tag} <span aria-hidden="true">↗</span></a>}
                   {!product.source.latestRelease && <span class="product-resource">No release recorded</span>}
                   <span class="product-resource">GitHub checked <time datetime={product.source.checkedAt}>{product.source.checkedAt.slice(0, 10)} UTC</time></span>
-                  <a class="product-resource ph-no-autocapture" href={product.repository}>GitHub <span aria-hidden="true">↗</span></a>
+                  <a class="product-resource ph-no-autocapture" href={product.repository} data-posthog-event="modepot_resource_clicked" data-posthog-project={product.name} data-posthog-resource-type="repository" data-posthog-surface="modepot_project_card">GitHub <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
             </article>
@@ -542,22 +543,22 @@ const structuredData = {
         <h2 id="participation-title">Build with us.</h2>
         <p>Start with the project’s contribution guide; discuss a change before taking on substantial work, then use its issue tracker to propose or report it.</p>
         <div class="participation-links">
-          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/dexpot/blob/main/CONTRIBUTING.md">Dexpot contribution guide ↗</a>
-          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/intpot/blob/main/CONTRIBUTING.md">Intpot contribution guide ↗</a>
-          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/summonpot/blob/main/CONTRIBUTING.md">Summonpot contribution guide ↗</a>
-          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/lifepot/blob/main/CONTRIBUTING.md">LifePot contribution guide ↗</a>
-          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/dexpot/issues/new?template=feature.yml">Propose Dexpot work ↗</a>
-          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/intpot/issues/new?template=feature.yml">Propose Intpot work ↗</a>
-          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/summonpot/issues/new?template=feature.yml">Propose Summonpot work ↗</a>
-          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/lifepot/issues/new">Propose LifePot work ↗</a>
-          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/modepot/issues/new?title=ModePot%20feedback&body=Page%3A%20https%3A%2F%2Fmodepot.io%2F%0A%0APlease%20avoid%20including%20private%20data.">ModePot feedback / issue ↗</a>
-          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/dexpot/issues/new?title=Dexpot%20feedback&body=Project%3A%20Dexpot%0APage%3A%20https%3A%2F%2Fdexpot.modepot.io%2F">Dexpot feedback / issue ↗</a>
-          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/intpot/issues/new?title=Intpot%20feedback&body=Project%3A%20Intpot%0APage%3A%20https%3A%2F%2Fintpot.modepot.io%2F">Intpot feedback / issue ↗</a>
-          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/summonpot/issues/new?title=Summonpot%20feedback&body=Project%3A%20Summonpot%0APage%3A%20https%3A%2F%2Fsummonpot.modepot.io%2F">Summonpot feedback / issue ↗</a>
-          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/lifepot/issues/new?title=LifePot%20feedback&body=Project%3A%20LifePot%0APage%3A%20https%3A%2F%2Flifepot.modepot.io%2F">LifePot feedback / issue ↗</a>
-          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/refpot/issues/new?title=RefPot%20feedback&body=Project%3A%20RefPot%0APage%3A%20https%3A%2F%2Frefpot.modepot.io%2F">RefPot feedback / issue ↗</a>
-          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/utilitypot/issues/new?title=UtilityPot%20feedback&body=Project%3A%20UtilityPot%0APage%3A%20https%3A%2F%2Futilitypot.modepot.io%2F">UtilityPot feedback / issue ↗</a>
-          <a class="ph-no-autocapture" href="https://discord.gg/u3AANZr6RG">Discord · project questions and community discussion ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/dexpot/blob/main/CONTRIBUTING.md" data-posthog-event="modepot_resource_clicked" data-posthog-project="dexpot" data-posthog-resource-type="contribution_guide" data-posthog-surface="modepot_participation">Dexpot contribution guide ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/intpot/blob/main/CONTRIBUTING.md" data-posthog-event="modepot_resource_clicked" data-posthog-project="intpot" data-posthog-resource-type="contribution_guide" data-posthog-surface="modepot_participation">Intpot contribution guide ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/summonpot/blob/main/CONTRIBUTING.md" data-posthog-event="modepot_resource_clicked" data-posthog-project="summonpot" data-posthog-resource-type="contribution_guide" data-posthog-surface="modepot_participation">Summonpot contribution guide ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/lifepot/blob/main/CONTRIBUTING.md" data-posthog-event="modepot_resource_clicked" data-posthog-project="lifepot" data-posthog-resource-type="contribution_guide" data-posthog-surface="modepot_participation">LifePot contribution guide ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/dexpot/issues/new?template=feature.yml" data-posthog-event="modepot_resource_clicked" data-posthog-project="dexpot" data-posthog-resource-type="issue_tracker" data-posthog-surface="modepot_participation">Propose Dexpot work ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/intpot/issues/new?template=feature.yml" data-posthog-event="modepot_resource_clicked" data-posthog-project="intpot" data-posthog-resource-type="issue_tracker" data-posthog-surface="modepot_participation">Propose Intpot work ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/summonpot/issues/new?template=feature.yml" data-posthog-event="modepot_resource_clicked" data-posthog-project="summonpot" data-posthog-resource-type="issue_tracker" data-posthog-surface="modepot_participation">Propose Summonpot work ↗</a>
+          <a class="ph-no-autocapture" href="https://github.com/tugrulguner/lifepot/issues/new" data-posthog-event="modepot_resource_clicked" data-posthog-project="lifepot" data-posthog-resource-type="issue_tracker" data-posthog-surface="modepot_participation">Propose LifePot work ↗</a>
+          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/modepot/issues/new?title=ModePot%20feedback&body=Page%3A%20https%3A%2F%2Fmodepot.io%2F%0A%0APlease%20avoid%20including%20private%20data." data-posthog-event="feedback_clicked" data-posthog-project="modepot" data-posthog-surface="modepot_participation">ModePot feedback / issue ↗</a>
+          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/dexpot/issues/new?title=Dexpot%20feedback&body=Project%3A%20Dexpot%0APage%3A%20https%3A%2F%2Fdexpot.modepot.io%2F" data-posthog-event="feedback_clicked" data-posthog-project="dexpot" data-posthog-surface="modepot_participation">Dexpot feedback / issue ↗</a>
+          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/intpot/issues/new?title=Intpot%20feedback&body=Project%3A%20Intpot%0APage%3A%20https%3A%2F%2Fintpot.modepot.io%2F" data-posthog-event="feedback_clicked" data-posthog-project="intpot" data-posthog-surface="modepot_participation">Intpot feedback / issue ↗</a>
+          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/summonpot/issues/new?title=Summonpot%20feedback&body=Project%3A%20Summonpot%0APage%3A%20https%3A%2F%2Fsummonpot.modepot.io%2F" data-posthog-event="feedback_clicked" data-posthog-project="summonpot" data-posthog-surface="modepot_participation">Summonpot feedback / issue ↗</a>
+          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/lifepot/issues/new?title=LifePot%20feedback&body=Project%3A%20LifePot%0APage%3A%20https%3A%2F%2Flifepot.modepot.io%2F" data-posthog-event="feedback_clicked" data-posthog-project="lifepot" data-posthog-surface="modepot_participation">LifePot feedback / issue ↗</a>
+          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/refpot/issues/new?title=RefPot%20feedback&body=Project%3A%20RefPot%0APage%3A%20https%3A%2F%2Frefpot.modepot.io%2F" data-posthog-event="feedback_clicked" data-posthog-project="refpot" data-posthog-surface="modepot_participation">RefPot feedback / issue ↗</a>
+          <a class="ph-no-autocapture" target="_blank" rel="noopener noreferrer" href="https://github.com/tugrulguner/utilitypot/issues/new?title=UtilityPot%20feedback&body=Project%3A%20UtilityPot%0APage%3A%20https%3A%2F%2Futilitypot.modepot.io%2F" data-posthog-event="feedback_clicked" data-posthog-project="utilitypot" data-posthog-surface="modepot_participation">UtilityPot feedback / issue ↗</a>
+          <a class="ph-no-autocapture" href="https://discord.gg/u3AANZr6RG" data-posthog-event="community_clicked" data-posthog-platform="discord" data-posthog-surface="modepot_participation">Discord · project questions and community discussion ↗</a>
         </div>
         <p class="feedback-privacy-note">Feedback links open GitHub in a new tab. Include only static project/page context; avoid private data.</p>
       </section>
@@ -594,8 +595,8 @@ const structuredData = {
       <p>Open source. Built with the community.</p>
       <div>
         <a class="ph-no-autocapture" href="https://tugrul.modepot.io/">About me</a>
-        <a class="ph-no-autocapture" href="https://github.com/tugrulguner/modepot">GitHub</a>
-        <a class="ph-no-autocapture" href="https://discord.gg/u3AANZr6RG">Discord</a>
+        <a class="ph-no-autocapture" href="https://github.com/tugrulguner/modepot" data-posthog-event="modepot_resource_clicked" data-posthog-resource-type="repository" data-posthog-surface="modepot_footer">GitHub</a>
+        <a class="ph-no-autocapture" href="https://discord.gg/u3AANZr6RG" data-posthog-event="community_clicked" data-posthog-platform="discord" data-posthog-surface="modepot_footer">Discord</a>
       </div>
     </footer>
     <script is:inline>
@@ -608,12 +609,14 @@ const structuredData = {
         /** @type {Record<string, string>} */
         const properties = {
           surface: link.dataset.posthogSurface,
-          destination: link.href,
+          destination: (() => { const url = new URL(link.href); return url.origin + url.pathname; })(),
         };
         if (link.dataset.posthogProject) properties.project = link.dataset.posthogProject;
         if (link.dataset.posthogPlatform) properties.platform = link.dataset.posthogPlatform;
         if (link.dataset.posthogDestinationType) properties.destination_type = link.dataset.posthogDestinationType;
-        window.posthog.capture(link.dataset.posthogEvent, properties, { transport: 'sendBeacon', send_instantly: true });
+        if (link.dataset.posthogResourceType) properties.resource_type = link.dataset.posthogResourceType;
+        if (link.dataset.posthogPartner) properties.partner = link.dataset.posthogPartner;
+        try { window.posthog.capture(link.dataset.posthogEvent, properties, { transport: 'sendBeacon', send_instantly: true }); } catch {}
       };
       document.addEventListener('click', captureOutboundEvent);
       document.addEventListener('auxclick', captureOutboundEvent);

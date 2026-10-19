@@ -16,7 +16,7 @@ const projects = {
   refpot: ['https://refpot.modepot.io/', 'https://refpot.modepot.io/package/'],
 };
 
-test('project-entry links are tracked; GitHub documentation remains excluded', async ({ page }) => {
+test('project-entry links are tracked; GitHub documentation is resource intent, not a project visit', async ({ page }) => {
   await page.setContent(isolatedHtml);
   const expectedCount = Object.keys(projects).length * 2 + 2;
   await expect(page.locator('a[data-posthog-event="modepot_project_clicked"]')).toHaveCount(expectedCount);
@@ -31,7 +31,8 @@ test('project-entry links are tracked; GitHub documentation remains excluded', a
     const doc = page.locator(`.product-actions > .product-resource[href="${docs}"]`);
     await expect(doc).toHaveClass(/ph-no-autocapture/);
     if (['lifepot', 'utilitypot'].includes(project)) {
-      expect(await doc.getAttribute('data-posthog-event')).toBeNull();
+      await expect(doc).toHaveAttribute('data-posthog-event', 'modepot_resource_clicked');
+      await expect(doc).toHaveAttribute('data-posthog-resource-type', 'documentation');
     } else {
       await expect(doc).toHaveAttribute('data-posthog-event', 'modepot_project_clicked');
       await expect(doc).toHaveAttribute('data-posthog-project', project);
@@ -120,6 +121,96 @@ test('project events distinguish site, documentation, and playground destination
   expect(events.filter(event => event.properties.destination_type === 'docs')).toHaveLength(4);
   expect(events.filter(event => event.properties.destination_type === 'playground')).toHaveLength(4);
   expect(events.every(event => event.name === 'modepot_project_clicked')).toBe(true);
+});
+
+test('resource, community, feedback, and partner links have explicit bounded intent markers', async ({ page }) => {
+  await page.setContent(isolatedHtml);
+  const categories = ['modepot_resource_clicked', 'community_clicked', 'feedback_clicked', 'partner_clicked'];
+  for (const category of categories) {
+    const links = page.locator(`a[data-posthog-event="${category}"]`);
+    expect(await links.count(), `${category} should cover rendered intent links`).toBeGreaterThan(0);
+    for (const link of await links.all()) {
+      await expect(link).toHaveClass(/ph-no-autocapture/);
+      await expect(link).toHaveAttribute('data-posthog-surface', /^(modepot_header|modepot_footer|modepot_participation|modepot_project_card|modepot_partner)$/);
+      await expect(link).toHaveAttribute(category === 'modepot_resource_clicked' ? 'data-posthog-resource-type' : category === 'community_clicked' ? 'data-posthog-platform' : category === 'feedback_clicked' ? 'data-posthog-project' : 'data-posthog-partner', /.+/);
+    }
+  }
+  await expect(page.locator('a[href="#projects"][data-posthog-event]')).toHaveCount(0);
+  await expect(page.locator('a[href="#about"][data-posthog-event]')).toHaveCount(0);
+});
+
+test('every GitHub, community and partner destination has explicit nonduplicated intent', async ({ page }) => {
+  await page.setContent(isolatedHtml);
+  const links = page.locator('a[href^="https://github.com/"], a[href^="https://discord.gg/"], a[href^="https://circlesandcookies.com/"]');
+  for (const link of await links.all()) {
+    await expect(link).toHaveClass(/ph-no-autocapture/);
+    await expect(link).toHaveAttribute('data-posthog-event', /^(modepot_creator_social_clicked|modepot_resource_clicked|community_clicked|feedback_clicked|partner_clicked)$/);
+  }
+  for (const link of await page.locator('a[data-posthog-event="feedback_clicked"]').all()) {
+    if ((await link.getAttribute('href')).includes('title=')) await expect(link).toHaveAttribute('target', '_blank');
+  }
+});
+
+test('new intent links emit canonical origin/path and bounded category properties', async ({ page }) => {
+  await page.setContent(isolatedHtml);
+  await page.evaluate(() => { window.__captures = []; window.posthog = { capture: (...args) => window.__captures.push(args) }; });
+  await page.addScriptTag({ content: tracker });
+  await page.evaluate(() => document.addEventListener('click', event => event.preventDefault()));
+  const links = page.locator('a[data-posthog-event="modepot_resource_clicked"],a[data-posthog-event="community_clicked"],a[data-posthog-event="feedback_clicked"],a[data-posthog-event="partner_clicked"]');
+  const count = await links.count();
+  for (let i = 0; i < count; i++) await links.nth(i).dispatchEvent('click', { button: 0 });
+  const captures = await page.evaluate(() => window.__captures);
+  expect(captures).toHaveLength(count);
+  for (const [name, props, options] of captures) {
+    expect(['modepot_resource_clicked', 'community_clicked', 'feedback_clicked', 'partner_clicked']).toContain(name);
+    expect(props.destination).toMatch(/^https?:\/\/[^/?#]+(?:\/[^?#]*)?$/);
+    expect(props.destination).not.toMatch(/[?#]/);
+    expect(props.surface).toBeTruthy();
+    expect(Object.values(props).join(' ')).not.toMatch(/PRIVATE_SENTINEL|@/);
+    expect(options).toEqual({ transport: 'sendBeacon', send_instantly: true });
+  }
+});
+
+test('all explicit intents support primary, middle, keyboard and throwing transport without blocking navigation', async ({ page }) => {
+  await page.setContent(isolatedHtml);
+  await page.evaluate(() => {
+    window.__captures = [];
+    window.posthog = { capture: (...args) => window.__captures.push(args) };
+  });
+  await page.addScriptTag({ content: tracker });
+  await page.evaluate(() => {
+    window.__blocked = [];
+    for (const type of ['click', 'auxclick']) document.addEventListener(type, event => {
+      window.__blocked.push(event.defaultPrevented);
+      event.preventDefault();
+    });
+  });
+  const results = await page.evaluate(() => [...document.querySelectorAll('a[data-posthog-event]')].map(link => {
+    window.__captures.length = 0;
+    const url = new URL(link.href);
+    const expected = { surface: link.dataset.posthogSurface, destination: url.origin + url.pathname };
+    for (const [attribute, property] of [['posthogProject', 'project'], ['posthogPlatform', 'platform'], ['posthogDestinationType', 'destination_type'], ['posthogResourceType', 'resource_type'], ['posthogPartner', 'partner']]) {
+      if (link.dataset[attribute]) expected[property] = link.dataset[attribute];
+    }
+    for (const [type, button] of [['click', 0], ['auxclick', 1], ['auxclick', 2], ['click', 2]]) link.dispatchEvent(new MouseEvent(type, { button, bubbles: true, cancelable: true }));
+    return { name: link.dataset.posthogEvent, expected, events: [...window.__captures] };
+  }));
+  expect(results.length).toBe(await page.locator('a[data-posthog-event]').count());
+  for (const result of results) expect(result.events).toEqual(Array(2).fill([result.name, result.expected, { transport: 'sendBeacon', send_instantly: true }]));
+  expect(await page.evaluate(() => window.__blocked.every(value => value === false))).toBe(true);
+  await page.evaluate(() => { window.__captures.length = 0; });
+  const link = page.locator('a[data-posthog-event="modepot_resource_clicked"]').first();
+  await link.focus();
+  await page.keyboard.press('Enter');
+  expect(await page.evaluate(() => window.__captures.length)).toBe(1);
+  await link.click({ button: 'middle' });
+  expect(await page.evaluate(() => window.__captures.length)).toBe(2);
+  await page.evaluate(() => { window.posthog.capture = () => { throw new Error('fixture transport failure'); }; });
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await link.click();
+  expect(errors).toEqual([]);
+  expect(await page.evaluate(() => window.__blocked.every(value => value === false))).toBe(true);
 });
 
 test('LifePot directory learning CTAs and direct game callout route independently', async ({ page }) => {

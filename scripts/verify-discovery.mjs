@@ -202,8 +202,8 @@ for (const product of projectNames) {
 }
 for (const destination of projectNames.map((product) => `https://github.com/tugrulguner/${product}`)) {
   const repoLinks = [...html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/g)].filter(([, href]) => href === destination);
-  if (repoLinks.some(([tag]) => !tag.includes('ph-no-autocapture') || tag.includes('data-posthog-event'))) {
-    failures.push(`index.html: repository link ${destination} must be excluded from autocapture and custom project-visit events`);
+  if (repoLinks.some(([tag]) => !tag.includes('ph-no-autocapture') || !tag.includes('data-posthog-event="modepot_resource_clicked"') || !tag.includes('data-posthog-resource-type="repository"'))) {
+    failures.push(`index.html: repository link ${destination} must emit resource intent only and exclude autocapture`);
   }
 }
 const projectEventLinks = [...html.matchAll(/<a\b[^>]*data-posthog-event="modepot_project_clicked"[^>]*>/g)];
