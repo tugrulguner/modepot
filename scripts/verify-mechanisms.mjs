@@ -19,7 +19,7 @@ const lifeStep = (grid) => grid.map((row, y) => [...row].map((cell, x) => {
 const lifeExpected = [lifeSeed];
 for (let i = 1; i < 4; i += 1) lifeExpected.push(lifeStep(lifeExpected[i - 1]));
 const expected = {
-  utilitypot: ['Four browser-local utilities', 'Browser-only computation', 'Three AI-assisted tools', 'Disclosed Jev interpretation', 'Inspect results · copy or download', 'Seven tools', 'Explore UtilityPot'],
+  utilitypot: ['Five browser-local utilities', 'Browser-only computation', 'Three AI-assisted tools', 'Disclosed Jev interpretation', 'Inspect results · copy or download', 'Eight tools', 'Explore UtilityPot'],
   dexpot: ['Bind typed input', 'Synchronous handler', 'Checked public response'],
   intpot: ['One typed function', 'CLI', 'HTTP', 'MCP'],
   summonpot: ['Fixed request-owned values', 'Bounded agent choice', 'Application result'],

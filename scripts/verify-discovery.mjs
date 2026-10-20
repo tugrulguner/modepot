@@ -18,9 +18,7 @@ for (const record of projects) {
 }
 const readmeHero = readme.slice(0, readme.indexOf('## Projects'));
 for (const token of [
-  '<picture>', 'srcset="public/modepot-mark.svg?v=multicolour-1"', '<img src="public/modepot-mark-light.svg?v=multicolour-1"', 'alt="ModePot family mark"',
-  'We simplify, modernize, and performance-optimize',
-  'frameworks, tools, engines, and games',
+  '<picture>', 'srcset="public/products/modepot-lockup.png?v=family-hero-1"', '<img src="public/products/modepot-lockup.png?v=family-hero-1"', 'alt="ModePot — open-source software foundations, tools and games"', 'width="600"',
   'https://tugrul.modepot.io/',
   'Created by Tugrul Guner',
   'https://modepot.io/',
@@ -122,12 +120,15 @@ if (itemList?.numberOfItems !== projectNames.length || itemList?.itemListElement
   failures.push(`index.html: structured project count does not match source inventory (${projectNames.length})`);
 }
 const utilitySchema = itemList?.itemListElement?.find(({ item }) => item.name === 'utilitypot')?.item;
-if (utilitySchema?.programmingLanguage !== 'JavaScript' || utilitySchema?.runtimePlatform !== 'Web browser and Cloudflare Workers' || utilitySchema?.license !== 'https://opensource.org/license/mit' || utilitySchema?.url !== 'https://utilitypot.modepot.io/' || utilitySchema?.codeRepository !== 'https://github.com/tugrulguner/utilitypot' || !utilitySchema?.description.includes('Four browser-local utilities') || !utilitySchema?.description.includes('Three AI-assisted tools') || !utilitySchema?.description.includes('after disclosed submission')) {
+if (utilitySchema?.programmingLanguage !== 'JavaScript' || utilitySchema?.runtimePlatform !== 'Web browser and Cloudflare Workers' || utilitySchema?.license !== 'https://opensource.org/license/mit' || utilitySchema?.url !== 'https://utilitypot.modepot.io/' || utilitySchema?.codeRepository !== 'https://github.com/tugrulguner/utilitypot' || !utilitySchema?.description.includes('Five browser-local utilities') || !utilitySchema?.description.includes('Three AI-assisted tools') || !utilitySchema?.description.includes('after disclosed submission')) {
   failures.push('UtilityPot schema must preserve its live destination and execution boundary');
 }
 for (const [surface, content] of [['README', readme], ['llms', llms]]) {
-  for (const token of ['https://utilitypot.modepot.io/', 'https://github.com/tugrulguner/utilitypot', 'Seven tools', 'four browser-local', 'three AI-assisted', 'One fixed workflow per tool', 'disclosed AI processing', 'inspectable results']) {
-    if (!content.includes(token)) failures.push(`${surface}: missing UtilityPot contract ${token}`);
+  for (const token of ['https://utilitypot.modepot.io/', 'https://github.com/tugrulguner/utilitypot', 'Eight focused browser tools', 'five browser-local', 'three AI-assisted', 'One fixed workflow per tool', 'inspect results']) {
+    if (!content.toLowerCase().includes(token.toLowerCase())) failures.push(`${surface}: missing UtilityPot contract ${token}`);
+  }
+  for (const stale of ['Seven tools', 'four browser-local', 'four local converters']) {
+    if (content.toLowerCase().includes(stale.toLowerCase())) failures.push(`${surface}: stale UtilityPot inventory ${stale}`);
   }
 }
 if (!html.includes('href="#utilitypot"')) failures.push('UtilityPot must appear in the shared chooser');
@@ -222,23 +223,13 @@ for (const token of ['## Quick starts and documentation', 'https://dexpot.modepo
   if (!llms.includes(token)) failures.push(`llms.txt: missing ${token}`);
 }
 
-// Historical release notices are independent of the moving latestRelease record.
-for (const [surface, content, tokens] of [
-  ['index.html', html, ['v0.11.0 published: bounded helper recovery', 'before-write missing-binding refusal']],
-  ['README.md', readme, ['## Intpot v0.11.0', 'https://github.com/tugrulguner/intpot/discussions/205', 'annotation/default dependencies']],
-  ['llms.txt', llms, ['## Intpot v0.11.0 bounded helper recovery', 'https://github.com/tugrulguner/intpot/discussions/205', 'does not guarantee full fidelity']],
-]) {
-  for (const token of tokens) if (!content.includes(token)) failures.push(`${surface}: missing Intpot helper-recovery release contract ${token}`);
-}
-
-// Keep the historical safeguard notice while allowing the project sync workflow
-// to advance latestRelease to future published versions.
-for (const [surface, content, tokens] of [
-  ['index.html', html, ['v0.10.0 published: callback refusal']],
-  ['README.md', readme, ['## Intpot v0.10.0', 'https://github.com/tugrulguner/intpot/discussions/192']],
-  ['llms.txt', llms, ['## Intpot v0.10.0 conversion safeguards', 'allow_scaffold=True', 'does not guarantee full fidelity']],
-]) {
-  for (const token of tokens) if (!content.includes(token)) failures.push(`${surface}: missing Intpot release contract ${token}`);
+for (const [surface, content] of [['README.md', readme], ['llms.txt', llms]]) {
+  for (const token of ['## Releases and changelogs', 'https://github.com/tugrulguner/intpot/releases']) {
+    if (!content.includes(token)) failures.push(`${surface}: missing evergreen release discovery ${token}`);
+  }
+  for (const stale of ['## Intpot v0.11.0', '## Intpot v0.10.0', 'discussions/205', 'discussions/192']) {
+    if (content.includes(stale)) failures.push(`${surface}: version-specific announcement should link to evergreen release information (${stale})`);
+  }
 }
 
 if (failures.length) {
