@@ -11,9 +11,9 @@ for (const width of [1280, 820, 390, 320]) {
     await expect(page.locator('.open-source-seal b')).toHaveCSS('background-image', /linear-gradient/);
     await expect(page.locator('.site-header .brand img')).toHaveAttribute('src', /modepot-mark\.svg\?v=multicolour-1/);
     await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href', '/favicon.svg?v=multicolour-1');
-    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://modepot.io/modepot-og.webp?v=multicolour-1');
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://modepot.io/modepot-og.webp?v=wordmark-parity-1');
     const palette = await page.evaluate(async () => {
-      const img = new Image(); img.src = '/modepot-og.webp?v=multicolour-1'; await img.decode();
+      const img = new Image(); img.src = '/modepot-og.webp?v=wordmark-parity-1'; await img.decode();
       const c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight;
       const x = c.getContext('2d'); x.drawImage(img, 0, 0); const d = x.getImageData(0, 0, c.width, c.height).data;
       return [[102,217,255],[169,135,255],[119,229,189]].map(color => { let count=0; for(let i=0;i<d.length;i+=4) if(color.every((v,k)=>Math.abs(d[i+k]-v)<20)) count++; return count; });

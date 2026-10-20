@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "rendererSha256": "7097f39d65cb5990a92e84556c429360c4f873f0ba29d24cb854fc9cd9cf4cf7",
+  "fonts": [
+    {
+      "path": "node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2",
+      "sha256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972"
+    },
+    {
+      "path": "node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2",
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7"
+    }
+  ],
+  "assets": [
+    {
+      "source": "public/products/modepot-lockup.svg",
+      "output": "public/products/modepot-lockup.png",
+      "width": 1200,
+      "height": 900,
+      "format": "png",
+      "sourceSha256": "06bada0909cbd61752e2179707550087a307854e906a14d68b283c1fb092c958",
+      "outputSha256": "968103959d21e1040c9e931d3dba926356160c3865e67d5da9e8e39b3936ff79"
+    },
+    {
+      "source": "public/modepot-og.svg",
+      "output": "public/modepot-og.webp",
+      "width": 1200,
+      "height": 630,
+      "format": "webp",
+      "sourceSha256": "0553b17e8440248824a51c9c2a246c232bfab27b49502ae54a02e26742283d86",
+      "outputSha256": "ab637897e39d89630afa69a9a4bcb1a3e755b09c16df2f5a7bfb3d0496f1e629"
+    }
+  ]
+}

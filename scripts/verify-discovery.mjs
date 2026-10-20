@@ -18,7 +18,7 @@ for (const record of projects) {
 }
 const readmeHero = readme.slice(0, readme.indexOf('## Projects'));
 for (const token of [
-  '<picture>', 'srcset="public/products/modepot-lockup.png?v=family-hero-1"', '<img src="public/products/modepot-lockup.png?v=family-hero-1"', 'alt="ModePot — open-source software foundations, tools and games"', 'width="600"',
+  '<picture>', 'srcset="public/products/modepot-lockup.png?v=wordmark-parity-1"', '<img src="public/products/modepot-lockup.png?v=wordmark-parity-1"', 'alt="ModePot — open-source software foundations, tools and games"', 'width="600"',
   'https://tugrul.modepot.io/',
   'Created by Tugrul Guner',
   'https://modepot.io/',
