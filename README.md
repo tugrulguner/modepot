@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="public/products/modepot-lockup.png?v=family-hero-1">
-    <img src="public/products/modepot-lockup.png?v=family-hero-1" alt="ModePot — open-source software foundations, tools and games" width="600">
+    <source media="(prefers-color-scheme: dark)" srcset="public/products/modepot-lockup.png?v=wordmark-parity-1">
+    <img src="public/products/modepot-lockup.png?v=wordmark-parity-1" alt="ModePot — open-source software foundations, tools and games" width="600">
   </picture>
 </p>
 

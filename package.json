@@ -7,6 +7,8 @@
   },
   "scripts": {
     "render:identity": "node scripts/render-identity.mjs",
+    "check:identity": "node scripts/render-identity.mjs --check",
+    "test:identity": "node --test scripts/identity-parity.test.mjs",
     "dev": "astro dev",
     "check": "astro check",
     "build": "astro build && node scripts/verify-discovery.mjs && node scripts/verify-mechanisms.mjs && node scripts/verify-identity-assets.mjs",

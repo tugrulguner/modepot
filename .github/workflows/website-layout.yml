@@ -5,6 +5,7 @@ on:
   pull_request:
     paths:
       - 'README.md'
+      - 'BRAND.md'
       - 'public/**'
       - 'src/**'
       - 'tests/**'
@@ -31,6 +32,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+      - run: npm run test:identity
+      - run: npm run check:identity
       - run: npm run check
       - run: npm run test:project-sync
       - run: npm run build
