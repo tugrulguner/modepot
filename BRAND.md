@@ -24,7 +24,7 @@ The website wordmark is the reference for the README and social lockups, not a s
 - Preserve the README's 1200 × 900 canvas displayed at 600 px and the social card's 1200 × 630 canvas. Their compositions serve different formats; their wordmark treatment must agree.
 - Describe AI and agent support with the website's qualification: **AI-native and agent-friendly where they add real value**. It does not define every project.
 
-The editable sources are `public/products/modepot-lockup.svg` and `public/modepot-og.svg`. Run `npm run render:identity` to regenerate both the README PNG and social WebP with the declared local fonts. Run `npm run check:identity` to check committed derivatives without changing files, and `npm run test:identity` for suffix-region colour, geometry and positioning regressions. Commit the edited sources and their generated derivatives together.
+The editable sources are `public/products/modepot-lockup.svg` and `public/modepot-og.svg`. Run `npm run render:identity` to regenerate both the README PNG and social WebP with the declared local fonts. It records exact SHA-256 hashes for sources, fonts, renderer and derivatives in `src/data/identity-renders.json`. Run `npm run check:identity` to verify those hashes without changing files, and `npm run test:identity` for actual decoded suffix-region colour, geometry and positioning regressions. This avoids comparing native text rasterization across operating systems while still rejecting changed inputs or stale outputs. Commit edited sources, generated derivatives and the manifest together.
 
 ## Usage
 

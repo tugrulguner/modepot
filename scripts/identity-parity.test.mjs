@@ -1,6 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, mkdir, mkdtemp, writeFile, rm } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { chromium } from '@playwright/test';
 
 const read = async path => readFile(new URL(`../${path}`, import.meta.url));
@@ -102,4 +106,34 @@ test('family guide covers every current product and social copy retains qualifie
   assert.match(og, /AI-native and agent-friendly where they add real value/i);
   assert.doesNotMatch(og, /Agent-native/i);
   assert.match((await read('README.md')).toString(), /AI-native and agent-friendly where they add real value/i);
+});
+
+test('read-only provenance rejects every stale source/font/renderer/output without rewriting files', async () => {
+  const manifest = JSON.parse((await read('src/data/identity-renders.json')).toString());
+  const files = [...new Set(['scripts/render-identity.mjs', 'src/data/identity-renders.json', ...manifest.fonts.map(font => font.path), ...manifest.assets.flatMap(asset => [asset.source, asset.output])])];
+  const original = new Map(await Promise.all(files.map(async file => [file, await read(file)])));
+  const directory = await mkdtemp(join(tmpdir(), 'modepot-identity-'));
+  const hashes = async () => Promise.all(files.map(async file => createHash('sha256').update(await readFile(join(directory, file))).digest('hex')));
+  try {
+    for (const [file, bytes] of original) {
+      await mkdir(join(directory, file, '..'), { recursive: true });
+      await writeFile(join(directory, file), bytes);
+    }
+    const run = async expected => {
+      const before = await hashes();
+      const result = spawnSync(process.execPath, ['scripts/render-identity.mjs', '--check'], { cwd: directory, encoding: 'utf8' });
+      assert.equal(result.status, expected, result.stderr || result.stdout);
+      await assert.deepEqual(await hashes(), before, '--check must not rewrite sources, derivatives or manifest');
+    };
+    await run(0);
+    for (const file of files) {
+      const bytes = original.get(file);
+      const changed = file.endsWith('.mjs') ? Buffer.concat([bytes, Buffer.from('\n// stale renderer\n')])
+        : file.endsWith('.json') ? Buffer.from(JSON.stringify({ ...JSON.parse(bytes.toString()), version: 99 }))
+        : Buffer.concat([bytes, Buffer.from('\n')]);
+      await writeFile(join(directory, file), changed);
+      await run(1);
+      await writeFile(join(directory, file), bytes);
+    }
+  } finally { await rm(directory, { recursive: true, force: true }); }
 });
