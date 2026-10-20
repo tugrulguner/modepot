@@ -37,7 +37,7 @@ for (const [project, concepts] of Object.entries(expected)) {
   const route = project === 'lifepot' ? 'https://lifepot.modepot.io/play' : `https://${project}.modepot.io/playground/`;
   if (!['refpot', 'utilitypot'].includes(project) && !card.includes(`href="${route}"`)) failures.push(`${project}: missing project-owned playground route`);
   if (project === 'utilitypot') {
-    for (const token of ['/marks/utilitypot-mark-v1.svg?v=wordmark-accent-1', '/products/utilitypot-lockup-v1.png?v=family-attribution-3', 'https://utilitypot.modepot.io/', 'Illustrative mechanism · not a live run']) {
+    for (const token of ['/marks/utilitypot-mark-v1.svg?v=wordmark-accent-1', '/products/utilitypot-lockup-v1.png?v=inventory-8-tools-1', 'https://utilitypot.modepot.io/', 'Illustrative mechanism · not a live run']) {
       if (!card.includes(token)) failures.push(`utilitypot: missing ${token}`);
     }
     if ((!utilitySource.latestRelease && card.includes('/releases/')) || (utilitySource.roadmap.status !== 'available' && /href="[^"]*ROADMAP.md/.test(card)) || card.includes('/playground/') || /\b\d+\s*ms\b/.test(card)) failures.push('utilitypot: invented roadmap, release, playground, or timing');

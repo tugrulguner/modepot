@@ -27,7 +27,7 @@ for (const item of artifacts) {
     assert.match(bytes.toString(), /Python CRUD\. Explicit transactions/);
   }
   if (item.project === "utilitypot" && item.destination.includes("lockup") && item.destination.endsWith(".svg")) {
-    assert.match(bytes.toString(), /4 browser-local tools · 3 disclosed AI tools/);
+    assert.match(bytes.toString(), /5 browser-local tools · 3 disclosed AI tools/);
     assert.doesNotMatch(bytes.toString(), /Jev interprets\. You review\. Code executes/);
   }
   if (item.transform === "copy")
