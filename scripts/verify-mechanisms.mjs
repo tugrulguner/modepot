@@ -19,7 +19,7 @@ const lifeStep = (grid) => grid.map((row, y) => [...row].map((cell, x) => {
 const lifeExpected = [lifeSeed];
 for (let i = 1; i < 4; i += 1) lifeExpected.push(lifeStep(lifeExpected[i - 1]));
 const expected = {
-  utilitypot: ['Four browser-local utilities', 'Browser-only computation', 'Three AI-assisted tools', 'Disclosed Jev interpretation', 'Inspect results · copy or download', 'Seven tools', 'Explore UtilityPot'],
+  utilitypot: ['Five browser-local utilities', 'Browser-only computation', 'Three AI-assisted tools', 'Disclosed Jev interpretation', 'Inspect results · copy or download', 'Eight tools', 'Explore UtilityPot'],
   dexpot: ['Bind typed input', 'Synchronous handler', 'Checked public response'],
   intpot: ['One typed function', 'CLI', 'HTTP', 'MCP'],
   summonpot: ['Fixed request-owned values', 'Bounded agent choice', 'Application result'],
@@ -37,7 +37,7 @@ for (const [project, concepts] of Object.entries(expected)) {
   const route = project === 'lifepot' ? 'https://lifepot.modepot.io/play' : `https://${project}.modepot.io/playground/`;
   if (!['refpot', 'utilitypot'].includes(project) && !card.includes(`href="${route}"`)) failures.push(`${project}: missing project-owned playground route`);
   if (project === 'utilitypot') {
-    for (const token of ['/marks/utilitypot-mark-v1.svg?v=wordmark-accent-1', '/products/utilitypot-lockup-v1.png?v=family-attribution-3', 'https://utilitypot.modepot.io/', 'Illustrative mechanism · not a live run']) {
+    for (const token of ['/marks/utilitypot-mark-v1.svg?v=wordmark-accent-1', '/products/utilitypot-lockup-v1.png?v=inventory-8-tools-1', 'https://utilitypot.modepot.io/', 'Illustrative mechanism · not a live run']) {
       if (!card.includes(token)) failures.push(`utilitypot: missing ${token}`);
     }
     if ((!utilitySource.latestRelease && card.includes('/releases/')) || (utilitySource.roadmap.status !== 'available' && /href="[^"]*ROADMAP.md/.test(card)) || card.includes('/playground/') || /\b\d+\s*ms\b/.test(card)) failures.push('utilitypot: invented roadmap, release, playground, or timing');
