@@ -32,17 +32,17 @@ These projects are the beginning, not the boundary. RefPot is a publicly release
 <!-- project-snapshots:start -->
 ## Project source snapshots
 
-GitHub metadata checked at 2026-10-20T02:05:38.133Z. These are reviewed snapshots, not a continuously live feed.
+GitHub metadata checked at 2026-10-21T23:55:36.963Z. These are reviewed snapshots, not a continuously live feed.
 The existing scheduled source-sync workflow proposes refreshes for review; changes are not automatically merged.
 
 | Project | Source snapshot | Latest recorded release |
 | --- | --- | --- |
-| dexpot | [01a034b](https://github.com/tugrulguner/dexpot/commit/01a034b65ae4f0901a0d523e5ec0f676809e7837) | [v0.7.0](https://github.com/tugrulguner/dexpot/releases/tag/v0.7.0) |
-| intpot | [1d11876](https://github.com/tugrulguner/intpot/commit/1d1187624d8a144bc98b9dc141a78cc0d0bd0f38) | [v0.11.0](https://github.com/tugrulguner/intpot/releases/tag/v0.11.0) |
-| summonpot | [a9fa5bb](https://github.com/tugrulguner/summonpot/commit/a9fa5bbed59fa6b73a5e223ee0887a9e82adcb4b) | [v0.10.0](https://github.com/tugrulguner/summonpot/releases/tag/v0.10.0) |
-| lifepot | [4744a8d](https://github.com/tugrulguner/lifepot/commit/4744a8db79f97e9d4f20d84ebc17ce45689a7fb1) | [v0.9.0](https://github.com/tugrulguner/lifepot/releases/tag/v0.9.0) |
-| refpot | [e165505](https://github.com/tugrulguner/refpot/commit/e165505a0ac895c98358c388036fc4a37a422248) | [v0.1.1](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1) |
-| utilitypot | [e3fd1d8](https://github.com/tugrulguner/utilitypot/commit/e3fd1d81d0415cd26887deabcb2b8142cedddb4e) | No release recorded |
+| dexpot | [034833e](https://github.com/tugrulguner/dexpot/commit/034833edd4a5ba4b01b42ed0f6e7dca2c6156b95) | [v0.7.1](https://github.com/tugrulguner/dexpot/releases/tag/v0.7.1) |
+| intpot | [321ff56](https://github.com/tugrulguner/intpot/commit/321ff5626725aa0083c9db0fa98658309b9aaaab) | [v0.11.1](https://github.com/tugrulguner/intpot/releases/tag/v0.11.1) |
+| summonpot | [d9d7075](https://github.com/tugrulguner/summonpot/commit/d9d7075f61b1019bbb65b4c717b44c3256703b1d) | [v0.10.0](https://github.com/tugrulguner/summonpot/releases/tag/v0.10.0) |
+| lifepot | [490cc62](https://github.com/tugrulguner/lifepot/commit/490cc62655e2bc25dd0a0bb4dd4e407a9cc84261) | [v0.9.0](https://github.com/tugrulguner/lifepot/releases/tag/v0.9.0) |
+| refpot | [3294ce3](https://github.com/tugrulguner/refpot/commit/3294ce39f0e5630c660fad2e5a1e3977bf52a17f) | [v0.1.1](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1) |
+| utilitypot | [563f3e7](https://github.com/tugrulguner/utilitypot/commit/563f3e77848aa5526bfa0f7697d0ce0ec292781f) | No release recorded |
 <!-- project-snapshots:end -->
 
 ## Releases and changelogs
