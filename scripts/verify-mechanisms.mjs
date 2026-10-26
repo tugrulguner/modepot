@@ -24,6 +24,7 @@ const expected = {
   intpot: ['One typed function', 'CLI', 'HTTP', 'MCP'],
   summonpot: ['Fixed request-owned values', 'Bounded agent choice', 'Application result'],
   lifepot: ['Birth · death · movement', 'Play the game'],
+  skillpot: ['Working project', 'Evidence-backed demo · planned', 'Planned workflow · not a released skill or demo'],
   refpot: ['DIRECT SQL', 'SQL statements', 'STRUCTURED ORM', 'Python operations', 'PROPOSED EXECUTION CORE', 'Shared relational engine'],
 };
 for (const [project, concepts] of Object.entries(expected)) {
@@ -35,7 +36,11 @@ for (const [project, concepts] of Object.entries(expected)) {
   const normalized = card.replaceAll('<br>', ' ');
   for (const concept of concepts) if (!normalized.includes(concept)) failures.push(`${project}: missing mechanism concept “${concept}”`);
   const route = project === 'lifepot' ? 'https://lifepot.modepot.io/play' : `https://${project}.modepot.io/playground/`;
-  if (!['refpot', 'utilitypot'].includes(project) && !card.includes(`href="${route}"`)) failures.push(`${project}: missing project-owned playground route`);
+  if (!['refpot', 'utilitypot', 'skillpot'].includes(project) && !card.includes(`href="${route}"`)) failures.push(`${project}: missing project-owned playground route`);
+  if (project === 'skillpot') {
+    for (const token of ['/marks/skillpot-mark.svg', '/products/skillpot-lockup.svg', 'In development', 'https://github.com/tugrulguner/skillpot', 'no installable skills', 'Planned workflow · not a released skill or demo']) if (!card.includes(token)) failures.push(`skillpot: missing honest discovery contract ${token}`);
+    if (card.includes('skillpot.modepot.io') || card.includes('/playground/') || card.includes('/releases/')) failures.push('skillpot: invented site, playground, or release');
+  }
   if (project === 'utilitypot') {
     for (const token of ['/marks/utilitypot-mark-v1.svg?v=wordmark-accent-1', '/products/utilitypot-lockup-v1.png?v=inventory-8-tools-1', 'Five fixed browser-local workflows', 'All eight provide inspectable results and exports.', 'https://utilitypot.modepot.io/', 'Illustrative mechanism · not a live run']) {
       if (!card.includes(token)) failures.push(`utilitypot: missing ${token}`);
@@ -59,7 +64,7 @@ for (const [project, concepts] of Object.entries(expected)) {
     for (const className of ['ref-sql', 'ref-orm', 'ref-core', 'ref-flow-sql', 'ref-flow-orm']) {
       if (!card.includes(className)) failures.push(`refpot: missing proposed path/core step ${className}`);
     }
-  } else if (project !== 'utilitypot' && !card.includes('Illustrative animation')) failures.push(`${project}: animation is not labeled illustrative`);
+  } else if (!['utilitypot', 'skillpot'].includes(project) && !card.includes('Illustrative animation')) failures.push(`${project}: animation is not labeled illustrative`);
   if (project === 'lifepot') {
     const frames = [...card.matchAll(/<div class="life-generation" data-generation="(\d+)"[^>]*>(.*?)<\/div>/gs)];
     if (frames.length !== 4) failures.push(`lifepot: expected 4 generation frames, got ${frames.length}`);
@@ -82,4 +87,4 @@ if (html.includes('/products/refpot-lockup.png')) failures.push('refpot: stale l
 if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;
-} else console.log(`Verified ${Object.keys(expected).length} project previews, truthful RefPot architecture status, and no recording-panel content.`);
+} else console.log(`Verified ${Object.keys(expected).length} project cards, truthful RefPot architecture status, and no recording-panel content.`);

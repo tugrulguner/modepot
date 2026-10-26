@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-const suffixes = {dexpot:'rgb(102, 217, 255)',intpot:'rgb(242, 184, 75)',summonpot:'rgb(169, 135, 255)',lifepot:'rgb(119, 229, 189)',refpot:'rgb(244, 242, 234)',utilitypot:'rgb(242, 140, 190)'};
+const suffixes = {dexpot:'rgb(102, 217, 255)',intpot:'rgb(242, 184, 75)',summonpot:'rgb(169, 135, 255)',lifepot:'rgb(119, 229, 189)',refpot:'rgb(244, 242, 234)',utilitypot:'rgb(242, 140, 190)',skillpot:'rgb(255, 154, 118)'};
 
 for (const width of [1280, 390]) {
   test(`project-name suffixes match their flasks at ${width}px`, async ({ page }) => {
