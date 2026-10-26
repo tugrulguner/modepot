@@ -37,7 +37,7 @@ if (!readme.includes('https://dexpot.modepot.io/quick-start/') || !readme.includ
   failures.push('README.md: project index must retain verified learning routes for all projects');
 }
 for (const product of projectNames) {
-  if (!readme.includes(`https://${product}.modepot.io/`) || !readme.includes(`https://github.com/tugrulguner/${product}`)) {
+  if ((product !== 'skillpot' && !readme.includes(`https://${product}.modepot.io/`)) || !readme.includes(`https://github.com/tugrulguner/${product}`)) {
     failures.push(`README.md: missing site/source chooser destinations for ${product}`);
   }
 }
@@ -59,6 +59,7 @@ const requiredHtml = [
   '/products/summonpot-lockup.webp',
   '/products/lifepot-lockup.webp',
   '/products/refpot-lockup-v2.svg?v=public-info-1',
+  '/products/skillpot-lockup.svg',
   'Docs',
   'Build with us.',
   'participation-links',
@@ -119,6 +120,8 @@ const itemList = jsonLdBlocks.map(([, source]) => JSON.parse(source)).flatMap((v
 if (itemList?.numberOfItems !== projectNames.length || itemList?.itemListElement?.length !== projectNames.length) {
   failures.push(`index.html: structured project count does not match source inventory (${projectNames.length})`);
 }
+const skillpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'skillpot')?.item;
+if (skillpotSchema?.url !== 'https://github.com/tugrulguner/skillpot' || skillpotSchema?.codeRepository !== 'https://github.com/tugrulguner/skillpot' || skillpotSchema?.programmingLanguage || skillpotSchema?.runtimePlatform || skillpotSchema?.license) failures.push('SkillPot schema must remain repository-first without invented site, runtime, language, or license metadata');
 const utilitySchema = itemList?.itemListElement?.find(({ item }) => item.name === 'utilitypot')?.item;
 if (utilitySchema?.programmingLanguage !== 'JavaScript' || utilitySchema?.runtimePlatform !== 'Web browser and Cloudflare Workers' || utilitySchema?.license !== 'https://opensource.org/license/mit' || utilitySchema?.url !== 'https://utilitypot.modepot.io/' || utilitySchema?.codeRepository !== 'https://github.com/tugrulguner/utilitypot' || !utilitySchema?.description.includes('Five browser-local utilities') || !utilitySchema?.description.includes('Three AI-assisted tools') || !utilitySchema?.description.includes('after disclosed submission')) {
   failures.push('UtilityPot schema must preserve its live destination and execution boundary');
@@ -132,6 +135,10 @@ for (const [surface, content] of [['README', readme], ['llms', llms]]) {
   }
 }
 if (!html.includes('href="#utilitypot"')) failures.push('UtilityPot must appear in the shared chooser');
+if (!html.includes('href="#skillpot"') || !html.includes('https://github.com/tugrulguner/skillpot')) failures.push('SkillPot must appear in discovery and link to its repository');
+const skillpotCard = html.slice(html.indexOf('id="skillpot"'), html.indexOf('</article>', html.indexOf('id="skillpot"')));
+for (const token of ['In development', 'no installable skills', 'evidence-backed demo', 'Planned workflow · not a released skill or demo', 'Source snapshot']) if (!skillpotCard.includes(token)) failures.push(`SkillPot card must show honest development status: ${token}`);
+if (skillpotCard.includes('/releases/') || skillpotCard.includes('modepot.io/')) failures.push('SkillPot card must not invent a release or product website');
 const dexpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'dexpot')?.item;
 if (html.includes('Response[T]') || llms.includes('Response[T]')) {
   failures.push('Dexpot declares output with response=T; Response[T] is not a public API');
@@ -196,19 +203,19 @@ for (const product of projectNames) {
   if (metadata.latestRelease && (!card.includes(metadata.latestRelease.tag) || !card.includes(metadata.latestRelease.url))) {
     failures.push(`index.html: published release metadata missing for ${product}`);
   }
-  if (!metadata.latestRelease && !card.includes('No release recorded')) {
+  if (!metadata.latestRelease && product !== 'skillpot' && !card.includes('No release recorded')) {
     failures.push(`index.html: explicit no-release state missing for ${product}`);
   }
   if (!metadata.checkedAt || !card.includes(metadata.checkedAt) || !card.includes('Source snapshot')) failures.push(`index.html: timestamped source snapshot missing for ${product}`);
 }
 for (const destination of projectNames.map((product) => `https://github.com/tugrulguner/${product}`)) {
   const repoLinks = [...html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>/g)].filter(([, href]) => href === destination);
-  if (repoLinks.some(([tag]) => !tag.includes('ph-no-autocapture') || !tag.includes('data-posthog-event="modepot_resource_clicked"') || !tag.includes('data-posthog-resource-type="repository"'))) {
+  if (repoLinks.some(([tag]) => !tag.includes('ph-no-autocapture') || !(tag.includes('data-posthog-event="modepot_resource_clicked"') || (destination.endsWith('/skillpot') && tag.includes('data-posthog-destination-type="repository"'))) || !(tag.includes('data-posthog-resource-type="repository"') || destination.endsWith('/skillpot')))) {
     failures.push(`index.html: repository link ${destination} must emit resource intent only and exclude autocapture`);
   }
 }
 const projectEventLinks = [...html.matchAll(/<a\b[^>]*data-posthog-event="modepot_project_clicked"[^>]*>/g)];
-const expectedProjectEventLinks = projectNames.length * 2 + 2;
+const expectedProjectEventLinks = projectNames.length * 2;
 if (projectEventLinks.length !== expectedProjectEventLinks) failures.push(`index.html: expected ${expectedProjectEventLinks} explicit project links, found ${projectEventLinks.length}`);
 for (const [index, [tag]] of projectEventLinks.entries()) {
   if (!tag.includes('ph-no-autocapture')) failures.push(`index.html: project event link ${index + 1} must exclude autocapture`);
@@ -232,6 +239,10 @@ for (const [surface, content] of [['README.md', readme], ['llms.txt', llms]]) {
   }
 }
 
+for (const [surface, content] of [['README', readme], ['llms', llms], ['index.html', html]]) {
+  for (const token of ['https://github.com/tugrulguner/skillpot', 'In development', 'evidence-backed demo', 'no installable skills']) if (!content.toLowerCase().includes(token.toLowerCase())) failures.push(`${surface}: missing SkillPot development boundary ${token}`);
+  if (content.includes('skillpot.modepot.io')) failures.push(`${surface}: invented SkillPot website destination`);
+}
 if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;

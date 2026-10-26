@@ -80,6 +80,26 @@
       "revision": "4741eb4aa5e02b39d34657f855e432a85d0e71e5",
       "sourceSha256": "ca595325471bd19593fbe00156308e2fec3d902650b50a2bd615cde30810e929",
       "destinationSha256": "ca595325471bd19593fbe00156308e2fec3d902650b50a2bd615cde30810e929"
+    },
+    {
+      "project": "skillpot",
+      "repository": "https://github.com/tugrulguner/skillpot",
+      "revision": "3d023734ca0a2a22a873ca59d601f7616fed7716",
+      "source": "assets/skillpot-mark.svg",
+      "sourceSha256": "1fc7fff4f5384fce02e9205fc757f5a3448f64d08fb03f041f46b93f6c3b4334",
+      "destination": "public/marks/skillpot-mark.svg",
+      "destinationSha256": "1fc7fff4f5384fce02e9205fc757f5a3448f64d08fb03f041f46b93f6c3b4334",
+      "transform": "copy"
+    },
+    {
+      "project": "skillpot",
+      "repository": "https://github.com/tugrulguner/skillpot",
+      "revision": "3d023734ca0a2a22a873ca59d601f7616fed7716",
+      "source": "assets/skillpot-lockup.svg",
+      "sourceSha256": "44970bbd30c8ca4474908454dc4996a399b14872c1c9f47f236dbaa190f182d8",
+      "destination": "public/products/skillpot-lockup.svg",
+      "destinationSha256": "44970bbd30c8ca4474908454dc4996a399b14872c1c9f47f236dbaa190f182d8",
+      "transform": "copy"
     }
   ]
 }
