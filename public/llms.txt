@@ -57,6 +57,7 @@ The existing scheduled source-sync workflow proposes refreshes for review; chang
 - [RefPot performance method](https://refpot.modepot.io/performance-method/)
 - [RefPot status](https://refpot.modepot.io/status/)
 - [RefPot v0.1.1 release](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1)
+- [SkillPot project direction and roadmap](https://github.com/tugrulguner/skillpot) (in development; no installable skill yet)
 
 ## Contribute to ModePot
 
@@ -68,10 +69,6 @@ Read the project-owned guide before contributing: [Dexpot CONTRIBUTING.md](https
 - [Open a LifePot issue](https://github.com/tugrulguner/lifepot/issues/new)
 - [Propose RefPot work](https://github.com/tugrulguner/refpot/issues)
 - [ModePot Discord](https://discord.gg/u3AANZr6RG): community discussion and project questions.
-
-## Quick starts and documentation
-
-- [SkillPot project direction and roadmap](https://github.com/tugrulguner/skillpot)
 
 ## Selection guide
 

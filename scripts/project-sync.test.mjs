@@ -14,6 +14,12 @@ for (const name of ['dexpot', 'intpot', 'summonpot', 'lifepot', 'refpot', 'utili
 assert.ok(projects.includes('utilitypot'), 'UtilityPot must be supported by source sync');
 assert.ok(projects.includes('skillpot'), 'SkillPot must be supported by source sync');
 assert.match(projectTable, /\*\*SkillPot\*\*/);
+const skillpotRow = projectTable.split('\n').find(line => line.includes('**SkillPot**'));
+assert.ok(skillpotRow, 'SkillPot row must exist');
+assert.equal(skillpotRow.split('|').length, 7, 'SkillPot must retain all five project-table columns');
+assert.match(skillpotRow, /\| Not provided \| \[GitHub\]/, 'SkillPot has no product website; GitHub belongs in the source column');
+const agentMap = await readFile(new URL('../public/llms.txt', import.meta.url), 'utf8');
+assert.equal(agentMap.split('## Quick starts and documentation').length - 1, 1, 'Keep one canonical documentation section');
 const skillpot = stored.find(p => p.name === 'skillpot');
 assert.match(skillpot.commit, /^[a-f0-9]{40}$/);
 assert.match(skillpot.readme.sha256, /^[a-f0-9]{64}$/);
