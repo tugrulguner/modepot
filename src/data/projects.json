@@ -46,23 +46,23 @@
   {
     "name": "summonpot",
     "repository": "https://github.com/tugrulguner/summonpot",
-    "commit": "725a298bb287f15d33c74a7d179a7b5baecfe103",
-    "checkedAt": "2026-10-22T13:16:48Z",
-    "commitUrl": "https://github.com/tugrulguner/summonpot/commit/725a298bb287f15d33c74a7d179a7b5baecfe103",
+    "commit": "cdaf2f76ae5aa698aeed1d4654ecdb567eb6e2d5",
+    "checkedAt": "2026-10-27T12:34:03.960Z",
+    "commitUrl": "https://github.com/tugrulguner/summonpot/commit/cdaf2f76ae5aa698aeed1d4654ecdb567eb6e2d5",
     "readme": {
-      "url": "https://github.com/tugrulguner/summonpot/blob/725a298bb287f15d33c74a7d179a7b5baecfe103/README.md",
-      "sha256": "5e8804f46c7d3a483a7a27c02f2515cead76662bf32290747fa489735795b9d6"
+      "url": "https://github.com/tugrulguner/summonpot/blob/cdaf2f76ae5aa698aeed1d4654ecdb567eb6e2d5/README.md",
+      "sha256": "0a874eef3b6ae4f6a5470df2114c88783711eac90c29ee8bd7a43bc209be07ce"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/summonpot/blob/725a298bb287f15d33c74a7d179a7b5baecfe103/ROADMAP.md",
-      "sha256": "d22e6647e550ceb5ab44dc167d301ace1e1fad857dc7a8f52e7da3490e5ebd60"
+      "url": "https://github.com/tugrulguner/summonpot/blob/cdaf2f76ae5aa698aeed1d4654ecdb567eb6e2d5/ROADMAP.md",
+      "sha256": "6108a57f177e16d5d5111dfd76694212001ee217cc371d53c62ca1bcbdb52cdb"
     },
     "latestRelease": {
-      "tag": "v0.11.0",
-      "name": "v0.11.0",
-      "url": "https://github.com/tugrulguner/summonpot/releases/tag/v0.11.0",
-      "publishedAt": "2026-10-22T13:16:48Z"
+      "tag": "v0.12.0",
+      "name": "v0.12.0",
+      "url": "https://github.com/tugrulguner/summonpot/releases/tag/v0.12.0",
+      "publishedAt": "2026-10-26T12:24:11Z"
     }
   },
   {
