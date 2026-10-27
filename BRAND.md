@@ -13,6 +13,7 @@ ModePot uses one shared vessel geometry and a distinct interior symbol for each 
 | LifePot | [`public/marks/lifepot-mark.svg`](public/marks/lifepot-mark.svg) | A growing cellular system | `#77E5BD` |
 | RefPot | [`public/marks/refpot-mark.svg`](public/marks/refpot-mark.svg) | A layered store of records inside an explicit boundary | Off-white / graphite, `#F4F2EA` |
 | UtilityPot | [`public/marks/utilitypot-mark-v1.svg`](public/marks/utilitypot-mark-v1.svg) | A bounded, inspectable utility workflow | Rose, `#F28CBE` |
+| SkillPot | [`public/marks/skillpot-mark.svg`](public/marks/skillpot-mark.svg) | A checked artifact inside the shared vessel | Coral, `#FF9A76` |
 
 ## ModePot wordmark and lockups
 

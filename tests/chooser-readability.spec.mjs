@@ -44,7 +44,7 @@ for (const width of [1280, 1050, 390])
         expect(style.font).toBeGreaterThanOrEqual(16);
         expect(style.contrast).toBeGreaterThanOrEqual(7);
       }
-    await expect(chooser.locator(".selector-row")).toHaveCount(6);
+    await expect(chooser.locator(".selector-row")).toHaveCount(7);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,

@@ -5,8 +5,8 @@ const root = new URL("../", import.meta.url);
 const { artifacts } = JSON.parse(
   await readFile(new URL("src/data/identity-sources.json", root), "utf8"),
 );
-assert.equal(artifacts.length, 8);
-assert.equal(new Set(artifacts.map((a) => a.project)).size, 6);
+assert.equal(artifacts.length, 10);
+assert.equal(new Set(artifacts.map((a) => a.project)).size, 7);
 for (const item of artifacts) {
   assert.match(item.revision, /^[a-f0-9]{40}$/);
   assert.match(item.sourceSha256, /^[a-f0-9]{64}$/);

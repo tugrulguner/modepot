@@ -24,7 +24,8 @@ for (const width of [1280, 390]) {
         await expect(card).not.toContainText('No release recorded');
         expect(text).toContain(record.latestRelease.url);
       } else {
-        await expect(card).toContainText('No release recorded');
+        if (record.name === 'skillpot') await expect(card).not.toContainText('No release recorded');
+        else await expect(card).toContainText('No release recorded');
         await expect(card.getByRole('link', { name: /^Latest recorded release/ })).toHaveCount(0);
       }
       expect(await card.evaluate(el => el.scrollWidth <= el.clientWidth + 1)).toBe(true);

@@ -580,9 +580,11 @@ nav a:hover {
 .product-violet { --accent: var(--violet); }
 .product-mint { --accent: #77e5bd; }
 .product-refpot { --accent: #F4F2EA; }
+.product-skillpot { --accent: #FF9A76; }
 
 .selector-mint { --selector-accent: #77e5bd; }
 .selector-refpot { --selector-accent: #F4F2EA; }
+.selector-skillpot { --selector-accent: #FF9A76; }
 
 .product-index {
   display: flex;
