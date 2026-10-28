@@ -137,8 +137,8 @@ for (const [surface, content] of [['README', readme], ['llms', llms]]) {
 if (!html.includes('href="#utilitypot"')) failures.push('UtilityPot must appear in the shared chooser');
 if (!html.includes('href="#skillpot"') || !html.includes('https://github.com/tugrulguner/skillpot')) failures.push('SkillPot must appear in discovery and link to its repository');
 const skillpotCard = html.slice(html.indexOf('id="skillpot"'), html.indexOf('</article>', html.indexOf('id="skillpot"')));
-for (const token of ['In development', 'no installable skills', 'evidence-backed demo', 'Planned workflow · not a released skill or demo', 'Source snapshot']) if (!skillpotCard.includes(token)) failures.push(`SkillPot card must show honest development status: ${token}`);
-if (skillpotCard.includes('/releases/') || skillpotCard.includes('modepot.io/')) failures.push('SkillPot card must not invent a release or product website');
+for (const token of ['In development', 'v0.2.0', 'broad usefulness evaluation not established', 'Illustrative skill contract · not a live task run', 'Source snapshot', 'Quickstart']) if (!skillpotCard.includes(token)) failures.push(`SkillPot card must show current maturity and discovery: ${token}`);
+if (!skillpotCard.includes('https://github.com/tugrulguner/skillpot/releases/tag/v0.2.0') || skillpotCard.includes('skillpot.modepot.io/')) failures.push('SkillPot card must link its verified collection release and avoid inventing a product website');
 const dexpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'dexpot')?.item;
 if (html.includes('Response[T]') || llms.includes('Response[T]')) {
   failures.push('Dexpot declares output with response=T; Response[T] is not a public API');
@@ -240,7 +240,7 @@ for (const [surface, content] of [['README.md', readme], ['llms.txt', llms]]) {
 }
 
 for (const [surface, content] of [['README', readme], ['llms', llms], ['index.html', html]]) {
-  for (const token of ['https://github.com/tugrulguner/skillpot', 'In development', 'evidence-backed demo', 'no installable skills']) if (!content.toLowerCase().includes(token.toLowerCase())) failures.push(`${surface}: missing SkillPot development boundary ${token}`);
+  for (const token of ['https://github.com/tugrulguner/skillpot', 'v0.2.0', 'seven', 'in development']) if (!content.toLowerCase().includes(token.toLowerCase())) failures.push(`${surface}: missing SkillPot current status ${token}`);
   if (content.includes('skillpot.modepot.io')) failures.push(`${surface}: invented SkillPot website destination`);
 }
 if (failures.length) {

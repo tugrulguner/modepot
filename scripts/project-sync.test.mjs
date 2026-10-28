@@ -26,8 +26,9 @@ assert.match(skillpot.readme.sha256, /^[a-f0-9]{64}$/);
 assert.equal(skillpot.readme.url, `${skillpot.repository}/blob/${skillpot.commit}/README.md`);
 assert.equal(skillpot.roadmap.status, 'available');
 assert.equal(skillpot.roadmap.sha256.length, 64);
-assert.equal(skillpot.latestRelease, null, 'roadmap-only SkillPot must not invent a release');
-assert.match(skillpot.checkedAt, /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/);
+assert.equal(skillpot.latestRelease.tag, 'v0.2.0');
+assert.equal(skillpot.latestRelease.url, 'https://github.com/tugrulguner/skillpot/releases/tag/v0.2.0');
+assert.match(skillpot.checkedAt, /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/);
 assert.ok(Number.isFinite(Date.parse(skillpot.checkedAt)), 'SkillPot check timestamp must remain valid after future source refreshes');
 assert.equal(createHash('sha256').update(await readFile(new URL('../public/marks/skillpot-mark.svg', import.meta.url))).digest('hex'), '1fc7fff4f5384fce02e9205fc757f5a3448f64d08fb03f041f46b93f6c3b4334', 'SkillPot mark must preserve canonical upstream bytes');
 assert.equal(createHash('sha256').update(await readFile(new URL('../public/products/skillpot-lockup.svg', import.meta.url))).digest('hex'), '44970bbd30c8ca4474908454dc4996a399b14872c1c9f47f236dbaa190f182d8', 'SkillPot lockup must preserve canonical upstream bytes');
@@ -67,6 +68,15 @@ try {
   assert.equal(replay[1].roadmap.status, 'missing');
   assert.equal(replay[0].latestRelease.tag, 'v1.0.0');
   assert.equal(replay[3].latestRelease, null);
+  const beforeSelectiveRefresh = replay;
+  await writeFile(join(temp, 'skillpot.json'), JSON.stringify({
+    sha: 'f'.repeat(40), readme: '# SkillPot refreshed\n', roadmap: '# Roadmap\n', release: null,
+  }));
+  const selectivelyRefreshed = await sync({ fixtureDir: temp, outputFile: output, only: 'skillpot', checkedAt: '2026-10-28T12:00:00.000Z' });
+  for (const name of projects.filter((name) => name !== 'skillpot')) {
+    assert.deepEqual(selectivelyRefreshed.find((record) => record.name === name), beforeSelectiveRefresh.find((record) => record.name === name), `${name} must remain unchanged during a SkillPot-only refresh`);
+  }
+  assert.equal(selectivelyRefreshed.find((record) => record.name === 'skillpot').commit, 'f'.repeat(40));
 } finally {
   await rm(temp, { recursive: true, force: true });
 }

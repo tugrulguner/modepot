@@ -129,18 +129,23 @@
   {
     "name": "skillpot",
     "repository": "https://github.com/tugrulguner/skillpot",
-    "commit": "3d023734ca0a2a22a873ca59d601f7616fed7716",
-    "checkedAt": "2026-10-26T13:23:18Z",
-    "commitUrl": "https://github.com/tugrulguner/skillpot/commit/3d023734ca0a2a22a873ca59d601f7616fed7716",
+    "commit": "8c6383b951c0e2d750b4d7f84e8ece12305cee06",
+    "checkedAt": "2026-10-28T12:09:18.411Z",
+    "commitUrl": "https://github.com/tugrulguner/skillpot/commit/8c6383b951c0e2d750b4d7f84e8ece12305cee06",
     "readme": {
-      "url": "https://github.com/tugrulguner/skillpot/blob/3d023734ca0a2a22a873ca59d601f7616fed7716/README.md",
-      "sha256": "a734a7988916ebacb40c4c7acedb05b18ca960e3713699a05690f30ca09d8508"
+      "url": "https://github.com/tugrulguner/skillpot/blob/8c6383b951c0e2d750b4d7f84e8ece12305cee06/README.md",
+      "sha256": "6df60c7bae053115e4fd48bc540d4ac2db5553a93e597e9e8914bdace7f21676"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/skillpot/blob/3d023734ca0a2a22a873ca59d601f7616fed7716/ROADMAP.md",
-      "sha256": "d2fd4334d85efb295e230376b3f65faceb51823bc19649c8f225aa82cd7a40ad"
+      "url": "https://github.com/tugrulguner/skillpot/blob/8c6383b951c0e2d750b4d7f84e8ece12305cee06/ROADMAP.md",
+      "sha256": "17aa73d5ddbbf968f1794c8140c3d3bca587dfa1f151ce193ffcfbbed6abd8e9"
     },
-    "latestRelease": null
+    "latestRelease": {
+      "tag": "v0.2.0",
+      "name": "SkillPot v0.2.0",
+      "url": "https://github.com/tugrulguner/skillpot/releases/tag/v0.2.0",
+      "publishedAt": "2026-10-28T11:27:12Z"
+    }
   }
 ]

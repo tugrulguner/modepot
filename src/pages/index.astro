@@ -178,18 +178,18 @@ const productDefinitions = [
     image: '/products/skillpot-lockup.svg',
     alt: 'SkillPot lockup: practical agent skills, from task to finished work',
     category: 'Agent workflows · in development',
-    statement: 'Turn real tasks into work you can inspect.',
-    choice: 'Develop practical agent workflows for building, researching, and presenting real work.',
-    description: 'SkillPot is in development. Its planned first workflow starts with a working project and produces an accurate, evidence-backed demo. The repository documents the direction and roadmap; no installable skills or compatibility results are released.',
+    statement: 'Give your agent a workflow. Inspect the work.',
+    choice: 'Install a focused agent skill for a complete task and inspect its checked artifact.',
+    description: 'SkillPot is a harness-neutral library in development. The v0.2.0 collection includes seven pinned ModePot project/contributor skill packages and an experimental repository-readiness workflow. Official-contract setup guidance and bounded checks are published; broad repeated usefulness evaluation is not established.',
     href: 'https://github.com/tugrulguner/skillpot',
     action: 'Explore SkillPot on GitHub',
     repository: 'https://github.com/tugrulguner/skillpot',
-    docs: 'https://github.com/tugrulguner/skillpot/blob/main/README.md',
-    development: 'In development · no installable skills or compatibility results yet',
+    docs: 'https://github.com/tugrulguner/skillpot/blob/main/docs/quickstart.md',
+    development: 'In development · v0.2.0 collection published · broad usefulness evaluation not established',
     developmentLabel: 'Development status',
     accent: 'skillpot',
     playground: '',
-    demoDescription: 'Planned first workflow: project → evidence-backed demo. Direction only; no released skill or demo.',
+    demoDescription: 'Illustrative skill contract: task inputs and constraints → reusable procedure with tools and review points → inspectable artifact with evidence and limitations.',
   },
   {
     index: '06',
@@ -463,7 +463,7 @@ const structuredData = {
                 {product.developmentLabel && <p class="product-contract-version">{product.developmentLabel}: {product.development}</p>}
                 {product.contractVersion && <p class="product-contract-version">{product.contractVersion}</p>}
                 <section class={`demo-preview demo-${product.accent}`} aria-label={`${product.name} mechanism preview`}>
-                  <p class="demo-caption">{product.name === 'refpot' ? 'Illustrative animation · proposed architecture, not a live run' : product.name === 'utilitypot' ? 'Illustrative mechanism · not a live run' : product.name === 'skillpot' ? 'Planned workflow · not a released skill or demo' : 'Illustrative animation · not a live run'}</p>
+                  <p class="demo-caption">{product.name === 'refpot' ? 'Illustrative animation · proposed architecture, not a live run' : product.name === 'utilitypot' ? 'Illustrative mechanism · not a live run' : product.name === 'skillpot' ? 'Illustrative skill contract · not a live task run' : 'Illustrative animation · not a live run'}</p>
                   {product.name === 'refpot' && (
                     <div class="mechanism ref-mechanism" aria-hidden="true">
                       <div class="mechanism-node ref-entry ref-sql"><span class="ref-kind">DIRECT SQL</span><span class="ref-detail">SQL statements</span></div>
@@ -475,8 +475,9 @@ const structuredData = {
                   )}
                   {product.name === 'skillpot' && (
                     <div class="mechanism skillpot-mechanism" aria-hidden="true">
-                      <span class="mechanism-node">Working project</span><span class="mechanism-arrow">→</span>
-                      <span class="mechanism-node">Evidence-backed demo · planned</span>
+                      <span class="mechanism-node">Task + constraints</span><span class="mechanism-arrow">→</span>
+                      <span class="mechanism-node">Procedure + review points</span><span class="mechanism-arrow">→</span>
+                      <span class="mechanism-node">Checked artifact + evidence</span>
                     </div>
                   )}
                   {product.name === 'dexpot' && (
@@ -553,7 +554,7 @@ const structuredData = {
                     data-posthog-resource-type={['lifepot', 'utilitypot', 'skillpot'].includes(product.name) ? 'documentation' : undefined}
                     data-posthog-surface={['lifepot', 'utilitypot', 'skillpot'].includes(product.name) ? 'modepot_project_card' : 'modepot_homepage'}
                     data-posthog-destination-type={['lifepot', 'utilitypot', 'skillpot'].includes(product.name) ? undefined : 'docs'}
-                  >Docs <span aria-hidden="true">↗</span></a>
+                  >{product.name === 'skillpot' ? 'Quickstart' : 'Docs'} <span aria-hidden="true">↗</span></a>
                   <a class="product-resource ph-no-autocapture" href={product.source.commitUrl} data-posthog-event="modepot_resource_clicked" data-posthog-project={product.name} data-posthog-resource-type="source_snapshot" data-posthog-surface="modepot_project_card">Source snapshot · {product.source.commit.slice(0, 7)} <span aria-hidden="true">↗</span></a>
                   <a class="product-resource ph-no-autocapture" href={product.source.readme.url} data-posthog-event="modepot_resource_clicked" data-posthog-project={product.name} data-posthog-resource-type="readme" data-posthog-surface="modepot_project_card">README · {product.source.readme.sha256.slice(0, 12)} <span aria-hidden="true">↗</span></a>
                   {product.source.roadmap.status === 'available' ? <a class="product-resource ph-no-autocapture" href={product.source.roadmap.url} data-posthog-event="modepot_resource_clicked" data-posthog-project={product.name} data-posthog-resource-type="roadmap" data-posthog-surface="modepot_project_card">Roadmap · {product.source.roadmap.sha256!.slice(0, 12)} <span aria-hidden="true">↗</span></a> : <span class="product-resource">Roadmap · not published</span>}
