@@ -21,5 +21,7 @@ test('Intpot published release and source snapshot agree across family surfaces'
   assert.ok(homepage.includes(`${record.latestRelease.tag} published:`));
   assert.ok(homepage.includes('definition-time binding diagnostics'));
   assert.ok(homepage.includes('string/postponed annotation globals'));
+  assert.ok(homepage.includes('bounded static binding paths'));
+  assert.ok(homepage.includes('synthetic wrapper origins remain unavailable'));
   assert.ok(!homepage.includes('v0.11.0 published: bounded helper recovery'));
 });
