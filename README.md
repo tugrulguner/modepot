@@ -39,7 +39,7 @@ The existing scheduled source-sync workflow proposes refreshes for review; chang
 | Project | Source snapshot | Latest recorded release |
 | --- | --- | --- |
 | dexpot | [409df5b](https://github.com/tugrulguner/dexpot/commit/409df5b68a2386bd04e1f2cf0f057773142e0759) | [v0.8.0](https://github.com/tugrulguner/dexpot/releases/tag/v0.8.0) |
-| intpot | [b4a323f](https://github.com/tugrulguner/intpot/commit/b4a323f0d80cfeba1a6be09dc71131edd5b3ddd4) | [v0.15.0](https://github.com/tugrulguner/intpot/releases/tag/v0.15.0) |
+| intpot | [f6ec26a](https://github.com/tugrulguner/intpot/commit/f6ec26afc60011d41209cd705636f60e881d492f) | [v0.16.0](https://github.com/tugrulguner/intpot/releases/tag/v0.16.0) |
 | summonpot | [cdaf2f7](https://github.com/tugrulguner/summonpot/commit/cdaf2f76ae5aa698aeed1d4654ecdb567eb6e2d5) | [v0.12.0](https://github.com/tugrulguner/summonpot/releases/tag/v0.12.0) |
 | lifepot | [490cc62](https://github.com/tugrulguner/lifepot/commit/490cc62655e2bc25dd0a0bb4dd4e407a9cc84261) | [v0.9.0](https://github.com/tugrulguner/lifepot/releases/tag/v0.9.0) |
 | refpot | [3294ce3](https://github.com/tugrulguner/refpot/commit/3294ce39f0e5630c660fad2e5a1e3977bf52a17f) | [v0.1.1](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1) |
