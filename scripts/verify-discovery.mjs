@@ -123,11 +123,11 @@ if (itemList?.numberOfItems !== projectNames.length || itemList?.itemListElement
 const skillpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'skillpot')?.item;
 if (skillpotSchema?.url !== 'https://github.com/tugrulguner/skillpot' || skillpotSchema?.codeRepository !== 'https://github.com/tugrulguner/skillpot' || skillpotSchema?.programmingLanguage || skillpotSchema?.runtimePlatform || skillpotSchema?.license) failures.push('SkillPot schema must remain repository-first without invented site, runtime, language, or license metadata');
 const utilitySchema = itemList?.itemListElement?.find(({ item }) => item.name === 'utilitypot')?.item;
-if (utilitySchema?.programmingLanguage !== 'JavaScript' || utilitySchema?.runtimePlatform !== 'Web browser and Cloudflare Workers' || utilitySchema?.license !== 'https://opensource.org/license/mit' || utilitySchema?.url !== 'https://utilitypot.modepot.io/' || utilitySchema?.codeRepository !== 'https://github.com/tugrulguner/utilitypot' || !utilitySchema?.description.includes('Five browser-local utilities') || !utilitySchema?.description.includes('Three AI-assisted tools') || !utilitySchema?.description.includes('after disclosed submission')) {
+if (utilitySchema?.programmingLanguage !== 'JavaScript' || utilitySchema?.runtimePlatform !== 'Web browser and Cloudflare Workers' || utilitySchema?.license !== 'https://opensource.org/license/mit' || utilitySchema?.url !== 'https://utilitypot.modepot.io/' || utilitySchema?.codeRepository !== 'https://github.com/tugrulguner/utilitypot' || !utilitySchema?.description.includes('Eight browser-local utilities') || !utilitySchema?.description.includes('Three AI-assisted tools') || !utilitySchema?.description.includes('after disclosed submission')) {
   failures.push('UtilityPot schema must preserve its live destination and execution boundary');
 }
 for (const [surface, content] of [['README', readme], ['llms', llms]]) {
-  for (const token of ['https://utilitypot.modepot.io/', 'https://github.com/tugrulguner/utilitypot', 'Eight focused browser tools', 'five browser-local', 'three AI-assisted', 'One fixed workflow per tool', 'inspect results']) {
+  for (const token of ['https://utilitypot.modepot.io/', 'https://github.com/tugrulguner/utilitypot', 'Eleven focused browser tools', 'eight browser-local', 'three AI-assisted', 'screenshot-to-spreadsheet OCR', 'manual screenshot redaction', 'keyed CSV/XLSX comparison', 'One fixed workflow per tool', 'inspect results']) {
     if (!content.toLowerCase().includes(token.toLowerCase())) failures.push(`${surface}: missing UtilityPot contract ${token}`);
   }
   for (const stale of ['Seven tools', 'four browser-local', 'four local converters']) {

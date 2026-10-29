@@ -200,12 +200,12 @@ const productDefinitions = [
     license: 'https://opensource.org/license/mit',
     prefix: 'utility',
     mark: '/marks/utilitypot-mark-v1.svg?v=wordmark-accent-1',
-    image: '/products/utilitypot-lockup-v1.png?v=inventory-8-tools-1',
+    image: '/products/utilitypot-lockup-v1.png?v=inventory-11-tools-1',
     alt: 'UtilityPot lockup with its rose ModePot family flask',
-    category: 'Eight tools · five local, three AI-assisted',
+    category: 'Eleven tools · eight local, three AI-assisted',
     statement: 'One task. One action. Inspect the result.',
-    choice: 'Five browser-local converters and calculators, three AI-assisted text tools. One fixed workflow per tool.',
-    description: 'Five browser-local utilities handle CSV/JSON conversion, date cleanup, cron previews and meeting calculations. Three AI-assisted tools use Jev for entities, flowcharts and webpage evidence after disclosed submission. Inspect results, then copy or download.',
+    choice: 'Eight browser-local tools for data, images and planning; three AI-assisted text tools. One fixed workflow per tool.',
+    description: 'Eight browser-local utilities cover screenshot OCR, manual image redaction, keyed CSV/XLSX comparison, conversions and planning. Three AI-assisted tools use Jev for entities, flowcharts and webpage evidence after disclosed submission. Inspect results, then copy or download.',
     href: 'https://utilitypot.modepot.io/',
     action: 'Explore UtilityPot',
     repository: 'https://github.com/tugrulguner/utilitypot',
@@ -214,7 +214,7 @@ const productDefinitions = [
     developmentLabel: '',
     accent: 'gold',
     playground: '',
-    demoDescription: 'Five fixed browser-local workflows perform conversions and calculations without API calls. Three fixed AI-assisted workflows use disclosed Jev interpretation. All eight provide inspectable results and exports. Illustration only, not a live run.',
+    demoDescription: 'Eight fixed browser-local workflows handle image review, spreadsheet comparisons, conversions and calculations without API calls. Three fixed AI-assisted workflows use disclosed Jev interpretation. All eleven provide inspectable results and exports. Illustration only, not a live run.',
   },
 ];
 const products = productDefinitions.map((product) => ({ ...product, source: sourceByName.get(product.name)! }));
@@ -502,7 +502,7 @@ const structuredData = {
                   {product.name === 'utilitypot' && (
                     <div class="mechanism utility-mechanism" aria-hidden="true">
                       <div class="utility-path" data-utility-path="local">
-                        <span class="mechanism-node">Five browser-local utilities</span><span class="mechanism-arrow">→</span>
+                        <span class="mechanism-node">Eight browser-local utilities</span><span class="mechanism-arrow">→</span>
                         <span class="mechanism-node">Browser-only computation</span>
                       </div>
                       <div class="utility-path" data-utility-path="ai">
