@@ -61,9 +61,11 @@ export function renderProjectSnapshots(records) {
   ].join('\n');
 }
 
-export async function sync({ fixtureDir, outputFile = new URL('../src/data/projects.json', import.meta.url), readmeFile, agentMapFile, publicFile, checkedAt = new Date().toISOString() } = {}) {
+export async function sync({ fixtureDir, outputFile = new URL('../src/data/projects.json', import.meta.url), readmeFile, agentMapFile, publicFile, checkedAt = new Date().toISOString(), only } = {}) {
   const output = [];
-  for (const name of projects) {
+  const selected = only ? [only] : projects;
+  if (selected.some((name) => !projects.includes(name))) throw new Error(`Unknown project selection: ${selected.find((name) => !projects.includes(name))}`);
+  for (const name of selected) {
     let input;
     if (fixtureDir) {
       const f = JSON.parse(await readFile(`${fixtureDir}/${name}.json`, 'utf8'));
@@ -79,6 +81,12 @@ export async function sync({ fixtureDir, outputFile = new URL('../src/data/proje
       input = { sha: commit.sha, readme, roadmap, release };
     }
     output.push(normalizeProject(name, { ...input, checkedAt }));
+  }
+  if (only) {
+    const existing = JSON.parse(await readFile(outputFile, 'utf8'));
+    const refreshed = new Map(output.map((record) => [record.name, record]));
+    for (const record of existing) if (!refreshed.has(record.name)) output.push(record);
+    output.sort((a, b) => projects.indexOf(a.name) - projects.indexOf(b.name));
   }
   const documents = [];
   for (const file of [readmeFile, agentMapFile].filter(Boolean)) {
@@ -97,6 +105,7 @@ export async function sync({ fixtureDir, outputFile = new URL('../src/data/proje
 
 if (process.argv[1] && new URL(import.meta.url).pathname === process.argv[1]) {
   const fixtureArg = process.argv.indexOf('--fixtures');
-  const records = await sync({ fixtureDir: fixtureArg >= 0 ? process.argv[fixtureArg + 1] : undefined, readmeFile: new URL('../README.md', import.meta.url), agentMapFile: new URL('../public/llms.txt', import.meta.url), publicFile: new URL('../public/project-sources.json', import.meta.url) });
+  const projectArg = process.argv.indexOf('--project');
+  const records = await sync({ fixtureDir: fixtureArg >= 0 ? process.argv[fixtureArg + 1] : undefined, only: projectArg >= 0 ? process.argv[projectArg + 1] : undefined, readmeFile: new URL('../README.md', import.meta.url), agentMapFile: new URL('../public/llms.txt', import.meta.url), publicFile: new URL('../public/project-sources.json', import.meta.url) });
   console.log(`Synchronized ${records.length} projects: ${records.map((r) => `${r.name}@${r.commit.slice(0, 7)}`).join(', ')}`);
 }
