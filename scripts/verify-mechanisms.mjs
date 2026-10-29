@@ -39,7 +39,7 @@ for (const [project, concepts] of Object.entries(expected)) {
   if (!['refpot', 'utilitypot', 'skillpot'].includes(project) && !card.includes(`href="${route}"`)) failures.push(`${project}: missing project-owned playground route`);
   if (project === 'skillpot') {
     for (const token of ['/marks/skillpot-mark.svg', '/products/skillpot-lockup.svg', 'In development', 'https://github.com/tugrulguner/skillpot', 'v0.2.0', 'broad usefulness evaluation not established', 'Illustrative skill contract · not a live task run']) if (!card.includes(token)) failures.push(`skillpot: missing current discovery contract ${token}`);
-    if (card.includes('skillpot.modepot.io') || card.includes('/playground/')) failures.push('skillpot: invented website or playground');
+    if (!card.includes('https://skillpot.modepot.io/') || card.includes('/playground/')) failures.push('skillpot: missing verified website or invented playground');
   }
   if (project === 'utilitypot') {
     for (const token of ['/marks/utilitypot-mark-v1.svg?v=wordmark-accent-1', '/products/utilitypot-lockup-v1.png?v=inventory-8-tools-1', 'Five fixed browser-local workflows', 'All eight provide inspectable results and exports.', 'https://utilitypot.modepot.io/', 'Illustrative mechanism · not a live run']) {

@@ -181,10 +181,10 @@ const productDefinitions = [
     statement: 'Give your agent a workflow. Inspect the work.',
     choice: 'Install a focused agent skill for a complete task and inspect its checked artifact.',
     description: 'SkillPot is a harness-neutral library in development. The v0.2.0 collection includes seven pinned ModePot project/contributor skill packages and an experimental repository-readiness workflow. Official-contract setup guidance and bounded checks are published; broad repeated usefulness evaluation is not established.',
-    href: 'https://github.com/tugrulguner/skillpot',
-    action: 'Explore SkillPot on GitHub',
+    href: 'https://skillpot.modepot.io/',
+    action: 'Explore SkillPot',
     repository: 'https://github.com/tugrulguner/skillpot',
-    docs: 'https://github.com/tugrulguner/skillpot/blob/main/docs/quickstart.md',
+    docs: 'https://skillpot.modepot.io/quickstart/',
     development: 'In development · v0.2.0 collection published · broad usefulness evaluation not established',
     developmentLabel: 'Development status',
     accent: 'skillpot',
@@ -537,11 +537,10 @@ const structuredData = {
                   <a
                     class="product-link ph-no-autocapture"
                     href={product.href}
-                    data-posthog-event={product.name === 'skillpot' ? 'modepot_resource_clicked' : 'modepot_project_clicked'}
+                    data-posthog-event="modepot_project_clicked"
                     data-posthog-project={product.name}
-                    data-posthog-surface={product.name === 'skillpot' ? 'modepot_project_card' : 'modepot_homepage'}
-                    data-posthog-destination-type={product.name === 'skillpot' ? undefined : 'site'}
-                    data-posthog-resource-type={product.name === 'skillpot' ? 'repository' : undefined}
+                    data-posthog-surface="modepot_homepage"
+                    data-posthog-destination-type="site"
                   >
                     {product.action} <span aria-hidden="true">↗</span>
                   </a>

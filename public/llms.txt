@@ -12,7 +12,7 @@ ModePot builds frameworks, interfaces, tools, engines, and games around simple f
 
 - [UtilityPot](https://github.com/tugrulguner/utilitypot): Eight focused browser tools: five browser-local converters and calculators, plus three AI-assisted tools for entity extraction, flowcharts and webpage evidence. One fixed workflow per tool; review AI submissions and inspect results. [Explore UtilityPot](https://utilitypot.modepot.io/). Detailed manuals remain product-owned.
 
-- [SkillPot](https://github.com/tugrulguner/skillpot): In development: harness-neutral, selectively installable agent skills for complete tasks. Seven pinned ModePot project/contributor skills and an experimental repository-readiness workflow are available. Harness instructions follow official host specifications; broad repeated usefulness evaluation is not established. No standalone product website is provided.
+- [SkillPot](https://github.com/tugrulguner/skillpot): In development: harness-neutral, selectively installable agent skills for complete tasks. Seven pinned ModePot project/contributor skills and an experimental repository-readiness workflow are available. Harness instructions follow official host specifications; broad repeated usefulness evaluation is not established. [Explore SkillPot](https://skillpot.modepot.io/). Detailed guides and the agent documentation map remain product-owned.
 
 ## Primary resources
 
@@ -42,7 +42,7 @@ The existing scheduled source-sync workflow proposes refreshes for review; chang
 | lifepot | [490cc62](https://github.com/tugrulguner/lifepot/commit/490cc62655e2bc25dd0a0bb4dd4e407a9cc84261) | [v0.9.0](https://github.com/tugrulguner/lifepot/releases/tag/v0.9.0) |
 | refpot | [3294ce3](https://github.com/tugrulguner/refpot/commit/3294ce39f0e5630c660fad2e5a1e3977bf52a17f) | [v0.1.1](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1) |
 | utilitypot | [563f3e7](https://github.com/tugrulguner/utilitypot/commit/563f3e77848aa5526bfa0f7697d0ce0ec292781f) | No release recorded |
-| skillpot | [8c6383b](https://github.com/tugrulguner/skillpot/commit/8c6383b951c0e2d750b4d7f84e8ece12305cee06) | [v0.2.0](https://github.com/tugrulguner/skillpot/releases/tag/v0.2.0) |
+| skillpot | [3ec6977](https://github.com/tugrulguner/skillpot/commit/3ec6977e581309ea17a30369c90d5d23c60aaeee) | [v0.2.0](https://github.com/tugrulguner/skillpot/releases/tag/v0.2.0) |
 <!-- project-snapshots:end -->
 
 ## Quick starts and documentation
@@ -57,7 +57,7 @@ The existing scheduled source-sync workflow proposes refreshes for review; chang
 - [RefPot performance method](https://refpot.modepot.io/performance-method/)
 - [RefPot status](https://refpot.modepot.io/status/)
 - [RefPot v0.1.1 release](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1)
-- [SkillPot quickstart](https://github.com/tugrulguner/skillpot/blob/main/docs/quickstart.md) and [catalogue](https://github.com/tugrulguner/skillpot/blob/main/catalog/README.md)
+- [SkillPot quickstart](https://skillpot.modepot.io/quickstart/), [catalogue](https://skillpot.modepot.io/catalogue/) and [agent documentation map](https://skillpot.modepot.io/llms.txt)
 
 ## Contribute to ModePot
 
