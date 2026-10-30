@@ -14,14 +14,18 @@ const projects = {
   lifepot: ['https://lifepot.modepot.io/learn', 'https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md'],
   utilitypot: ['https://utilitypot.modepot.io/', 'https://github.com/tugrulguner/utilitypot/blob/main/README.md'],
   refpot: ['https://refpot.modepot.io/', 'https://refpot.modepot.io/package/'],
+  skillpot: ['https://skillpot.modepot.io/', 'https://skillpot.modepot.io/quickstart/'],
 };
+const resourceDocs = ['lifepot', 'utilitypot', 'skillpot'];
+const noPlayground = ['refpot', 'utilitypot', 'skillpot'];
+const projectEntryCount = Object.keys(projects).reduce((count, project) => count + 1 + Number(!resourceDocs.includes(project)) + Number(!noPlayground.includes(project)), 0);
 
 test('project-entry links are tracked; GitHub documentation is resource intent, not a project visit', async ({ page }) => {
   await page.setContent(isolatedHtml);
-  const expectedCount = Object.keys(projects).length * 2 + 2;
+  const expectedCount = projectEntryCount;
   await expect(page.locator('a[data-posthog-event="modepot_project_clicked"]')).toHaveCount(expectedCount);
   for (const [project, [playground, docs]] of Object.entries(projects)) {
-    if (!['refpot', 'utilitypot'].includes(project)) {
+    if (!noPlayground.includes(project)) {
       const play = page.locator(`.demo-route[href="${project === 'lifepot' ? 'https://lifepot.modepot.io/play' : playground}"]`);
       await expect(play).toHaveClass(/ph-no-autocapture/);
       await expect(play).toHaveAttribute('data-posthog-event', 'modepot_project_clicked');
@@ -30,7 +34,7 @@ test('project-entry links are tracked; GitHub documentation is resource intent, 
     }
     const doc = page.locator(`.product-actions > .product-resource[href="${docs}"]`);
     await expect(doc).toHaveClass(/ph-no-autocapture/);
-    if (['lifepot', 'utilitypot'].includes(project)) {
+    if (resourceDocs.includes(project)) {
       await expect(doc).toHaveAttribute('data-posthog-event', 'modepot_resource_clicked');
       await expect(doc).toHaveAttribute('data-posthog-resource-type', 'documentation');
     } else {
@@ -43,7 +47,7 @@ test('project-entry links are tracked; GitHub documentation is resource intent, 
 
 test('built handler captures every project link once per activation and preserves navigation', async ({ page }) => {
   await page.setContent(isolatedHtml);
-  const expectedCount = Object.keys(projects).length * 2 + 2;
+  const expectedCount = projectEntryCount;
   await page.evaluate(() => {
     window.__captures = [];
     window.posthog = { capture: (...args) => window.__captures.push(args) };
