@@ -19,7 +19,7 @@ const lifeStep = (grid) => grid.map((row, y) => [...row].map((cell, x) => {
 const lifeExpected = [lifeSeed];
 for (let i = 1; i < 4; i += 1) lifeExpected.push(lifeStep(lifeExpected[i - 1]));
 const expected = {
-  utilitypot: ['Five browser-local utilities', 'Browser-only computation', 'Three AI-assisted tools', 'Disclosed Jev interpretation', 'Inspect results · copy or download', 'Eight tools', 'Explore UtilityPot'],
+  utilitypot: ['Eight browser-local utilities', 'Browser-only computation', 'Three AI-assisted tools', 'Disclosed Jev interpretation', 'Inspect results · copy or download', 'Eleven tools', 'Explore UtilityPot'],
   dexpot: ['Bind typed input', 'Synchronous handler', 'Checked public response'],
   intpot: ['One typed function', 'CLI', 'HTTP', 'MCP'],
   summonpot: ['Fixed request-owned values', 'Bounded agent choice', 'Application result'],
@@ -42,7 +42,7 @@ for (const [project, concepts] of Object.entries(expected)) {
     if (!card.includes('https://skillpot.modepot.io/') || card.includes('/playground/')) failures.push('skillpot: missing verified website or invented playground');
   }
   if (project === 'utilitypot') {
-    for (const token of ['/marks/utilitypot-mark-v1.svg?v=wordmark-accent-1', '/products/utilitypot-lockup-v1.png?v=inventory-8-tools-1', 'Five fixed browser-local workflows', 'All eight provide inspectable results and exports.', 'https://utilitypot.modepot.io/', 'Illustrative mechanism · not a live run']) {
+    for (const token of ['/marks/utilitypot-mark-v1.svg?v=wordmark-accent-1', '/products/utilitypot-lockup-v1.png?v=inventory-11-tools-1', 'Eight fixed browser-local workflows', 'All eleven provide inspectable results and exports.', 'https://utilitypot.modepot.io/', 'Illustrative mechanism · not a live run']) {
       if (!card.includes(token)) failures.push(`utilitypot: missing ${token}`);
     }
     if ((!utilitySource.latestRelease && card.includes('/releases/')) || (utilitySource.roadmap.status !== 'available' && /href="[^"]*ROADMAP.md/.test(card)) || card.includes('/playground/') || /\b\d+\s*ms\b/.test(card)) failures.push('utilitypot: invented roadmap, release, playground, or timing');

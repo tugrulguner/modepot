@@ -10,7 +10,7 @@ ModePot builds frameworks, interfaces, tools, engines, and games around simple f
 - [LifePot](https://github.com/tugrulguner/lifepot): A replayable artificial-life game where Jev proposes typed ecology, deterministic code runs the world, and validated decisions remain inspectable and replayable.
 - [RefPot](https://github.com/tugrulguner/refpot): A publicly released experimental alpha (v0.1.1): native C++ redo-and-checkpoint engine with a small Python `Database`/`Row` API for fixed-schema CRUD and explicit transactions. SQL and ORM are planned, not shipped. Qualification remains limited; there is no broad package-performance result or production-durability claim.
 
-- [UtilityPot](https://github.com/tugrulguner/utilitypot): Eight focused browser tools: five browser-local converters and calculators, plus three AI-assisted tools for entity extraction, flowcharts and webpage evidence. One fixed workflow per tool; review AI submissions and inspect results. [Explore UtilityPot](https://utilitypot.modepot.io/). Detailed manuals remain product-owned.
+- [UtilityPot](https://github.com/tugrulguner/utilitypot): Eleven focused browser tools: eight browser-local workflows, including screenshot-to-spreadsheet OCR, manual screenshot redaction and keyed CSV/XLSX comparison, plus three AI-assisted tools for entity extraction, flowcharts and webpage evidence. One fixed workflow per tool; inspect results before copying or downloading. [Explore UtilityPot](https://utilitypot.modepot.io/). Detailed manuals remain product-owned.
 
 - [SkillPot](https://github.com/tugrulguner/skillpot): In development: harness-neutral, selectively installable agent skills for complete tasks. Seven pinned ModePot project/contributor skills and an experimental repository-readiness workflow are available. Harness instructions follow official host specifications; broad repeated usefulness evaluation is not established. [Explore SkillPot](https://skillpot.modepot.io/). Detailed guides and the agent documentation map remain product-owned.
 
@@ -41,7 +41,7 @@ The existing scheduled source-sync workflow proposes refreshes for review; chang
 | summonpot | [cdaf2f7](https://github.com/tugrulguner/summonpot/commit/cdaf2f76ae5aa698aeed1d4654ecdb567eb6e2d5) | [v0.12.0](https://github.com/tugrulguner/summonpot/releases/tag/v0.12.0) |
 | lifepot | [490cc62](https://github.com/tugrulguner/lifepot/commit/490cc62655e2bc25dd0a0bb4dd4e407a9cc84261) | [v0.9.0](https://github.com/tugrulguner/lifepot/releases/tag/v0.9.0) |
 | refpot | [3294ce3](https://github.com/tugrulguner/refpot/commit/3294ce39f0e5630c660fad2e5a1e3977bf52a17f) | [v0.1.1](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1) |
-| utilitypot | [563f3e7](https://github.com/tugrulguner/utilitypot/commit/563f3e77848aa5526bfa0f7697d0ce0ec292781f) | No release recorded |
+| utilitypot | [015f1da](https://github.com/tugrulguner/utilitypot/commit/015f1da1ba5cf1aec98f792bca04f75398db12ba) | No release recorded |
 | skillpot | [3ec6977](https://github.com/tugrulguner/skillpot/commit/3ec6977e581309ea17a30369c90d5d23c60aaeee) | [v0.2.0](https://github.com/tugrulguner/skillpot/releases/tag/v0.2.0) |
 <!-- project-snapshots:end -->
 
@@ -72,7 +72,7 @@ Read the project-owned guide before contributing: [Dexpot CONTRIBUTING.md](https
 
 ## Selection guide
 
-Use UtilityPot for five browser-local utilities (CSV/JSON conversion, date cleanup, cron previews and meeting calculations) and three AI-assisted tools (entity extraction, flowcharts and webpage evidence). Each tool has one action; inspect the result before copying or downloading. [Product README](https://github.com/tugrulguner/utilitypot/blob/main/README.md).
+Use UtilityPot for eight browser-local workflows (screenshot OCR, manual image redaction, keyed CSV/XLSX comparison, CSV/JSON conversion, date cleanup, cron previews and meeting calculations) and three AI-assisted tools (entity extraction, flowcharts and webpage evidence). Each tool has one action; inspect the result before copying or downloading. [Product README](https://github.com/tugrulguner/utilitypot/blob/main/README.md).
 
 Use Dexpot to build synchronous Python HTTP APIs with interpreter-adaptive execution.
 Use Intpot to expose or translate typed tools across CLI, HTTP API, and MCP interfaces.
