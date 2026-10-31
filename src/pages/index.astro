@@ -180,12 +180,12 @@ const productDefinitions = [
     category: 'Agent workflows · in development',
     statement: 'Give your agent a workflow. Inspect the work.',
     choice: 'Install a focused agent skill for a complete task and inspect its checked artifact.',
-    description: 'SkillPot is a harness-neutral library in development. The v0.3.0 collection refreshes four consumer guides while retaining seven pinned ModePot project/contributor skill packages and an experimental repository-readiness workflow. Official-contract setup guidance and bounded checks are published; broad repeated usefulness evaluation is not established.',
+    description: 'SkillPot is a harness-neutral library in development. Nine skills in current source; eight in v0.3.0. Seven are pinned ModePot project/contributor packages; repository-readiness remains experimental. The source-only decision-brief is reviewed but unreleased and produces an evidence-linked recommendation or deferral. Broad repeated usefulness evaluation is not established.',
     href: 'https://skillpot.modepot.io/',
     action: 'Explore SkillPot',
     repository: 'https://github.com/tugrulguner/skillpot',
     docs: 'https://skillpot.modepot.io/quickstart/',
-    development: 'In development · v0.3.0 collection published · broad usefulness evaluation not established',
+    development: 'In development · v0.3.0 collection published · decision-brief unreleased · broad usefulness evaluation not established',
     developmentLabel: 'Development status',
     accent: 'skillpot',
     playground: '',
@@ -554,6 +554,7 @@ const structuredData = {
                     data-posthog-surface={['lifepot', 'utilitypot', 'skillpot'].includes(product.name) ? 'modepot_project_card' : 'modepot_homepage'}
                     data-posthog-destination-type={['lifepot', 'utilitypot', 'skillpot'].includes(product.name) ? undefined : 'docs'}
                   >{product.name === 'skillpot' ? 'Quickstart' : 'Docs'} <span aria-hidden="true">↗</span></a>
+                  {product.name === 'skillpot' && <a class="product-resource ph-no-autocapture" href="https://skillpot.modepot.io/host-setup/#try-decision-brief-from-reviewed-source" data-posthog-event="modepot_resource_clicked" data-posthog-project="skillpot" data-posthog-resource-type="documentation" data-posthog-surface="modepot_project_card">decision-brief · source-only setup <span aria-hidden="true">↗</span></a>}
                   <a class="product-resource ph-no-autocapture" href={product.source.commitUrl} data-posthog-event="modepot_resource_clicked" data-posthog-project={product.name} data-posthog-resource-type="source_snapshot" data-posthog-surface="modepot_project_card">Source snapshot · {product.source.commit.slice(0, 7)} <span aria-hidden="true">↗</span></a>
                   <a class="product-resource ph-no-autocapture" href={product.source.readme.url} data-posthog-event="modepot_resource_clicked" data-posthog-project={product.name} data-posthog-resource-type="readme" data-posthog-surface="modepot_project_card">README · {product.source.readme.sha256.slice(0, 12)} <span aria-hidden="true">↗</span></a>
                   {product.source.roadmap.status === 'available' ? <a class="product-resource ph-no-autocapture" href={product.source.roadmap.url} data-posthog-event="modepot_resource_clicked" data-posthog-project={product.name} data-posthog-resource-type="roadmap" data-posthog-surface="modepot_project_card">Roadmap · {product.source.roadmap.sha256!.slice(0, 12)} <span aria-hidden="true">↗</span></a> : <span class="product-resource">Roadmap · not published</span>}
