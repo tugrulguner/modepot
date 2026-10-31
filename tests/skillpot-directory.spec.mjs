@@ -8,7 +8,9 @@ test('SkillPot is discoverable with canonical art and current collection status'
     const card = page.locator('#skillpot');
     await card.scrollIntoViewIfNeeded();
     await expect(card).toContainText('In development');
-    await expect(card).toContainText('v0.2.0 collection published');
+    await expect(card).toContainText('v0.3.0 collection published');
+    await expect(card).not.toContainText('v0.2.0 collection published');
+    await expect(card).toContainText('refreshes four consumer guides');
     await expect(card).toContainText('broad usefulness evaluation not established');
     await expect(card.locator('.skillpot-mechanism')).toContainText('Task + constraints');
     await expect(card.locator('.skillpot-mechanism')).toContainText('Checked artifact + evidence');
@@ -16,7 +18,7 @@ test('SkillPot is discoverable with canonical art and current collection status'
     await expect(card.getByRole('link', { name: 'Explore SkillPot', exact: true })).toHaveAttribute('data-posthog-event', 'modepot_project_clicked');
     await expect(card.getByRole('link', { name: 'Explore SkillPot', exact: true })).toHaveAttribute('data-posthog-destination-type', 'site');
     await expect(card.getByRole('link', { name: 'Quickstart' })).toHaveAttribute('href', 'https://skillpot.modepot.io/quickstart/');
-    await expect(card.getByRole('link', { name: /Latest recorded release · v0.2.0/ })).toHaveAttribute('href', 'https://github.com/tugrulguner/skillpot/releases/tag/v0.2.0');
+    await expect(card.getByRole('link', { name: /Latest recorded release · v0.3.0/ })).toHaveAttribute('href', 'https://github.com/tugrulguner/skillpot/releases/tag/v0.3.0');
     await expect(card).not.toContainText('No release recorded');
     await expect(card.getByRole('link', { name: 'GitHub', exact: true })).toHaveAttribute('href', 'https://github.com/tugrulguner/skillpot');
     await expect(card.locator('.product-art img')).toHaveAttribute('src', '/products/skillpot-lockup.svg');
