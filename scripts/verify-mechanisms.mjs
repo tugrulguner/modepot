@@ -38,7 +38,7 @@ for (const [project, concepts] of Object.entries(expected)) {
   const route = project === 'lifepot' ? 'https://lifepot.modepot.io/play' : `https://${project}.modepot.io/playground/`;
   if (!['refpot', 'utilitypot', 'skillpot'].includes(project) && !card.includes(`href="${route}"`)) failures.push(`${project}: missing project-owned playground route`);
   if (project === 'skillpot') {
-    for (const token of ['/marks/skillpot-mark.svg', '/products/skillpot-lockup.svg', 'In development', 'https://github.com/tugrulguner/skillpot', 'v0.3.0', 'broad usefulness evaluation not established', 'Illustrative skill contract · not a live task run']) if (!card.includes(token)) failures.push(`skillpot: missing current discovery contract ${token}`);
+    for (const token of ['/marks/skillpot-mark.svg', '/products/skillpot-lockup.svg', 'In development', 'https://github.com/tugrulguner/skillpot', 'v0.3.0', 'Nine skills in current source; eight in v0.3.0.', 'decision-brief is reviewed but unreleased', 'repository-readiness remains experimental', 'https://skillpot.modepot.io/host-setup/#try-decision-brief-from-reviewed-source', 'broad usefulness evaluation not established', 'Illustrative skill contract · not a live task run']) if (!card.includes(token)) failures.push(`skillpot: missing current discovery contract ${token}`);
     if (!card.includes('https://skillpot.modepot.io/') || card.includes('/playground/')) failures.push('skillpot: missing verified website or invented playground');
   }
   if (project === 'utilitypot') {

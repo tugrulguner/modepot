@@ -121,7 +121,14 @@ if (itemList?.numberOfItems !== projectNames.length || itemList?.itemListElement
   failures.push(`index.html: structured project count does not match source inventory (${projectNames.length})`);
 }
 const skillpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'skillpot')?.item;
-if (!skillpotSchema?.description?.includes('v0.3.0') || !skillpotSchema?.description?.includes('refreshes four consumer guides')) failures.push('SkillPot structured data must describe the published v0.3.0 guide refresh');
+for (const [surface, content] of [['structured data', skillpotSchema?.description ?? ''], ['README', readme], ['agent map', llms]]) {
+  for (const token of ['Nine skills in current source; eight in v0.3.0.', 'decision-brief is reviewed but unreleased', 'repository-readiness remains experimental']) {
+    if (!content.includes(token)) failures.push(`SkillPot ${surface}: missing source/release boundary ${token}`);
+  }
+}
+for (const [surface, content] of [['README', readme], ['agent map', llms], ['homepage', html]]) {
+  if (!content.includes('https://skillpot.modepot.io/host-setup/#try-decision-brief-from-reviewed-source')) failures.push(`SkillPot ${surface}: missing source-only setup destination`);
+}
 if (skillpotSchema?.url !== 'https://skillpot.modepot.io/' || skillpotSchema?.codeRepository !== 'https://github.com/tugrulguner/skillpot' || skillpotSchema?.programmingLanguage || skillpotSchema?.runtimePlatform || skillpotSchema?.license) failures.push('SkillPot schema must link the verified website and source without inventing runtime, language, or license metadata');
 const utilitySchema = itemList?.itemListElement?.find(({ item }) => item.name === 'utilitypot')?.item;
 if (utilitySchema?.programmingLanguage !== 'JavaScript' || utilitySchema?.runtimePlatform !== 'Web browser and Cloudflare Workers' || utilitySchema?.license !== 'https://opensource.org/license/mit' || utilitySchema?.url !== 'https://utilitypot.modepot.io/' || utilitySchema?.codeRepository !== 'https://github.com/tugrulguner/utilitypot' || !utilitySchema?.description.includes('Eight browser-local utilities') || !utilitySchema?.description.includes('Three AI-assisted tools') || !utilitySchema?.description.includes('after disclosed submission')) {
