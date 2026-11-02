@@ -10,7 +10,17 @@ test('SkillPot is discoverable with canonical art and current collection status'
     await expect(card).toContainText('In development');
     await expect(card).toContainText('v0.3.0 collection published');
     await expect(card).not.toContainText('v0.2.0 collection published');
-    await expect(card).toContainText('Nine skills in current source; eight in v0.3.0.');
+    await expect(card).toContainText('Ten skills in current source; eight in v0.3.0.');
+    await expect(card).toContainText('document-actions is unreleased');
+    await expect(card).toContainText('actions.md and questions.md');
+    const documentSetup = card.getByRole('link', { name: 'document-actions · source-only setup', exact: true });
+    await expect(documentSetup).toHaveAttribute('href', 'https://skillpot.modepot.io/host-setup/#try-document-actions-from-pinned-source');
+    await expect(documentSetup).toHaveAttribute('data-posthog-event', 'modepot_resource_clicked');
+    await expect(documentSetup).toHaveAttribute('data-posthog-project', 'skillpot');
+    await expect(documentSetup).toHaveAttribute('data-posthog-resource-type', 'documentation');
+    await expect(documentSetup).toHaveAttribute('data-posthog-surface', 'modepot_project_card');
+    await documentSetup.focus();
+    await expect(documentSetup).toBeFocused();
     await expect(card).toContainText('decision-brief is reviewed but unreleased');
     await expect(card).toContainText('repository-readiness remains experimental');
     const sourceSetup = card.getByRole('link', { name: 'decision-brief · source-only setup', exact: true });
@@ -20,7 +30,7 @@ test('SkillPot is discoverable with canonical art and current collection status'
     await expect(sourceSetup).toHaveAttribute('data-posthog-surface', 'modepot_project_card');
     await sourceSetup.focus();
     await expect(sourceSetup).toBeFocused();
-    await expect(card.getByRole('link', { name: /^Source snapshot/ })).toHaveAttribute('href', 'https://github.com/tugrulguner/skillpot/commit/524d3a06303362aaafae0fbfdf2ebae38782875e');
+    await expect(card.getByRole('link', { name: /^Source snapshot/ })).toHaveAttribute('href', 'https://github.com/tugrulguner/skillpot/commit/6689ef6eb63eedc924763bcdec4f7c3910697261');
     await expect(card).toContainText('broad usefulness evaluation not established');
     await expect(card.locator('.skillpot-mechanism')).toContainText('Task + constraints');
     await expect(card.locator('.skillpot-mechanism')).toContainText('Checked artifact + evidence');
