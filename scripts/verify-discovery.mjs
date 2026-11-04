@@ -122,13 +122,12 @@ if (itemList?.numberOfItems !== projectNames.length || itemList?.itemListElement
 }
 const skillpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'skillpot')?.item;
 for (const [surface, content] of [['structured data', skillpotSchema?.description ?? ''], ['README', readme], ['agent map', llms]]) {
-  for (const token of ['Ten skills in current source; eight in v0.3.0.', 'document-actions is unreleased', 'actions.md and questions.md', 'decision-brief is reviewed but unreleased', 'repository-readiness remains experimental']) {
+  for (const token of ['Ten skills in current source and in the published v0.4.0 collection.', 'document-actions 0.1.1', 'actions.md and questions.md', 'decision-brief 0.1.0', 'repository-readiness remains experimental']) {
     if (!content.includes(token)) failures.push(`SkillPot ${surface}: missing source/release boundary ${token}`);
   }
 }
 for (const [surface, content] of [['README', readme], ['agent map', llms], ['homepage', html]]) {
-  if (!content.includes('https://skillpot.modepot.io/host-setup/#try-decision-brief-from-reviewed-source')) failures.push(`SkillPot ${surface}: missing source-only setup destination`);
-  if (!content.includes('https://skillpot.modepot.io/host-setup/#try-document-actions-from-pinned-source')) failures.push(`SkillPot ${surface}: missing document-actions source-only setup destination`);
+  if (!content.includes('https://github.com/tugrulguner/skillpot/releases/tag/v0.4.0')) failures.push(`SkillPot ${surface}: missing published v0.4.0 release destination`);
 }
 if (skillpotSchema?.url !== 'https://skillpot.modepot.io/' || skillpotSchema?.codeRepository !== 'https://github.com/tugrulguner/skillpot' || skillpotSchema?.programmingLanguage || skillpotSchema?.runtimePlatform || skillpotSchema?.license) failures.push('SkillPot schema must link the verified website and source without inventing runtime, language, or license metadata');
 const utilitySchema = itemList?.itemListElement?.find(({ item }) => item.name === 'utilitypot')?.item;
@@ -146,8 +145,8 @@ for (const [surface, content] of [['README', readme], ['llms', llms]]) {
 if (!html.includes('href="#utilitypot"')) failures.push('UtilityPot must appear in the shared chooser');
 if (!html.includes('href="#skillpot"') || !html.includes('https://github.com/tugrulguner/skillpot')) failures.push('SkillPot must appear in discovery and link to its repository');
 const skillpotCard = html.slice(html.indexOf('id="skillpot"'), html.indexOf('</article>', html.indexOf('id="skillpot"')));
-for (const token of ['In development', 'v0.3.0', 'broad usefulness evaluation not established', 'Illustrative skill contract · not a live task run', 'Source snapshot', 'Quickstart']) if (!skillpotCard.includes(token)) failures.push(`SkillPot card must show current maturity and discovery: ${token}`);
-if (!skillpotCard.includes('https://github.com/tugrulguner/skillpot/releases/tag/v0.3.0') || !skillpotCard.includes('https://skillpot.modepot.io/quickstart/')) failures.push('SkillPot card must link its verified collection release and live product quickstart');
+for (const token of ['In development', 'v0.4.0', 'broad usefulness evaluation not established', 'Illustrative skill contract · not a live task run', 'Source snapshot', 'Quickstart']) if (!skillpotCard.includes(token)) failures.push(`SkillPot card must show current maturity and discovery: ${token}`);
+if (!skillpotCard.includes('https://github.com/tugrulguner/skillpot/releases/tag/v0.4.0') || !skillpotCard.includes('https://skillpot.modepot.io/quickstart/')) failures.push('SkillPot card must link its verified collection release and live product quickstart');
 const dexpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'dexpot')?.item;
 if (html.includes('Response[T]') || llms.includes('Response[T]')) {
   failures.push('Dexpot declares output with response=T; Response[T] is not a public API');
@@ -251,7 +250,7 @@ for (const [surface, content] of [['README.md', readme], ['llms.txt', llms]]) {
 }
 
 for (const [surface, content] of [['README', readme], ['llms', llms], ['index.html', html]]) {
-  for (const token of ['https://github.com/tugrulguner/skillpot', 'v0.3.0', 'seven', 'in development']) if (!content.toLowerCase().includes(token.toLowerCase())) failures.push(`${surface}: missing SkillPot current status ${token}`);
+  for (const token of ['https://github.com/tugrulguner/skillpot', 'v0.4.0', 'seven', 'in development']) if (!content.toLowerCase().includes(token.toLowerCase())) failures.push(`${surface}: missing SkillPot current status ${token}`);
   if (!content.includes('https://skillpot.modepot.io/')) failures.push(`${surface}: missing verified SkillPot website destination`);
 }
 if (failures.length) {
