@@ -35,7 +35,12 @@ assert.match(homepageSource, /<link rel="license" href="https:\/\/github\.com\/t
 const stored = JSON.parse(await readFile(new URL('../src/data/projects.json', import.meta.url), 'utf8'));
 const renderedSnapshots = renderProjectSnapshots(stored);
 assert.match(renderedSnapshots, /\| Checked \(UTC\) \|/);
-assert.match(renderedSnapshots, /current snapshot range: 2026-10-21–2026-11-06/);
+const rangeFixture = [
+  { ...stored[0], checkedAt: '2026-03-02T12:00:00.000Z' },
+  { ...stored[1], checkedAt: '2026-01-04T12:00:00.000Z' },
+];
+assert.match(renderProjectSnapshots(rangeFixture), /current snapshot range: 2026-01-04–2026-03-02/);
+assert.match(renderProjectSnapshots([rangeFixture[0]]), /current snapshot range: 2026-03-02\)/);
 for (const record of stored) assert.ok(renderedSnapshots.includes(`| ${record.checkedAt.slice(0, 10)} |`), `${record.name} must display its actual individual check date`);
 assert.doesNotMatch(renderedSnapshots, /checked at \d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/i, 'snapshot heading must not imply one timestamp applies globally');
 for (const name of ['dexpot', 'intpot', 'summonpot', 'lifepot', 'refpot', 'utilitypot', 'skillpot']) assert.ok(stored.some(p => p.name === name));
