@@ -45,6 +45,20 @@ for (const width of [1280, 1050, 390])
         expect(style.contrast).toBeGreaterThanOrEqual(7);
       }
     await expect(chooser.locator(".selector-row")).toHaveCount(7);
+    for (const card of await page.locator('.product').all()) {
+      await card.evaluate((element) => element.scrollIntoView({ block: 'start', behavior: 'instant' }));
+      const title = card.locator('.product-statement');
+      const action = card.locator('.product-primary-actions .product-link');
+      const firstPromise = await title.boundingBox();
+      const firstAction = await action.boundingBox();
+      const description = await card.locator('.product-description').boundingBox();
+      const viewport = page.viewportSize();
+      expect(firstAction.y).toBeGreaterThanOrEqual(0);
+      expect(firstAction.y).toBeGreaterThanOrEqual(firstPromise.y + firstPromise.height);
+      expect(firstAction.y, 'first useful action must precede long product details').toBeLessThan(description.y);
+      expect(firstAction.y + firstAction.height).toBeLessThanOrEqual(viewport.height);
+      await expect(action).toBeVisible();
+    }
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,

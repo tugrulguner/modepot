@@ -16,40 +16,42 @@
 
 ## Projects
 
-Each project owns its site, source, and learning path. Start with the route for the work you want to explore:
+Start with a project's quickstart or site; each project owns its source and learning path.
 
-| Project | What it does | Learn | Project site | Source |
-| --- | --- | --- | --- | --- |
-| **Dexpot** | Build synchronous Python HTTP APIs with adaptive execution for GIL and free-threaded CPython. Application handlers stay synchronous while routes are compiled once. | [Quick start](https://dexpot.modepot.io/quick-start/) | [dexpot.modepot.io](https://dexpot.modepot.io/) | [GitHub](https://github.com/tugrulguner/dexpot) |
-| **Intpot** | Turn typed Python tools into a CLI, HTTP API, or MCP server, and convert between existing interfaces. | [Quickstart](https://intpot.modepot.io/quickstart/) | [intpot.modepot.io](https://intpot.modepot.io/) | [GitHub](https://github.com/tugrulguner/intpot) |
-| **Summonpot** | Declare typed endpoints combining deterministic operations with explicitly bounded agent-owned decisions. | [Quick start](https://summonpot.modepot.io/quick-start/) | [summonpot.modepot.io](https://summonpot.modepot.io/) | [GitHub](https://github.com/tugrulguner/summonpot) |
-| **LifePot** | Create and replay artificial-life worlds where agent proposals become validated simulation rules. | [Simulation contract](https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md) | [lifepot.modepot.io](https://lifepot.modepot.io/) | [GitHub](https://github.com/tugrulguner/lifepot) |
-| **RefPot** | Experimental alpha: a native C++ embedded engine with a small Python `Database`/`Row` API for fixed-schema CRUD and explicit transactions. SQL and ORM remain planned; no broad performance result or production-durability claim. | [Quick start](https://refpot.modepot.io/package/) · [Release v0.1.1](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1) | [refpot.modepot.io](https://refpot.modepot.io/) | [GitHub](https://github.com/tugrulguner/refpot) |
-| **UtilityPot** | Eleven focused browser tools: eight browser-local workflows, including screenshot-to-spreadsheet OCR, manual screenshot redaction and keyed CSV/XLSX comparison, plus three AI-assisted tools for entity extraction, flowcharts and webpage evidence. One fixed workflow per tool; inspect results before copying or downloading. | [README](https://github.com/tugrulguner/utilitypot/blob/main/README.md) | [utilitypot.modepot.io](https://utilitypot.modepot.io/) | [GitHub](https://github.com/tugrulguner/utilitypot) |
-| **SkillPot** | In development: harness-neutral, selectively installable agent skills for complete tasks. Ten skills remain in the published v0.4.1 collection; seven are pinned ModePot project/contributor packages and repository-readiness remains experimental. Decision briefs propose an evidence-linked recommendation or deferral; document actions extract source-stated work into actions.md and questions.md, keeping deadlines verbatim and conflicts explicit. v0.4.1 corrects decision-brief 0.1.1 owner/reader/approval distinctions and timing/source locators, and document-actions 0.1.2 unknown completion status and approval-role attribution. These are bounded instruction corrections, not evidence of model improvement; broad repeated usefulness evaluation is not established. | [Quickstart](https://skillpot.modepot.io/quickstart/) · [v0.4.1 release and setup](https://github.com/tugrulguner/skillpot/releases/tag/v0.4.1) | [skillpot.modepot.io](https://skillpot.modepot.io/) | [GitHub](https://github.com/tugrulguner/skillpot) |
+- **Dexpot** — Synchronous Python HTTP APIs with adaptive execution for GIL and free-threaded CPython. [Quick start](https://dexpot.modepot.io/quick-start/) · [Site](https://dexpot.modepot.io/) · [GitHub](https://github.com/tugrulguner/dexpot)
+- **Intpot** — Typed Python tools served as a CLI, HTTP API, or MCP server, with interface conversion. [Quickstart](https://intpot.modepot.io/quickstart/) · [Site](https://intpot.modepot.io/) · [GitHub](https://github.com/tugrulguner/intpot)
+- **Summonpot** — Typed endpoints joining deterministic operations with bounded agent-owned decisions. [Quick start](https://summonpot.modepot.io/quick-start/) · [Site](https://summonpot.modepot.io/) · [GitHub](https://github.com/tugrulguner/summonpot)
+- **LifePot** — Artificial-life worlds where agent proposals become validated, replayable simulation rules. [Play](https://lifepot.modepot.io/play) · [Simulation contract](https://github.com/tugrulguner/lifepot/blob/main/docs/simulation-contract.md) · [Site](https://lifepot.modepot.io/) · [GitHub](https://github.com/tugrulguner/lifepot)
+- **RefPot** — publicly released experimental alpha (v0.1.1): native C++ engine and a small Python API for fixed-schema CRUD and explicit transactions. SQL and ORM remain planned; qualification is limited, with no broad performance or production-durability claim. [Quick start](https://refpot.modepot.io/package/) · [Site](https://refpot.modepot.io/) · [GitHub](https://github.com/tugrulguner/refpot)
+- **UtilityPot** — Eleven focused browser tools: eight browser-local and three AI-assisted. Includes screenshot-to-spreadsheet OCR, manual screenshot redaction and keyed CSV/XLSX comparison; one fixed workflow per tool. Inspect results before copying or downloading. [README](https://github.com/tugrulguner/utilitypot/blob/main/README.md) · [Site](https://utilitypot.modepot.io/) · [GitHub](https://github.com/tugrulguner/utilitypot)
+- **SkillPot** — In development; published v0.4.1 collection has ten skills (seven pinned ModePot project/contributor packages). Repository-readiness is experimental; broad usefulness evaluation is not established. [Quickstart](https://skillpot.modepot.io/quickstart/) · [v0.4.1 release/setup](https://github.com/tugrulguner/skillpot/releases/tag/v0.4.1) · [Site](https://skillpot.modepot.io/) · [GitHub](https://github.com/tugrulguner/skillpot)
 
-These projects are the beginning, not the boundary. RefPot is a publicly released experimental alpha (v0.1.1): its native C++ engine and small Python CRUD/explicit-transaction API are real; SQL and ORM remain planned. Qualification is limited, with no broad 2×-over-SQLite performance result or production-durability claim. ModePot is an open-source family and community; [join the community on Discord](https://discord.gg/u3AANZr6RG) to discuss the work and get involved.
+These projects are the beginning, not the boundary. ModePot is an open-source family and community; [join the community on Discord](https://discord.gg/u3AANZr6RG) to discuss the work and get involved.
 
 <!-- project-snapshots:start -->
 ## Project source snapshots
 
-GitHub metadata checked at 2026-11-03T02:21:34.884Z. These are reviewed snapshots, not a continuously live feed.
+GitHub source and release metadata were checked on the dates shown for each project (current snapshot range: 2026-10-21–2026-11-06). These are reviewed snapshots, not a continuously live feed.
 The existing scheduled source-sync workflow proposes refreshes for review; changes are not automatically merged.
 
-| Project | Source snapshot | Latest recorded release |
-| --- | --- | --- |
-| dexpot | [a670e62](https://github.com/tugrulguner/dexpot/commit/a670e626cf73e1c4b21e0529294a87f1aa83e74f) | [v0.8.1](https://github.com/tugrulguner/dexpot/releases/tag/v0.8.1) |
-| intpot | [f6ec26a](https://github.com/tugrulguner/intpot/commit/f6ec26afc60011d41209cd705636f60e881d492f) | [v0.16.0](https://github.com/tugrulguner/intpot/releases/tag/v0.16.0) |
-| summonpot | [cdaf2f7](https://github.com/tugrulguner/summonpot/commit/cdaf2f76ae5aa698aeed1d4654ecdb567eb6e2d5) | [v0.12.0](https://github.com/tugrulguner/summonpot/releases/tag/v0.12.0) |
-| lifepot | [490cc62](https://github.com/tugrulguner/lifepot/commit/490cc62655e2bc25dd0a0bb4dd4e407a9cc84261) | [v0.9.0](https://github.com/tugrulguner/lifepot/releases/tag/v0.9.0) |
-| refpot | [3294ce3](https://github.com/tugrulguner/refpot/commit/3294ce39f0e5630c660fad2e5a1e3977bf52a17f) | [v0.1.1](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1) |
-| utilitypot | [015f1da](https://github.com/tugrulguner/utilitypot/commit/015f1da1ba5cf1aec98f792bca04f75398db12ba) | No release recorded |
-| skillpot | [79284b3](https://github.com/tugrulguner/skillpot/commit/79284b3faa928dc556a9032aa9dbeb059b4ee915) | [v0.4.1](https://github.com/tugrulguner/skillpot/releases/tag/v0.4.1) |
+| Project | Source snapshot | Latest recorded release | Checked (UTC) |
+| --- | --- | --- | --- |
+| dexpot | [a670e62](https://github.com/tugrulguner/dexpot/commit/a670e626cf73e1c4b21e0529294a87f1aa83e74f) | [v0.8.1](https://github.com/tugrulguner/dexpot/releases/tag/v0.8.1) | 2026-11-03 |
+| intpot | [f6ec26a](https://github.com/tugrulguner/intpot/commit/f6ec26afc60011d41209cd705636f60e881d492f) | [v0.16.0](https://github.com/tugrulguner/intpot/releases/tag/v0.16.0) | 2026-10-29 |
+| summonpot | [2373813](https://github.com/tugrulguner/summonpot/commit/23738139b4718a8f15c8700b2e69b37912f29ca0) | [v0.14.0](https://github.com/tugrulguner/summonpot/releases/tag/v0.14.0) | 2026-11-06 |
+| lifepot | [640404b](https://github.com/tugrulguner/lifepot/commit/640404b138c409baf25b1cc4fcce0552090979b9) | [v0.11.0](https://github.com/tugrulguner/lifepot/releases/tag/v0.11.0) | 2026-11-06 |
+| refpot | [3294ce3](https://github.com/tugrulguner/refpot/commit/3294ce39f0e5630c660fad2e5a1e3977bf52a17f) | [v0.1.1](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1) | 2026-10-21 |
+| utilitypot | [015f1da](https://github.com/tugrulguner/utilitypot/commit/015f1da1ba5cf1aec98f792bca04f75398db12ba) | No release recorded | 2026-10-29 |
+| skillpot | [79284b3](https://github.com/tugrulguner/skillpot/commit/79284b3faa928dc556a9032aa9dbeb059b4ee915) | [v0.4.1](https://github.com/tugrulguner/skillpot/releases/tag/v0.4.1) | 2026-11-06 |
 <!-- project-snapshots:end -->
 
 ## Releases and changelogs
 
 For current versions and release details, see the projects' [release pages](https://github.com/tugrulguner/dexpot/releases), [Intpot release notes](https://github.com/tugrulguner/intpot/releases), [Summonpot releases](https://github.com/tugrulguner/summonpot/releases), [LifePot releases](https://github.com/tugrulguner/lifepot/releases), [RefPot releases](https://github.com/tugrulguner/refpot/releases), and [SkillPot releases](https://github.com/tugrulguner/skillpot/releases). UtilityPot has no published release; its [repository](https://github.com/tugrulguner/utilitypot) remains the source for current project information.
+
+## License
+
+ModePot umbrella source and documentation are released under the [MIT License](LICENSE). This umbrella license does not change the licenses of separately maintained projects.
 
 ## Development
 

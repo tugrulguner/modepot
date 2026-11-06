@@ -32,7 +32,7 @@ test('project-entry links are tracked; GitHub documentation is resource intent, 
       await expect(play).toHaveAttribute('data-posthog-project', project);
       await expect(play).toHaveAttribute('data-posthog-surface', 'modepot_homepage');
     }
-    const doc = page.locator(`.product-actions > .product-resource[href="${docs}"]`);
+    const doc = page.locator(`.product-primary-actions > .product-primary-resource[href="${docs}"]`);
     await expect(doc).toHaveClass(/ph-no-autocapture/);
     if (resourceDocs.includes(project)) {
       await expect(doc).toHaveAttribute('data-posthog-event', 'modepot_resource_clicked');

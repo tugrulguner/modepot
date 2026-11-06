@@ -826,6 +826,30 @@ nav a:hover {
 }
 
 
+.product-primary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .55rem 1.25rem;
+  margin-top: 1rem;
+}
+
+.product-primary-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 .85rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 62%, transparent);
+  border-radius: .3rem;
+  color: #f2f4f8;
+  font: 600 .85rem/1.4 var(--display);
+  text-decoration: none;
+}
+
+.product-primary-link span { color: var(--accent); }
+.product-primary-resource { color: #c1c5ce; font-size: .78rem; }
+.product-primary-link:hover { border-color: var(--accent); }
+
 .product-actions {
   display: flex;
   flex-wrap: wrap;
