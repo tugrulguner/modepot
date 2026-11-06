@@ -12,7 +12,7 @@ ModePot builds frameworks, interfaces, tools, engines, and games around simple f
 
 - [UtilityPot](https://github.com/tugrulguner/utilitypot): Eleven focused browser tools: eight browser-local workflows, including screenshot-to-spreadsheet OCR, manual screenshot redaction and keyed CSV/XLSX comparison, plus three AI-assisted tools for entity extraction, flowcharts and webpage evidence. One fixed workflow per tool; inspect results before copying or downloading. [Explore UtilityPot](https://utilitypot.modepot.io/). Detailed manuals remain product-owned.
 
-- [SkillPot](https://github.com/tugrulguner/skillpot): In development: harness-neutral, selectively installable agent skills for complete tasks. Ten skills remain in the published v0.4.1 collection; seven are pinned ModePot project/contributor packages and repository-readiness remains experimental. Decision briefs propose an evidence-linked recommendation or deferral; document actions extract source-stated work into actions.md and questions.md, keeping deadlines verbatim and conflicts explicit. v0.4.1 corrects decision-brief 0.1.1 owner/reader/approval distinctions and timing/source locators, and document-actions 0.1.2 unknown completion status and approval-role attribution. These bounded instruction corrections are not evidence of model improvement; broad repeated usefulness evaluation is not established. [Explore SkillPot](https://skillpot.modepot.io/). Detailed guides and the agent documentation map remain product-owned.
+- [SkillPot](https://github.com/tugrulguner/skillpot): In development; published v0.4.1 collection has ten skills, including seven pinned ModePot project/contributor packages. Repository-readiness is experimental; broad repeated usefulness evaluation is not established. See the [quickstart](https://skillpot.modepot.io/quickstart/), [release/setup](https://github.com/tugrulguner/skillpot/releases/tag/v0.4.1), and product-owned guides.
 
 ## Primary resources
 
@@ -31,18 +31,18 @@ The [machine-readable project snapshots](https://modepot.io/project-sources.json
 <!-- project-snapshots:start -->
 ## Project source snapshots
 
-GitHub metadata checked at 2026-11-03T02:21:34.884Z. These are reviewed snapshots, not a continuously live feed.
+GitHub source and release metadata were checked on the dates shown for each project (current snapshot range: 2026-10-21–2026-11-06). These are reviewed snapshots, not a continuously live feed.
 The existing scheduled source-sync workflow proposes refreshes for review; changes are not automatically merged.
 
-| Project | Source snapshot | Latest recorded release |
-| --- | --- | --- |
-| dexpot | [a670e62](https://github.com/tugrulguner/dexpot/commit/a670e626cf73e1c4b21e0529294a87f1aa83e74f) | [v0.8.1](https://github.com/tugrulguner/dexpot/releases/tag/v0.8.1) |
-| intpot | [f6ec26a](https://github.com/tugrulguner/intpot/commit/f6ec26afc60011d41209cd705636f60e881d492f) | [v0.16.0](https://github.com/tugrulguner/intpot/releases/tag/v0.16.0) |
-| summonpot | [cdaf2f7](https://github.com/tugrulguner/summonpot/commit/cdaf2f76ae5aa698aeed1d4654ecdb567eb6e2d5) | [v0.12.0](https://github.com/tugrulguner/summonpot/releases/tag/v0.12.0) |
-| lifepot | [490cc62](https://github.com/tugrulguner/lifepot/commit/490cc62655e2bc25dd0a0bb4dd4e407a9cc84261) | [v0.9.0](https://github.com/tugrulguner/lifepot/releases/tag/v0.9.0) |
-| refpot | [3294ce3](https://github.com/tugrulguner/refpot/commit/3294ce39f0e5630c660fad2e5a1e3977bf52a17f) | [v0.1.1](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1) |
-| utilitypot | [015f1da](https://github.com/tugrulguner/utilitypot/commit/015f1da1ba5cf1aec98f792bca04f75398db12ba) | No release recorded |
-| skillpot | [79284b3](https://github.com/tugrulguner/skillpot/commit/79284b3faa928dc556a9032aa9dbeb059b4ee915) | [v0.4.1](https://github.com/tugrulguner/skillpot/releases/tag/v0.4.1) |
+| Project | Source snapshot | Latest recorded release | Checked (UTC) |
+| --- | --- | --- | --- |
+| dexpot | [a670e62](https://github.com/tugrulguner/dexpot/commit/a670e626cf73e1c4b21e0529294a87f1aa83e74f) | [v0.8.1](https://github.com/tugrulguner/dexpot/releases/tag/v0.8.1) | 2026-11-03 |
+| intpot | [f6ec26a](https://github.com/tugrulguner/intpot/commit/f6ec26afc60011d41209cd705636f60e881d492f) | [v0.16.0](https://github.com/tugrulguner/intpot/releases/tag/v0.16.0) | 2026-10-29 |
+| summonpot | [2373813](https://github.com/tugrulguner/summonpot/commit/23738139b4718a8f15c8700b2e69b37912f29ca0) | [v0.14.0](https://github.com/tugrulguner/summonpot/releases/tag/v0.14.0) | 2026-11-06 |
+| lifepot | [640404b](https://github.com/tugrulguner/lifepot/commit/640404b138c409baf25b1cc4fcce0552090979b9) | [v0.11.0](https://github.com/tugrulguner/lifepot/releases/tag/v0.11.0) | 2026-11-06 |
+| refpot | [3294ce3](https://github.com/tugrulguner/refpot/commit/3294ce39f0e5630c660fad2e5a1e3977bf52a17f) | [v0.1.1](https://github.com/tugrulguner/refpot/releases/tag/v0.1.1) | 2026-10-21 |
+| utilitypot | [015f1da](https://github.com/tugrulguner/utilitypot/commit/015f1da1ba5cf1aec98f792bca04f75398db12ba) | No release recorded | 2026-10-29 |
+| skillpot | [79284b3](https://github.com/tugrulguner/skillpot/commit/79284b3faa928dc556a9032aa9dbeb059b4ee915) | [v0.4.1](https://github.com/tugrulguner/skillpot/releases/tag/v0.4.1) | 2026-11-06 |
 <!-- project-snapshots:end -->
 
 ## Quick starts and documentation

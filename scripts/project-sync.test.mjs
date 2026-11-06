@@ -3,21 +3,45 @@ import assert from 'node:assert/strict';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { normalizeProject, projects, sync } from './sync-projects.mjs';
+import { normalizeProject, projects, renderProjectSnapshots, sync } from './sync-projects.mjs';
 
-// Validate live schema without freezing moving source/release records.
+// The compact README catalogue gives every project a direct learning route before prose.
 const readmeText = await readFile(new URL('../README.md', import.meta.url), 'utf8');
-const projectTable = readmeText.match(/^\| Project \|[^\n]*\n(?:\|[^\n]*\n)+/m)?.[0] || '';
-assert.match(projectTable, /\*\*UtilityPot\*\*/, 'UtilityPot must remain inside the contiguous Markdown project table');
+const projectIntro = readmeText.split('## Projects')[1].split('<!-- project-snapshots:start -->')[0];
+for (const [name, quickstart, site] of [
+  ['Dexpot', 'https://dexpot.modepot.io/quick-start/', 'https://dexpot.modepot.io/'],
+  ['Intpot', 'https://intpot.modepot.io/quickstart/', 'https://intpot.modepot.io/'],
+  ['Summonpot', 'https://summonpot.modepot.io/quick-start/', 'https://summonpot.modepot.io/'],
+  ['LifePot', 'https://lifepot.modepot.io/play', 'https://lifepot.modepot.io/'],
+  ['RefPot', 'https://refpot.modepot.io/package/', 'https://refpot.modepot.io/'],
+  ['UtilityPot', 'https://github.com/tugrulguner/utilitypot/blob/main/README.md', 'https://utilitypot.modepot.io/'],
+  ['SkillPot', 'https://skillpot.modepot.io/quickstart/', 'https://skillpot.modepot.io/'],
+]) {
+  const block = projectIntro.split(`**${name}**`)[1]?.split('\n- **')[0];
+  assert.ok(block, `${name} must have a concise project block`);
+  assert.ok(block.indexOf(quickstart) >= 0, `${name} must expose its learning route in the project block`);
+  assert.ok(block.indexOf(`](${quickstart})`) < block.indexOf(`](${site})`), `${name} learning route precedes project site link`);
+}
+assert.doesNotMatch(projectIntro, /^\| Project \|/m, 'README project list must not use the mobile-hostile 5-column table');
+assert.match(projectIntro, /SQL and ORM remain planned/);
+assert.match(projectIntro, /Repository-readiness is experimental/);
+assert.match(readmeText, /MIT License/);
+const licenseText = await readFile(new URL('../LICENSE', import.meta.url), 'utf8');
+assert.match(licenseText, /^MIT License\n\nCopyright \(c\) 2026 Tugrul Guner\n/);
+assert.match(licenseText, /Permission is hereby granted, free of charge, to any person obtaining a copy/);
+assert.match(licenseText, /THE SOFTWARE IS PROVIDED "AS IS"/);
+const homepageSource = await readFile(new URL('../src/pages/index.astro', import.meta.url), 'utf8');
+assert.match(homepageSource, /<link rel="license" href="https:\/\/github\.com\/tugrulguner\/modepot\/blob\/main\/LICENSE" \/>/);
 const stored = JSON.parse(await readFile(new URL('../src/data/projects.json', import.meta.url), 'utf8'));
+const renderedSnapshots = renderProjectSnapshots(stored);
+assert.match(renderedSnapshots, /\| Checked \(UTC\) \|/);
+assert.match(renderedSnapshots, /current snapshot range: 2026-10-21–2026-11-06/);
+for (const record of stored) assert.ok(renderedSnapshots.includes(`| ${record.checkedAt.slice(0, 10)} |`), `${record.name} must display its actual individual check date`);
+assert.doesNotMatch(renderedSnapshots, /checked at \d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/i, 'snapshot heading must not imply one timestamp applies globally');
 for (const name of ['dexpot', 'intpot', 'summonpot', 'lifepot', 'refpot', 'utilitypot', 'skillpot']) assert.ok(stored.some(p => p.name === name));
 assert.ok(projects.includes('utilitypot'), 'UtilityPot must be supported by source sync');
 assert.ok(projects.includes('skillpot'), 'SkillPot must be supported by source sync');
-assert.match(projectTable, /\*\*SkillPot\*\*/);
-const skillpotRow = projectTable.split('\n').find(line => line.includes('**SkillPot**'));
-assert.ok(skillpotRow, 'SkillPot row must exist');
-assert.equal(skillpotRow.split('|').length, 7, 'SkillPot must retain all five project-table columns');
-assert.match(skillpotRow, /\| \[skillpot\.modepot\.io\]\(https:\/\/skillpot\.modepot\.io\/\) \| \[GitHub\]/, 'SkillPot website and source must remain distinct chooser columns');
+assert.equal(stored.length, 7, 'all seven projects must remain represented');
 const agentMap = await readFile(new URL('../public/llms.txt', import.meta.url), 'utf8');
 assert.equal(agentMap.split('## Quick starts and documentation').length - 1, 1, 'Keep one canonical documentation section');
 const skillpot = stored.find(p => p.name === 'skillpot');

@@ -47,16 +47,20 @@ async function fetchText(url) {
 
 export function renderProjectSnapshots(records) {
   const escape = (value) => value.replace(/[\\|\[\]]/g, '\\$&');
+  const checkedDates = records.map((record) => record.checkedAt?.slice(0, 10)).filter(Boolean).sort();
+  const checkedRange = checkedDates[0] === checkedDates.at(-1)
+    ? checkedDates[0]
+    : `${checkedDates[0]}–${checkedDates.at(-1)}`;
   return [
     '<!-- project-snapshots:start -->',
     '## Project source snapshots',
     '',
-    `GitHub metadata checked at ${records[0].checkedAt}. These are reviewed snapshots, not a continuously live feed.`,
+    `GitHub source and release metadata were checked on the dates shown for each project (current snapshot range: ${checkedRange}). These are reviewed snapshots, not a continuously live feed.`,
     'The existing scheduled source-sync workflow proposes refreshes for review; changes are not automatically merged.',
     '',
-    '| Project | Source snapshot | Latest recorded release |',
-    '| --- | --- | --- |',
-    ...records.map((record) => `| ${record.name} | [${record.commit.slice(0, 7)}](${record.commitUrl}) | ${record.latestRelease ? `[${escape(record.latestRelease.tag)}](${record.latestRelease.url})` : 'No release recorded'} |`),
+    '| Project | Source snapshot | Latest recorded release | Checked (UTC) |',
+    '| --- | --- | --- | --- |',
+    ...records.map((record) => `| ${record.name} | [${record.commit.slice(0, 7)}](${record.commitUrl}) | ${record.latestRelease ? `[${escape(record.latestRelease.tag)}](${record.latestRelease.url})` : 'No release recorded'} | ${record.checkedAt?.slice(0, 10) ?? 'Unknown'} |`),
     '<!-- project-snapshots:end -->',
   ].join('\n');
 }

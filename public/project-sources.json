@@ -46,45 +46,45 @@
   {
     "name": "summonpot",
     "repository": "https://github.com/tugrulguner/summonpot",
-    "commit": "cdaf2f76ae5aa698aeed1d4654ecdb567eb6e2d5",
-    "checkedAt": "2026-10-27T12:34:03.960Z",
-    "commitUrl": "https://github.com/tugrulguner/summonpot/commit/cdaf2f76ae5aa698aeed1d4654ecdb567eb6e2d5",
+    "commit": "23738139b4718a8f15c8700b2e69b37912f29ca0",
+    "checkedAt": "2026-11-06T21:41:56.891Z",
+    "commitUrl": "https://github.com/tugrulguner/summonpot/commit/23738139b4718a8f15c8700b2e69b37912f29ca0",
     "readme": {
-      "url": "https://github.com/tugrulguner/summonpot/blob/cdaf2f76ae5aa698aeed1d4654ecdb567eb6e2d5/README.md",
-      "sha256": "0a874eef3b6ae4f6a5470df2114c88783711eac90c29ee8bd7a43bc209be07ce"
+      "url": "https://github.com/tugrulguner/summonpot/blob/23738139b4718a8f15c8700b2e69b37912f29ca0/README.md",
+      "sha256": "fc354c1af6401e3010fadaf242f1a2221ac28855c33847b1e2a77eecdd34ae43"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/summonpot/blob/cdaf2f76ae5aa698aeed1d4654ecdb567eb6e2d5/ROADMAP.md",
-      "sha256": "6108a57f177e16d5d5111dfd76694212001ee217cc371d53c62ca1bcbdb52cdb"
+      "url": "https://github.com/tugrulguner/summonpot/blob/23738139b4718a8f15c8700b2e69b37912f29ca0/ROADMAP.md",
+      "sha256": "275ea1db3e1e4f1b2f30bf785e1462ef7401600e3921786665912d9fb47f5d87"
     },
     "latestRelease": {
-      "tag": "v0.12.0",
-      "name": "v0.12.0",
-      "url": "https://github.com/tugrulguner/summonpot/releases/tag/v0.12.0",
-      "publishedAt": "2026-10-26T12:24:11Z"
+      "tag": "v0.14.0",
+      "name": "v0.14.0",
+      "url": "https://github.com/tugrulguner/summonpot/releases/tag/v0.14.0",
+      "publishedAt": "2026-10-29T13:02:48Z"
     }
   },
   {
     "name": "lifepot",
     "repository": "https://github.com/tugrulguner/lifepot",
-    "commit": "490cc62655e2bc25dd0a0bb4dd4e407a9cc84261",
-    "checkedAt": "2026-10-21T23:55:36.963Z",
-    "commitUrl": "https://github.com/tugrulguner/lifepot/commit/490cc62655e2bc25dd0a0bb4dd4e407a9cc84261",
+    "commit": "640404b138c409baf25b1cc4fcce0552090979b9",
+    "checkedAt": "2026-11-06T21:41:58.316Z",
+    "commitUrl": "https://github.com/tugrulguner/lifepot/commit/640404b138c409baf25b1cc4fcce0552090979b9",
     "readme": {
-      "url": "https://github.com/tugrulguner/lifepot/blob/490cc62655e2bc25dd0a0bb4dd4e407a9cc84261/README.md",
-      "sha256": "84026ca00ffacd6bfc73f1da30d28d2a3e21cbf1127e5cc6eb9b84ae7fde6bd4"
+      "url": "https://github.com/tugrulguner/lifepot/blob/640404b138c409baf25b1cc4fcce0552090979b9/README.md",
+      "sha256": "7ff2bf2878f40378243c2171708b83eb34eba21c6c1628d17a5685425783ad43"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/lifepot/blob/490cc62655e2bc25dd0a0bb4dd4e407a9cc84261/ROADMAP.md",
-      "sha256": "775c8cefb58fc358f93ecfd12a66b5d3ed0876c29c08393a1f4615cb3900498b"
+      "url": "https://github.com/tugrulguner/lifepot/blob/640404b138c409baf25b1cc4fcce0552090979b9/ROADMAP.md",
+      "sha256": "0f0550a8e9080f7ea86cd435824eb7c598a653f53831f8c4a79f5aaed042b20c"
     },
     "latestRelease": {
-      "tag": "v0.9.0",
-      "name": "v0.9.0: Watch, inspect and understand your world",
-      "url": "https://github.com/tugrulguner/lifepot/releases/tag/v0.9.0",
-      "publishedAt": "2026-10-18T01:04:25Z"
+      "tag": "v0.11.0",
+      "name": "LifePot v0.11.0: Create, investigate and continue living worlds",
+      "url": "https://github.com/tugrulguner/lifepot/releases/tag/v0.11.0",
+      "publishedAt": "2026-11-06T15:51:42Z"
     }
   },
   {

@@ -52,6 +52,7 @@ if (!html.includes('AI-native and agent-friendly approaches where they add value
 const requiredHtml = [
   '<link rel="canonical" href="https://modepot.io/">',
   '<link rel="alternate" type="text/plain" href="/llms.txt"',
+  '<link rel="license" href="https://github.com/tugrulguner/modepot/blob/main/LICENSE">',
   'property="og:image"',
   'name="twitter:image"',
   '/products/dexpot-lockup.webp',
@@ -60,7 +61,7 @@ const requiredHtml = [
   '/products/lifepot-lockup.webp',
   '/products/refpot-lockup-v2.svg?v=public-info-1',
   '/products/skillpot-lockup.svg',
-  'Docs',
+  'Quick start',
   'Build with us.',
   'participation-links',
 ];
@@ -122,8 +123,8 @@ if (itemList?.numberOfItems !== projectNames.length || itemList?.itemListElement
 }
 const skillpotSchema = itemList?.itemListElement?.find(({ item }) => item.name === 'skillpot')?.item;
 for (const [surface, content] of [['structured data', skillpotSchema?.description ?? ''], ['README', readme], ['agent map', llms]]) {
-  for (const token of ['Ten skills remain in the published v0.4.1 collection', 'document-actions 0.1.2', 'actions.md and questions.md', 'decision-brief 0.1.1', 'recommendation or deferral', 'repository-readiness remains experimental']) {
-    if (!content.includes(token)) failures.push(`SkillPot ${surface}: missing source/release boundary ${token}`);
+  for (const token of ['published v0.4.1 collection', 'ten skills', 'seven', 'repository-readiness', 'experimental', 'broad', 'not established']) {
+    if (!content.toLowerCase().includes(token.toLowerCase())) failures.push(`SkillPot ${surface}: missing current maturity boundary ${token}`);
   }
 }
 for (const [surface, content] of [['README', readme], ['agent map', llms], ['homepage', html]]) {
