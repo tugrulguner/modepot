@@ -129,23 +129,23 @@
   {
     "name": "skillpot",
     "repository": "https://github.com/tugrulguner/skillpot",
-    "commit": "3624eaaf2aa6c870e1dad6190ac3466e4e378f35",
-    "checkedAt": "2026-11-04T13:03:48.000Z",
-    "commitUrl": "https://github.com/tugrulguner/skillpot/commit/3624eaaf2aa6c870e1dad6190ac3466e4e378f35",
+    "commit": "79284b3faa928dc556a9032aa9dbeb059b4ee915",
+    "checkedAt": "2026-11-06T11:48:26.000Z",
+    "commitUrl": "https://github.com/tugrulguner/skillpot/commit/79284b3faa928dc556a9032aa9dbeb059b4ee915",
     "readme": {
-      "url": "https://github.com/tugrulguner/skillpot/blob/3624eaaf2aa6c870e1dad6190ac3466e4e378f35/README.md",
-      "sha256": "8e74f204c93b5149160a4d3adceb9ef8e95ca1158db3fdaf71fceb9c14e01c50"
+      "url": "https://github.com/tugrulguner/skillpot/blob/79284b3faa928dc556a9032aa9dbeb059b4ee915/README.md",
+      "sha256": "5f210059e9ca88036f692f0d4d6afb49a8f676fdf9cad64f2f94c5ad1e229406"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/skillpot/blob/3624eaaf2aa6c870e1dad6190ac3466e4e378f35/ROADMAP.md",
-      "sha256": "65b62de171afe27996b82cef1e945f4c69662dfa77037cca554f267976a11997"
+      "url": "https://github.com/tugrulguner/skillpot/blob/79284b3faa928dc556a9032aa9dbeb059b4ee915/ROADMAP.md",
+      "sha256": "a6e6e9e868e3a88363779d8a59de6b0a7f48d830760eeb810496a5476c300bc7"
     },
     "latestRelease": {
-      "tag": "v0.4.0",
-      "name": "SkillPot v0.4.0 released",
-      "url": "https://github.com/tugrulguner/skillpot/releases/tag/v0.4.0",
-      "publishedAt": "2026-11-04T01:44:54Z"
+      "tag": "v0.4.1",
+      "name": "SkillPot v0.4.1: workflow field consistency",
+      "url": "https://github.com/tugrulguner/skillpot/releases/tag/v0.4.1",
+      "publishedAt": "2026-11-05T22:53:52Z"
     }
   }
 ]
