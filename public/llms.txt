@@ -31,12 +31,12 @@ The [machine-readable project snapshots](https://modepot.io/project-sources.json
 <!-- project-snapshots:start -->
 ## Project source snapshots
 
-GitHub source and release metadata were checked on the dates shown for each project (current snapshot range: 2026-10-21–2026-11-06). These are reviewed snapshots, not a continuously live feed.
+GitHub source and release metadata were checked on the dates shown for each project (current snapshot range: 2026-10-21–2026-11-08). These are reviewed snapshots, not a continuously live feed.
 The existing scheduled source-sync workflow proposes refreshes for review; changes are not automatically merged.
 
 | Project | Source snapshot | Latest recorded release | Checked (UTC) |
 | --- | --- | --- | --- |
-| dexpot | [a670e62](https://github.com/tugrulguner/dexpot/commit/a670e626cf73e1c4b21e0529294a87f1aa83e74f) | [v0.8.1](https://github.com/tugrulguner/dexpot/releases/tag/v0.8.1) | 2026-11-03 |
+| dexpot | [c337f29](https://github.com/tugrulguner/dexpot/commit/c337f29d0f78b3896cfaebe4a13a8a5096ed0ead) | [v0.9.0](https://github.com/tugrulguner/dexpot/releases/tag/v0.9.0) | 2026-11-08 |
 | intpot | [f6ec26a](https://github.com/tugrulguner/intpot/commit/f6ec26afc60011d41209cd705636f60e881d492f) | [v0.16.0](https://github.com/tugrulguner/intpot/releases/tag/v0.16.0) | 2026-10-29 |
 | summonpot | [2373813](https://github.com/tugrulguner/summonpot/commit/23738139b4718a8f15c8700b2e69b37912f29ca0) | [v0.14.0](https://github.com/tugrulguner/summonpot/releases/tag/v0.14.0) | 2026-11-06 |
 | lifepot | [640404b](https://github.com/tugrulguner/lifepot/commit/640404b138c409baf25b1cc4fcce0552090979b9) | [v0.11.0](https://github.com/tugrulguner/lifepot/releases/tag/v0.11.0) | 2026-11-06 |
