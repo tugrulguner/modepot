@@ -14,7 +14,13 @@ test('layout workflow trusts checkout before git-based steps', () => {
 
 test('layout browser tests use only the pinned official Playwright image', () => {
   assert.match(workflow, /image: mcr\.microsoft\.com\/playwright:v1\.63\.0-noble@sha256:eff16c30e6f3f4af0a03fa4b706120d5e9b0891c344a27d64559aff5900a4a27/);
-  assert.match(workflow, /options: --shm-size=1g/);
+  assert.match(workflow, /options: --init --shm-size=1g/);
+  assert.match(workflow, /    container:\n      image:/);
+  assert.doesNotMatch(workflow, /docker-run-action/);
+  const build = workflow.indexOf('run: npm run build');
+  const browser = workflow.indexOf('run: npm run test:layout');
+  assert.ok(build >= 0 && browser > build, 'build precedes browser preview');
+  assert.equal(workflow.match(/run: npm run test:layout/g)?.length, 1);
   assert.match(workflow, /run: npm run test:layout/);
   assert.doesNotMatch(workflow, /playwright install --with-deps/);
 });
