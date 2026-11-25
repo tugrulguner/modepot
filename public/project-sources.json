@@ -2,23 +2,23 @@
   {
     "name": "dexpot",
     "repository": "https://github.com/tugrulguner/dexpot",
-    "commit": "c227ec554ed3a051e3994e87ad76a18282261167",
-    "checkedAt": "2026-11-16T13:12:39.351Z",
-    "commitUrl": "https://github.com/tugrulguner/dexpot/commit/c227ec554ed3a051e3994e87ad76a18282261167",
+    "commit": "ded9bc26d5773689e81dd71ef53e0cead033e01d",
+    "checkedAt": "2026-11-25T12:37:14.581Z",
+    "commitUrl": "https://github.com/tugrulguner/dexpot/commit/ded9bc26d5773689e81dd71ef53e0cead033e01d",
     "readme": {
-      "url": "https://github.com/tugrulguner/dexpot/blob/c227ec554ed3a051e3994e87ad76a18282261167/README.md",
-      "sha256": "adaf4f16bd8ee0c6a18129a335f81f8945cdb1f6de16fbdb751ce2ed3b0e5f0f"
+      "url": "https://github.com/tugrulguner/dexpot/blob/ded9bc26d5773689e81dd71ef53e0cead033e01d/README.md",
+      "sha256": "da07fa70d26795ad2223d16bc8940ae1be78db7c4b41a2c2b6c483b60a4f2b72"
     },
     "roadmap": {
       "status": "available",
-      "url": "https://github.com/tugrulguner/dexpot/blob/c227ec554ed3a051e3994e87ad76a18282261167/ROADMAP.md",
-      "sha256": "be2a6b9c5836e667ae79f89728546972844d3f41cf1da89eaf856e5505e9df0c"
+      "url": "https://github.com/tugrulguner/dexpot/blob/ded9bc26d5773689e81dd71ef53e0cead033e01d/ROADMAP.md",
+      "sha256": "04f6d5408af73cd02e4c0147ca31c6e5cdd347dc0433e1f90baf3dd2a6c2141e"
     },
     "latestRelease": {
-      "tag": "v0.9.1",
-      "name": "v0.9.1",
-      "url": "https://github.com/tugrulguner/dexpot/releases/tag/v0.9.1",
-      "publishedAt": "2026-11-16T13:07:31Z"
+      "tag": "v0.10.0",
+      "name": "v0.10.0",
+      "url": "https://github.com/tugrulguner/dexpot/releases/tag/v0.10.0",
+      "publishedAt": "2026-11-25T12:23:21Z"
     }
   },
   {
